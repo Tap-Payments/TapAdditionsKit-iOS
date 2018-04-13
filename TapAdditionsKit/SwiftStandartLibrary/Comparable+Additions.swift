@@ -1,0 +1,48 @@
+//
+//  Comparable+Additions.swift
+//  TapAdditionsKit
+//
+//  Copyright © 2018 Tap Payments. All rights reserved.
+//
+
+/// Some additions to Comparable protocol.
+public extension Comparable {
+    
+    // MARK: - Public -
+    // MARK: Methods.
+    
+    /**
+     Compares receiver to another Comparable object.
+     
+     - parameter other: Other comparable object.
+     
+     - returns: NSComparisonResult
+     */
+    public func compare(other: Self) -> Foundation.ComparisonResult {
+        
+        if self < other {
+            
+            return .orderedAscending
+        }
+        else if self > other {
+            
+            return .orderedDescending
+        }
+        else {
+            
+            return .orderedSame
+        }
+    }
+}
+
+/// Clamps value in range [low, high]
+///
+/// - Parameters:
+///   - value: Value to clamp.
+///   - low: Lower bound.
+///   - high: Higher bound.
+/// - Returns: Clampled value.
+public func clamp<T>(value: T, low: T, high: T) -> T where T: Comparable {
+    
+    return min(max(value, low), high)
+}
