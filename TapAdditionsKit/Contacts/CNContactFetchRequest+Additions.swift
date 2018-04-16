@@ -94,3 +94,12 @@ public extension CNContactFetchRequest {
         return CNContactFetchRequest(keysToFetch: CNContactFetchRequest.allFetchKeys)
     }()
 }
+
+/// Dummy struct to import Contacts/CNContactFetchRequest module.
+public struct CNContactFetchRequestAdditions {
+    
+    @available (*, unavailable) private init() {
+        
+        fatalError("\(self) cannot be initialized.")
+    }
+}

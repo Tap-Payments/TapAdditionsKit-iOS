@@ -35,3 +35,12 @@ public extension CNInstantMessageAddress {
         return result
     }
 }
+
+/// Dummy struct to import Contacts/CNInstantMessageAddress module.
+public struct CNInstantMessageAddressAdditions {
+    
+    @available (*, unavailable) private init() {
+        
+        fatalError("\(self) cannot be initialized.")
+    }
+}

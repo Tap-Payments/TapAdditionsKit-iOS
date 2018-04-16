@@ -19,3 +19,12 @@ public extension AVPlayer {
         return self.rate != 0.0
     }
 }
+
+/// Dummy struct to import AVFoundation/AVPlayer module.
+public struct AVPlayerAdditions {
+    
+    @available (*, unavailable) private init() {
+        
+        fatalError("\(self) cannot be initialized.")
+    }
+}

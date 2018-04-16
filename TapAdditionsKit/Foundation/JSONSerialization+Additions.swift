@@ -159,3 +159,12 @@ private func safelySerializableObject<T>(_ object: T) -> T? {
         return nil
     }
 }
+
+/// Dummy struct to import Foundation/JSONSerialization module.
+public struct JSONSerializationAdditions {
+    
+    @available (*, unavailable) private init() {
+        
+        fatalError("\(self) cannot be initialized.")
+    }
+}

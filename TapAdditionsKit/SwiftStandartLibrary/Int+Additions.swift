@@ -20,3 +20,12 @@ public extension Int {
         return string.index(string.startIndex, offsetBy: self)
     }
 }
+
+/// Dummy struct to import SwiftStandartLibrary/Int module.
+public struct IntAdditions {
+    
+    @available (*, unavailable) private init() {
+        
+        fatalError("\(self) cannot be initialized.")
+    }
+}

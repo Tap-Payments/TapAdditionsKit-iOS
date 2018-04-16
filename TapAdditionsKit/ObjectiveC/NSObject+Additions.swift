@@ -60,3 +60,12 @@ public extension NSObject {
         }
     }
 }
+
+/// Dummy struct to import ObjectiveC/NSObject module.
+public struct NSObjectAdditions {
+    
+    @available (*, unavailable) private init() {
+        
+        fatalError("\(self) cannot be initialized.")
+    }
+}

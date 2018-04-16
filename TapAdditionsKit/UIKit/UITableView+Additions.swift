@@ -42,3 +42,12 @@ public extension UITableView {
         }
     }
 }
+
+/// Dummy struct to import UIKit/UITableView module.
+public struct UITableViewAdditions {
+    
+    @available (*, unavailable) private init() {
+        
+        fatalError("\(self) cannot be initialized.")
+    }
+}

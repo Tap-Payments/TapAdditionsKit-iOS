@@ -220,14 +220,11 @@ public extension UIColor {
     }
 }
 
-/// Interpolates the color between start and finish.
-///
-/// - Parameters:
-///   - start: Start color.
-///   - finish: Finish color.
-///   - progress: Progress in range [0, 1]
-/// - Returns: Interpolated color.
-public func interpolate(start: UIColor, finish: UIColor, progress: CGFloat) -> UIColor {
+/// Dummy struct to import UIKit/UIColor module.
+public struct UIColorAdditions {
     
-    return UIColor.interpolate(start: start, finish: finish, progress: progress)
+    @available (*, unavailable) private init() {
+        
+        fatalError("\(self) cannot be initialized.")
+    }
 }

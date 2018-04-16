@@ -23,3 +23,12 @@ public extension UIResponder {
         CATransaction.commit()
     }
 }
+
+/// Dummy struct to import UIKit/UIResponder module.
+public struct UIResponderAdditions {
+    
+    @available (*, unavailable) private init() {
+        
+        fatalError("\(self) cannot be initialized.")
+    }
+}

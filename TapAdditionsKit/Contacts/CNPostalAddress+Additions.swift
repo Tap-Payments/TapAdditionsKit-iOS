@@ -74,3 +74,12 @@ public extension CNPostalAddress {
         return result
     }
 }
+
+/// Dummy struct to import Contacts/CNPostalAddress module.
+public struct CNPostalAddressAdditions {
+    
+    @available (*, unavailable) private init() {
+        
+        fatalError("\(self) cannot be initialized.")
+    }
+}

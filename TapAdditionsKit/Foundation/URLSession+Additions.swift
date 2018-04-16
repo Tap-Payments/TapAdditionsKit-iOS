@@ -48,3 +48,12 @@ public extension URLSession {
         return URLSessionDataTaskResult(data: data, response: response, error: error)
     }
 }
+
+/// Dummy struct to import Foundation/URLSession module.
+public struct URLSessionAdditions {
+    
+    @available (*, unavailable) private init() {
+        
+        fatalError("\(self) cannot be initialized.")
+    }
+}

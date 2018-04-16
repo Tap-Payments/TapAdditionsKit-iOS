@@ -89,3 +89,12 @@ public extension UINavigationController {
         }
     }
 }
+
+/// Dummy struct to import UIKit/UINavigationController module.
+public struct UINavigationControllerAdditions {
+    
+    @available (*, unavailable) private init() {
+        
+        fatalError("\(self) cannot be initialized.")
+    }
+}

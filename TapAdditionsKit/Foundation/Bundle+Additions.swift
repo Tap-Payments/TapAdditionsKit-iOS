@@ -25,9 +25,21 @@ public extension Bundle {
         return Bundle(url: bundleURL)
     }
     
+    // MARK: - Private -
+    
+    private struct BundleConstants {
+        
+        fileprivate static let bundleExtension = "bundle"
+        
+        @available(*, unavailable) private init() {}
+    }
 }
 
-private struct BundleConstants {
+/// Dummy struct to import Foundation/Bundle module.
+public struct BundleAdditions {
     
-    fileprivate static let bundleExtension = "bundle"
+    @available (*, unavailable) private init() {
+        
+        fatalError("\(self) cannot be initialized.")
+    }
 }

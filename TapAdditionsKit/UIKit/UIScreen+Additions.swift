@@ -20,3 +20,12 @@ public extension UIScreen {
         return 1.0 / self.scale
     }
 }
+
+/// Dummy struct to import UIKit/UIScreen module.
+public struct UIScreenAdditions {
+    
+    @available (*, unavailable) private init() {
+        
+        fatalError("\(self) cannot be initialized.")
+    }
+}

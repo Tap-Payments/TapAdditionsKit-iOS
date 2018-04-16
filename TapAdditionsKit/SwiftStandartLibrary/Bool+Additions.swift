@@ -13,3 +13,12 @@ extension Bool: ExpressibleByIntegerLiteral {
         self.init(value != 0)
     }
 }
+
+/// Dummy struct to import SwiftStandartLibrary/Bool module.
+public struct BoolAdditions {
+    
+    @available (*, unavailable) private init() {
+        
+        fatalError("\(self) cannot be initialized.")
+    }
+}

@@ -57,3 +57,12 @@ public extension CNContactStore {
         }
     }
 }
+
+/// Dummy struct to import Contacts/CNContactStore module.
+public struct CNContactStoreAdditions {
+    
+    @available (*, unavailable) private init() {
+        
+        fatalError("\(self) cannot be initialized.")
+    }
+}

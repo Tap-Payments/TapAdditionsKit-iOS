@@ -42,3 +42,12 @@ public extension Data {
         }
     }
 }
+
+/// Dummy struct to import Foundation/Date module.
+public struct DateAdditions {
+    
+    @available (*, unavailable) private init() {
+        
+        fatalError("\(self) cannot be initialized.")
+    }
+}

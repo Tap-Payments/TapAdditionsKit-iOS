@@ -33,3 +33,12 @@ public struct URLSessionDataTaskResult {
         self.error = error
     }
 }
+
+/// Dummy struct to import Foundation/URLSessionDataTask module.
+public struct URLSessionDataTaskAdditions {
+    
+    @available (*, unavailable) private init() {
+        
+        fatalError("\(self) cannot be initialized.")
+    }
+}

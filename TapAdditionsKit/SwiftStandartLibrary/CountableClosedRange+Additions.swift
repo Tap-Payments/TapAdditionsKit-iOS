@@ -17,3 +17,12 @@ public extension CountableClosedRange where Bound == Int {
         return Int(arc4random_uniform(UInt32(self.count) + 1)) + self.lowerBound
     }
 }
+
+/// Dummy struct to import SwiftStandartLibrary/CountableClosedRange module.
+public struct CountableClosedRangeAdditions {
+    
+    @available (*, unavailable) private init() {
+        
+        fatalError("\(self) cannot be initialized.")
+    }
+}

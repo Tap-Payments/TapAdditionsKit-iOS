@@ -27,3 +27,12 @@ public extension DateFormatter {
         self.dateFormat = dateFormat
     }
 }
+
+/// Dummy struct to import Foundation/DateFormatter module.
+public struct DateFormatterAdditions {
+    
+    @available (*, unavailable) private init() {
+        
+        fatalError("\(self) cannot be initialized.")
+    }
+}

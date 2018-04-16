@@ -11,8 +11,11 @@ import func CoreGraphics.CGBase.pow
 import struct CoreGraphics.CGGeometry.CGPoint
 import struct CoreGraphics.CGGeometry.CGRect
 import struct CoreGraphics.CGGeometry.CGSize
+import class QuartzCore.CAShapeLayer.CAShapeLayer
 import class UIKit.NSLayoutConstraint
 import struct UIKit.NSLayoutFormatOptions
+import class UIKit.UIBezierPath.UIBezierPath
+import struct UIKit.UIBezierPath.UIRectCorner
 import class UIKit.UIColor
 import func UIKit.UIGraphicsBeginImageContextWithOptions
 import func UIKit.UIGraphicsEndImageContext
@@ -433,5 +436,29 @@ private let kViewAnimationDuration: TimeInterval = 0.35
                 self.frame = viewFrame
             }
         }
+    }
+    
+    /// 'Rounds' specific corners of the receiver with the specified corner radius.
+    ///  Important: Calling this method will replace existing masks on the layer (if presented).
+    ///
+    /// - Parameters:
+    ///   - corners: Corners to round.
+    ///   - radius: Corner radius.
+    public func roundCorners(_ corners: UIRectCorner, with radius: CGFloat) {
+        
+        let radii = CGSize(width: radius, height: radius)
+        let path = UIBezierPath(roundedRect: self.bounds, byRoundingCorners: corners, cornerRadii: radii)
+        let shapeLayer = CAShapeLayer()
+        shapeLayer.path = path.cgPath
+        self.layer.mask = shapeLayer
+    }
+}
+
+/// Dummy struct to import UIKit/UIView module.
+public struct UIViewAdditions {
+    
+    @available (*, unavailable) private init() {
+        
+        fatalError("\(self) cannot be initialized.")
     }
 }

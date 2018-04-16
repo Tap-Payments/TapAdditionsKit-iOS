@@ -46,3 +46,12 @@ public func clamp<T>(value: T, low: T, high: T) -> T where T: Comparable {
     
     return min(max(value, low), high)
 }
+
+/// Dummy struct to import SwiftStandartLibrary/Comparable module.
+public struct ComparableAdditions {
+    
+    @available (*, unavailable) private init() {
+        
+        fatalError("\(self) cannot be initialized.")
+    }
+}

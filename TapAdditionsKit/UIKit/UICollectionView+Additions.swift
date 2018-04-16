@@ -21,3 +21,12 @@ public extension UICollectionView {
         return self.indexPathsForSelectedItems?.first
     }
 }
+
+/// Dummy struct to import UIKit/UICollectionView module.
+public struct UICollectionViewAdditions {
+    
+    @available (*, unavailable) private init() {
+        
+        fatalError("\(self) cannot be initialized.")
+    }
+}

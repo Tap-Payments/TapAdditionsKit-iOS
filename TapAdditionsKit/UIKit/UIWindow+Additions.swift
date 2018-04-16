@@ -41,3 +41,12 @@ public extension UIWindow {
         return UIApplication.shared.windows.filter { $0.windowLevel == level }.first
     }
 }
+
+/// Dummy struct to import UIKit/UIWindow module.
+public struct UIWindowAdditions {
+    
+    @available (*, unavailable) private init() {
+        
+        fatalError("\(self) cannot be initialized.")
+    }
+}

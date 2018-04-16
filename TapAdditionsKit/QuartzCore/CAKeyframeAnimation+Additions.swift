@@ -9,11 +9,6 @@ import class QuartzCore.CAAnimation.CAKeyframeAnimation
 import var QuartzCore.CAAnimation.kCAFillModeForwards
 import func QuartzCore.CATransform3D.CATransform3DMakeScale
 
-private let kPopupAppearanceTimeInterval = 0.5
-private let kPopupDisappearanceTimeInterval = 0.18
-
-private let kTransformKeyPath = "transform"
-
 /// Useful extension to CAKeyframeAnimation
 public extension CAKeyframeAnimation {
     
@@ -30,7 +25,7 @@ public extension CAKeyframeAnimation {
         
         animation.fillMode = kCAFillModeForwards
         animation.isRemovedOnCompletion = false
-        animation.duration = kPopupAppearanceTimeInterval
+        animation.duration = CAKeyframeAnimationConstants.popupAppearanceTimeInterval
         
         return animation
     }()
@@ -45,17 +40,28 @@ public extension CAKeyframeAnimation {
         
         animation.fillMode = kCAFillModeForwards
         animation.isRemovedOnCompletion = false
-        animation.duration = kPopupDisappearanceTimeInterval
+        animation.duration = CAKeyframeAnimationConstants.popupDisappearanceTimeInterval
         
         return animation
     }()
     
     // MARK: - Private -
+    
+    private struct CAKeyframeAnimationConstants {
+        
+        fileprivate static let popupAppearanceTimeInterval = 0.5
+        fileprivate static let popupDisappearanceTimeInterval = 0.18
+        
+        fileprivate static let transformKeyPath = "transform"
+        
+        @available(*, unavailable) private init() {}
+    }
+    
     // MARK: Properties
     
     private static var transformKeyFrameAnimation: CAKeyframeAnimation {
         
-        return CAKeyframeAnimation(keyPath: kTransformKeyPath)
+        return CAKeyframeAnimation(keyPath: CAKeyframeAnimationConstants.transformKeyPath)
     }
     
     private static let popupAppearanceTransforms: [NSValue] = {
@@ -79,4 +85,13 @@ public extension CAKeyframeAnimation {
     private static let popupAppearanceFrameTimes: [NSNumber] = [0.0, 0.5, 0.9, 1.0]
     
     private static let popupDisappearanceFrameTimes: [NSNumber] = [0.0, 1.0]
+}
+
+/// Dummy struct to import QuartzCore/CAKeyframeAnimation module.
+public struct CAKeyframeAnimationAdditions {
+    
+    @available (*, unavailable) private init() {
+        
+        fatalError("\(self) cannot be initialized.")
+    }
 }

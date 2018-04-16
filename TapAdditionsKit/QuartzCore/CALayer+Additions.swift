@@ -206,3 +206,12 @@ public extension CALayer {
         }
     }
 }
+
+/// Dummy struct to import QuartzCore/CALayer module.
+public struct CALayerAdditions {
+    
+    @available (*, unavailable) private init() {
+        
+        fatalError("\(self) cannot be initialized.")
+    }
+}

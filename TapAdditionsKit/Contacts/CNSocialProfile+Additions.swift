@@ -46,3 +46,12 @@ public extension CNSocialProfile {
         return result
     }
 }
+
+/// Dummy struct to import Contacts/CNSocialProfile module.
+public struct CNSocialProfileAdditions {
+    
+    @available (*, unavailable) private init() {
+        
+        fatalError("\(self) cannot be initialized.")
+    }
+}

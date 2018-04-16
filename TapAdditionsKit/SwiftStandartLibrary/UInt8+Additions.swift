@@ -17,3 +17,12 @@ public extension UInt8 {
         return String(format: "%c", self)
     }
 }
+
+/// Dummy struct to import SwiftStandartLibrary/UInt8 module.
+public struct UInt8Additions {
+    
+    @available (*, unavailable) private init() {
+        
+        fatalError("\(self) cannot be initialized.")
+    }
+}

@@ -28,3 +28,12 @@ public extension UIWebView {
         return self.sizeThatFits(.zero)
     }
 }
+
+/// Dummy struct to import UIKit/UIWebView module.
+public struct UIWebViewAdditions {
+    
+    @available (*, unavailable) private init() {
+        
+        fatalError("\(self) cannot be initialized.")
+    }
+}

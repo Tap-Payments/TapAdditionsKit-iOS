@@ -184,3 +184,12 @@ public extension Dictionary where Value == [AnyHashable: Equatable] {
         return !(lhs == rhs)
     }
 }
+
+/// Dummy struct to import SwiftStandartLibrary/Dictionary module.
+public struct DictionaryAdditions {
+    
+    @available (*, unavailable) private init() {
+        
+        fatalError("\(self) cannot be initialized.")
+    }
+}

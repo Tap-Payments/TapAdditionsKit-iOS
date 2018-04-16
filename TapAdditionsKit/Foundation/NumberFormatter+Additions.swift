@@ -29,3 +29,12 @@ public extension NumberFormatter {
         self.locale = locale
     }
 }
+
+/// Dummy struct to import Foundation/NumberFormatter module.
+public struct NumberFormatterAdditions {
+    
+    @available (*, unavailable) private init() {
+        
+        fatalError("\(self) cannot be initialized.")
+    }
+}

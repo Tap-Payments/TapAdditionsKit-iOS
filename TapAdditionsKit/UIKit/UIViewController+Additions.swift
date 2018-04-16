@@ -340,3 +340,12 @@ fileprivate final class EmptyViewController: UIViewController {
         return result
     }
 }
+
+/// Dummy struct to import UIKit/UIViewController module.
+public struct UIViewControllerAdditions {
+    
+    @available (*, unavailable) private init() {
+        
+        fatalError("\(self) cannot be initialized.")
+    }
+}

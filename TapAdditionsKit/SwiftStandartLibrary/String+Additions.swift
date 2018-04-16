@@ -480,3 +480,12 @@ extension String: ExpressibleByIntegerLiteral {
         self = "\(value)"
     }
 }
+
+/// Dummy struct to import SwiftStandartLibrary/String module.
+public struct StringAdditions {
+    
+    @available (*, unavailable) private init() {
+        
+        fatalError("\(self) cannot be initialized.")
+    }
+}

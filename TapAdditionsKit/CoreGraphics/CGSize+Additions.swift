@@ -132,19 +132,16 @@ public extension CGSize {
     /// - Returns: Interpolated value.
     public static func interpolate(start: CGSize, finish: CGSize, progress: CGFloat) -> CGSize {
         
-        return CGSize(width: TapAdditionsKit.interpolate(start: start.width, finish: finish.width, progress: progress),
-                      height: TapAdditionsKit.interpolate(start: start.height, finish: finish.height, progress: progress))
+        return CGSize(width: CGFloat.interpolate(start: start.width, finish: finish.width, progress: progress),
+                      height: CGFloat.interpolate(start: start.height, finish: finish.height, progress: progress))
     }
 }
 
-/// Interpolates CGSize value between start and finish.
-///
-/// - Parameters:
-///   - start: Left bound.
-///   - finish: Right bound.
-///   - progress: Progress in range [0, 1]
-/// - Returns: Interpolated value.
-public func interpolate(start: CGSize, finish: CGSize, progress: CGFloat) -> CGSize {
+/// Dummy struct to import CoreGraphics/CGSize module.
+public struct CGSizeAdditions {
     
-    return CGSize.interpolate(start: start, finish: finish, progress: progress)
+    @available (*, unavailable) private init() {
+        
+        fatalError("\(self) cannot be initialized.")
+    }
 }

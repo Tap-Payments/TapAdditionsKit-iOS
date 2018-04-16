@@ -45,3 +45,12 @@ public extension UILabel {
         UIView.transition(with: self, duration: max(animationDuration, 0.0), options: [.transitionCrossDissolve, .layoutSubviews], animations: animations, completion: nil)
     }
 }
+
+/// Dummy struct to import UIKit/UILabel module.
+public struct UILabelAdditions {
+    
+    @available (*, unavailable) private init() {
+        
+        fatalError("\(self) cannot be initialized.")
+    }
+}

@@ -65,3 +65,12 @@ public extension UIDevice {
         return self.userInterfaceIdiom == .pad
     }
 }
+
+/// Dummy struct to import UIKit/UIDevice module.
+public struct UIDeviceAdditions {
+    
+    @available (*, unavailable) private init() {
+        
+        fatalError("\(self) cannot be initialized.")
+    }
+}

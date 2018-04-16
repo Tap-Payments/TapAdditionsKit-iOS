@@ -85,3 +85,12 @@ public extension CGImage {
         return vImage_Buffer(data: data, height: vImagePixelCount(self.height), width: vImagePixelCount(self.width), rowBytes: self.bytesPerRow)
     }
 }
+
+/// Dummy struct to import CoreGraphics/CGImage module.
+public struct CGImageAdditions {
+    
+    @available (*, unavailable) private init() {
+        
+        fatalError("\(self) cannot be initialized.")
+    }
+}

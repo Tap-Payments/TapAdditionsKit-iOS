@@ -50,3 +50,12 @@ public extension Calendar {
         return range.count
     }
 }
+
+/// Dummy struct to import Foundation/Calendar module.
+public struct CalendarAdditions {
+    
+    @available (*, unavailable) private init() {
+        
+        fatalError("\(self) cannot be initialized.")
+    }
+}

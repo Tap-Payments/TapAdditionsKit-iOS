@@ -117,3 +117,12 @@ public extension UIScrollView {
         return self.isPagingEnabled && self.bounds.width > 0.0
     }
 }
+
+/// Dummy struct to import UIKit/UIScrollView module.
+public struct UIScrollViewAdditions {
+    
+    @available (*, unavailable) private init() {
+        
+        fatalError("\(self) cannot be initialized.")
+    }
+}

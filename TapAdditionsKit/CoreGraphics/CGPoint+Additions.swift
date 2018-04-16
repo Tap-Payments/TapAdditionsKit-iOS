@@ -194,3 +194,12 @@ public extension CGPoint {
         return left.x * right.x + left.y * right.y
     }
 }
+
+/// Dummy struct to import CoreGraphics/CGPoint module.
+public struct CGPointAdditions {
+    
+    @available (*, unavailable) private init() {
+        
+        fatalError("\(self) cannot be initialized.")
+    }
+}

@@ -131,3 +131,12 @@ public extension CGRect {
         return CGRect(origin: self.origin + offset, size: self.size)
     }
 }
+
+/// Dummy struct to import CoreGraphics/CGRect module.
+public struct CGRectAdditions {
+    
+    @available (*, unavailable) private init() {
+        
+        fatalError("\(self) cannot be initialized.")
+    }
+}

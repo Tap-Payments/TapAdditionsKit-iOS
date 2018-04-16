@@ -51,3 +51,12 @@ public extension Locale {
         fileprivate static let underscore = "_"
     }
 }
+
+/// Dummy struct to import Foundation/Locale module.
+public struct LocaleAdditions {
+    
+    @available (*, unavailable) private init() {
+        
+        fatalError("\(self) cannot be initialized.")
+    }
+}

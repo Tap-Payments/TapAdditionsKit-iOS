@@ -52,3 +52,12 @@ public extension UIWindowLevel {
         return windows[0].windowLevel
     }
 }
+
+/// Dummy struct to import UIKit/UIWindowLevel module.
+public struct UIWindowLevelAdditions {
+    
+    @available (*, unavailable) private init() {
+        
+        fatalError("\(self) cannot be initialized.")
+    }
+}

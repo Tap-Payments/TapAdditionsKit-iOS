@@ -155,5 +155,16 @@ public extension UIBezierPath {
     private struct Constants {
         
         fileprivate static let epsilon: CGFloat = 1.0e-5
+        
+        @available(*, unavailable) private init() {}
+    }
+}
+
+/// Dummy struct to import UIKit/UIBezierPath module.
+public struct UIBezierPathAdditions {
+    
+    @available (*, unavailable) private init() {
+        
+        fatalError("\(self) cannot be initialized.")
     }
 }

@@ -755,3 +755,12 @@ private struct GIFImageFrame {
     fileprivate var image: CGImage
     fileprivate var delay: Int
 }
+
+/// Dummy struct to import UIKit/UIImage module.
+public struct UIImageAdditions {
+    
+    @available (*, unavailable) private init() {
+        
+        fatalError("\(self) cannot be initialized.")
+    }
+}

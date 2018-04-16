@@ -226,3 +226,12 @@ public func interpolate<Type>(start: [Type], finish: [Type], progress: Type) -> 
     
     return type(of: start).interpolate(start: start, finish: finish, progress: progress)
 }
+
+/// Dummy struct to import SwiftStandartLibrary/Array module.
+public struct ArrayAdditions {
+    
+    @available (*, unavailable) private init() {
+        
+        fatalError("\(self) cannot be initialized.")
+    }
+}

@@ -29,3 +29,12 @@ public extension CGContext {
         return self.makeImage()
     }
 }
+
+/// Dummy struct to import CoreGraphics/CGContext module.
+public struct CGContextAdditions {
+    
+    @available (*, unavailable) private init() {
+        
+        fatalError("\(self) cannot be initialized.")
+    }
+}

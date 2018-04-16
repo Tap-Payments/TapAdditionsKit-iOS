@@ -104,3 +104,12 @@ public extension Sequence where Iterator.Element: BinaryInteger {
         }
     }
 }
+
+/// Dummy struct to import SwiftStandartLibrary/Sequence module.
+public struct SequenceAdditions {
+    
+    @available (*, unavailable) private init() {
+        
+        fatalError("\(self) cannot be initialized.")
+    }
+}

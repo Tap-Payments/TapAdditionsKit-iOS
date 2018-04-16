@@ -51,3 +51,12 @@ public extension UIImageView {
         }
     }
 }
+
+/// Dummy struct to import UIKit/UIImageView module.
+public struct UIImageViewAdditions {
+    
+    @available (*, unavailable) private init() {
+        
+        fatalError("\(self) cannot be initialized.")
+    }
+}

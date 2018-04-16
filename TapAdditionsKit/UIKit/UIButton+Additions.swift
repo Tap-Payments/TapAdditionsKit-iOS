@@ -102,3 +102,12 @@ public extension UIButton {
         self.stretchBackgroundImage(for: [.selected, .highlighted])
     }
 }
+
+/// Dummy struct to import UIKit/UIButton module.
+public struct UIButtonAdditions {
+    
+    @available (*, unavailable) private init() {
+        
+        fatalError("\(self) cannot be initialized.")
+    }
+}

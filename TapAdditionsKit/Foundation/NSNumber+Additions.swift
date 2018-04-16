@@ -96,3 +96,12 @@ public extension NSNumber {
         return formatter
     }()
 }
+
+/// Dummy struct to import Foundation/NSNumber module.
+public struct NSNumberAdditions {
+    
+    @available (*, unavailable) private init() {
+        
+        fatalError("\(self) cannot be initialized.")
+    }
+}

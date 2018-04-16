@@ -25,3 +25,12 @@ public extension UIGestureRecognizer {
         }
     }
 }
+
+/// Dummy struct to import UIKit/UIGestureRecognizer module.
+public struct UIGestureRecognizerAdditions {
+    
+    @available (*, unavailable) private init() {
+        
+        fatalError("\(self) cannot be initialized.")
+    }
+}

@@ -17,3 +17,12 @@ public extension BinaryInteger {
         return "\(self)"
     }
 }
+
+/// Dummy struct to import SwiftStandartLibrary/BinaryInteger module.
+public struct BinaryIntegerAdditions {
+    
+    @available (*, unavailable) private init() {
+        
+        fatalError("\(self) cannot be initialized.")
+    }
+}

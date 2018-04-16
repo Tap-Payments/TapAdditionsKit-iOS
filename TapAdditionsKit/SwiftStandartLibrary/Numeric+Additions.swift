@@ -20,14 +20,11 @@ public extension Numeric {
     }
 }
 
-/// Interpolates value between start and finish.
-///
-/// - Parameters:
-///   - start: Left bound.
-///   - finish: Right bound.
-///   - progress: Progress in range [0, 1]
-/// - Returns: Interpolated value.
-public func interpolate<Type>(start: Type, finish: Type, progress: Type) -> Type where Type: Numeric {
+/// Dummy struct to import SwiftStandartLibrary/Numeric module.
+public struct NumericAdditions {
     
-    return Type.interpolate(start: start, finish: finish, progress: progress)
+    @available (*, unavailable) private init() {
+        
+        fatalError("\(self) cannot be initialized.")
+    }
 }

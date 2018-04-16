@@ -54,3 +54,12 @@ public func saveSynchronouslyToStandartUserDefaults(_ value: Any?, for key: Stri
     
     UserDefaults.standard.synchronouslySetOnMainThread(value, for: key)
 }
+
+/// Dummy struct to import Foundation/UserDefaults module.
+public struct UserDefaultsAdditions {
+    
+    @available (*, unavailable) private init() {
+        
+        fatalError("\(self) cannot be initialized.")
+    }
+}
