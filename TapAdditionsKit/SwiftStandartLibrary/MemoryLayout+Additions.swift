@@ -12,27 +12,27 @@ public extension MemoryLayout {
     ///
     /// - Parameter _: Type.
     /// - Returns: memory size of a type.
-    public static func sizeof<T>(_ : T.Type) -> Int {
+    public static func sizeof<ObjectType>(_ : ObjectType.Type) -> Int {
         
-        return MemoryLayout<T>.size
+        return MemoryLayout<ObjectType>.size
     }
     
     /// Memory size of an object.
     ///
     /// - Parameter _: Object.
     /// - Returns: Memory size of an object.
-    public static func sizeof<T> (_ : T) -> Int {
+    public static func sizeof<Object> (_ object: Object) -> Int {
         
-        return MemoryLayout<T>.size
+        return MemoryLayout<Object>.size(ofValue: object)
     }
     
     /// Memory size of an array.
     ///
     /// - Parameter value: Array.
     /// - Returns: Memory size of an array.
-    public static func sizeof<T>(_ value: [T]) -> Int {
+    public static func sizeof<ArrayElements>(_ value: [ArrayElements]) -> Int {
         
-        return MemoryLayout<T>.size * value.count
+        return MemoryLayout<ArrayElements>.size * value.count
     }
 }
 
