@@ -5,8 +5,8 @@
 //  Copyright © 2018 Tap Payments. All rights reserved.
 //
 
-/// Useful additions to MemoryLayout.
-public extension MemoryLayout {
+/// Dummy struct to import SwiftStandartLibrary/MemoryLayout module.
+public struct MemoryLayoutAdditions {
     
     /// Memory size of a type.
     ///
@@ -34,10 +34,6 @@ public extension MemoryLayout {
         
         return MemoryLayout<ArrayElements>.size * value.count
     }
-}
-
-/// Dummy struct to import SwiftStandartLibrary/MemoryLayout module.
-public struct MemoryLayoutAdditions {
     
     @available (*, unavailable) private init() {
         
