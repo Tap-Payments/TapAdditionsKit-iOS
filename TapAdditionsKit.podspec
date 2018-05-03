@@ -2,11 +2,12 @@ Pod::Spec.new do |tapAdditionsKit|
     
     tapAdditionsKit.platform = :ios
     tapAdditionsKit.ios.deployment_target = '8.0'
+    tapAdditionsKit.swift_version = '4.1'
     tapAdditionsKit.pod_target_xcconfig = { 'SWIFT_VERSION' => '4.1' }
     tapAdditionsKit.name = 'TapAdditionsKit'
     tapAdditionsKit.summary = 'Useful additions for native iOS frameworks'
     tapAdditionsKit.requires_arc = true
-    tapAdditionsKit.version = '1.0.4'
+    tapAdditionsKit.version = '1.0.5'
     tapAdditionsKit.license = { :type => 'MIT', :file => 'LICENSE' }
     tapAdditionsKit.author = { 'Tap Payments' => 'hello@tap.company' }
     tapAdditionsKit.homepage = 'https://github.com/Tap-Payments/TapAdditionsKit-iOS'
