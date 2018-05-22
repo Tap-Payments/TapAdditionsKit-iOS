@@ -24,7 +24,10 @@ public struct TypeAlias {
     public typealias OptionalImageClosure = (UIImage?) -> Void
     
     /// Closure that accepts UIViewController and returns void.
-    public typealias UIViewControllerClosure = (UIViewController) -> Void
+    public typealias UIViewControllerClosure = GenericViewControllerClosure<UIViewController>
+    
+    /// Closure that accepts any subclass of UIViewController and returns void.
+    public typealias GenericViewControllerClosure<ViewControllerType: UIViewController> = (ViewControllerType) -> Void
     
     // MARK: - Private -
     // MARK: Methods

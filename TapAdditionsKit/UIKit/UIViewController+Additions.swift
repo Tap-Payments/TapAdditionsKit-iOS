@@ -6,6 +6,8 @@
 //
 
 import class UIKit.UIApplication.UIApplication
+import enum UIKit.UIApplication.UIInterfaceOrientation
+import struct UIKit.UIApplication.UIInterfaceOrientationMask
 import class UIKit.UINavigationController.UINavigationController
 import class UIKit.NSLayoutConstraint.NSLayoutConstraint
 import class UIKit.UIScreen.UIScreen
@@ -188,11 +190,12 @@ public extension UIViewController {
     
     /// Shows view controller from 'nowhere' giving an option to control the presentation process.
     ///
-    /// - Parameter closure: Closure that has view controller as a parameter. This view controller should be the controller that presents the receiver.
-    public func showOnSeparateWindow(using closure: TypeAlias.UIViewControllerClosure) {
+    /// - Parameter closure: Closure that has view controller as a parameter.
+    ///                      This view controller should be the controller that presents the receiver.
+    public func showOnSeparateWindow(using closure: TypeAlias.GenericViewControllerClosure<SeparateWindowRootViewController>) {
         
         self.prepareSeparateWindow()
-        guard let rootController = self.separateWindow?.rootViewController else {
+        guard let rootController = self.separateWindow?.rootViewController as? SeparateWindowRootViewController else {
             
             fatalError("A problem occured either instantiating separate window or it hasn't got root view controller.")
         }
@@ -293,7 +296,7 @@ public extension UIViewController {
     private func prepareSeparateWindow() {
         
         self.separateWindow = UIWindow(frame: UIScreen.main.bounds)
-        self.separateWindow?.rootViewController = EmptyViewController.instantiate { self.removeSeparateWindow() }
+        self.separateWindow?.rootViewController = SeparateWindowRootViewController.instantiate { self.removeSeparateWindow() }
         self.separateWindow?.tintColor = self.view.tintColor
         self.separateWindow?.windowLevel = UIWindowLevel.maximalAmongPresented + 1.0
         self.separateWindow?.makeKeyAndVisible()
@@ -311,11 +314,41 @@ public extension UIViewController {
     }
 }
 
-fileprivate final class EmptyViewController: UIViewController {
+/// This is a class of root view controller in case you want to show view controller on the separate window.
+public class SeparateWindowRootViewController: UIViewController {
     
-    private var dismissalCompletionClosure: TypeAlias.ArgumentlessClosure?
+    // MARK: - Public -
+    // MARK: Properties
     
-    fileprivate override func dismiss(animated flag: Bool, completion: TypeAlias.ArgumentlessClosure? = nil) {
+    public var allowedInterfaceOrientations: UIInterfaceOrientationMask = .all
+    public var preferredInterfaceOrientation: UIInterfaceOrientation?
+    public var canAutorotate: Bool = true
+    
+    public override var shouldAutorotate: Bool {
+        
+        return self.canAutorotate
+    }
+    
+    public override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        
+        return self.allowedInterfaceOrientations
+    }
+    
+    public override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation {
+        
+        if let nonnullPreferredOrientation = self.preferredInterfaceOrientation {
+            
+            return nonnullPreferredOrientation
+        }
+        else {
+            
+            return UIApplication.shared.statusBarOrientation
+        }
+    }
+    
+    // MARK: Methods
+    
+    public override func dismiss(animated flag: Bool, completion: TypeAlias.ArgumentlessClosure? = nil) {
         
         let localCompletion: TypeAlias.ArgumentlessClosure = {
             
@@ -332,20 +365,19 @@ fileprivate final class EmptyViewController: UIViewController {
         super.dismiss(animated: flag, completion: localCompletion)
     }
     
-    fileprivate static func instantiate(dismissalCompletion: @escaping TypeAlias.ArgumentlessClosure) -> EmptyViewController {
+    // MARK: - Fileprivate -
+    // MARK: Methods
+    
+    fileprivate static func instantiate(dismissalCompletion: @escaping TypeAlias.ArgumentlessClosure) -> SeparateWindowRootViewController {
         
-        let result = EmptyViewController()
+        let result = SeparateWindowRootViewController()
         result.dismissalCompletionClosure = dismissalCompletion
         
         return result
     }
-}
-
-/// Dummy struct to import UIKit/UIViewController module.
-public struct UIViewControllerAdditions {
     
-    @available (*, unavailable) private init() {
-        
-        fatalError("\(self) cannot be initialized.")
-    }
+    // MARK: - Private -
+    // MARK: Properties
+    
+    private var dismissalCompletionClosure: TypeAlias.ArgumentlessClosure?
 }
