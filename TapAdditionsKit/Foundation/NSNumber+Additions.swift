@@ -6,6 +6,9 @@
 //
 
 import struct CoreGraphics.CGBase.CGFloat
+import struct Foundation.NSLocale.Locale
+import class Foundation.NSValue.NSNumber
+import class Foundation.NSNumberFormatter.NumberFormatter
 import class UIKit.UIDevice.UIDevice
 
 /// Useful extension for NSNumber.

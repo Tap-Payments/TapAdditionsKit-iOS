@@ -5,6 +5,12 @@
 //  Copyright © 2018 Tap Payments. All rights reserved.
 //
 
+import class Dispatch.DispatchSemaphore
+import struct Foundation.NSData.Data
+import struct Foundation.NSURLRequest.URLRequest
+import class Foundation.NSURLResponse.URLResponse
+import class Foundation.NSURLSession.URLSession
+
 /// Useful extension of URLSession.
 public extension URLSession {
     

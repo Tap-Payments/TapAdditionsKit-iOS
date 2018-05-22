@@ -5,6 +5,7 @@
 //  Copyright © 2018 Tap Payments. All rights reserved.
 //
 
+import struct Foundation.NSDate.TimeInterval
 import class UIKit.UIColor.UIColor
 import class UIKit.UILabel.UILabel
 import class UIKit.UIView.UIView

@@ -5,6 +5,8 @@
 //  Copyright © 2018 Tap Payments. All rights reserved.
 //
 
+import func ObjectiveC.autoreleasepool
+import struct Foundation.NSData.Data
 import class UIKit.UIImage.UIImage
 import func UIKit.UIImage.UIImagePNGRepresentation
 

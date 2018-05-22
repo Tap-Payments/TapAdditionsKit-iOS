@@ -5,6 +5,10 @@
 //  Copyright © 2018 Tap Payments. All rights reserved.
 //
 
+import class Foundation.NSNull.NSNull
+import class Foundation.NSThread.Thread
+import class Foundation.NSUserDefaults.UserDefaults
+
 /// Useful extension to UserDefaults.
 public extension UserDefaults {
     

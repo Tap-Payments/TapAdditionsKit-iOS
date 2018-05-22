@@ -5,6 +5,12 @@
 //  Copyright © 2018 Tap Payments. All rights reserved.
 //
 
+import Dispatch
+
+import struct Foundation.NSDate.TimeInterval
+import class ObjectiveC.NSObject.NSObject
+import struct ObjectiveC.Selector
+
 /// Some extensions to NSObject.
 public extension NSObject {
     

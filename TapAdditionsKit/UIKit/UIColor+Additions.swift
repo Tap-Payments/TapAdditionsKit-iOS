@@ -6,6 +6,8 @@
 //
 
 import struct CoreGraphics.CGBase.CGFloat
+import struct Foundation.NSRange.NSRange
+import class Foundation.NSScanner.Scanner
 import struct OpenGLES.gltypes.GLfloat
 import class UIKit.UIColor.UIColor
 

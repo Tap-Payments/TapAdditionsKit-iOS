@@ -5,6 +5,9 @@
 //  Copyright © 2018 Tap Payments. All rights reserved.
 //
 
+import struct Foundation.NSLocale.Locale
+import class Foundation.NSNumberFormatter.NumberFormatter
+
 /// Useful extension for NumberFormatter.
 public extension NumberFormatter {
     

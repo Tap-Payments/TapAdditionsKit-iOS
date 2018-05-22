@@ -5,6 +5,8 @@
 //  Copyright © 2018 Tap Payments. All rights reserved.
 //
 
+import class Foundation.NSBundle.Bundle
+
 /// Useful extension for Bundle.
 public extension Bundle {
     

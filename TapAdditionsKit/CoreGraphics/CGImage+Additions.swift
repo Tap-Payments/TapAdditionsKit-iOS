@@ -11,10 +11,14 @@ import var Accelerate.vImage.vImage_Types.kvImageGetTempBufferSize
 import struct Accelerate.vImage.vImage_Types.vImage_Buffer
 import struct Accelerate.vImage.vImage_Types.vImage_Flags
 import struct Accelerate.vImage.vImage_Types.vImagePixelCount
+import func CoreFoundation.CFData.CFDataGetBytePtr
 import enum CoreGraphics.CGContext.CGBlendMode
 import class CoreGraphics.CGContext.CGContext
 import struct CoreGraphics.CGGeometry.CGSize
 import class CoreGraphics.CGImage.CGImage
+import func Darwin.C.stdlib.free
+import func Darwin.C.stdlib.malloc
+import func Darwin.C.string.memcpy
 import class UIKit.UIColor.UIColor
 
 /// Useful additions to CGImage.

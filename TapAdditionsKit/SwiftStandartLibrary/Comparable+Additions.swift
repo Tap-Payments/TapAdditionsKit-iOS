@@ -5,6 +5,8 @@
 //  Copyright © 2018 Tap Payments. All rights reserved.
 //
 
+import enum Foundation.NSObjCRuntime.ComparisonResult
+
 /// Some additions to Comparable protocol.
 public extension Comparable {
     
@@ -18,7 +20,7 @@ public extension Comparable {
      
      - returns: NSComparisonResult
      */
-    public func compare(other: Self) -> Foundation.ComparisonResult {
+    public func compare(other: Self) -> ComparisonResult {
         
         if self < other {
             

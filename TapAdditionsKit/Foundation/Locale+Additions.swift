@@ -5,6 +5,10 @@
 //  Copyright © 2018 Tap Payments. All rights reserved.
 //
 
+import struct Foundation.CharacterSet
+import struct Foundation.NSLocale.Locale
+import class Foundation.NSLocale.NSLocale
+
 /// Useful extension to Locale class.
 public extension Locale {
     

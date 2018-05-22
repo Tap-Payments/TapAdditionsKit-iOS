@@ -5,6 +5,9 @@
 //  Copyright © 2018 Tap Payments. All rights reserved.
 //
 
+import struct Foundation.NSCalendar.Calendar
+import struct Foundation.DateComponents
+
 /// Useful addition to calendar.
 public extension Calendar {
     

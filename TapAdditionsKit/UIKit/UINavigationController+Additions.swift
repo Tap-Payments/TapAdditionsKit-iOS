@@ -5,6 +5,9 @@
 //  Copyright © 2018 Tap Payments. All rights reserved.
 //
 
+import Dispatch
+
+import struct Foundation.NSDate.TimeInterval
 import class QuartzCore.CATransaction.CATransaction
 import func TapSwiftFixes.performOnMainThread
 import class UIKit.UINavigationController.UINavigationController
@@ -83,7 +86,8 @@ public extension UINavigationController {
     
     private static func callCompletion(_ completion: TypeAlias.ArgumentlessClosure?, afterDelay delay: TimeInterval) {
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
+        let deadline = DispatchTime.now() + delay
+        DispatchQueue.main.asyncAfter(deadline: deadline) {
             
             completion?()
         }

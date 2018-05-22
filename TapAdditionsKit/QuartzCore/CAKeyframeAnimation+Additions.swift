@@ -5,6 +5,8 @@
 //  Copyright © 2018 Tap Payments. All rights reserved.
 //
 
+import class Foundation.NSValue.NSNumber
+import class Foundation.NSValue.NSValue
 import class QuartzCore.CAAnimation.CAKeyframeAnimation
 import var QuartzCore.CAAnimation.kCAFillModeForwards
 import func QuartzCore.CATransform3D.CATransform3DMakeScale

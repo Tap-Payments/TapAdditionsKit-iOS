@@ -5,6 +5,8 @@
 //  Copyright © 2018 Tap Payments. All rights reserved.
 //
 
+import struct Foundation.NSProcessInfo.OperatingSystemVersion
+import class Foundation.NSProcessInfo.ProcessInfo
 import class UIKit.UIDevice
 
 /// Useful extension for UIDevice.

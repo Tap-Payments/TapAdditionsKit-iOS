@@ -12,6 +12,8 @@ import func Accelerate.vImage.vImageBoxConvolve_ARGB8888
 import func Accelerate.vImage.vImageMatrixMultiply_ARGB8888
 import struct Accelerate.vImage.vImagePixelCount
 import struct Accelerate.vImage.vImage_Flags
+import class CoreFoundation.CFData.CFData
+import func CoreFoundation.CFData.CFDataGetBytePtr
 import struct CoreGraphics.CGAffineTransform
 import struct CoreGraphics.CGBase.CGFloat
 import class CoreGraphics.CGContext.CGContext
@@ -25,6 +27,17 @@ import class CoreImage.CIFilter.CIFilter
 import class CoreImage.CIImage.CIImage
 import var CoreImage.kCIInputImageKey
 import var CoreImage.kCIOutputImageKey
+import func Darwin.C.math.lrint
+import struct Darwin.C.stddef.size_t
+import func Darwin.fabs
+import func Darwin.floor
+import func Darwin.round
+import func Darwin.sqrt
+import struct Foundation.NSData.Data
+import struct Foundation.NSDate.TimeInterval
+import class Foundation.NSDictionary.NSDictionary
+import class Foundation.NSValue.NSNumber
+import class Foundation.NSValue.NSValue
 import class ImageIO.CGImageSource
 import func ImageIO.CGImageSource.CGImageSourceCopyPropertiesAtIndex
 import func ImageIO.CGImageSource.CGImageSourceCreateImageAtIndex

@@ -5,6 +5,8 @@
 //  Copyright © 2018 Tap Payments. All rights reserved.
 //
 
+import func ObjectiveC.runtime.objc_getAssociatedObject
+import func ObjectiveC.runtime.objc_setAssociatedObject
 import class UIKit.UIApplication.UIApplication
 import enum UIKit.UIApplication.UIInterfaceOrientation
 import struct UIKit.UIApplication.UIInterfaceOrientationMask

@@ -8,6 +8,8 @@
 import struct CoreGraphics.CGBase.CGFloat
 import struct CoreGraphics.CGGeometry.CGPoint
 import struct CoreGraphics.CGGeometry.CGSize
+import func Darwin.ceil
+import func Darwin.floor
 import struct OpenGLES.gltypes.GLfloat
 
 /// Useful addition to CGSize.

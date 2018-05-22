@@ -11,6 +11,9 @@ import func CoreGraphics.CGBase.pow
 import struct CoreGraphics.CGGeometry.CGPoint
 import struct CoreGraphics.CGGeometry.CGRect
 import struct CoreGraphics.CGGeometry.CGSize
+import func Darwin.sqrt
+import class Foundation.NSBundle.Bundle
+import struct Foundation.NSDate.TimeInterval
 import class QuartzCore.CAShapeLayer.CAShapeLayer
 import class UIKit.NSLayoutConstraint
 import struct UIKit.NSLayoutFormatOptions

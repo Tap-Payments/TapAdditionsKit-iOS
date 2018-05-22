@@ -5,6 +5,9 @@
 //  Copyright © 2018 Tap Payments. All rights reserved.
 //
 
+import struct Foundation.NSData.Data
+import class Foundation.NSError.NSError
+import class Foundation.NSJSONSerialization.JSONSerialization
 import func TapSwiftFixes.ExceptionCatcher.catchException
 
 /// JSON Serialization protocol.

@@ -8,6 +8,12 @@
 import struct CoreGraphics.CGBase.CGFloat
 import struct CoreGraphics.CGGeometry.CGPoint
 import struct CoreGraphics.CGGeometry.CGSize
+import func Darwin.C.math.atan
+import func Darwin.C.math.ceil
+import func Darwin.C.math.cos
+import func Darwin.C.math.floor
+import func Darwin.C.math.sin
+import func Darwin.C.math.sqrt
 import struct OpenGLES.gltypes.GLfloat
 
 /// Useful extension for CGPoint.

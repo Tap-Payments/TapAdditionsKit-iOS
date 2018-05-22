@@ -5,6 +5,7 @@
 //  Copyright © 2018 Tap Payments. All rights reserved.
 //
 
+import class Foundation.NSError.NSError
 import func TapSwiftFixes.ExceptionCatcher.catchException
 import class UIKit.UITableView.UITableView
 import enum UIKit.UITableView.UITableViewRowAnimation

@@ -8,6 +8,13 @@
 import struct CoreGraphics.CGGeometry.CGRect
 import struct CoreGraphics.CGGeometry.CGSize
 import struct Foundation.NSAttributedString.NSAttributedStringKey
+import struct Foundation.NSCharacterSet.CharacterSet
+import struct Foundation.NSDecimal.Decimal
+import struct Foundation.NSLocale.Locale
+import var Foundation.NSNotFound
+import class Foundation.NSNumberFormatter.NumberFormatter
+import struct Foundation.NSRange.NSRange
+import class Foundation.NSRegularExpression.NSRegularExpression
 import class Foundation.NSString
 import class UIKit.NSStringDrawingContext
 import struct UIKit.NSStringDrawingOptions
@@ -151,7 +158,7 @@ public extension String {
     /// Returns URL encoded receiver.
     public var urlEncoded: String {
         
-        let characters = NSCharacterSet.urlQueryAllowed
+        let characters = CharacterSet.urlQueryAllowed
         
         guard let encodedString = self.addingPercentEncoding(withAllowedCharacters: characters) else {
             

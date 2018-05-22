@@ -5,6 +5,7 @@
 //  Copyright © 2018 Tap Payments. All rights reserved.
 //
 
+import struct Foundation.NSIndexPath.IndexPath
 import class UIKit.UICollectionView.UICollectionView
 
 /// Useful additions for UICollectionView.

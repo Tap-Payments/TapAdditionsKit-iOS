@@ -8,6 +8,9 @@
 import struct CoreGraphics.CGBase.CGFloat
 import class CoreGraphics.CGColor
 import struct CoreGraphics.CGGeometry.CGRect
+import struct Foundation.NSDate.TimeInterval
+import func ObjectiveC.runtime.objc_getAssociatedObject
+import func ObjectiveC.runtime.objc_setAssociatedObject
 import class QuartzCore.CALayer
 import class UIKit.UIColor
 import struct UIKit.UIRectEdge
