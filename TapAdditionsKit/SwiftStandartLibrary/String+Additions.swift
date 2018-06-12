@@ -400,7 +400,7 @@ public extension String {
     ///
     /// - Parameter prefix: Prefix to remove.
     /// - Returns: Resulting receiver.
-    public mutating func removePrefix(_ prefix: String) -> String {
+    @discardableResult public mutating func removePrefix(_ prefix: String) -> String {
         
         self = self.removingPrefix(prefix)
         return self
@@ -421,7 +421,7 @@ public extension String {
     ///
     /// - Parameter suffix: Prefix to remove.
     /// - Returns: Resulting receiver.
-    public mutating func removeSuffix(_ suffix: String) -> String {
+    @discardableResult public mutating func removeSuffix(_ suffix: String) -> String {
         
         self = self.removingSuffix(suffix)
         return self
