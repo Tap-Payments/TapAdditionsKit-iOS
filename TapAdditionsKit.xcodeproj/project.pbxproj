@@ -143,7 +143,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		507EA7E5F0EA20236D9B602B /* Pods-TapAdditionsKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TapAdditionsKit.release.xcconfig"; path = "Pods/Target Support Files/Pods-TapAdditionsKit/Pods-TapAdditionsKit.release.xcconfig"; sourceTree = "<group>"; };
+		521068A4FF16F0DC5FC163FF /* Pods-TapAdditionsKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TapAdditionsKit.release.xcconfig"; path = "Pods/Target Support Files/Pods-TapAdditionsKit/Pods-TapAdditionsKit.release.xcconfig"; sourceTree = "<group>"; };
+		793B39A0AEB4DA6605E29884 /* Pods-TapAdditionsKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TapAdditionsKit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TapAdditionsKit/Pods-TapAdditionsKit.debug.xcconfig"; sourceTree = "<group>"; };
 		A4014A5D1FC5CA7B00F26E4E /* UINavigationController+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Additions.swift"; sourceTree = "<group>"; };
 		A4014A6C1FC5E1EE00F26E4E /* Bundle+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Additions.swift"; sourceTree = "<group>"; };
 		A40F43781F57273A003B45F4 /* AVPlayer+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AVPlayer+Additions.swift"; sourceTree = "<group>"; };
@@ -216,7 +217,6 @@
 		A4FE9D3A1F4EE9060054C5A3 /* UIViewController+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Additions.swift"; sourceTree = "<group>"; };
 		A4FE9D3C1F4EEE010054C5A3 /* UIWindowLevel+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIWindowLevel+Additions.swift"; sourceTree = "<group>"; };
 		C3AD8ECEA827F8E5245B5053 /* Pods_TapAdditionsKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TapAdditionsKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		D117FF0070C8D66A7F6FDDAC /* Pods-TapAdditionsKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TapAdditionsKit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TapAdditionsKit/Pods-TapAdditionsKit.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -417,8 +417,8 @@
 		DD07B6317828BE786DF57022 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				D117FF0070C8D66A7F6FDDAC /* Pods-TapAdditionsKit.debug.xcconfig */,
-				507EA7E5F0EA20236D9B602B /* Pods-TapAdditionsKit.release.xcconfig */,
+				793B39A0AEB4DA6605E29884 /* Pods-TapAdditionsKit.debug.xcconfig */,
+				521068A4FF16F0DC5FC163FF /* Pods-TapAdditionsKit.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -473,6 +473,7 @@
 				A4F77E5A20B43A1200C11626 /* Frameworks */,
 				A4F77E5C20B43A1200C11626 /* Headers */,
 				A4F77E5E20B43A1200C11626 /* Resources */,
+				A4F77E8120B455C000C11626 /* Copy Carthage Frameworks */,
 			);
 			buildRules = (
 			);
@@ -573,6 +574,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"";
+		};
+		A4F77E8120B455C000C11626 /* Copy Carthage Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/TapSwiftFixes.framework",
+			);
+			name = "Copy Carthage Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -843,7 +859,7 @@
 		};
 		A43DD7201F13A7F500B4D430 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D117FF0070C8D66A7F6FDDAC /* Pods-TapAdditionsKit.debug.xcconfig */;
+			baseConfigurationReference = 793B39A0AEB4DA6605E29884 /* Pods-TapAdditionsKit.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ANALYZER_LOCALIZABILITY_EMPTY_CONTEXT = YES;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
@@ -888,7 +904,7 @@
 		};
 		A43DD7211F13A7F500B4D430 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 507EA7E5F0EA20236D9B602B /* Pods-TapAdditionsKit.release.xcconfig */;
+			baseConfigurationReference = 521068A4FF16F0DC5FC163FF /* Pods-TapAdditionsKit.release.xcconfig */;
 			buildSettings = {
 				CLANG_ANALYZER_LOCALIZABILITY_EMPTY_CONTEXT = YES;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
@@ -932,7 +948,6 @@
 		};
 		A4F77E6320B43A1200C11626 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D117FF0070C8D66A7F6FDDAC /* Pods-TapAdditionsKit.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ANALYZER_LOCALIZABILITY_EMPTY_CONTEXT = YES;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
@@ -981,7 +996,6 @@
 		};
 		A4F77E6420B43A1200C11626 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 507EA7E5F0EA20236D9B602B /* Pods-TapAdditionsKit.release.xcconfig */;
 			buildSettings = {
 				CLANG_ANALYZER_LOCALIZABILITY_EMPTY_CONTEXT = YES;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;

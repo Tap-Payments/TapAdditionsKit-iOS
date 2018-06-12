@@ -385,6 +385,48 @@ public extension String {
         return self
     }
     
+    /// Returns a string without the given prefix or unchanged string if the receiver has not such prefix.
+    ///
+    /// - Parameter prefix: Prefix to remove.
+    /// - Returns: String without the prefix.
+    public func removingPrefix(_ prefix: String) -> String {
+        
+        guard self.hasPrefix(prefix) else { return self }
+        
+        return String(self.dropFirst(prefix.length))
+    }
+    
+    /// Modifies the receiver by removing the given prefix.
+    ///
+    /// - Parameter prefix: Prefix to remove.
+    /// - Returns: Resulting receiver.
+    public mutating func removePrefix(_ prefix: String) -> String {
+        
+        self = self.removingPrefix(prefix)
+        return self
+    }
+    
+    /// Returns a string without the given suffix or unchanged string if the receiver has not such suffix.
+    ///
+    /// - Parameter suffix: Prefix to remove.
+    /// - Returns: String without the suffix.
+    public func removingSuffix(_ suffix: String) -> String {
+        
+        guard self.hasSuffix(suffix) else { return self }
+        
+        return String(self.dropLast(suffix.length))
+    }
+    
+    /// Modifies the receiver by removing the given suffix.
+    ///
+    /// - Parameter suffix: Prefix to remove.
+    /// - Returns: Resulting receiver.
+    public mutating func removeSuffix(_ suffix: String) -> String {
+        
+        self = self.removingSuffix(suffix)
+        return self
+    }
+    
     /// Graphics method. Returns required bounding rect to draw the receiver with the given parameters.
     ///
     /// - Parameters:

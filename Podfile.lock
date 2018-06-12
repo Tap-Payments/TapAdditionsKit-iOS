@@ -1,7 +1,7 @@
 PODS:
   - SwiftLint (0.25.1)
-  - TapSwiftFixes/Exceptions (1.0.1)
-  - TapSwiftFixes/Threading (1.0.1)
+  - TapSwiftFixes/Exceptions (1.0.3)
+  - TapSwiftFixes/Threading (1.0.3)
 
 DEPENDENCIES:
   - SwiftLint
@@ -9,14 +9,14 @@ DEPENDENCIES:
   - TapSwiftFixes/Threading
 
 SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
+  https://github.com/cocoapods/specs.git:
     - SwiftLint
     - TapSwiftFixes
 
 SPEC CHECKSUMS:
   SwiftLint: ce933681be10c3266e82576dad676fa815a602e9
-  TapSwiftFixes: dfc8a6fc03cbb7313cad63d293c589d02566ca37
+  TapSwiftFixes: 77af9d91c385dc42d9ee53d0f50958e5aef2d8fa
 
 PODFILE CHECKSUM: 5d784805d24505fad70ecb08ef9a5b62bbe3fd73
 
-COCOAPODS: 1.5.0
+COCOAPODS: 1.5.3
