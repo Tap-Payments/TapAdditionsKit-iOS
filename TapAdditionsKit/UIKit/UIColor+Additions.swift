@@ -117,6 +117,23 @@ public extension UIColor {
     }
     
     /*!
+     Fabric that initializes and returns UIColor from its hex representation
+     
+     - parameter value: HEX representation of a color.
+     
+     - returns: UIColor or nil if HEX string is incorrect.
+     */
+    public static func hex(_ value: String) -> UIColor {
+        
+        guard let color = UIColor(hex: value) else {
+            
+            fatalError("\(value) is invalid color hex string.")
+        }
+        
+        return color
+    }
+    
+    /*!
      Initializes UIColor from its hex representation
      
      - parameter hexString: HEX representation of a color.

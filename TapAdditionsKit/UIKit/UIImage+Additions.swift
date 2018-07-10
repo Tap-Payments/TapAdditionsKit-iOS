@@ -5,58 +5,59 @@
 //  Copyright © 2018 Tap Payments. All rights reserved.
 //
 
-import var Accelerate.vImage.kvImageEdgeExtend
-import var Accelerate.vImage.kvImageNoFlags
-import struct Accelerate.vImage.vImage_Buffer
-import func Accelerate.vImage.vImageBoxConvolve_ARGB8888
-import func Accelerate.vImage.vImageMatrixMultiply_ARGB8888
-import struct Accelerate.vImage.vImagePixelCount
-import struct Accelerate.vImage.vImage_Flags
-import class CoreFoundation.CFData.CFData
-import func CoreFoundation.CFData.CFDataGetBytePtr
-import struct CoreGraphics.CGAffineTransform
-import struct CoreGraphics.CGBase.CGFloat
-import class CoreGraphics.CGContext.CGContext
-import enum CoreGraphics.CGContext.CGBlendMode
-import struct CoreGraphics.CGGeometry.CGPoint
-import struct CoreGraphics.CGGeometry.CGRect
-import struct CoreGraphics.CGGeometry.CGSize
-import class CoreGraphics.CGImage.CGImage
-import class CoreImage.CIContext.CIContext
-import class CoreImage.CIFilter.CIFilter
-import class CoreImage.CIImage.CIImage
-import var CoreImage.kCIInputImageKey
-import var CoreImage.kCIOutputImageKey
-import func Darwin.C.math.lrint
-import struct Darwin.C.stddef.size_t
-import func Darwin.fabs
-import func Darwin.floor
-import func Darwin.round
-import func Darwin.sqrt
-import struct Foundation.NSData.Data
-import struct Foundation.NSDate.TimeInterval
-import class Foundation.NSDictionary.NSDictionary
-import class Foundation.NSValue.NSNumber
-import class Foundation.NSValue.NSValue
-import class ImageIO.CGImageSource
-import func ImageIO.CGImageSource.CGImageSourceCopyPropertiesAtIndex
-import func ImageIO.CGImageSource.CGImageSourceCreateImageAtIndex
-import func ImageIO.CGImageSource.CGImageSourceCreateWithData
-import func ImageIO.CGImageSource.CGImageSourceGetCount
-import var ImageIO.CGImageSource.kCGImagePropertyGIFDelayTime
-import var ImageIO.CGImageSource.kCGImagePropertyGIFDictionary
-import class UIKit.UIBezierPath.UIBezierPath
-import class UIKit.UIColor.UIColor
-import struct UIKit.UIEdgeInsets
-import func UIKit.UIGraphicsBeginImageContext
-import func UIKit.UIGraphicsBeginImageContextWithOptions
-import func UIKit.UIGraphicsEndImageContext
-import func UIKit.UIGraphicsGetCurrentContext
-import func UIKit.UIGraphicsGetImageFromCurrentImageContext
-import class UIKit.UIImage.UIImage
-import func UIKit.UIImage.UIImagePNGRepresentation
-import class UIKit.UIScreen.UIScreen
-import class UIKit.UIView.UIView
+import var      Accelerate.vImage.kvImageEdgeExtend
+import var      Accelerate.vImage.kvImageNoFlags
+import struct   Accelerate.vImage.vImage_Buffer
+import func     Accelerate.vImage.vImageBoxConvolve_ARGB8888
+import func     Accelerate.vImage.vImageMatrixMultiply_ARGB8888
+import struct   Accelerate.vImage.vImagePixelCount
+import struct   Accelerate.vImage.vImage_Flags
+import class    CoreFoundation.CFData.CFData
+import func     CoreFoundation.CFData.CFDataGetBytePtr
+import struct   CoreGraphics.CGAffineTransform
+import struct   CoreGraphics.CGBase.CGFloat
+import class    CoreGraphics.CGContext.CGContext
+import enum     CoreGraphics.CGContext.CGBlendMode
+import struct   CoreGraphics.CGGeometry.CGPoint
+import struct   CoreGraphics.CGGeometry.CGRect
+import struct   CoreGraphics.CGGeometry.CGSize
+import class    CoreGraphics.CGImage.CGImage
+import class    CoreImage.CIContext.CIContext
+import class    CoreImage.CIFilter.CIFilter
+import class    CoreImage.CIImage.CIImage
+import var      CoreImage.kCIInputImageKey
+import var      CoreImage.kCIOutputImageKey
+import func     Darwin.C.math.lrint
+import struct   Darwin.C.stddef.size_t
+import func     Darwin.fabs
+import func     Darwin.floor
+import func     Darwin.round
+import func     Darwin.sqrt
+import struct   Foundation.NSData.Data
+import struct   Foundation.NSDate.TimeInterval
+import class    Foundation.NSDictionary.NSDictionary
+import class    Foundation.NSValue.NSNumber
+import class    Foundation.NSValue.NSValue
+import class    ImageIO.CGImageSource
+import func     ImageIO.CGImageSource.CGImageSourceCopyPropertiesAtIndex
+import func     ImageIO.CGImageSource.CGImageSourceCreateImageAtIndex
+import func     ImageIO.CGImageSource.CGImageSourceCreateWithData
+import func     ImageIO.CGImageSource.CGImageSourceGetCount
+import var      ImageIO.CGImageSource.kCGImagePropertyGIFDelayTime
+import var      ImageIO.CGImageSource.kCGImagePropertyGIFDictionary
+import class    UIKit.UIBezierPath.UIBezierPath
+import class    UIKit.UIColor.UIColor
+import struct   UIKit.UIEdgeInsets
+import func     UIKit.UIGraphicsBeginImageContext
+import func     UIKit.UIGraphicsBeginImageContextWithOptions
+import func     UIKit.UIGraphicsEndImageContext
+import func     UIKit.UIGraphicsGetCurrentContext
+import func     UIKit.UIGraphicsGetImageFromCurrentImageContext
+import class    UIKit.UIImage.UIImage
+import func     UIKit.UIImage.UIImagePNGRepresentation
+import class    UIKit.UIScreen.UIScreen
+import class    UIKit.UIView.UIView
+import enum     UIKit.UIView.UIViewContentMode
 
 typealias CIImageRef = CIImage
 
@@ -304,6 +305,45 @@ public extension UIImage {
         UIGraphicsEndImageContext()
         
         self.init(cgImage: image.nonnullCGImage, scale: image.scale, orientation: image.imageOrientation)
+    }
+    
+    /// Looks up and returns an image with a given name in a given bundle.
+    ///
+    /// - Parameters:
+    ///   - name: Image name.
+    ///   - bundle: Bundle.
+    /// - Returns: Image if found, nil otherwise
+    public static func named(_ name: String, in bundle: Bundle) -> UIImage? {
+        
+        return UIImage(named: name, in: bundle, compatibleWith: nil)
+    }
+    
+    /// Returns content mode which best suites to fit the receiver in a given size.
+    ///
+    /// - Parameter size: Size.
+    /// - Returns: Content mode.
+    public func bestContentMode(toFit size: CGSize) -> UIViewContentMode {
+        
+        let widthFits       = self.size.width <= size.width
+        let heightFits      = self.size.height <= size.height
+        let proportion      = self.size.width / self.size.height
+        let frameProportion = size.width / size.height
+        
+        switch (widthFits, heightFits) {
+            
+        case (true, true):
+            
+            return .center
+            
+        case (true, false), (false, true):
+            
+            return .scaleAspectFit
+            
+        case (false, false):
+            
+            return proportion == frameProportion ? .scaleToFill : .scaleAspectFit
+            
+        }
     }
     
     /**

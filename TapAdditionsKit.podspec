@@ -7,7 +7,7 @@ Pod::Spec.new do |tapAdditionsKit|
     tapAdditionsKit.name = 'TapAdditionsKit'
     tapAdditionsKit.summary = 'Useful additions for native iOS frameworks'
     tapAdditionsKit.requires_arc = true
-    tapAdditionsKit.version = '1.0.8.1'
+    tapAdditionsKit.version = '1.0.9'
     tapAdditionsKit.license = { :type => 'MIT', :file => 'LICENSE' }
     tapAdditionsKit.author = { 'Tap Payments' => 'hello@tap.company' }
     tapAdditionsKit.homepage = 'https://github.com/Tap-Payments/TapAdditionsKit-iOS'
@@ -125,6 +125,12 @@ Pod::Spec.new do |tapAdditionsKit|
             data.dependency 'TapAdditionsKit/UIKit/UIImage'
             
             data.source_files = 'TapAdditionsKit/Foundation/Data+Additions.swift'
+            
+        end
+        
+        foundation.subspec 'Date' do |date|
+            
+            date.source_files = 'TapAdditionsKit/Foundation/Date+Additions.swift'
             
         end
         
@@ -249,9 +255,29 @@ Pod::Spec.new do |tapAdditionsKit|
         
         end
         
+        swiftStandartLibrary.subspec 'CustomStringConvertible' do |customStringConvertible|
+        
+            customStringConvertible.dependency 'TapAdditionsKit/SwiftStandartLibrary/String'
+            
+            customStringConvertible.source_files = 'TapAdditionsKit/SwiftStandartLibrary/CustomStringConvertible+Additions.swift'
+        
+        end
+        
+        swiftStandartLibrary.subspec 'Decodable' do |decodable|
+        
+            decodable.source_files = 'TapAdditionsKit/SwiftStandartLibrary/Decodable+Additions.swift'
+        
+        end
+        
         swiftStandartLibrary.subspec 'Dictionary' do |dictionary|
         
             dictionary.source_files = 'TapAdditionsKit/SwiftStandartLibrary/Dictionary+Additions.swift'
+        
+        end
+        
+        swiftStandartLibrary.subspec 'Encodable' do |encodable|
+        
+            encodable.source_files = 'TapAdditionsKit/SwiftStandartLibrary/Encodable+Additions.swift'
         
         end
         
@@ -266,6 +292,12 @@ Pod::Spec.new do |tapAdditionsKit|
         swiftStandartLibrary.subspec 'Int' do |int|
         
             int.source_files = 'TapAdditionsKit/SwiftStandartLibrary/Int+Additions.swift'
+        
+        end
+        
+        swiftStandartLibrary.subspec 'KeyedDecodingContainer' do |keyedDecodingContainer|
+        
+            keyedDecodingContainer.source_files = 'TapAdditionsKit/SwiftStandartLibrary/KeyedDecodingContainer+Additions.swift'
         
         end
         
@@ -344,7 +376,16 @@ Pod::Spec.new do |tapAdditionsKit|
     end
     
     tapAdditionsKit.subspec 'UIKit' do |uiKit|
-    
+        
+        uiKit.subspec 'NSLayoutConstraint' do |nsLayoutConstraint|
+            
+            nsLayoutConstraint.dependency 'TapAdditionsKit/Tap/TypeAlias'
+            nsLayoutConstraint.dependency 'TapAdditionsKit/UIKit/UIView'
+            
+            nsLayoutConstraint.source_files = 'TapAdditionsKit/UIKit/NSLayoutConstraint+Additions.swift'
+        
+        end
+        
         uiKit.subspec 'UIBezierPath' do |uiBezierPath|
         
             uiBezierPath.dependency 'TapAdditionsKit/CoreGraphics/CGPoint'
@@ -478,15 +519,28 @@ Pod::Spec.new do |tapAdditionsKit|
             
         end
         
+        uiKit.subspec 'UIViewAnimationOptions' do |uiViewAnimationOptions|
+        
+            uiViewAnimationOptions.source_files = 'TapAdditionsKit/UIKit/UIViewAnimationOptions+Additions.swift'
+        
+        end
+        
         uiKit.subspec 'UIViewController' do |uiViewController|
             
             uiViewController.dependency 'TapAdditionsKit/ObjectiveC/NSObject'
             uiViewController.dependency 'TapAdditionsKit/Tap/TypeAlias'
+            uiViewController.dependency 'TapAdditionsKit/UIKit/UIView'
             uiViewController.dependency 'TapAdditionsKit/UIKit/UIWindow'
             uiViewController.dependency 'TapAdditionsKit/UIKit/UIWindowLevel'
             
             uiViewController.source_files = 'TapAdditionsKit/UIKit/UIViewController+Additions.swift'
             
+        end
+        
+        uiKit.subspec 'UIViewKeyframeAnimationOptions' do |uiViewKeyframeAnimationOptions|
+        
+            uiViewKeyframeAnimationOptions.source_files = 'UIViewKeyframeAnimationOptions+Additions.swift'
+        
         end
         
         uiKit.subspec 'UIWebView' do |uiWebView|
@@ -511,5 +565,4 @@ Pod::Spec.new do |tapAdditionsKit|
         
         end
     end
-    
 end

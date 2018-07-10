@@ -194,9 +194,9 @@ public extension UIViewController {
     ///
     /// - Parameter closure: Closure that has view controller as a parameter.
     ///                      This view controller should be the controller that presents the receiver.
-    public func showOnSeparateWindow(using closure: TypeAlias.GenericViewControllerClosure<SeparateWindowRootViewController>) {
+    public func showOnSeparateWindow(withUserInteractionEnabled: Bool = true, using closure: TypeAlias.GenericViewControllerClosure<SeparateWindowRootViewController>) {
         
-        self.prepareSeparateWindow()
+        self.prepareSeparateWindow(withUserInteractionEnabled: withUserInteractionEnabled)
         guard let rootController = self.separateWindow?.rootViewController as? SeparateWindowRootViewController else {
             
             fatalError("A problem occured either instantiating separate window or it hasn't got root view controller.")
@@ -229,6 +229,21 @@ public extension UIViewController {
         }
         
         closure(rootController)
+    }
+    
+    /// Hides the keyboard if it is shown and calls completion when done.
+    ///
+    /// - Parameter completion: Completion closure that will be called when keyboard finish hiding.
+    public func hideKeyboard(_ completion: @escaping TypeAlias.ArgumentlessClosure) {
+        
+        if let responder = self.view.firstResponder {
+            
+            responder.resignFirstResponder(completion)
+        }
+        else {
+            
+            completion()
+        }
     }
     
     // MARK: - Private -
@@ -295,13 +310,23 @@ public extension UIViewController {
         return nil
     }
     
-    private func prepareSeparateWindow() {
+    private func prepareSeparateWindow(withUserInteractionEnabled: Bool) {
         
-        self.separateWindow = UIWindow(frame: UIScreen.main.bounds)
-        self.separateWindow?.rootViewController = SeparateWindowRootViewController.instantiate { self.removeSeparateWindow() }
-        self.separateWindow?.tintColor = self.view.tintColor
-        self.separateWindow?.windowLevel = UIWindowLevel.maximalAmongPresented + 1.0
-        self.separateWindow?.makeKeyAndVisible()
+        let window = UIWindow(frame: UIScreen.main.bounds)
+        window.rootViewController = SeparateWindowRootViewController.instantiate { self.removeSeparateWindow() }
+        window.tintColor = self.view.tintColor
+        window.windowLevel = UIWindowLevel.maximalAmongPresented + 1.0
+        
+        self.separateWindow = window
+        
+        if withUserInteractionEnabled {
+            
+            window.makeKeyAndVisible()
+        }
+        else {
+            
+            window.isHidden = false
+        }
     }
     
     private func removeSeparateWindow() {

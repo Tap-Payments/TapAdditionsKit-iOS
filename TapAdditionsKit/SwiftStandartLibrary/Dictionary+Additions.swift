@@ -152,7 +152,7 @@ public extension Dictionary where Value == [AnyHashable: Equatable] {
     ///   - rhs: Right operand.
     /// - Returns: Boolean value which determines whether two dictionaries are equal.
     public static func == <V: Equatable, K>(lhs: [Key: [K: V]], rhs: [Key: [K: V]]) -> Bool {
-        
+
         guard lhs.count == rhs.count else { return false }
         
         for (key, lhsub) in lhs {
