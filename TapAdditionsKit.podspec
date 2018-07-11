@@ -479,6 +479,8 @@ Pod::Spec.new do |tapAdditionsKit|
         uiKit.subspec 'UIResponder' do |uiResponder|
         
             uiResponder.dependency 'TapAdditionsKit/Tap/TypeAlias'
+            uiResponder.dependency 'TapAdditionsKit/UIKit/UIView'
+            
             uiResponder.source_files = 'TapAdditionsKit/UIKit/UIResponder+Additions.swift'
         
         end
@@ -529,6 +531,7 @@ Pod::Spec.new do |tapAdditionsKit|
             
             uiViewController.dependency 'TapAdditionsKit/ObjectiveC/NSObject'
             uiViewController.dependency 'TapAdditionsKit/Tap/TypeAlias'
+            uiViewController.dependency 'TapAdditionsKit/UIKit/UIResponder'
             uiViewController.dependency 'TapAdditionsKit/UIKit/UIView'
             uiViewController.dependency 'TapAdditionsKit/UIKit/UIWindow'
             uiViewController.dependency 'TapAdditionsKit/UIKit/UIWindowLevel'
@@ -539,7 +542,7 @@ Pod::Spec.new do |tapAdditionsKit|
         
         uiKit.subspec 'UIViewKeyframeAnimationOptions' do |uiViewKeyframeAnimationOptions|
         
-            uiViewKeyframeAnimationOptions.source_files = 'UIViewKeyframeAnimationOptions+Additions.swift'
+            uiViewKeyframeAnimationOptions.source_files = 'TapAdditionsKit/UIKit/UIViewKeyframeAnimationOptions+Additions.swift'
         
         end
         
