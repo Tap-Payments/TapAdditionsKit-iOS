@@ -20,7 +20,7 @@ public extension UIWindowLevel {
         
         return self.maximalAmongPresented(lower: CGFloat.greatestFiniteMagnitude)
     }
-
+    
     // MARK: Methods
     
     /// Returns maximal window level among presented in the app lower then the specified window level.
@@ -30,10 +30,10 @@ public extension UIWindowLevel {
     public static func maximalAmongPresented(lower then: UIWindowLevel) -> UIWindowLevel {
         
         let windows = UIApplication.shared.windows.filter { $0.windowLevel < then }
-        guard windows.count > 0 else { return then }
+        guard windows.count > 0 else { return then - 1.0 }
         
         guard let firstWindow = (windows.sorted { $0.windowLevel > $1.windowLevel }).first else {
-         
+            
             fatalError("Something wrong happened. Please recompile.")
         }
         

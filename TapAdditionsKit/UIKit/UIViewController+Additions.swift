@@ -181,10 +181,11 @@ public extension UIViewController {
     ///
     /// - Parameters:
     ///   - animated: Defines if controller should be presented with animation.
+    ///   - windowLevel: Maximal (but now allowed) window level.
     ///   - completion: Completion.
-    public func showOnSeparateWindow(_ animated: Bool = true, completion: TypeAlias.ArgumentlessClosure?) {
+    public func showOnSeparateWindow(_ animated: Bool = true, below windowLevel: UIWindowLevel? = nil, completion: TypeAlias.ArgumentlessClosure?) {
         
-        self.showOnSeparateWindow { (controller) in
+        self.showOnSeparateWindow(below: windowLevel) { (controller) in
             
             controller.present(self, animated: animated, completion: completion)
         }
@@ -192,11 +193,14 @@ public extension UIViewController {
     
     /// Shows view controller from 'nowhere' giving an option to control the presentation process.
     ///
-    /// - Parameter closure: Closure that has view controller as a parameter.
-    ///                      This view controller should be the controller that presents the receiver.
-    public func showOnSeparateWindow(withUserInteractionEnabled: Bool = true, using closure: TypeAlias.GenericViewControllerClosure<SeparateWindowRootViewController>) {
+    /// - Parameters:
+    ///   - withUserInteractionEnabled: Defines if user interaction should be enabled in receiver's window.
+    ///   - windowLevel: Maximal (but now allowed) window level.
+    ///   - closure: Closure that has view controller as a parameter.
+    ///              This view controller should be the controller that presents the receiver.
+    public func showOnSeparateWindow(withUserInteractionEnabled: Bool = true, below windowLevel: UIWindowLevel? = nil, using closure: TypeAlias.GenericViewControllerClosure<SeparateWindowRootViewController>) {
         
-        self.prepareSeparateWindow(withUserInteractionEnabled: withUserInteractionEnabled)
+        self.prepareSeparateWindow(withUserInteractionEnabled: withUserInteractionEnabled, below: windowLevel)
         guard let rootController = self.separateWindow?.rootViewController as? SeparateWindowRootViewController else {
             
             fatalError("A problem occured either instantiating separate window or it hasn't got root view controller.")
@@ -310,12 +314,12 @@ public extension UIViewController {
         return nil
     }
     
-    private func prepareSeparateWindow(withUserInteractionEnabled: Bool) {
+    private func prepareSeparateWindow(withUserInteractionEnabled: Bool, below windowLevel: UIWindowLevel?) {
         
         let window = UIWindow(frame: UIScreen.main.bounds)
         window.rootViewController = SeparateWindowRootViewController.instantiate { self.removeSeparateWindow() }
         window.tintColor = self.view.tintColor
-        window.windowLevel = UIWindowLevel.maximalAmongPresented + 1.0
+        window.windowLevel = self.nextSeparateWindowControllerWindowLevel(with: windowLevel)
         
         self.separateWindow = window
         
@@ -326,6 +330,30 @@ public extension UIViewController {
         else {
             
             window.isHidden = false
+        }
+    }
+    
+    private func nextSeparateWindowControllerWindowLevel(with restrictment: UIWindowLevel?) -> UIWindowLevel {
+        
+        if let maximalLevel = restrictment {
+            
+            let possiblyExistingLevel = UIWindowLevel.maximalAmongPresented(lower: maximalLevel)
+            if UIApplication.shared.windows.first(where: { $0.windowLevel == possiblyExistingLevel }) == nil {
+                
+                return possiblyExistingLevel
+            }
+            else if possiblyExistingLevel + 1.0 < maximalLevel {
+                
+                return possiblyExistingLevel + 1.0
+            }
+            else {
+                
+                return possiblyExistingLevel + 0.5 * (maximalLevel - possiblyExistingLevel)
+            }
+        }
+        else {
+            
+            return UIWindowLevel.maximalAmongPresented
         }
     }
     
