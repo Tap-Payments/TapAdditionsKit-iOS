@@ -37,14 +37,25 @@ public extension UIResponder {
         CATransaction.commit()
     }
     
-    public static func resign(_ completion: TypeAlias.ArgumentlessClosure? = nil) {
+    public static func resign(in view: UIView? = nil, _ completion: TypeAlias.ArgumentlessClosure? = nil) {
         
         let localCompletion: TypeAlias.ArgumentlessClosure = {
             
             completion?()
         }
         
-        if let responder = self.current {
+        if let nonnullView = view {
+            
+            if let responder = nonnullView.firstResponder {
+                
+                responder.resignFirstResponder(localCompletion)
+            }
+            else {
+                
+                localCompletion()
+            }
+        }
+        else if let responder = self.current {
             
             responder.resignFirstResponder(localCompletion)
         }

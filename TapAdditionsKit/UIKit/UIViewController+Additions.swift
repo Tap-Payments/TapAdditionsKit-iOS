@@ -5,17 +5,18 @@
 //  Copyright © 2018 Tap Payments. All rights reserved.
 //
 
-import func ObjectiveC.runtime.objc_getAssociatedObject
-import func ObjectiveC.runtime.objc_setAssociatedObject
-import class UIKit.UIApplication.UIApplication
-import enum UIKit.UIApplication.UIInterfaceOrientation
-import struct UIKit.UIApplication.UIInterfaceOrientationMask
-import class UIKit.UINavigationController.UINavigationController
-import class UIKit.NSLayoutConstraint.NSLayoutConstraint
-import class UIKit.UIScreen.UIScreen
-import class UIKit.UIViewController.UIViewController
-import class UIKit.UIWindow.UIWindow
-import struct UIKit.UIWindow.UIWindowLevel
+import func     ObjectiveC.runtime.objc_getAssociatedObject
+import func     ObjectiveC.runtime.objc_setAssociatedObject
+import class    UIKit.UIApplication.UIApplication
+import enum     UIKit.UIApplication.UIInterfaceOrientation
+import struct   UIKit.UIApplication.UIInterfaceOrientationMask
+import class    UIKit.UINavigationController.UINavigationController
+import class    UIKit.NSLayoutConstraint.NSLayoutConstraint
+import class    UIKit.UIResponder.UIResponder
+import class    UIKit.UIScreen.UIScreen
+import class    UIKit.UIViewController.UIViewController
+import class    UIKit.UIWindow.UIWindow
+import struct   UIKit.UIWindow.UIWindowLevel
 
 private var separateWindowKey: UInt8 = 0
 
@@ -248,14 +249,7 @@ public extension UIViewController {
     /// - Parameter completion: Completion closure that will be called when keyboard finish hiding.
     public func hideKeyboard(_ completion: @escaping TypeAlias.ArgumentlessClosure) {
         
-        if let responder = self.view.firstResponder {
-            
-            responder.resignFirstResponder(completion)
-        }
-        else {
-            
-            completion()
-        }
+        UIResponder.resign(in: self.view, completion)
     }
     
     // MARK: - Private -
