@@ -5,9 +5,9 @@
 //  Copyright © 2018 Tap Payments. All rights reserved.
 //
 
-import class UIKit.UIApplication.UIApplication
-import class UIKit.UIWindow.UIWindow
-import struct UIKit.UIWindow.UIWindowLevel
+import class    UIKit.UIApplication.UIApplication
+import class    UIKit.UIWindow.UIWindow
+import struct   UIKit.UIWindow.UIWindowLevel
 
 /// Useful UIWindow extension.
 public extension UIWindow {

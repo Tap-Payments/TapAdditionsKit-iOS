@@ -181,11 +181,12 @@ public extension UIViewController {
     ///
     /// - Parameters:
     ///   - animated: Defines if controller should be presented with animation.
+    ///   - windowClass: Window class. Default is UIWindow.
     ///   - windowLevel: Maximal (but now allowed) window level.
     ///   - completion: Completion.
-    public func showOnSeparateWindow(_ animated: Bool = true, below windowLevel: UIWindowLevel? = nil, completion: TypeAlias.ArgumentlessClosure?) {
+    public func showOnSeparateWindow(_ animated: Bool = true, windowClass: UIWindow.Type = UIWindow.self, below windowLevel: UIWindowLevel? = nil, completion: TypeAlias.ArgumentlessClosure?) {
         
-        self.showOnSeparateWindow(below: windowLevel) { (controller) in
+        self.showOnSeparateWindow(windowClass: windowClass, below: windowLevel) { (controller) in
             
             controller.present(self, animated: animated, completion: completion)
         }
@@ -195,12 +196,13 @@ public extension UIViewController {
     ///
     /// - Parameters:
     ///   - withUserInteractionEnabled: Defines if user interaction should be enabled in receiver's window.
+    ///   - windowClass: Window class. Default is UIWindow
     ///   - windowLevel: Maximal (but now allowed) window level.
     ///   - closure: Closure that has view controller as a parameter.
     ///              This view controller should be the controller that presents the receiver.
-    public func showOnSeparateWindow(withUserInteractionEnabled: Bool = true, below windowLevel: UIWindowLevel? = nil, using closure: TypeAlias.GenericViewControllerClosure<SeparateWindowRootViewController>) {
+    public func showOnSeparateWindow(withUserInteractionEnabled: Bool = true, windowClass: UIWindow.Type = UIWindow.self, below windowLevel: UIWindowLevel? = nil, using closure: TypeAlias.GenericViewControllerClosure<SeparateWindowRootViewController>) {
         
-        self.prepareSeparateWindow(withUserInteractionEnabled: withUserInteractionEnabled, below: windowLevel)
+        self.prepareSeparateWindow(ofClass: windowClass, withUserInteractionEnabled: withUserInteractionEnabled, below: windowLevel)
         guard let rootController = self.separateWindow?.rootViewController as? SeparateWindowRootViewController else {
             
             fatalError("A problem occured either instantiating separate window or it hasn't got root view controller.")
@@ -215,6 +217,12 @@ public extension UIViewController {
     ///   - animated: Defines if controller should be dismissed with an animation.
     ///   - completion: Closure that will be called when the receiver finishes dismissal process.
     public func dismissFromSeparateWindow(_ animated: Bool = true, completion: TypeAlias.ArgumentlessClosure?) {
+        
+        guard self.separateWindow?.rootViewController != nil else {
+            
+            completion?()
+            return
+        }
         
         self.dismissFromSeparateWindow { (controller) in
             
@@ -314,10 +322,10 @@ public extension UIViewController {
         return nil
     }
     
-    private func prepareSeparateWindow(withUserInteractionEnabled: Bool, below windowLevel: UIWindowLevel?) {
+    private func prepareSeparateWindow<CustomWindow>(ofClass windowClass: CustomWindow.Type, withUserInteractionEnabled: Bool, below windowLevel: UIWindowLevel?) where CustomWindow: UIWindow {
         
-        let window = UIWindow(frame: UIScreen.main.bounds)
-        window.rootViewController = SeparateWindowRootViewController.instantiate { self.removeSeparateWindow() }
+        let window = windowClass.init(frame: UIScreen.main.bounds)
+        window.rootViewController = SeparateWindowRootViewController.instantiate { [weak self] in self?.removeSeparateWindow() }
         window.tintColor = self.view.tintColor
         window.windowLevel = self.nextSeparateWindowControllerWindowLevel(with: windowLevel)
         
