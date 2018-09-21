@@ -5,18 +5,21 @@
 //  Copyright © 2018 Tap Payments. All rights reserved.
 //
 
-import struct CoreGraphics.CGBase.CGFloat
-import struct CoreGraphics.CGGeometry.CGPoint
-import struct CoreGraphics.CGGeometry.CGSize
-import func Darwin.ceil
-import func Darwin.floor
-import struct OpenGLES.gltypes.GLfloat
+import struct   CoreGraphics.CGBase.CGFloat
+import struct   CoreGraphics.CGGeometry.CGPoint
+import struct   CoreGraphics.CGGeometry.CGSize
+import func     Darwin.ceil
+import func     Darwin.floor
+import struct   OpenGLES.gltypes.GLfloat
 
 /// Useful addition to CGSize.
 public extension CGSize {
     
     // MARK: - Public -
     // MARK: Properties
+    
+    /// Minimal image size in pixels to upload to Instagram.
+    public static let minimalInstagramImageSizeInPixels: CGSize = CGSize(dimension: 612.0)
     
     /// Returns area.
     public var area: CGFloat {
@@ -61,6 +64,23 @@ public extension CGSize {
     }
     
     // MARK: Methods
+    
+    /// Initializes square size with the given `dimension`.
+    ///
+    /// - Parameter dimension: Dimension.
+    public init(dimension: CGFloat) {
+        
+        self.init(width: dimension, height: dimension)
+    }
+    
+    /// Defines if the receiver fully fits into `size`.
+    ///
+    /// - Parameter size: Size to check.
+    /// - Returns: `true` if fits, `false` otherwise.
+    public func fits(into size: CGSize) -> Bool {
+        
+        return self.width <= size.width && self.height <= size.height
+    }
     
     /// + operator.
     ///

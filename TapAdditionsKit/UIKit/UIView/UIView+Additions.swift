@@ -5,33 +5,30 @@
 //  Copyright © 2018 Tap Payments. All rights reserved.
 //
 
-import struct CoreGraphics.CGAffineTransform
-import struct CoreGraphics.CGBase.CGFloat
-import func CoreGraphics.CGBase.pow
-import struct CoreGraphics.CGGeometry.CGPoint
-import struct CoreGraphics.CGGeometry.CGRect
-import struct CoreGraphics.CGGeometry.CGSize
-import func Darwin.sqrt
-import class Foundation.NSBundle.Bundle
-import struct Foundation.NSDate.TimeInterval
-import class QuartzCore.CAShapeLayer.CAShapeLayer
-import class UIKit.NSLayoutConstraint
-import struct UIKit.NSLayoutFormatOptions
-import class UIKit.UIBezierPath.UIBezierPath
-import struct UIKit.UIBezierPath.UIRectCorner
-import class UIKit.UIColor
-import func UIKit.UIGraphicsBeginImageContextWithOptions
-import func UIKit.UIGraphicsEndImageContext
-import func UIKit.UIGraphicsGetCurrentContext
-import func UIKit.UIGraphicsGetImageFromCurrentImageContext
-import class UIKit.UIImage
-import class UIKit.UIResponder
-import class UIKit.UIScreen
-import class UIKit.UIScrollView
-import enum UIKit.UISemanticContentAttribute
-import class UIKit.UIView
-
-private let kViewAnimationDuration: TimeInterval = 0.35
+import struct   CoreGraphics.CGAffineTransform
+import struct   CoreGraphics.CGBase.CGFloat
+import func     CoreGraphics.CGBase.pow
+import struct   CoreGraphics.CGGeometry.CGPoint
+import struct   CoreGraphics.CGGeometry.CGRect
+import struct   CoreGraphics.CGGeometry.CGSize
+import func     Darwin.sqrt
+import class    Foundation.NSBundle.Bundle
+import struct   Foundation.NSDate.TimeInterval
+import class    QuartzCore.CAShapeLayer.CAShapeLayer
+import class    UIKit.NSLayoutConstraint
+import class    UIKit.UIBezierPath.UIBezierPath
+import struct   UIKit.UIBezierPath.UIRectCorner
+import class    UIKit.UIColor
+import func     UIKit.UIGraphicsBeginImageContextWithOptions
+import func     UIKit.UIGraphicsEndImageContext
+import func     UIKit.UIGraphicsGetCurrentContext
+import func     UIKit.UIGraphicsGetImageFromCurrentImageContext
+import class    UIKit.UIImage
+import class    UIKit.UIResponder
+import class    UIKit.UIScreen
+import class    UIKit.UIScrollView
+import enum     UIKit.UISemanticContentAttribute
+import class    UIKit.UIView
 
 /// Useful extension to UIView.
 @IBDesignable extension UIView {
@@ -366,7 +363,7 @@ private let kViewAnimationDuration: TimeInterval = 0.35
         
         let views = ["subview": subview]
         
-        let layoutFormatOptions: NSLayoutFormatOptions = respectLanguageDirection ? .directionLeadingToTrailing : .directionLeftToRight
+        let layoutFormatOptions: NSLayoutConstraint.FormatOptions = respectLanguageDirection ? .directionLeadingToTrailing : .directionLeftToRight
         
         var newConstraints: [NSLayoutConstraint] = []
         newConstraints.append(contentsOf: NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[subview]-0-|", options: layoutFormatOptions, metrics: nil, views: views))
@@ -376,9 +373,17 @@ private let kViewAnimationDuration: TimeInterval = 0.35
     }
     
     /**
-     Removes from superview with animation.
+     Removes from superview with fade out animation.
      */
     public func removeFromSuperviewAnimated() {
+        
+        self.removeFromSuperviewAnimated(with: Constants.defaultRemoveFromSuperviewAnimationDuration)
+    }
+    
+    /// Removes from superview with fade out animation.
+    ///
+    /// - Parameter duration: Animation duration.
+    public func removeFromSuperviewAnimated(with duration: TimeInterval) {
         
         let animations = {
             
@@ -390,7 +395,7 @@ private let kViewAnimationDuration: TimeInterval = 0.35
             self.removeFromSuperview()
         }
         
-        UIView.animate(withDuration: kViewAnimationDuration, animations: animations, completion: completion)
+        UIView.animate(withDuration: duration, animations: animations, completion: completion)
     }
     
     /// Returns a screenshot of specific area.
@@ -454,6 +459,15 @@ private let kViewAnimationDuration: TimeInterval = 0.35
         let shapeLayer = CAShapeLayer()
         shapeLayer.path = path.cgPath
         self.layer.mask = shapeLayer
+    }
+    
+    // MARK: - Private -
+    
+    private struct Constants {
+        
+        fileprivate static let defaultRemoveFromSuperviewAnimationDuration: TimeInterval = 0.35
+        
+        @available(*, unavailable) private init() {}
     }
 }
 

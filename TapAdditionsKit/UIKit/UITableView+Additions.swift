@@ -5,11 +5,8 @@
 //  Copyright © 2018 Tap Payments. All rights reserved.
 //
 
-import class    Foundation.NSError.NSError
 import func     TapSwiftFixes.ExceptionCatcher.catchException
 import class    UIKit.UITableView.UITableView
-import enum     UIKit.UITableView.UITableViewRowAnimation
-import enum     UIKit.UITableView.UITableViewScrollPosition
 
 /// Useful extension for UITableView
 public extension UITableView {
@@ -20,7 +17,7 @@ public extension UITableView {
     /// Reloads visible cells.
     ///
     /// - Parameter animation: Row animation.
-    public func reloadVisibleCells(with animation: UITableViewRowAnimation = .none) {
+    public func reloadVisibleCells(with animation: UITableView.RowAnimation = .none) {
         
         guard let indexPaths = self.indexPathsForVisibleRows, indexPaths.count > 0 else { return }
         
@@ -29,11 +26,7 @@ public extension UITableView {
             self.reloadRows(at: indexPaths, with: animation)
         }
         
-        var error: NSError?
-        
-        catchException(closure, &error)
-        
-        if error != nil {
+        if !catchException(closure, nil) {
             
             self.reloadData()
         }
@@ -51,7 +44,7 @@ public extension UITableView {
     ///   - animated: Defines if selection should happen with animation.
     ///   - scrollPosition: Scroll position.
     ///   - callDelegate: Defines if delegate should be notified about row selection.
-    public func selectRow(at indexPath: IndexPath, animated: Bool, scrollPosition: UITableViewScrollPosition, callDelegate: Bool) {
+    public func selectRow(at indexPath: IndexPath, animated: Bool, scrollPosition: UITableView.ScrollPosition, callDelegate: Bool) {
         
         guard (self.isEditing && self.allowsSelectionDuringEditing) || (!self.isEditing && self.allowsSelection) else { return }
         let allowsMultipleSelectionNow = (self.isEditing && self.allowsMultipleSelectionDuringEditing) || (!self.isEditing && self.allowsMultipleSelection)

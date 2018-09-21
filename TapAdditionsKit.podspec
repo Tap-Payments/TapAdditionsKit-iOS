@@ -1,18 +1,19 @@
+TapSwiftFixesDependencyVersion      = '1.0.5'   unless defined? TapSwiftFixesDependencyVersion
+
 Pod::Spec.new do |tapAdditionsKit|
     
-    tapAdditionsKit.platform = :ios
-    tapAdditionsKit.ios.deployment_target = '8.0'
-    tapAdditionsKit.swift_version = '4.1'
-    tapAdditionsKit.pod_target_xcconfig = { 'SWIFT_VERSION' => '4.1' }
-    tapAdditionsKit.name = 'TapAdditionsKit'
-    tapAdditionsKit.summary = 'Useful additions for native iOS frameworks'
-    tapAdditionsKit.requires_arc = true
-    tapAdditionsKit.version = '1.0.11'
-    tapAdditionsKit.license = { :type => 'MIT', :file => 'LICENSE' }
-    tapAdditionsKit.author = { 'Tap Payments' => 'hello@tap.company' }
-    tapAdditionsKit.homepage = 'https://github.com/Tap-Payments/TapAdditionsKit-iOS'
-    tapAdditionsKit.source = { :git => 'https://github.com/Tap-Payments/TapAdditionsKit-iOS.git', :tag => tapAdditionsKit.version.to_s }
-    tapAdditionsKit.default_subspecs = 'AVFoundation', 'CoreGraphics', 'Foundation', 'ObjectiveC', 'QuartzCore', 'SwiftStandartLibrary', 'Tap', 'UIKit'
+    tapAdditionsKit.platform                = :ios
+    tapAdditionsKit.ios.deployment_target   = '8.0'
+    tapAdditionsKit.swift_version           = '4.2'
+    tapAdditionsKit.name                    = 'TapAdditionsKit'
+    tapAdditionsKit.summary                 = 'Useful additions for native iOS frameworks'
+    tapAdditionsKit.requires_arc            = true
+    tapAdditionsKit.version                 = '1.1'
+    tapAdditionsKit.license                 = { :type => 'MIT', :file => 'LICENSE' }
+    tapAdditionsKit.author                  = { 'Tap Payments' => 'hello@tap.company' }
+    tapAdditionsKit.homepage                = 'https://github.com/Tap-Payments/TapAdditionsKit-iOS'
+    tapAdditionsKit.source                  = { :git => 'https://github.com/Tap-Payments/TapAdditionsKit-iOS.git', :tag => tapAdditionsKit.version.to_s }
+    tapAdditionsKit.default_subspecs        = 'AVFoundation', 'CoreGraphics', 'Foundation', 'ObjectiveC', 'QuartzCore', 'SwiftStandartLibrary', 'Tap', 'UIKit'
     
     tapAdditionsKit.subspec 'AVFoundation' do |avFoundation|
       
@@ -145,7 +146,7 @@ Pod::Spec.new do |tapAdditionsKit|
             jsonSerialization.dependency 'TapAdditionsKit/SwiftStandartLibrary/OptionSet'
             jsonSerialization.dependency 'TapAdditionsKit/SwiftStandartLibrary/String'
             jsonSerialization.dependency 'TapAdditionsKit/Tap/TypeAlias'
-            jsonSerialization.dependency 'TapSwiftFixes/Exceptions'
+            jsonSerialization.dependency 'TapSwiftFixes/Exceptions',    '1.0.5'
             
             jsonSerialization.source_files = 'TapAdditionsKit/Foundation/JSONSerialization+Additions.swift'
         
@@ -470,7 +471,7 @@ Pod::Spec.new do |tapAdditionsKit|
         uiKit.subspec 'UINavigationController' do |uiNavigationController|
         
             uiNavigationController.dependency 'TapAdditionsKit/Tap/TypeAlias'
-            uiNavigationController.dependency 'TapSwiftFixes/Threading'
+            uiNavigationController.dependency 'TapSwiftFixes/Threading',    '1.0.5'
         
             uiNavigationController.source_files = 'TapAdditionsKit/UIKit/UINavigationController+Additions.swift'
             
@@ -502,7 +503,7 @@ Pod::Spec.new do |tapAdditionsKit|
         uiKit.subspec 'UITableView' do |uiTableView|
         
             uiTableView.dependency 'TapAdditionsKit/UIKit/UIView'
-            uiTableView.dependency 'TapSwiftFixes/Exceptions'
+            uiTableView.dependency 'TapSwiftFixes/Exceptions',  '1.0.5'
         
             uiTableView.source_files = 'TapAdditionsKit/UIKit/UITableView+Additions.swift'
         
@@ -510,21 +511,31 @@ Pod::Spec.new do |tapAdditionsKit|
         
         uiKit.subspec 'UIView' do |uiView|
             
-            uiView.dependency 'TapAdditionsKit/QuartzCore/CALayer'
-            uiView.dependency 'TapAdditionsKit/ObjectiveC/NSObject'
-            uiView.dependency 'TapAdditionsKit/SwiftStandartLibrary/String'
-            uiView.dependency 'TapAdditionsKit/Tap/TypeAlias'
-            uiView.dependency 'TapAdditionsKit/UIKit/UIImage'
-            uiView.dependency 'TapAdditionsKit/UIKit/UIScreen'
+            uiView.subspec 'UIView' do |uiViewCore|
+                
+                uiViewCore.dependency 'TapAdditionsKit/QuartzCore/CALayer'
+                uiViewCore.dependency 'TapAdditionsKit/ObjectiveC/NSObject'
+                uiViewCore.dependency 'TapAdditionsKit/SwiftStandartLibrary/String'
+                uiViewCore.dependency 'TapAdditionsKit/Tap/TypeAlias'
+                uiViewCore.dependency 'TapAdditionsKit/UIKit/UIImage'
+                uiViewCore.dependency 'TapAdditionsKit/UIKit/UIScreen'
+                
+                uiViewCore.source_files = 'TapAdditionsKit/UIKit/UIView/UIView+Additions.swift'
+                
+            end
             
-            uiView.source_files = 'TapAdditionsKit/UIKit/UIView+Additions.swift'
+            uiView.subspec 'AnimationOptions' do |animationOptions|
             
-        end
-        
-        uiKit.subspec 'UIViewAnimationOptions' do |uiViewAnimationOptions|
-        
-            uiViewAnimationOptions.source_files = 'TapAdditionsKit/UIKit/UIViewAnimationOptions+Additions.swift'
-        
+                animationOptions.source_files = 'TapAdditionsKit/UIKit/UIView/AnimationOptions+Additions.swift'
+            
+            end
+            
+            uiView.subspec 'KeyframeAnimationOptions' do |keyframeAnimationOptions|
+                
+                keyframeAnimationOptions.source_files = 'TapAdditionsKit/UIKit/UIView/KeyframeAnimationOptions+Additions.swift'
+                
+            end
+            
         end
         
         uiKit.subspec 'UIViewController' do |uiViewController|
@@ -534,38 +545,38 @@ Pod::Spec.new do |tapAdditionsKit|
             uiViewController.dependency 'TapAdditionsKit/UIKit/UIResponder'
             uiViewController.dependency 'TapAdditionsKit/UIKit/UIView'
             uiViewController.dependency 'TapAdditionsKit/UIKit/UIWindow'
-            uiViewController.dependency 'TapAdditionsKit/UIKit/UIWindowLevel'
+            uiViewController.dependency 'TapAdditionsKit/UIKit/UIWindow/Level'
             
             uiViewController.source_files = 'TapAdditionsKit/UIKit/UIViewController+Additions.swift'
             
         end
         
-        uiKit.subspec 'UIViewKeyframeAnimationOptions' do |uiViewKeyframeAnimationOptions|
-        
-            uiViewKeyframeAnimationOptions.source_files = 'TapAdditionsKit/UIKit/UIViewKeyframeAnimationOptions+Additions.swift'
-        
-        end
-        
         uiKit.subspec 'UIWebView' do |uiWebView|
-        
+            
             uiWebView.dependency 'TapAdditionsKit/SwiftStandartLibrary/String'
             
             uiWebView.source_files = 'TapAdditionsKit/UIKit/UIWebView+Additions.swift'
-        
+            
         end
         
         uiKit.subspec 'UIWindow' do |uiWindow|
-        
-            uiWindow.dependency 'TapAdditionsKit/UIKit/UIWindowLevel'
             
-            uiWindow.source_files = 'TapAdditionsKit/UIKit/UIWindow+Additions.swift'
-        
+            uiWindow.subspec 'UIWindow' do |uiWindowCore|
+                
+                uiWindowCore.dependency 'TapAdditionsKit/UIKit/UIWindow/Level'
+                
+                uiWindowCore.source_files = 'TapAdditionsKit/UIKit/UIWindow/UIWindow+Additions.swift'
+                
+            end
+            
+            uiWindow.subspec 'Level' do |level|
+                
+                level.source_files = 'TapAdditionsKit/UIKit/UIWindow/Level+Additions.swift'
+                
+            end
+            
         end
         
-        uiKit.subspec 'UIWindowLevel' do |uiWindowLevel|
-        
-            uiWindowLevel.source_files = 'TapAdditionsKit/UIKit/UIWindowLevel+Additions.swift'
-        
-        end
     end
+    
 end

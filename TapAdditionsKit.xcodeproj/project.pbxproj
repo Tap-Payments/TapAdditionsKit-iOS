@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		141B7C6F21551A9A0023E710 /* UIView+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141B7C6E21551A9A0023E710 /* UIView+Additions.swift */; };
+		141B7C7021551A9A0023E710 /* UIView+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141B7C6E21551A9A0023E710 /* UIView+Additions.swift */; };
+		141B7C7321551BAA0023E710 /* KeyframeAnimationOptions+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141B7C7121551BA90023E710 /* KeyframeAnimationOptions+Additions.swift */; };
+		141B7C7421551BAA0023E710 /* KeyframeAnimationOptions+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141B7C7121551BA90023E710 /* KeyframeAnimationOptions+Additions.swift */; };
+		141B7C7521551BAA0023E710 /* AnimationOptions+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141B7C7221551BA90023E710 /* AnimationOptions+Additions.swift */; };
+		141B7C7621551BAA0023E710 /* AnimationOptions+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141B7C7221551BA90023E710 /* AnimationOptions+Additions.swift */; };
+		141B7C7A21551CE90023E710 /* UIWindow+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141B7C7821551CE90023E710 /* UIWindow+Additions.swift */; };
+		141B7C7B21551CE90023E710 /* UIWindow+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141B7C7821551CE90023E710 /* UIWindow+Additions.swift */; };
+		141B7C7C21551CE90023E710 /* Level+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141B7C7921551CE90023E710 /* Level+Additions.swift */; };
+		141B7C7D21551CE90023E710 /* Level+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141B7C7921551CE90023E710 /* Level+Additions.swift */; };
 		4C7F6C0C68C648B5E636F6A0 /* Pods_TapAdditionsKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3AD8ECEA827F8E5245B5053 /* Pods_TapAdditionsKit.framework */; };
 		A4014A5E1FC5CA7B00F26E4E /* UINavigationController+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4014A5D1FC5CA7B00F26E4E /* UINavigationController+Additions.swift */; };
 		A4014A6D1FC5E1EE00F26E4E /* Bundle+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4014A6C1FC5E1EE00F26E4E /* Bundle+Additions.swift */; };
@@ -36,7 +46,6 @@
 		A41D1F1F1FC2E0F6007AF665 /* UILabel+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41D1F1E1FC2E0F6007AF665 /* UILabel+Additions.swift */; };
 		A41D1F211FC2E265007AF665 /* UITableView+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41D1F201FC2E265007AF665 /* UITableView+Additions.swift */; };
 		A4248AF71FD94A640009D6BC /* UIResponder+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4248AF61FD94A640009D6BC /* UIResponder+Additions.swift */; };
-		A42EDA771F4F2FB700098C81 /* UIWindow+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42EDA761F4F2FB700098C81 /* UIWindow+Additions.swift */; };
 		A43DD71C1F13A7F500B4D430 /* TapAdditionsKit.h in Headers */ = {isa = PBXBuildFile; fileRef = A43DD71A1F13A7F500B4D430 /* TapAdditionsKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A446E4EA1F36422A005C0EF8 /* UIDevice+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A446E4E91F36422A005C0EF8 /* UIDevice+Additions.swift */; };
 		A45926B71FC2E3DD005C4C65 /* UIWebView+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45926B61FC2E3DD005C4C65 /* UIWebView+Additions.swift */; };
@@ -58,10 +67,6 @@
 		A4C13AB820F4FBA800037EDC /* Date+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C13AB620F4FBA800037EDC /* Date+Additions.swift */; };
 		A4C13ABA20F4FD4300037EDC /* NSLayoutConstraint+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C13AB920F4FD4300037EDC /* NSLayoutConstraint+Additions.swift */; };
 		A4C13ABB20F4FD4300037EDC /* NSLayoutConstraint+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C13AB920F4FD4300037EDC /* NSLayoutConstraint+Additions.swift */; };
-		A4C13ABD20F505C400037EDC /* UIViewAnimationOptions+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C13ABC20F505C400037EDC /* UIViewAnimationOptions+Additions.swift */; };
-		A4C13ABE20F505C400037EDC /* UIViewAnimationOptions+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C13ABC20F505C400037EDC /* UIViewAnimationOptions+Additions.swift */; };
-		A4C13AC020F50A5B00037EDC /* UIViewKeyframeAnimationOptions+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C13ABF20F50A5B00037EDC /* UIViewKeyframeAnimationOptions+Additions.swift */; };
-		A4C13AC120F50A5B00037EDC /* UIViewKeyframeAnimationOptions+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C13ABF20F50A5B00037EDC /* UIViewKeyframeAnimationOptions+Additions.swift */; };
 		A4C13AC320F50BB800037EDC /* CustomStringConvertible+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C13AC220F50BB800037EDC /* CustomStringConvertible+Additions.swift */; };
 		A4C13AC420F50BB800037EDC /* CustomStringConvertible+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C13AC220F50BB800037EDC /* CustomStringConvertible+Additions.swift */; };
 		A4C13AC620F520FA00037EDC /* Decodable+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C13AC520F520FA00037EDC /* Decodable+Additions.swift */; };
@@ -75,7 +80,6 @@
 		A4D71C591F13B69500316991 /* TapAdditionsKit.podspec in Resources */ = {isa = PBXBuildFile; fileRef = A4D71C581F13B69500316991 /* TapAdditionsKit.podspec */; };
 		A4D71C5C1F13B98A00316991 /* NumberFormatter+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D71C5B1F13B98A00316991 /* NumberFormatter+Additions.swift */; };
 		A4D71C7D1F13D41100316991 /* NSObject+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D71C7C1F13D41100316991 /* NSObject+Additions.swift */; };
-		A4D71C7F1F13FBC400316991 /* UIView+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D71C7E1F13FBC400316991 /* UIView+Additions.swift */; };
 		A4D71C811F14C4D000316991 /* UIScreen+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D71C801F14C4D000316991 /* UIScreen+Additions.swift */; };
 		A4D71C831F14C80F00316991 /* UIImage+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D71C821F14C80F00316991 /* UIImage+Additions.swift */; };
 		A4D71C861F14C9E200316991 /* CALayer+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D71C851F14C9E200316991 /* CALayer+Additions.swift */; };
@@ -99,7 +103,6 @@
 		A4F77E2420B43A1200C11626 /* TypeAlias.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45926B81FC2E947005C4C65 /* TypeAlias.swift */; };
 		A4F77E2520B43A1200C11626 /* MemoryLayout+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46115772080DDFF00217063 /* MemoryLayout+Additions.swift */; };
 		A4F77E2620B43A1200C11626 /* UIWebView+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45926B61FC2E3DD005C4C65 /* UIWebView+Additions.swift */; };
-		A4F77E2720B43A1200C11626 /* UIView+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D71C7E1F13FBC400316991 /* UIView+Additions.swift */; };
 		A4F77E2820B43A1200C11626 /* Bundle+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4014A6C1FC5E1EE00F26E4E /* Bundle+Additions.swift */; };
 		A4F77E2920B43A1200C11626 /* CGRect+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41C32D61F1A3C1F0098C264 /* CGRect+Additions.swift */; };
 		A4F77E2A20B43A1200C11626 /* Array+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F56C661F28E4D50084C27D /* Array+Additions.swift */; };
@@ -109,7 +112,6 @@
 		A4F77E2E20B43A1200C11626 /* CNContactFetchRequest+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4193CD91F6715B7008AA97D /* CNContactFetchRequest+Additions.swift */; };
 		A4F77E2F20B43A1200C11626 /* NSObject+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D71C7C1F13D41100316991 /* NSObject+Additions.swift */; };
 		A4F77E3020B43A1200C11626 /* Locale+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E2EB081FB370E900AE9AC9 /* Locale+Additions.swift */; };
-		A4F77E3120B43A1200C11626 /* UIWindowLevel+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4FE9D3C1F4EEE010054C5A3 /* UIWindowLevel+Additions.swift */; };
 		A4F77E3220B43A1200C11626 /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47D874E1F557DCD0057E1AA /* Line.swift */; };
 		A4F77E3320B43A1200C11626 /* URLSession+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4193CDB1F67E873008AA97D /* URLSession+Additions.swift */; };
 		A4F77E3420B43A1200C11626 /* UIBezierPath+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47D874B1F557D050057E1AA /* UIBezierPath+Additions.swift */; };
@@ -133,7 +135,6 @@
 		A4F77E4620B43A1200C11626 /* CGPoint+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41C32CC1F175E6E0098C264 /* CGPoint+Additions.swift */; };
 		A4F77E4720B43A1200C11626 /* UIViewController+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4FE9D3A1F4EE9060054C5A3 /* UIViewController+Additions.swift */; };
 		A4F77E4820B43A1200C11626 /* Comparable+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41C32C61F16777F0098C264 /* Comparable+Additions.swift */; };
-		A4F77E4920B43A1200C11626 /* UIWindow+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42EDA761F4F2FB700098C81 /* UIWindow+Additions.swift */; };
 		A4F77E4A20B43A1200C11626 /* CNContactStore+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4193CD71F67147B008AA97D /* CNContactStore+Additions.swift */; };
 		A4F77E4B20B43A1200C11626 /* Dictionary+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41C32DC1F1A473F0098C264 /* Dictionary+Additions.swift */; };
 		A4F77E4C20B43A1200C11626 /* Data+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41D1F121FC2D469007AF665 /* Data+Additions.swift */; };
@@ -155,10 +156,14 @@
 		A4F77E8020B4538000C11626 /* TapSwiftFixes_Carthage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4F77E7F20B4538000C11626 /* TapSwiftFixes_Carthage.framework */; };
 		A4FB4D11207506500082ABAB /* UserDefaults+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4FB4D10207506500082ABAB /* UserDefaults+Additions.swift */; };
 		A4FE9D3B1F4EE9060054C5A3 /* UIViewController+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4FE9D3A1F4EE9060054C5A3 /* UIViewController+Additions.swift */; };
-		A4FE9D3D1F4EEE010054C5A3 /* UIWindowLevel+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4FE9D3C1F4EEE010054C5A3 /* UIWindowLevel+Additions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		141B7C6E21551A9A0023E710 /* UIView+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Additions.swift"; sourceTree = "<group>"; };
+		141B7C7121551BA90023E710 /* KeyframeAnimationOptions+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "KeyframeAnimationOptions+Additions.swift"; sourceTree = "<group>"; };
+		141B7C7221551BA90023E710 /* AnimationOptions+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AnimationOptions+Additions.swift"; sourceTree = "<group>"; };
+		141B7C7821551CE90023E710 /* UIWindow+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIWindow+Additions.swift"; sourceTree = "<group>"; };
+		141B7C7921551CE90023E710 /* Level+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Level+Additions.swift"; sourceTree = "<group>"; };
 		521068A4FF16F0DC5FC163FF /* Pods-TapAdditionsKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TapAdditionsKit.release.xcconfig"; path = "Pods/Target Support Files/Pods-TapAdditionsKit/Pods-TapAdditionsKit.release.xcconfig"; sourceTree = "<group>"; };
 		793B39A0AEB4DA6605E29884 /* Pods-TapAdditionsKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TapAdditionsKit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TapAdditionsKit/Pods-TapAdditionsKit.debug.xcconfig"; sourceTree = "<group>"; };
 		A4014A5D1FC5CA7B00F26E4E /* UINavigationController+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Additions.swift"; sourceTree = "<group>"; };
@@ -189,7 +194,6 @@
 		A41D1F1E1FC2E0F6007AF665 /* UILabel+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Additions.swift"; sourceTree = "<group>"; };
 		A41D1F201FC2E265007AF665 /* UITableView+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Additions.swift"; sourceTree = "<group>"; };
 		A4248AF61FD94A640009D6BC /* UIResponder+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIResponder+Additions.swift"; sourceTree = "<group>"; };
-		A42EDA761F4F2FB700098C81 /* UIWindow+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIWindow+Additions.swift"; sourceTree = "<group>"; };
 		A43DD7171F13A7F500B4D430 /* TapAdditionsKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TapAdditionsKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A43DD71A1F13A7F500B4D430 /* TapAdditionsKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TapAdditionsKit.h; sourceTree = "<group>"; };
 		A43DD71B1F13A7F500B4D430 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -211,8 +215,6 @@
 		A4B0EDCD1F36106200BA384A /* UInt8+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UInt8+Additions.swift"; sourceTree = "<group>"; };
 		A4C13AB620F4FBA800037EDC /* Date+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Additions.swift"; sourceTree = "<group>"; };
 		A4C13AB920F4FD4300037EDC /* NSLayoutConstraint+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSLayoutConstraint+Additions.swift"; sourceTree = "<group>"; };
-		A4C13ABC20F505C400037EDC /* UIViewAnimationOptions+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewAnimationOptions+Additions.swift"; sourceTree = "<group>"; };
-		A4C13ABF20F50A5B00037EDC /* UIViewKeyframeAnimationOptions+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewKeyframeAnimationOptions+Additions.swift"; sourceTree = "<group>"; };
 		A4C13AC220F50BB800037EDC /* CustomStringConvertible+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CustomStringConvertible+Additions.swift"; sourceTree = "<group>"; };
 		A4C13AC520F520FA00037EDC /* Decodable+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Decodable+Additions.swift"; sourceTree = "<group>"; };
 		A4C13AC820F5228D00037EDC /* Encodable+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encodable+Additions.swift"; sourceTree = "<group>"; };
@@ -222,7 +224,6 @@
 		A4D71C581F13B69500316991 /* TapAdditionsKit.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TapAdditionsKit.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		A4D71C5B1F13B98A00316991 /* NumberFormatter+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NumberFormatter+Additions.swift"; sourceTree = "<group>"; };
 		A4D71C7C1F13D41100316991 /* NSObject+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSObject+Additions.swift"; sourceTree = "<group>"; };
-		A4D71C7E1F13FBC400316991 /* UIView+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Additions.swift"; sourceTree = "<group>"; };
 		A4D71C801F14C4D000316991 /* UIScreen+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIScreen+Additions.swift"; sourceTree = "<group>"; };
 		A4D71C821F14C80F00316991 /* UIImage+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Additions.swift"; sourceTree = "<group>"; };
 		A4D71C851F14C9E200316991 /* CALayer+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CALayer+Additions.swift"; sourceTree = "<group>"; };
@@ -239,7 +240,6 @@
 		A4F77E7F20B4538000C11626 /* TapSwiftFixes_Carthage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TapSwiftFixes_Carthage.framework; path = Carthage/Build/iOS/TapSwiftFixes_Carthage.framework; sourceTree = "<group>"; };
 		A4FB4D10207506500082ABAB /* UserDefaults+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Additions.swift"; sourceTree = "<group>"; };
 		A4FE9D3A1F4EE9060054C5A3 /* UIViewController+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Additions.swift"; sourceTree = "<group>"; };
-		A4FE9D3C1F4EEE010054C5A3 /* UIWindowLevel+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIWindowLevel+Additions.swift"; sourceTree = "<group>"; };
 		C3AD8ECEA827F8E5245B5053 /* Pods_TapAdditionsKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TapAdditionsKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -263,6 +263,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		141B7C6D21551A5E0023E710 /* UIView */ = {
+			isa = PBXGroup;
+			children = (
+				141B7C7221551BA90023E710 /* AnimationOptions+Additions.swift */,
+				141B7C7121551BA90023E710 /* KeyframeAnimationOptions+Additions.swift */,
+				141B7C6E21551A9A0023E710 /* UIView+Additions.swift */,
+			);
+			path = UIView;
+			sourceTree = "<group>";
+		};
+		141B7C7721551CA40023E710 /* UIWindow */ = {
+			isa = PBXGroup;
+			children = (
+				141B7C7921551CE90023E710 /* Level+Additions.swift */,
+				141B7C7821551CE90023E710 /* UIWindow+Additions.swift */,
+			);
+			path = UIWindow;
+			sourceTree = "<group>";
+		};
 		6E4529CC73312F5B641C09FB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -362,13 +381,10 @@
 				A4D71C801F14C4D000316991 /* UIScreen+Additions.swift */,
 				A41C32C41F1676990098C264 /* UIScrollView+Additions.swift */,
 				A41D1F201FC2E265007AF665 /* UITableView+Additions.swift */,
-				A4D71C7E1F13FBC400316991 /* UIView+Additions.swift */,
-				A4C13ABC20F505C400037EDC /* UIViewAnimationOptions+Additions.swift */,
+				141B7C6D21551A5E0023E710 /* UIView */,
 				A4FE9D3A1F4EE9060054C5A3 /* UIViewController+Additions.swift */,
-				A4C13ABF20F50A5B00037EDC /* UIViewKeyframeAnimationOptions+Additions.swift */,
 				A45926B61FC2E3DD005C4C65 /* UIWebView+Additions.swift */,
-				A42EDA761F4F2FB700098C81 /* UIWindow+Additions.swift */,
-				A4FE9D3C1F4EEE010054C5A3 /* UIWindowLevel+Additions.swift */,
+				141B7C7721551CA40023E710 /* UIWindow */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -528,7 +544,7 @@
 					A43DD7161F13A7F500B4D430 = {
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = G46S76PUH4;
-						LastSwiftMigration = 0900;
+						LastSwiftMigration = 1000;
 						ProvisioningStyle = Automatic;
 					};
 					A4F77E1820B43A1200C11626 = {
@@ -634,17 +650,16 @@
 				A4D71C891F14CE3700316991 /* CGSize+Additions.swift in Sources */,
 				A41D1F1F1FC2E0F6007AF665 /* UILabel+Additions.swift in Sources */,
 				A46367712077BE0000D62593 /* Numeric+Additions.swift in Sources */,
+				141B7C7A21551CE90023E710 /* UIWindow+Additions.swift in Sources */,
 				A4C13AC620F520FA00037EDC /* Decodable+Additions.swift in Sources */,
 				A40F43791F57273A003B45F4 /* AVPlayer+Additions.swift in Sources */,
 				A4D71C831F14C80F00316991 /* UIImage+Additions.swift in Sources */,
 				A41C32DB1F1A45AD0098C264 /* DateFormatter+Additions.swift in Sources */,
 				A4F5C4A51F7549CE00992078 /* Float+Additions.swift in Sources */,
-				A4C13AC020F50A5B00037EDC /* UIViewKeyframeAnimationOptions+Additions.swift in Sources */,
 				A45926B91FC2E947005C4C65 /* TypeAlias.swift in Sources */,
 				A46115782080DDFF00217063 /* MemoryLayout+Additions.swift in Sources */,
 				A4C13ACC20F5259400037EDC /* KeyedDecodingContainer+Additions.swift in Sources */,
 				A45926B71FC2E3DD005C4C65 /* UIWebView+Additions.swift in Sources */,
-				A4D71C7F1F13FBC400316991 /* UIView+Additions.swift in Sources */,
 				A4014A6D1FC5E1EE00F26E4E /* Bundle+Additions.swift in Sources */,
 				A41C32D71F1A3C1F0098C264 /* CGRect+Additions.swift in Sources */,
 				A4F56C671F28E4D50084C27D /* Array+Additions.swift in Sources */,
@@ -652,21 +667,21 @@
 				A4D71C5C1F13B98A00316991 /* NumberFormatter+Additions.swift in Sources */,
 				A41D1F1B1FC2DB1F007AF665 /* UIGestureRecognizer+Additions.swift in Sources */,
 				A4193CDA1F6715B7008AA97D /* CNContactFetchRequest+Additions.swift in Sources */,
+				141B7C7C21551CE90023E710 /* Level+Additions.swift in Sources */,
 				A4D71C7D1F13D41100316991 /* NSObject+Additions.swift in Sources */,
 				A4E2EB091FB370E900AE9AC9 /* Locale+Additions.swift in Sources */,
-				A4FE9D3D1F4EEE010054C5A3 /* UIWindowLevel+Additions.swift in Sources */,
 				A4C13ABA20F4FD4300037EDC /* NSLayoutConstraint+Additions.swift in Sources */,
 				A47D874F1F557DCD0057E1AA /* Line.swift in Sources */,
 				A4193CDC1F67E873008AA97D /* URLSession+Additions.swift in Sources */,
 				A47D874C1F557D050057E1AA /* UIBezierPath+Additions.swift in Sources */,
 				A4193CD21F67116F008AA97D /* CNPostalAddress+Additions.swift in Sources */,
+				141B7C7321551BAA0023E710 /* KeyframeAnimationOptions+Additions.swift in Sources */,
 				A4193CD61F67138E008AA97D /* CNSocialProfile+Additions.swift in Sources */,
 				A45E8A021F73DBFC00E24310 /* Int+Additions.swift in Sources */,
 				A41D1F171FC2DA0F007AF665 /* UICollectionView+Additions.swift in Sources */,
 				A41C32C51F1676990098C264 /* UIScrollView+Additions.swift in Sources */,
 				A4D71C571F13B31D00316991 /* String+Additions.swift in Sources */,
 				A41D1F1D1FC2DB95007AF665 /* UIImageView+Additions.swift in Sources */,
-				A4C13ABD20F505C400037EDC /* UIViewAnimationOptions+Additions.swift in Sources */,
 				A4F56C691F28F7110084C27D /* OptionSet+Additions.swift in Sources */,
 				A413ECE71F62B210007D0006 /* CAKeyframeAnimation+Additions.swift in Sources */,
 				A4193CDE1F67EAD4008AA97D /* URLSessionDataTaskResult.swift in Sources */,
@@ -681,7 +696,6 @@
 				A41C32CD1F175E6E0098C264 /* CGPoint+Additions.swift in Sources */,
 				A4FE9D3B1F4EE9060054C5A3 /* UIViewController+Additions.swift in Sources */,
 				A41C32C71F16777F0098C264 /* Comparable+Additions.swift in Sources */,
-				A42EDA771F4F2FB700098C81 /* UIWindow+Additions.swift in Sources */,
 				A4193CD81F67147B008AA97D /* CNContactStore+Additions.swift in Sources */,
 				A41C32DD1F1A473F0098C264 /* Dictionary+Additions.swift in Sources */,
 				A41D1F131FC2D469007AF665 /* Data+Additions.swift in Sources */,
@@ -691,11 +705,13 @@
 				A47F7D611F1E212300EDD69F /* BinaryInteger+Additions.swift in Sources */,
 				A4B0EDCE1F36106200BA384A /* UInt8+Additions.swift in Sources */,
 				A4248AF71FD94A640009D6BC /* UIResponder+Additions.swift in Sources */,
+				141B7C6F21551A9A0023E710 /* UIView+Additions.swift in Sources */,
 				A4C13AB720F4FBA800037EDC /* Date+Additions.swift in Sources */,
 				A4D71C811F14C4D000316991 /* UIScreen+Additions.swift in Sources */,
 				A4D7D0611F463BE3006F73A1 /* JSONSerialization+Additions.swift in Sources */,
 				A48B05251FF40C4E00744F07 /* CGContext+Additions.swift in Sources */,
 				A4193CD41F6712EF008AA97D /* CNInstantMessageAddress+Additions.swift in Sources */,
+				141B7C7521551BAA0023E710 /* AnimationOptions+Additions.swift in Sources */,
 				A4A1CEA21FA0A32400D18431 /* UIButton+Additions.swift in Sources */,
 				A4014A5E1FC5CA7B00F26E4E /* UINavigationController+Additions.swift in Sources */,
 				A41D1F111FC1D997007AF665 /* Calendar+Additions.swift in Sources */,
@@ -712,17 +728,16 @@
 				A4F77E1D20B43A1200C11626 /* CGSize+Additions.swift in Sources */,
 				A4F77E1E20B43A1200C11626 /* UILabel+Additions.swift in Sources */,
 				A4F77E1F20B43A1200C11626 /* Numeric+Additions.swift in Sources */,
+				141B7C7B21551CE90023E710 /* UIWindow+Additions.swift in Sources */,
 				A4C13AC720F520FA00037EDC /* Decodable+Additions.swift in Sources */,
 				A4F77E2020B43A1200C11626 /* AVPlayer+Additions.swift in Sources */,
 				A4F77E2120B43A1200C11626 /* UIImage+Additions.swift in Sources */,
 				A4F77E2220B43A1200C11626 /* DateFormatter+Additions.swift in Sources */,
 				A4F77E2320B43A1200C11626 /* Float+Additions.swift in Sources */,
-				A4C13AC120F50A5B00037EDC /* UIViewKeyframeAnimationOptions+Additions.swift in Sources */,
 				A4F77E2420B43A1200C11626 /* TypeAlias.swift in Sources */,
 				A4F77E2520B43A1200C11626 /* MemoryLayout+Additions.swift in Sources */,
 				A4C13ACD20F5259400037EDC /* KeyedDecodingContainer+Additions.swift in Sources */,
 				A4F77E2620B43A1200C11626 /* UIWebView+Additions.swift in Sources */,
-				A4F77E2720B43A1200C11626 /* UIView+Additions.swift in Sources */,
 				A4F77E2820B43A1200C11626 /* Bundle+Additions.swift in Sources */,
 				A4F77E2920B43A1200C11626 /* CGRect+Additions.swift in Sources */,
 				A4F77E2A20B43A1200C11626 /* Array+Additions.swift in Sources */,
@@ -730,21 +745,21 @@
 				A4F77E2C20B43A1200C11626 /* NumberFormatter+Additions.swift in Sources */,
 				A4F77E2D20B43A1200C11626 /* UIGestureRecognizer+Additions.swift in Sources */,
 				A4F77E2E20B43A1200C11626 /* CNContactFetchRequest+Additions.swift in Sources */,
+				141B7C7D21551CE90023E710 /* Level+Additions.swift in Sources */,
 				A4F77E2F20B43A1200C11626 /* NSObject+Additions.swift in Sources */,
 				A4F77E3020B43A1200C11626 /* Locale+Additions.swift in Sources */,
-				A4F77E3120B43A1200C11626 /* UIWindowLevel+Additions.swift in Sources */,
 				A4C13ABB20F4FD4300037EDC /* NSLayoutConstraint+Additions.swift in Sources */,
 				A4F77E3220B43A1200C11626 /* Line.swift in Sources */,
 				A4F77E3320B43A1200C11626 /* URLSession+Additions.swift in Sources */,
 				A4F77E3420B43A1200C11626 /* UIBezierPath+Additions.swift in Sources */,
 				A4F77E3520B43A1200C11626 /* CNPostalAddress+Additions.swift in Sources */,
+				141B7C7421551BAA0023E710 /* KeyframeAnimationOptions+Additions.swift in Sources */,
 				A4F77E3620B43A1200C11626 /* CNSocialProfile+Additions.swift in Sources */,
 				A4F77E3720B43A1200C11626 /* Int+Additions.swift in Sources */,
 				A4F77E3820B43A1200C11626 /* UICollectionView+Additions.swift in Sources */,
 				A4F77E3920B43A1200C11626 /* UIScrollView+Additions.swift in Sources */,
 				A4F77E3A20B43A1200C11626 /* String+Additions.swift in Sources */,
 				A4F77E3B20B43A1200C11626 /* UIImageView+Additions.swift in Sources */,
-				A4C13ABE20F505C400037EDC /* UIViewAnimationOptions+Additions.swift in Sources */,
 				A4F77E3C20B43A1200C11626 /* OptionSet+Additions.swift in Sources */,
 				A4F77E3D20B43A1200C11626 /* CAKeyframeAnimation+Additions.swift in Sources */,
 				A4F77E3E20B43A1200C11626 /* URLSessionDataTaskResult.swift in Sources */,
@@ -759,7 +774,6 @@
 				A4F77E4620B43A1200C11626 /* CGPoint+Additions.swift in Sources */,
 				A4F77E4720B43A1200C11626 /* UIViewController+Additions.swift in Sources */,
 				A4F77E4820B43A1200C11626 /* Comparable+Additions.swift in Sources */,
-				A4F77E4920B43A1200C11626 /* UIWindow+Additions.swift in Sources */,
 				A4F77E4A20B43A1200C11626 /* CNContactStore+Additions.swift in Sources */,
 				A4F77E4B20B43A1200C11626 /* Dictionary+Additions.swift in Sources */,
 				A4F77E4C20B43A1200C11626 /* Data+Additions.swift in Sources */,
@@ -769,11 +783,13 @@
 				A4F77E4F20B43A1200C11626 /* BinaryInteger+Additions.swift in Sources */,
 				A4F77E5020B43A1200C11626 /* UInt8+Additions.swift in Sources */,
 				A4F77E5120B43A1200C11626 /* UIResponder+Additions.swift in Sources */,
+				141B7C7021551A9A0023E710 /* UIView+Additions.swift in Sources */,
 				A4C13AB820F4FBA800037EDC /* Date+Additions.swift in Sources */,
 				A4F77E5220B43A1200C11626 /* UIScreen+Additions.swift in Sources */,
 				A4F77E5320B43A1200C11626 /* JSONSerialization+Additions.swift in Sources */,
 				A4F77E5420B43A1200C11626 /* CGContext+Additions.swift in Sources */,
 				A4F77E5520B43A1200C11626 /* CNInstantMessageAddress+Additions.swift in Sources */,
+				141B7C7621551BAA0023E710 /* AnimationOptions+Additions.swift in Sources */,
 				A4F77E5620B43A1200C11626 /* UIButton+Additions.swift in Sources */,
 				A4F77E5720B43A1200C11626 /* UINavigationController+Additions.swift in Sources */,
 				A4F77E5820B43A1200C11626 /* Calendar+Additions.swift in Sources */,
@@ -794,26 +810,37 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_ASSIGN_ENUM = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_CXX0X_EXTENSIONS = YES;
 				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_IMPLICIT_SIGN_CONVERSION = YES_ERROR;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_EXPLICIT_OWNERSHIP_TYPE = YES;
+				CLANG_WARN_OBJC_IMPLICIT_ATOMIC_PROPERTIES = YES;
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_INTERFACE_IVARS = YES_ERROR;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_MISSING_PROPERTY_SYNTHESIS = YES;
+				CLANG_WARN_OBJC_REPEATED_USE_OF_WEAK = YES_AGGRESSIVE;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_SEMICOLON_BEFORE_METHOD_BODY = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_IMPLICIT_CONVERSION = YES_ERROR;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CLANG_WARN__EXIT_TIME_DESTRUCTORS = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
@@ -828,11 +855,26 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
+				GCC_TREAT_IMPLICIT_FUNCTION_DECLARATIONS_AS_ERRORS = YES;
+				GCC_TREAT_INCOMPATIBLE_POINTER_TYPE_WARNINGS_AS_ERRORS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = YES;
+				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_FOUR_CHARACTER_CONSTANTS = YES;
+				GCC_WARN_HIDDEN_VIRTUAL_FUNCTIONS = YES;
+				GCC_WARN_INITIALIZER_NOT_FULLY_BRACKETED = YES;
+				GCC_WARN_NON_VIRTUAL_DESTRUCTOR = YES;
+				GCC_WARN_SHADOW = YES;
+				GCC_WARN_SIGN_COMPARE = YES;
+				GCC_WARN_STRICT_SELECTOR_MATCH = YES;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNKNOWN_PRAGMAS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_LABEL = YES;
+				GCC_WARN_UNUSED_PARAMETER = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
@@ -841,7 +883,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -858,26 +900,37 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_ASSIGN_ENUM = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_CXX0X_EXTENSIONS = YES;
 				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_IMPLICIT_SIGN_CONVERSION = YES_ERROR;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_EXPLICIT_OWNERSHIP_TYPE = YES;
+				CLANG_WARN_OBJC_IMPLICIT_ATOMIC_PROPERTIES = YES;
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_INTERFACE_IVARS = YES_ERROR;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_MISSING_PROPERTY_SYNTHESIS = YES;
+				CLANG_WARN_OBJC_REPEATED_USE_OF_WEAK = YES_AGGRESSIVE;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_SEMICOLON_BEFORE_METHOD_BODY = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_IMPLICIT_CONVERSION = YES_ERROR;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CLANG_WARN__EXIT_TIME_DESTRUCTORS = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
@@ -886,18 +939,33 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_TREAT_IMPLICIT_FUNCTION_DECLARATIONS_AS_ERRORS = YES;
+				GCC_TREAT_INCOMPATIBLE_POINTER_TYPE_WARNINGS_AS_ERRORS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = YES;
+				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_FOUR_CHARACTER_CONSTANTS = YES;
+				GCC_WARN_HIDDEN_VIRTUAL_FUNCTIONS = YES;
+				GCC_WARN_INITIALIZER_NOT_FULLY_BRACKETED = YES;
+				GCC_WARN_NON_VIRTUAL_DESTRUCTOR = YES;
+				GCC_WARN_SHADOW = YES;
+				GCC_WARN_SIGN_COMPARE = YES;
+				GCC_WARN_STRICT_SELECTOR_MATCH = YES;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNKNOWN_PRAGMAS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_LABEL = YES;
+				GCC_WARN_UNUSED_PARAMETER = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				OTHER_SWIFT_FLAGS = "-Xfrontend -debug-time-function-bodies";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -945,8 +1013,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -989,8 +1055,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = company.tap.TapAdditionsKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
@@ -1038,7 +1102,6 @@
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -1085,7 +1148,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};

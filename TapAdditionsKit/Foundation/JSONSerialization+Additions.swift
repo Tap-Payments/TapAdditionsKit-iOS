@@ -5,10 +5,9 @@
 //  Copyright © 2018 Tap Payments. All rights reserved.
 //
 
-import struct Foundation.NSData.Data
-import class Foundation.NSError.NSError
-import class Foundation.NSJSONSerialization.JSONSerialization
-import func TapSwiftFixes.ExceptionCatcher.catchException
+import struct   Foundation.NSData.Data
+import class    Foundation.NSJSONSerialization.JSONSerialization
+import func     TapSwiftFixes.ExceptionCatcher.catchException
 
 /// JSON Serialization protocol.
 public protocol JSONSerializable {
@@ -78,7 +77,6 @@ fileprivate extension JSONSerialization {
         
         guard object.isValidJSONObject else { return nil }
         
-        var error: NSError?
         var data: Data?
         
         let closure: TypeAlias.ArgumentlessClosure = {
@@ -86,7 +84,7 @@ fileprivate extension JSONSerialization {
             data = try? JSONSerialization.data(withJSONObject: object, options: options)
         }
         
-        catchException(closure, &error)
+        catchException(closure, nil)
         
         if let nonnullData = data {
             

@@ -84,52 +84,51 @@ public extension CALayer {
      - parameter width: Border width.
      - parameter color: Border color.
      */
-    public func setBorder(onEdge edge: UIRectEdge, width: CGFloat, color: CGColor?) {
+    public func setBorder(onEdge edge: UIRectEdge, width: CGFloat, color: UIColor?) {
+        
+        let cgColor = color?.cgColor
         
         if edge.contains(.left) {
             
-            self.leftBorderLayer?.frame = CGRect(x: 0.0, y: 0.0, width: width, height: bounds.height)
-            self.leftBorderLayer?.backgroundColor = color
+            self.leftBorderLayer.frame = CGRect(x: 0.0, y: 0.0, width: width, height: bounds.height)
+            self.leftBorderLayer.backgroundColor = cgColor
         }
         
         if edge.contains(.right) {
             
-            self.rightBorderLayer?.frame = CGRect(x: bounds.width - width, y: 0.0, width: width, height: bounds.height)
-            self.rightBorderLayer?.backgroundColor = color
+            self.rightBorderLayer.frame = CGRect(x: bounds.width - width, y: 0.0, width: width, height: bounds.height)
+            self.rightBorderLayer.backgroundColor = cgColor
         }
         
         if edge.contains(.top) {
             
-            self.topBorderLayer?.frame = CGRect(x: 0.0, y: 0.0, width: bounds.width, height: width)
-            self.topBorderLayer?.backgroundColor = color
+            self.topBorderLayer.frame = CGRect(x: 0.0, y: 0.0, width: bounds.width, height: width)
+            self.topBorderLayer.backgroundColor = cgColor
         }
         
         if edge.contains(.bottom) {
             
-            self.bottomBorderLayer?.frame = CGRect(x: 0.0, y: bounds.height - width, width: bounds.width, height: width)
+            self.bottomBorderLayer.frame = CGRect(x: 0.0, y: bounds.height - width, width: bounds.width, height: width)
+            self.bottomBorderLayer.backgroundColor = cgColor
         }
     }
     
     // MARK: - Private -
     // MARK: Properties
     
-    private var leftBorderLayer: CALayer? {
+    private var leftBorderLayer: CALayer {
         
         get {
             
-            var bLayer = objc_getAssociatedObject(self, &borderLayerLeftKey) as? CALayer
-            
-            if bLayer == nil {
+            if let bLayer = objc_getAssociatedObject(self, &borderLayerLeftKey) as? CALayer {
                 
-                bLayer = CALayer()
-                bLayer!.bounds = bounds
-                bLayer!.backgroundColor = UIColor.clear.cgColor
-                addSublayer(bLayer!)
-                
-                self.leftBorderLayer = bLayer
+                return bLayer
             }
             
-            return bLayer
+            let borderLayer = self.createAndAddBorderLayer()
+            self.leftBorderLayer = borderLayer
+            
+            return borderLayer
         }
         set {
             
@@ -137,23 +136,19 @@ public extension CALayer {
         }
     }
     
-    private var rightBorderLayer: CALayer? {
+    private var rightBorderLayer: CALayer {
         
         get {
             
-            var bLayer = objc_getAssociatedObject(self, &borderLayerRightKey) as? CALayer
-            
-            if bLayer == nil {
+            if let bLayer = objc_getAssociatedObject(self, &borderLayerRightKey) as? CALayer {
                 
-                bLayer = CALayer()
-                bLayer!.bounds = bounds
-                bLayer!.backgroundColor = UIColor.clear.cgColor
-                addSublayer(bLayer!)
-                
-                self.rightBorderLayer = bLayer
+                return bLayer
             }
             
-            return bLayer
+            let borderLayer = self.createAndAddBorderLayer()
+            self.rightBorderLayer = borderLayer
+            
+            return borderLayer
         }
         set {
             
@@ -161,23 +156,19 @@ public extension CALayer {
         }
     }
     
-    private var topBorderLayer: CALayer? {
+    private var topBorderLayer: CALayer {
         
         get {
             
-            var bLayer = objc_getAssociatedObject(self, &borderLayerTopKey) as? CALayer
-            
-            if bLayer == nil {
+            if let bLayer = objc_getAssociatedObject(self, &borderLayerTopKey) as? CALayer {
                 
-                bLayer = CALayer()
-                bLayer!.bounds = bounds
-                bLayer!.backgroundColor = UIColor.clear.cgColor
-                addSublayer(bLayer!)
-                
-                self.topBorderLayer = bLayer
+                return bLayer
             }
             
-            return bLayer
+            let borderLayer = self.createAndAddBorderLayer()
+            self.topBorderLayer = borderLayer
+            
+            return borderLayer
         }
         set {
             
@@ -185,28 +176,37 @@ public extension CALayer {
         }
     }
     
-    private var bottomBorderLayer: CALayer? {
+    private var bottomBorderLayer: CALayer {
         
         get {
             
-            var bLayer = objc_getAssociatedObject(self, &borderLayerBottomKey) as? CALayer
-            
-            if bLayer == nil {
+            if let bLayer = objc_getAssociatedObject(self, &borderLayerBottomKey) as? CALayer {
                 
-                bLayer = CALayer()
-                bLayer!.bounds = bounds
-                bLayer!.backgroundColor = UIColor.clear.cgColor
-                addSublayer(bLayer!)
-                
-                self.bottomBorderLayer = bLayer
+                return bLayer
             }
             
-            return bLayer
+            let borderLayer = self.createAndAddBorderLayer()
+            self.bottomBorderLayer = borderLayer
+            
+            return borderLayer
         }
         set {
             
             objc_setAssociatedObject(self, &borderLayerBottomKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
+    }
+    
+    // MARK: Methods
+    
+    private func createAndAddBorderLayer() -> CALayer {
+        
+        let borderLayer = CALayer()
+        borderLayer.bounds = bounds
+        borderLayer.backgroundColor = UIColor.clear.cgColor
+        
+        self.addSublayer(borderLayer)
+        
+        return borderLayer
     }
 }
 

@@ -5,11 +5,10 @@
 //  Copyright © 2018 Tap Payments. All rights reserved.
 //
 
-import class Foundation.NSValue.NSNumber
-import class Foundation.NSValue.NSValue
-import class QuartzCore.CAAnimation.CAKeyframeAnimation
-import var QuartzCore.CAAnimation.kCAFillModeForwards
-import func QuartzCore.CATransform3D.CATransform3DMakeScale
+import class    Foundation.NSValue.NSNumber
+import class    Foundation.NSValue.NSValue
+import class    QuartzCore.CAAnimation.CAKeyframeAnimation
+import func     QuartzCore.CATransform3D.CATransform3DMakeScale
 
 /// Useful extension to CAKeyframeAnimation
 public extension CAKeyframeAnimation {
@@ -25,7 +24,7 @@ public extension CAKeyframeAnimation {
         animation.values = CAKeyframeAnimation.popupAppearanceTransforms
         animation.keyTimes = CAKeyframeAnimation.popupAppearanceFrameTimes
         
-        animation.fillMode = kCAFillModeForwards
+        animation.fillMode = .forwards
         animation.isRemovedOnCompletion = false
         animation.duration = CAKeyframeAnimationConstants.popupAppearanceTimeInterval
         
@@ -40,7 +39,7 @@ public extension CAKeyframeAnimation {
         animation.values = CAKeyframeAnimation.popupDisappearanceTransforms
         animation.keyTimes = CAKeyframeAnimation.popupDisappearanceFrameTimes
         
-        animation.fillMode = kCAFillModeForwards
+        animation.fillMode = .forwards
         animation.isRemovedOnCompletion = false
         animation.duration = CAKeyframeAnimationConstants.popupDisappearanceTimeInterval
         

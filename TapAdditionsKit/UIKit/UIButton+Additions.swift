@@ -5,11 +5,11 @@
 //  Copyright © 2018 Tap Payments. All rights reserved.
 //
 
-import class Foundation.NSAttributedString.NSAttributedString
-import class UIKit.UIButton.UIButton
-import class UIKit.UIColor.UIColor
-import struct UIKit.UIControl.UIControlState
-import class UIKit.UIImage.UIImage
+import class    Foundation.NSAttributedString.NSAttributedString
+import class    UIKit.UIButton.UIButton
+import class    UIKit.UIColor.UIColor
+import class    UIKit.UIControl.UIControl
+import class    UIKit.UIImage.UIImage
 
 /// Useful extension for UIButton.
 public extension UIButton {
@@ -76,7 +76,7 @@ public extension UIButton {
     ///   - image: Background image.
     ///   - state: Button state.
     ///   - stretch: Stretch parameter.
-    public func setBackgroundImage(_ image: UIImage?, for state: UIControlState, withStretch stretch: Bool) {
+    public func setBackgroundImage(_ image: UIImage?, for state: UIControl.State, withStretch stretch: Bool) {
         
         let backgroundImage = stretch ? image?.stretchableImage : image
         self.setBackgroundImage(backgroundImage, for: state)
@@ -85,7 +85,7 @@ public extension UIButton {
     /// Stretche background image for a given state.
     ///
     /// - Parameter state: Button state.
-    public func stretchBackgroundImage(for state: UIControlState) {
+    public func stretchBackgroundImage(for state: UIControl.State) {
         
         if let backgroundImage = self.backgroundImage(for: state) {
             

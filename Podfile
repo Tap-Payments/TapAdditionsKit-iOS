@@ -6,7 +6,8 @@ source 'https://github.com/CocoaPods/Specs.git'
 target 'TapAdditionsKit' do
   
   pod 'SwiftLint'
-  pod 'TapSwiftFixes/Exceptions'
-  pod 'TapSwiftFixes/Threading'
+  
+  pod 'TapSwiftFixes/Exceptions',   '1.0.5'
+  pod 'TapSwiftFixes/Threading',    '1.0.5'
 
 end

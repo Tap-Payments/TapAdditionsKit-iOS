@@ -16,7 +16,6 @@ import class    UIKit.UIResponder.UIResponder
 import class    UIKit.UIScreen.UIScreen
 import class    UIKit.UIViewController.UIViewController
 import class    UIKit.UIWindow.UIWindow
-import struct   UIKit.UIWindow.UIWindowLevel
 
 private var separateWindowKey: UInt8 = 0
 
@@ -29,7 +28,7 @@ public extension UIViewController {
     /// Defines if receiver is performing any appearance/disappearance transition at the moment.
     public var isPerformingTransition: Bool {
         
-        return self.isBeingDismissed || self.isBeingPresented || self.isMovingFromParentViewController || self.isMovingToParentViewController
+        return self.isBeingDismissed || self.isBeingPresented || self.isMovingFromParent || self.isMovingToParent
     }
     
     /// Returns NSLayoutConstraint which determines height of top layout guide.
@@ -58,17 +57,17 @@ public extension UIViewController {
     /// Displayed view controller.
     public var displayedViewController: UIViewController? {
         
-        if presentedViewController != nil && presentedViewController!.isFullscreen {
-            
-            return presentedViewController?.displayedViewController
+        if let presentedController = self.presentedViewController, presentedController.isFullscreen {
+        
+            return presentedController.displayedViewController
         }
-        else if isKind(of: UINavigationController.self) {
+        else if let navController = self as? UINavigationController {
             
-            return (self as? UINavigationController)?.visibleViewController?.displayedViewController
+            return navController.visibleViewController?.displayedViewController
         }
-        else if childViewControllers.count > 0 {
+        else if self.children.count > 0 {
             
-            let childControllers = childViewControllers
+            let childControllers = self.children
             for controller in childControllers {
                 
                 let presentedController = controller.displayedViewController
@@ -148,9 +147,9 @@ public extension UIViewController {
     /// - Returns: View controller.
     public static func topControllerInNavigationController(for controller: UIViewController) -> UIViewController {
         
-        if controller.parent?.navigationController == controller.navigationController {
+        if let parentController = controller.parent, parentController.navigationController == controller.navigationController {
             
-            return topControllerInNavigationController(for: controller.parent!)
+            return self.topControllerInNavigationController(for: parentController)
         }
         else {
             
@@ -185,7 +184,7 @@ public extension UIViewController {
     ///   - windowClass: Window class. Default is UIWindow.
     ///   - windowLevel: Maximal (but now allowed) window level.
     ///   - completion: Completion.
-    public func showOnSeparateWindow(_ animated: Bool = true, windowClass: UIWindow.Type = UIWindow.self, below windowLevel: UIWindowLevel? = nil, completion: TypeAlias.ArgumentlessClosure?) {
+    public func showOnSeparateWindow(_ animated: Bool = true, windowClass: UIWindow.Type = UIWindow.self, below windowLevel: UIWindow.Level? = nil, completion: TypeAlias.ArgumentlessClosure?) {
         
         self.showOnSeparateWindow(windowClass: windowClass, below: windowLevel) { (controller) in
             
@@ -201,7 +200,7 @@ public extension UIViewController {
     ///   - windowLevel: Maximal (but now allowed) window level.
     ///   - closure: Closure that has view controller as a parameter.
     ///              This view controller should be the controller that presents the receiver.
-    public func showOnSeparateWindow(withUserInteractionEnabled: Bool = true, windowClass: UIWindow.Type = UIWindow.self, below windowLevel: UIWindowLevel? = nil, using closure: TypeAlias.GenericViewControllerClosure<SeparateWindowRootViewController>) {
+    public func showOnSeparateWindow(withUserInteractionEnabled: Bool = true, windowClass: UIWindow.Type = UIWindow.self, below windowLevel: UIWindow.Level? = nil, using closure: TypeAlias.GenericViewControllerClosure<SeparateWindowRootViewController>) {
         
         self.prepareSeparateWindow(ofClass: windowClass, withUserInteractionEnabled: withUserInteractionEnabled, below: windowLevel)
         guard let rootController = self.separateWindow?.rootViewController as? SeparateWindowRootViewController else {
@@ -292,7 +291,7 @@ public extension UIViewController {
             return rController
         }
         
-        for childController in theRootController.childViewControllers {
+        for childController in theRootController.children {
             
             let found: T? = self.inHierarchy(with: childController)
             if let nonnullFound = found { return nonnullFound }
@@ -316,7 +315,7 @@ public extension UIViewController {
         return nil
     }
     
-    private func prepareSeparateWindow<CustomWindow>(ofClass windowClass: CustomWindow.Type, withUserInteractionEnabled: Bool, below windowLevel: UIWindowLevel?) where CustomWindow: UIWindow {
+    private func prepareSeparateWindow<CustomWindow>(ofClass windowClass: CustomWindow.Type, withUserInteractionEnabled: Bool, below windowLevel: UIWindow.Level?) where CustomWindow: UIWindow {
         
         let window = windowClass.init(frame: UIScreen.main.bounds)
         window.rootViewController = SeparateWindowRootViewController.instantiate { [weak self] in self?.removeSeparateWindow() }
@@ -335,27 +334,28 @@ public extension UIViewController {
         }
     }
     
-    private func nextSeparateWindowControllerWindowLevel(with restrictment: UIWindowLevel?) -> UIWindowLevel {
+    private func nextSeparateWindowControllerWindowLevel(with restrictment: UIWindow.Level?) -> UIWindow.Level {
         
         if let maximalLevel = restrictment {
             
-            let possiblyExistingLevel = UIWindowLevel.maximalAmongPresented(lower: maximalLevel)
+            let possiblyExistingLevel = UIWindow.Level.maximalAmongPresented(lower: maximalLevel)
             if UIApplication.shared.windows.first(where: { $0.windowLevel == possiblyExistingLevel }) == nil {
                 
                 return possiblyExistingLevel
             }
-            else if possiblyExistingLevel + 1.0 < maximalLevel {
+            else if possiblyExistingLevel.rawValue + 1.0 < maximalLevel.rawValue {
                 
-                return possiblyExistingLevel + 1.0
+                return UIWindow.Level(possiblyExistingLevel.rawValue + 1.0)
             }
             else {
                 
-                return possiblyExistingLevel + 0.5 * (maximalLevel - possiblyExistingLevel)
+                let value = possiblyExistingLevel.rawValue + 0.5 * (maximalLevel.rawValue - possiblyExistingLevel.rawValue)
+                return UIWindow.Level(value)
             }
         }
         else {
             
-            return UIWindowLevel.maximalAmongPresented
+            return UIWindow.Level.maximalAmongPresented
         }
     }
     

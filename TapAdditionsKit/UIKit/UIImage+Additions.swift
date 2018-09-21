@@ -12,32 +12,40 @@ import func     Accelerate.vImage.vImageBoxConvolve_ARGB8888
 import func     Accelerate.vImage.vImageMatrixMultiply_ARGB8888
 import struct   Accelerate.vImage.vImagePixelCount
 import struct   Accelerate.vImage.vImage_Flags
+
 import class    CoreFoundation.CFData.CFData
 import func     CoreFoundation.CFData.CFDataGetBytePtr
+
 import struct   CoreGraphics.CGAffineTransform
 import struct   CoreGraphics.CGBase.CGFloat
+import class    CoreGraphics.CGColorSpace.CGColorSpace
+import func     CoreGraphics.CGColorSpace.CGColorSpaceCreateDeviceRGB
 import class    CoreGraphics.CGContext.CGContext
 import enum     CoreGraphics.CGContext.CGBlendMode
 import struct   CoreGraphics.CGGeometry.CGPoint
 import struct   CoreGraphics.CGGeometry.CGRect
 import struct   CoreGraphics.CGGeometry.CGSize
 import class    CoreGraphics.CGImage.CGImage
+
 import class    CoreImage.CIContext.CIContext
 import class    CoreImage.CIFilter.CIFilter
 import class    CoreImage.CIImage.CIImage
 import var      CoreImage.kCIInputImageKey
 import var      CoreImage.kCIOutputImageKey
+
 import func     Darwin.C.math.lrint
 import struct   Darwin.C.stddef.size_t
 import func     Darwin.fabs
 import func     Darwin.floor
 import func     Darwin.round
 import func     Darwin.sqrt
+
 import struct   Foundation.NSData.Data
 import struct   Foundation.NSDate.TimeInterval
 import class    Foundation.NSDictionary.NSDictionary
 import class    Foundation.NSValue.NSNumber
 import class    Foundation.NSValue.NSValue
+
 import class    ImageIO.CGImageSource
 import func     ImageIO.CGImageSource.CGImageSourceCopyPropertiesAtIndex
 import func     ImageIO.CGImageSource.CGImageSourceCreateImageAtIndex
@@ -45,6 +53,7 @@ import func     ImageIO.CGImageSource.CGImageSourceCreateWithData
 import func     ImageIO.CGImageSource.CGImageSourceGetCount
 import var      ImageIO.CGImageSource.kCGImagePropertyGIFDelayTime
 import var      ImageIO.CGImageSource.kCGImagePropertyGIFDictionary
+
 import class    UIKit.UIBezierPath.UIBezierPath
 import class    UIKit.UIColor.UIColor
 import struct   UIKit.UIEdgeInsets
@@ -57,11 +66,6 @@ import class    UIKit.UIImage.UIImage
 import func     UIKit.UIImage.UIImagePNGRepresentation
 import class    UIKit.UIScreen.UIScreen
 import class    UIKit.UIView.UIView
-import enum     UIKit.UIView.UIViewContentMode
-
-typealias CIImageRef = CIImage
-
-private let kMinimalImageSizeForInstagram = CGSize(width: 612.0, height: 612.0)
 
 /// Useful extension of UIImage class.
 public extension UIImage {
@@ -91,11 +95,16 @@ public extension UIImage {
         return resizableImage(withCapInsets: UIEdgeInsets.zero, resizingMode: .tile)
     }
     
+    /// Returns size in pixels.
+    public var sizeInPixels: CGSize {
+        
+        return self.scale * self.size
+    }
+    
     /// Predefines if image is large enough for Instagram.
     public var isLargeEnoughForInstagram: Bool {
         
-        return self.size.width  * self.scale >= kMinimalImageSizeForInstagram.width &&
-            self.size.height * self.scale >= kMinimalImageSizeForInstagram.height
+        return self.sizeInPixels.fits(into: .minimalInstagramImageSizeInPixels)
     }
     
     /// Defines if image has square form.
@@ -107,7 +116,7 @@ public extension UIImage {
     /// Returns transparent copy of the receiver.
     public var transparentImage: UIImage? {
         
-        guard let imageData = UIImagePNGRepresentation(self) else { return nil }
+        guard let imageData = self.pngData() else { return nil }
         return UIImage(data: imageData)
     }
     
@@ -115,10 +124,11 @@ public extension UIImage {
     public var negativeImage: UIImage? {
         
         let ciImage = self.nonnullCIImage
-        let negativeFilter = CIFilter(name: "CIColorInvert")
-        negativeFilter?.setValue(ciImage, forKey: kCIInputImageKey)
+        guard let negativeFilter = CIFilter(name: "CIColorInvert") else { return nil }
         
-        if let resultCIImage = negativeFilter?.value(forKey: kCIOutputImageKey) as? CIImageRef {
+        negativeFilter.setValue(ciImage, forKey: kCIInputImageKey)
+        
+        if let resultCIImage = negativeFilter.value(forKey: kCIOutputImageKey) as? CIImage {
             
             return UIImage(ciImage: resultCIImage, scale: scale, orientation: imageOrientation)
         }
@@ -131,35 +141,56 @@ public extension UIImage {
     /// Returns black-and-white image with inverted mask.
     public var invertedMaskImage: UIImage? {
         
-        let cgImage = self.nonnullCGImage
-        let decode: [CGFloat] = [1.0, 0.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0]
+        let cgImage                     = self.nonnullCGImage
+        
+        guard let dataProvider          = cgImage.dataProvider else { return nil }
+        
+        let decode: [CGFloat]           = [1.0, 0.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0]
+        let colorSpace: CGColorSpace    = cgImage.colorSpace ?? CGColorSpaceCreateDeviceRGB()
         
         let resultCGImage = CGImage(width: cgImage.width,
                                     height: cgImage.height,
                                     bitsPerComponent: cgImage.bitsPerComponent,
                                     bitsPerPixel: cgImage.bitsPerPixel,
                                     bytesPerRow: cgImage.bytesPerRow,
-                                    space: cgImage.colorSpace!,
+                                    space: colorSpace,
                                     bitmapInfo: cgImage.bitmapInfo,
-                                    provider: cgImage.dataProvider!,
+                                    provider: dataProvider,
                                     decode: decode,
                                     shouldInterpolate: cgImage.shouldInterpolate,
                                     intent: cgImage.renderingIntent)
+    
+        guard let resultingCGImage = resultCGImage else { return nil }
         
-        let resultUIImage = UIImage(cgImage: resultCGImage!, scale: self.scale, orientation: self.imageOrientation)
+        let resultUIImage = UIImage(cgImage: resultingCGImage, scale: self.scale, orientation: self.imageOrientation)
+        
         return resultUIImage
     }
     
     /// Returns nonnull backing CGImage.
     public var nonnullCGImage: CGImage {
         
-        return ciImage == nil ? cgImage! : CIContext().createCGImage(ciImage!, from: ciImage!.extent)!
+        if let coreImage = self.ciImage {
+            
+            return CIContext().createCGImage(coreImage, from: coreImage.extent)!
+        }
+        else {
+            
+            return self.cgImage!
+        }
     }
     
     /// Returns nonnull backing CIImage.
     public var nonnullCIImage: CIImage {
         
-        return cgImage == nil ? ciImage! : CIImage(cgImage: cgImage!)
+        if let coreGraphicsImage = self.cgImage {
+            
+            return CIImage(cgImage: coreGraphicsImage)
+        }
+        else {
+            
+            return self.ciImage!
+        }
     }
     
     // MARK: Methods
@@ -322,7 +353,7 @@ public extension UIImage {
     ///
     /// - Parameter size: Size.
     /// - Returns: Content mode.
-    public func bestContentMode(toFit size: CGSize) -> UIViewContentMode {
+    public func bestContentMode(toFit size: CGSize) -> UIView.ContentMode {
         
         let widthFits       = self.size.width <= size.width
         let heightFits      = self.size.height <= size.height
@@ -431,10 +462,11 @@ public extension UIImage {
         }
         
         let imageRect = CGRect(origin: CGPoint.zero, size: size)
-        var effectImage = self
+        var effectImage: UIImage = self
         
-        let hasBlur = blurRadius > CGFloat.ulpOfOne
-        let hasSaturationChange = fabs(saturationDeltaFactor - 1.0) > CGFloat.ulpOfOne
+        let hasBlur: Bool = blurRadius > CGFloat.ulpOfOne
+        let hasSaturationChange: Bool = abs(saturationDeltaFactor - 1.0) > CGFloat.ulpOfOne
+        
         if hasBlur || hasSaturationChange {
             
             UIGraphicsBeginImageContextWithOptions(size, false, UIScreen.main.scale)
@@ -505,16 +537,16 @@ public extension UIImage {
                 }
             }
             
-            if !effectImageBuffersAreSwapped {
+            if !effectImageBuffersAreSwapped, let currentContextImage = UIGraphicsGetImageFromCurrentImageContext() {
                 
-                effectImage = UIGraphicsGetImageFromCurrentImageContext()!
+                effectImage = currentContextImage
             }
             
             UIGraphicsEndImageContext()
             
-            if effectImageBuffersAreSwapped {
+            if effectImageBuffersAreSwapped, let currentContextImage = UIGraphicsGetImageFromCurrentImageContext() {
                 
-                effectImage = UIGraphicsGetImageFromCurrentImageContext()!
+                effectImage = currentContextImage
             }
             
             UIGraphicsEndImageContext()
@@ -545,10 +577,10 @@ public extension UIImage {
             outputContext.restoreGState()
         }
         
-        if tintColor != nil {
+        if let nonnullTintColor = tintColor {
             
             outputContext.saveGState()
-            outputContext.setFillColor(tintColor!.cgColor)
+            outputContext.setFillColor(nonnullTintColor.cgColor)
             outputContext.fill(imageRect)
             outputContext.restoreGState()
         }
@@ -698,7 +730,7 @@ public extension UIImage {
         return UIImage.animatedImage(with: frames, duration: duration)
     }
     
-    private static func createImagesAndDelays(source: CGImageSource!, count: size_t) -> [GIFImageFrame]? {
+    private static func createImagesAndDelays(source: CGImageSource, count: size_t) -> [GIFImageFrame]? {
         
         var result: [GIFImageFrame] = []
         

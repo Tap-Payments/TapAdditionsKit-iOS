@@ -1,24 +1,23 @@
 //
-//  UIWindowLevel+Additions.swift
+//  Level+Additions.swift
 //  TapAdditionsKit
 //
 //  Copyright © 2018 Tap Payments. All rights reserved.
 //
 
-import struct CoreGraphics.CGBase.CGFloat
-import class UIKit.UIApplication.UIApplication
-import struct UIKit.UIWindow.UIWindowLevel
+import class    UIKit.UIApplication.UIApplication
+import class    UIKit.UIWindow.UIWindow
 
 /// Useful extension for UIWindowLevel
-public extension UIWindowLevel {
+public extension UIWindow.Level {
     
     // MARK: - Public
     // MARK: Properties
     
     /// Returns maximal window level among all presented windows in the app.
-    public static var maximalAmongPresented: UIWindowLevel {
+    public static var maximalAmongPresented: UIWindow.Level {
         
-        return self.maximalAmongPresented(lower: CGFloat.greatestFiniteMagnitude)
+        return self.maximalAmongPresented(lower: UIWindow.Level(.greatestFiniteMagnitude))
     }
     
     // MARK: Methods
@@ -27,10 +26,10 @@ public extension UIWindowLevel {
     ///
     /// - Parameter then: Specified window level.
     /// - Returns: Maximal found window level lower then the specified one or 'then' if the window not found.
-    public static func maximalAmongPresented(lower then: UIWindowLevel) -> UIWindowLevel {
+    public static func maximalAmongPresented(lower then: UIWindow.Level) -> UIWindow.Level {
         
         let windows = UIApplication.shared.windows.filter { $0.windowLevel < then }
-        guard windows.count > 0 else { return then - 1.0 }
+        guard windows.count > 0 else { return UIWindow.Level(then.rawValue - 1.0) }
         
         guard let firstWindow = (windows.sorted { $0.windowLevel > $1.windowLevel }).first else {
             
@@ -44,7 +43,7 @@ public extension UIWindowLevel {
     ///
     /// - Parameter then: Specified window level.
     /// - Returns: Minimal found window level higher then the specified one or 'then' if the window not found.
-    public static func minimalAmongPresented(higher then: UIWindowLevel) -> UIWindowLevel {
+    public static func minimalAmongPresented(higher then: UIWindow.Level) -> UIWindow.Level {
         
         let windows = UIApplication.shared.windows.filter { $0.windowLevel > then }.sorted { $0.windowLevel < $1.windowLevel }
         guard windows.count > 0 else { return then }

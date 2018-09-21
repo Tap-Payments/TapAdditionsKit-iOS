@@ -5,19 +5,18 @@
 //  Copyright © 2018 Tap Payments. All rights reserved.
 //
 
-import struct CoreGraphics.CGGeometry.CGRect
-import struct CoreGraphics.CGGeometry.CGSize
-import struct Foundation.NSAttributedString.NSAttributedStringKey
-import struct Foundation.NSCharacterSet.CharacterSet
-import struct Foundation.NSDecimal.Decimal
-import struct Foundation.NSLocale.Locale
-import var Foundation.NSNotFound
-import class Foundation.NSNumberFormatter.NumberFormatter
-import struct Foundation.NSRange.NSRange
-import class Foundation.NSRegularExpression.NSRegularExpression
-import class Foundation.NSString
-import class UIKit.NSStringDrawingContext
-import struct UIKit.NSStringDrawingOptions
+import struct   CoreGraphics.CGGeometry.CGRect
+import struct   CoreGraphics.CGGeometry.CGSize
+import struct   Foundation.NSCharacterSet.CharacterSet
+import struct   Foundation.NSDecimal.Decimal
+import struct   Foundation.NSLocale.Locale
+import var      Foundation.NSNotFound
+import class    Foundation.NSNumberFormatter.NumberFormatter
+import struct   Foundation.NSRange.NSRange
+import class    Foundation.NSRegularExpression.NSRegularExpression
+import class    Foundation.NSString
+import class    UIKit.NSStringDrawingContext
+import struct   UIKit.NSStringDrawingOptions
 
 /// Useful extension to String.
 public extension String {
@@ -435,7 +434,7 @@ public extension String {
     ///   - attributes: Text attributes ( font, size, etc. )
     ///   - context: Context.
     /// - Returns: CGRect
-    public func boundingRect(with size: CGSize, options: NSStringDrawingOptions, attributes: [NSAttributedStringKey: Any]?, context: NSStringDrawingContext?) -> CGRect {
+    public func boundingRect(with size: CGSize, options: NSStringDrawingOptions, attributes: [NSAttributedString.Key: Any]?, context: NSStringDrawingContext?) -> CGRect {
         
         return (self as NSString).boundingRect(with: size, options: options, attributes: attributes, context: context)
     }

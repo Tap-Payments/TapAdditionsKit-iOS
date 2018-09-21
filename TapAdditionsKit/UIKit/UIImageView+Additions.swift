@@ -5,11 +5,10 @@
 //  Copyright © 2018 Tap Payments. All rights reserved.
 //
 
-import struct Foundation.NSDate.TimeInterval
-import class UIKit.UIImage.UIImage
-import class UIKit.UIImageView.UIImageView
-import class UIKit.UIView.UIView
-import struct UIKit.UIView.UIViewAnimationOptions
+import struct   Foundation.NSDate.TimeInterval
+import class    UIKit.UIImage.UIImage
+import class    UIKit.UIImageView.UIImageView
+import class    UIKit.UIView.UIView
 
 /// Useful extension to UIImageView class.
 public extension UIImageView {
@@ -38,7 +37,7 @@ public extension UIImageView {
         
         self.addSubviewWithConstraints(fadingImageView)
         
-        let options: UIViewAnimationOptions = [.curveEaseInOut, .beginFromCurrentState, .overrideInheritedDuration, .allowAnimatedContent]
+        let options: UIView.AnimationOptions = [.curveEaseInOut, .beginFromCurrentState, .overrideInheritedDuration, .allowAnimatedContent]
         let animation = {
             
             fadingImageView.alpha = 1.0
