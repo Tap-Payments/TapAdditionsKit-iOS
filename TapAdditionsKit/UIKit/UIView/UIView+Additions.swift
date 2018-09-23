@@ -123,7 +123,7 @@ import class    UIKit.UIView
     /// Returns screenshot of the view.
     public var screenshot: UIImage? {
         
-        return self.screenshot(area: bounds)
+        return self.screenshot(with: 1.0)
     }
     
     /// Returns current first responder in a view hieararchy with receiver as a parent or nil if there is no first responder set.
@@ -398,15 +398,26 @@ import class    UIKit.UIView
         UIView.animate(withDuration: duration, animations: animations, completion: completion)
     }
     
-    /// Returns a screenshot of specific area.
+    /// Returns a screenshot with a specific resulting image scale.
     ///
-    /// - Parameter area: Area to screenshot.
+    /// - Parameter scale: Resulting image scale.
     /// - Returns: Screenshot image.
-    public func screenshot(area: CGRect) -> UIImage? {
+    public func screenshot(with scale: CGFloat) -> UIImage? {
         
-        let scale = 1.0 / UIScreen.main.numberOfPointsInOnePixel
+        return self.screenshot(area: self.bounds, with: scale)
+    }
+    
+    /// Returns a screenshot of specific area with specific resulting image scale.
+    ///
+    /// - Parameters:
+    ///   - area: Area to screenshot measured in points.
+    ///   - scale: Resulting image scale.
+    /// - Returns: Screenshot image.
+    public func screenshot(area: CGRect, with scale: CGFloat = 1.0) -> UIImage? {
         
-        UIGraphicsBeginImageContextWithOptions(area.size, false, scale)
+        let imageScale = scale / UIScreen.main.numberOfPointsInOnePixel
+        
+        UIGraphicsBeginImageContextWithOptions(area.size, false, imageScale)
         guard let context = UIGraphicsGetCurrentContext() else { return nil }
         
         context.translateBy(x: -area.origin.x, y: -area.origin.y)
