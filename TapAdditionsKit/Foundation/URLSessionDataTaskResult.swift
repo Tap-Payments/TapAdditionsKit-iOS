@@ -2,11 +2,11 @@
 //  URLSessionDataTaskResult.swift
 //  TapAdditionsKit
 //
-//  Copyright © 2018 Tap Payments. All rights reserved.
+//  Copyright © 2019 Tap Payments. All rights reserved.
 //
 
-import struct Foundation.NSData.Data
-import class Foundation.NSURLResponse.URLResponse
+import struct	Foundation.NSData.Data
+import class	Foundation.NSURLResponse.URLResponse
 
 /// Structure representing result of URLSessionDataTask
 public struct URLSessionDataTaskResult {
@@ -34,14 +34,5 @@ public struct URLSessionDataTaskResult {
         self.data = data
         self.response = response
         self.error = error
-    }
-}
-
-/// Dummy struct to import Foundation/URLSessionDataTask module.
-public struct URLSessionDataTaskAdditions {
-    
-    @available (*, unavailable) private init() {
-        
-        fatalError("\(self) cannot be initialized.")
     }
 }

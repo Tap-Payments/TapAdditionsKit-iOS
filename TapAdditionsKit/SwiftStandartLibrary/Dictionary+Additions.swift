@@ -2,7 +2,7 @@
 //  Dictionary+Additions.swift
 //  TapAdditionsKit
 //
-//  Copyright © 2018 Tap Payments. All rights reserved.
+//  Copyright © 2019 Tap Payments. All rights reserved.
 //
 
 /// OptionalType protocol.
@@ -11,13 +11,13 @@ public protocol OptionalType {
     associatedtype Wrapped
     
     /// Returns optional representation of the receiver.
-    var asOptional: Wrapped? { get }
+    var tap_asOptional: Wrapped? { get }
 }
 
 // MARK: - OptionalType
 extension Optional: OptionalType {
     
-    public var asOptional: Wrapped? {
+    public var tap_asOptional: Wrapped? {
         
         return self
     }
@@ -30,13 +30,13 @@ public extension Dictionary {
     // MARK: Properties
     
     /// Returns array of all keys of the receiver.
-    public var allKeys: [Key] {
+    public var tap_allKeys: [Key] {
         
         return self.map { $0.key }
     }
     
     /// Returns array of all values of the receiver.
-    public var allValues: [Value] {
+    public var tap_allValues: [Value] {
         
         return self.map { $0.value }
     }
@@ -49,7 +49,7 @@ public extension Dictionary {
      - parameter value: Value.
      - parameter key:   Key.
      */
-    public mutating func setValue(_ value: Value?, forKey key: Key) {
+    public mutating func tap_setValue(_ value: Value?, forKey key: Key) {
         
         if let nonnullValue = value {
             
@@ -104,7 +104,7 @@ public extension Dictionary {
     /// - Parameter transform: Key transform.
     /// - Returns: Mapped dictionary.
     /// - Throws: Mapped dictionary.
-    public func mapKeys<T>(_ transform: (Dictionary.Key) throws -> T) rethrows -> [T: Dictionary.Value] {
+    public func tap_mapKeys<T>(_ transform: (Dictionary.Key) throws -> T) rethrows -> [T: Dictionary.Value] {
         
         var result: [T: Dictionary.Value] = [:]
         
@@ -126,13 +126,13 @@ public extension Dictionary {
 extension Dictionary where Value: OptionalType {
     
     /// Returns non-optional representation of the receiver.
-    public var nonOptionalRepresentation: [Key: Value.Wrapped] {
+    public var tap_nonOptionalRepresentation: [Key: Value.Wrapped] {
         
         var result: [Key: Value.Wrapped] = [:]
         
         for (key, value) in self {
             
-            if let unwrappedValue = value.asOptional {
+            if let unwrappedValue = value.tap_asOptional {
                 
                 result[key] = unwrappedValue
             }
@@ -182,14 +182,5 @@ public extension Dictionary where Value == [AnyHashable: Equatable] {
     public static func !=<V: Equatable, K>(lhs: [Key: [K: V]], rhs: [Key: [K: V]]) -> Bool {
         
         return !(lhs == rhs)
-    }
-}
-
-/// Dummy struct to import SwiftStandartLibrary/Dictionary module.
-public struct DictionaryAdditions {
-    
-    @available (*, unavailable) private init() {
-        
-        fatalError("\(self) cannot be initialized.")
     }
 }

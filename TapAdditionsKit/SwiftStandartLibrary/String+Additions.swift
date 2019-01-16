@@ -2,21 +2,21 @@
 //  String+Additions.swift
 //  TapAdditionsKit
 //
-//  Copyright © 2018 Tap Payments. All rights reserved.
+//  Copyright © 2019 Tap Payments. All rights reserved.
 //
 
-import struct   CoreGraphics.CGGeometry.CGRect
-import struct   CoreGraphics.CGGeometry.CGSize
-import struct   Foundation.NSCharacterSet.CharacterSet
-import struct   Foundation.NSDecimal.Decimal
-import struct   Foundation.NSLocale.Locale
-import var      Foundation.NSNotFound
-import class    Foundation.NSNumberFormatter.NumberFormatter
-import struct   Foundation.NSRange.NSRange
-import class    Foundation.NSRegularExpression.NSRegularExpression
-import class    Foundation.NSString
-import class    UIKit.NSStringDrawingContext
-import struct   UIKit.NSStringDrawingOptions
+import struct	CoreGraphics.CGGeometry.CGRect
+import struct	CoreGraphics.CGGeometry.CGSize
+import struct	Foundation.NSCharacterSet.CharacterSet
+import struct	Foundation.NSDecimal.Decimal
+import struct	Foundation.NSLocale.Locale
+import var		Foundation.NSNotFound
+import class	Foundation.NSNumberFormatter.NumberFormatter
+import struct	Foundation.NSRange.NSRange
+import class	Foundation.NSRegularExpression.NSRegularExpression
+import class	Foundation.NSString
+import class	UIKit.NSStringDrawingContext
+import struct	UIKit.NSStringDrawingOptions
 
 /// Useful extension to String.
 public extension String {
@@ -25,106 +25,107 @@ public extension String {
     // MARK: Properties
     
     /// Empty string.
-    public static let empty = ""
+    public static let tap_empty = ""
     
     /// Empty JSON dictionary string.
-    public static let emptyJSONDictionary = "{}"
+    public static let tap_emptyJSONDictionary = "{}"
     
     /// Empty JSON array string.
-    public static let emptyJSONArray = "[]"
+    public static let tap_emptyJSONArray = "[]"
     
     /// Returns length of the receiver.
-    public var length: Int {
+    public var tap_length: Int {
         
         return self.count
     }
     
     /// Returns reversed string.
-    public var reversed: String {
+    public var tap_reversed: String {
         
         return String(self.reversed())
     }
     
     /// Returns last path component of the receiver.
-    public var lastPathComponent: String {
+    public var tap_lastPathComponent: String {
 
-        let reversedString = self.reversed
+		let reversedString = self.tap_reversed
+		
         if let range = reversedString.range(of: Constants.slashCharacter) {
 
-            return String(reversedString[..<range.lowerBound]).reversed
+            return String(reversedString[..<range.lowerBound]).tap_reversed
         }
 
-        return .empty
+        return .tap_empty
     }
     
     /// Returns path extension of the receiver.
-    public var pathExtension: String {
+    public var tap_pathExtension: String {
         
         return (self as NSString).pathExtension
     }
     
     /// Defines if the receiver contains only digits.
-    public var containsOnlyDigits: Bool {
+    public var tap_containsOnlyDigits: Bool {
         
-        return self.isValid(for: Constants.digitsOnlyRegex)
+        return self.tap_isValid(for: Constants.digitsOnlyRegex)
     }
     
     /// Defines if receiver contains only international digits.
-    public var containsOnlyInternationalDigits: Bool {
+    public var tap_containsOnlyInternationalDigits: Bool {
         
-        return self.isValid(for: Constants.internationalDigitsOnlyRegex)
+        return self.tap_isValid(for: Constants.internationalDigitsOnlyRegex)
     }
     
     /// Defines if receiver is a valid number string.
-    public var isValidNumber: Bool {
+    public var tap_isValidNumber: Bool {
         
-        return self.isValid(for: Constants.numberRegex)
+        return self.tap_isValid(for: Constants.numberRegex)
     }
     
     /// Returns integer value of the receiver.
-    public var integerValue: Int {
+    public var tap_integerValue: Int {
         
         return (self as NSString).integerValue
     }
     
     /// Returns decimal number value of the receiver if it is a valid number, nil otherwise.
-    public var decimalValue: Decimal? {
+    public var tap_decimalValue: Decimal? {
         
-        guard self.isValidNumber else { return nil }
+        guard self.tap_isValidNumber else { return nil }
         
-        type(of: self).numberFormatter.generatesDecimalNumbers = true
-        return type(of: self).numberFormatter.number(from: self) as? Decimal
+        type(of: self).tap_numberFormatter.generatesDecimalNumbers = true
+        return type(of: self).tap_numberFormatter.number(from: self) as? Decimal
     }
     
     /// Returns double value.
-    public var doubleValue: Double {
+    public var tap_doubleValue: Double {
         
         return (self as NSString).doubleValue
     }
     
     /// Defines if the receiver is a valid email address.
-    public var isValidEmailAddress: Bool {
+    public var tap_isValidEmailAddress: Bool {
         
-        return Constants.validEmailLengthRange.contains(self.length) && self.isValid(for: Constants.validEmailRegex)
+        return Constants.validEmailLengthRange.contains(self.tap_length) && self.tap_isValid(for: Constants.validEmailRegex)
     }
     
     /// Defines if the receiver is a valid cardholder name.
-    public var isValidCardholderName: Bool {
+    public var tap_isValidCardholderName: Bool {
         
-        return self.isValid(for: Constants.validCardholderNameRegex)
+        return self.tap_isValid(for: Constants.validCardholderNameRegex)
     }
     
     /// Defines if receiver passes Luhn algorithm.
-    public var isValidLuhn: Bool {
+    public var tap_isValidLuhn: Bool {
 
-        guard self.containsOnlyInternationalDigits else { return false }
+        guard self.tap_containsOnlyInternationalDigits else { return false }
         
         var sum = 0
-        let digits = self.charactersArray.reversed()
+        let digits = self.tap_charactersArray.reversed()
         
         for (index, digitString) in digits.enumerated() {
             
-            let digit = digitString.integerValue
+            let digit = digitString.tap_integerValue
             let odd = index % 2 == 1
             
             switch (odd, digit) {
@@ -149,13 +150,13 @@ public extension String {
     /// Removes path extension from the receiver.
     ///
     /// - Returns: Copy of the receiver without path extension.
-    public var deletingPathExtension: String {
+    public var tap_deletingPathExtension: String {
         
         return (self as NSString).deletingPathExtension
     }
     
     /// Returns URL encoded receiver.
-    public var urlEncoded: String {
+    public var tap_urlEncoded: String {
         
         let characters = CharacterSet.urlQueryAllowed
         
@@ -168,7 +169,7 @@ public extension String {
     }
     
     /// Characters array.
-    public var charactersArray: [String] {
+    public var tap_charactersArray: [String] {
         
         return self.map { String($0) }
     }
@@ -182,7 +183,7 @@ public extension String {
     ///   - lines: Lines array.
     public init(separator: String, lines: String...) {
         
-        self = .empty
+        self = .tap_empty
         
         let linesCount = lines.count
         guard linesCount > 0 else { return }
@@ -202,7 +203,7 @@ public extension String {
     ///
     /// - Parameter path: Path component to append.
     /// - Returns: Receiver copy with appended path component.
-    public func appendingPathComponent(_ path: String) -> String {
+    public func tap_appendingPathComponent(_ path: String) -> String {
         
         return (self as NSString).appendingPathComponent(path)
     }
@@ -211,7 +212,7 @@ public extension String {
     ///
     /// - Parameter path: Path extension to append.
     /// - Returns: Receiver copy with appended path extension.
-    public func appendingPathExtension(_ path: String) -> String? {
+    public func tap_appendingPathExtension(_ path: String) -> String? {
         
         return (self as NSString).appendingPathExtension(path)
     }
@@ -220,7 +221,7 @@ public extension String {
     ///
     /// - Parameter other: Other string.
     /// - Returns: Boolean value which determines whether the strings are equal.
-    public func isEqual(to other: String?) -> Bool {
+    public func tap_isEqual(to other: String?) -> Bool {
         
         guard let nonnullOther = other else { return false }
         
@@ -231,7 +232,7 @@ public extension String {
     ///
     /// - Parameter pattern: Regular expression.
     /// - Returns: Boolean value which determines whether the string is valid for the given regular expression.
-    public func isValid(for pattern: String?) -> Bool {
+    public func tap_isValid(for pattern: String?) -> Bool {
         
         guard let nonnullPattern = pattern else { return false }
         
@@ -241,7 +242,7 @@ public extension String {
             return false
         }
     
-        let selfLength = self.length
+        let selfLength = self.tap_length
         
         let textRange = NSRange(location: 0, length: selfLength)
         let matchRange = regex.rangeOfFirstMatch(in: self, options: .reportProgress, range: textRange)
@@ -253,7 +254,7 @@ public extension String {
     ///
     /// - Parameter pattern: Regular expression.
     /// - Returns: Boolean value which determines if there are matches for the given pattern.
-    public func hasMatches(for pattern: String?) -> Bool {
+    public func tap_hasMatches(for pattern: String?) -> Bool {
         
         guard let nonnullPattern = pattern else { return false }
         
@@ -262,7 +263,7 @@ public extension String {
             return false
         }
         
-        let textRange = NSRange(location: 0, length: self.length)
+        let textRange = NSRange(location: 0, length: self.tap_length)
         let matchRange = regex.rangeOfFirstMatch(in: self, options: .reportProgress, range: textRange)
         return matchRange.location != NSNotFound
     }
@@ -271,7 +272,7 @@ public extension String {
     ///
     /// - Parameter searchText: Substring to search.
     /// - Returns: Boolean
-    public func containsIgnoringCase(_ searchText: String) -> Bool {
+    public func tap_containsIgnoringCase(_ searchText: String) -> Bool {
         
         return self.range(of: searchText, options: .caseInsensitive) != nil
     }
@@ -280,27 +281,27 @@ public extension String {
     ///
     /// - Parameter index: Index.
     /// - Returns: Substring.
-    public func substring(from index: Int) -> String {
+    public func tap_substring(from index: Int) -> String {
         
-        return String(self.suffix(from: index.index(in: self)))
+        return String(self.suffix(from: index.tap_index(in: self)))
     }
     
     /// Returns a substring to a given index.
     ///
     /// - Parameter index: Index.
     /// - Returns: Substring.
-    public func substring(to index: Int) -> String {
+    public func tap_substring(to index: Int) -> String {
         
-        return String(self.prefix(upTo: index.index(in: self)))
+        return String(self.prefix(upTo: index.tap_index(in: self)))
     }
     
     /// Returns a substring with a given NSRange.
     ///
     /// - Parameter range: NSRange.
     /// - Returns: Substring.
-    public func substring(with range: NSRange) -> String? {
+    public func tap_substring(with range: NSRange) -> String? {
         
-        guard let swiftRange = self.range(from: range) else { return nil }
+        guard let swiftRange = self.tap_range(from: range) else { return nil }
         
         let substring = self[swiftRange]
         return String(substring)
@@ -310,10 +311,10 @@ public extension String {
     ///
     /// - Parameter string: Substring.
     /// - Returns: NSRange.
-    public func nsRange(of string: String) -> NSRange? {
+    public func tap_nsRange(of string: String) -> NSRange? {
         
         guard let swiftRange = self.range(of: string) else { return nil }
-        return self.nsRange(from: swiftRange)
+        return self.tap_nsRange(from: swiftRange)
     }
     
     /// Replaces given range with a given substring.
@@ -322,9 +323,9 @@ public extension String {
     ///   - range: NSRange.
     ///   - string: String to replace with.
     /// - Returns: String with replaced range.
-    @discardableResult public mutating func replace(range: NSRange, withString string: String) -> String {
+    @discardableResult public mutating func tap_replace(range: NSRange, withString string: String) -> String {
         
-        self = self.replacing(range: range, withString: string)
+        self = self.tap_replacing(range: range, withString: string)
         
         return self
     }
@@ -335,9 +336,9 @@ public extension String {
     ///   - range: NSRange.
     ///   - string: String to replace with.
     /// - Returns: String with replaced range.
-    public func replacing(range: NSRange, withString string: String) -> String {
+    public func tap_replacing(range: NSRange, withString string: String) -> String {
         
-        guard let swiftRange = self.range(from: range) else { return self }
+        guard let swiftRange = self.tap_range(from: range) else { return self }
         
         return self.replacingCharacters(in: swiftRange, with: string)
     }
@@ -348,7 +349,7 @@ public extension String {
     ///   - string: string to be replaced
     ///   - replaceString: string to replace
     /// - Returns: string with replaced value
-    public func replacingFirstOccurrence(of string: String, with replaceString: String) -> String {
+    public func tap_replacingFirstOccurrence(of string: String, with replaceString: String) -> String {
         
         if let range = self.range(of: string) {
             
@@ -364,11 +365,11 @@ public extension String {
     ///   - string: string to be replaced
     ///   - replaceString: string to replace
     /// - Returns: string with replaced value
-    @discardableResult public mutating func replaceFirstOccurrence(of string: String, with replaceString: String) -> String {
+    @discardableResult public mutating func tap_replaceFirstOccurrence(of string: String, with replaceString: String) -> String {
         
-        guard let range = self.nsRange(of: string) else { return self }
+        guard let range = self.tap_nsRange(of: string) else { return self }
         
-        self.replace(range: range, withString: replaceString)
+        self.tap_replace(range: range, withString: replaceString)
         
         return self
     }
@@ -377,7 +378,7 @@ public extension String {
     ///
     /// - Parameter string: String to append.
     /// - Returns: Receiver + appended string.
-    public mutating func append(string: String) -> String {
+    public mutating func tap_append(string: String) -> String {
         
         self = self.appending(string)
         
@@ -388,20 +389,20 @@ public extension String {
     ///
     /// - Parameter prefix: Prefix to remove.
     /// - Returns: String without the prefix.
-    public func removingPrefix(_ prefix: String) -> String {
+    public func tap_removingPrefix(_ prefix: String) -> String {
         
         guard self.hasPrefix(prefix) else { return self }
         
-        return String(self.dropFirst(prefix.length))
+        return String(self.dropFirst(prefix.tap_length))
     }
     
     /// Modifies the receiver by removing the given prefix.
     ///
     /// - Parameter prefix: Prefix to remove.
     /// - Returns: Resulting receiver.
-    @discardableResult public mutating func removePrefix(_ prefix: String) -> String {
+    @discardableResult public mutating func tap_removePrefix(_ prefix: String) -> String {
         
-        self = self.removingPrefix(prefix)
+        self = self.tap_removingPrefix(prefix)
         return self
     }
     
@@ -409,20 +410,20 @@ public extension String {
     ///
     /// - Parameter suffix: Prefix to remove.
     /// - Returns: String without the suffix.
-    public func removingSuffix(_ suffix: String) -> String {
+    public func tap_removingSuffix(_ suffix: String) -> String {
         
         guard self.hasSuffix(suffix) else { return self }
         
-        return String(self.dropLast(suffix.length))
+        return String(self.dropLast(suffix.tap_length))
     }
     
     /// Modifies the receiver by removing the given suffix.
     ///
     /// - Parameter suffix: Prefix to remove.
     /// - Returns: Resulting receiver.
-    @discardableResult public mutating func removeSuffix(_ suffix: String) -> String {
+    @discardableResult public mutating func tap_removeSuffix(_ suffix: String) -> String {
         
-        self = self.removingSuffix(suffix)
+        self = self.tap_removingSuffix(suffix)
         return self
     }
     
@@ -434,7 +435,7 @@ public extension String {
     ///   - attributes: Text attributes ( font, size, etc. )
     ///   - context: Context.
     /// - Returns: CGRect
-    public func boundingRect(with size: CGSize, options: NSStringDrawingOptions, attributes: [NSAttributedString.Key: Any]?, context: NSStringDrawingContext?) -> CGRect {
+    public func tap_boundingRect(with size: CGSize, options: NSStringDrawingOptions, attributes: [NSAttributedString.Key: Any]?, context: NSStringDrawingContext?) -> CGRect {
         
         return (self as NSString).boundingRect(with: size, options: options, attributes: attributes, context: context)
     }
@@ -443,9 +444,9 @@ public extension String {
     ///
     /// - Parameter charactersString: Valid characters string.
     /// - Returns: Copy of the receiver by removing all invalid characters.
-    public func byRemovingAllCharactersExcept(_ charactersString: String) -> String {
+    public func tap_byRemovingAllCharactersExcept(_ charactersString: String) -> String {
         
-        var result: String = .empty
+        var result: String = .tap_empty
         
         for character in self {
             
@@ -462,7 +463,7 @@ public extension String {
     ///
     /// - Parameter range: Swift range.
     /// - Returns: NSRange.
-    public func nsRange(from range: Range<Index>) -> NSRange {
+    public func tap_nsRange(from range: Range<Index>) -> NSRange {
         
         let utf16View = self.utf16
         
@@ -478,7 +479,7 @@ public extension String {
     ///
     /// - Parameter nsRange: NSRange
     /// - Returns: Swift range.
-    public func range(from nsRange: NSRange) -> Range<String.Index>? {
+    public func tap_range(from nsRange: NSRange) -> Range<String.Index>? {
 
         let utf16View = self.utf16
         let endIndex = utf16View.endIndex
@@ -510,40 +511,5 @@ public extension String {
     
     // MARK: Properties
     
-    private static let numberFormatter = NumberFormatter(localeIdentifier: Locale.LocaleIdentifier.enUS)
-}
-
-// MARK: - RawRepresentable
-extension String: RawRepresentable {
-    
-    public typealias RawValue = String
-    
-    public init?(rawValue: String.RawValue) {
-        
-        self.init()
-        self.append(rawValue)
-    }
-    
-    public var rawValue: String.RawValue {
-        
-        return self
-    }
-}
-
-// MARK: - ExpressibleByIntegerLiteral
-extension String: ExpressibleByIntegerLiteral {
-    
-    public init(integerLiteral value: Int) {
-        
-        self = "\(value)"
-    }
-}
-
-/// Dummy struct to import SwiftStandartLibrary/String module.
-public struct StringAdditions {
-    
-    @available (*, unavailable) private init() {
-        
-        fatalError("\(self) cannot be initialized.")
-    }
+    private static let tap_numberFormatter = NumberFormatter(localeIdentifier: Locale.TapLocaleIdentifier.enUS)
 }

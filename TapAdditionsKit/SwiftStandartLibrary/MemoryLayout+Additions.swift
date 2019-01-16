@@ -2,7 +2,7 @@
 //  MemoryLayout+Additions.swift
 //  TapAdditionsKit
 //
-//  Copyright © 2018 Tap Payments. All rights reserved.
+//  Copyright © 2019 Tap Payments. All rights reserved.
 //
 
 /// Dummy struct to import SwiftStandartLibrary/MemoryLayout module.
@@ -12,7 +12,7 @@ public struct MemoryLayoutAdditions {
     ///
     /// - Parameter _: Type.
     /// - Returns: memory size of a type.
-    public static func sizeof<ObjectType>(_ : ObjectType.Type) -> Int {
+    public static func tap_sizeof<ObjectType>(_ : ObjectType.Type) -> Int {
         
         return MemoryLayout<ObjectType>.size
     }
@@ -21,7 +21,7 @@ public struct MemoryLayoutAdditions {
     ///
     /// - Parameter _: Object.
     /// - Returns: Memory size of an object.
-    public static func sizeof<Object> (_ object: Object) -> Int {
+    public static func tap_sizeof<Object> (_ object: Object) -> Int {
         
         return MemoryLayout<Object>.size(ofValue: object)
     }
@@ -30,7 +30,7 @@ public struct MemoryLayoutAdditions {
     ///
     /// - Parameter value: Array.
     /// - Returns: Memory size of an array.
-    public static func sizeof<ArrayElements>(_ value: [ArrayElements]) -> Int {
+    public static func tap_sizeof<ArrayElements>(_ value: [ArrayElements]) -> Int {
         
         return MemoryLayout<ArrayElements>.size * value.count
     }

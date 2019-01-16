@@ -2,14 +2,14 @@
 //  URLSession+Additions.swift
 //  TapAdditionsKit
 //
-//  Copyright © 2018 Tap Payments. All rights reserved.
+//  Copyright © 2019 Tap Payments. All rights reserved.
 //
 
-import class Dispatch.DispatchSemaphore
-import struct Foundation.NSData.Data
-import struct Foundation.NSURLRequest.URLRequest
-import class Foundation.NSURLResponse.URLResponse
-import class Foundation.NSURLSession.URLSession
+import class	Dispatch.DispatchSemaphore
+import struct	Foundation.NSData.Data
+import struct	Foundation.NSURLRequest.URLRequest
+import class	Foundation.NSURLResponse.URLResponse
+import class	Foundation.NSURLSession.URLSession
 
 /// Useful extension of URLSession.
 public extension URLSession {
@@ -21,16 +21,16 @@ public extension URLSession {
     ///
     /// - Parameter request: Request.
     /// - Returns: Tuple: (data, response, error)
-    public static func synchronousDataTask(with request: URLRequest) -> URLSessionDataTaskResult {
+    public static func tap_synchronousDataTask(with request: URLRequest) -> URLSessionDataTaskResult {
         
-        return URLSession.shared.synchronousDataTask(with: request)
+        return URLSession.shared.tap_synchronousDataTask(with: request)
     }
     
     /// Synchronous data task.
     ///
     /// - Parameter request: Request.
     /// - Returns: Tuple: (data, response, error)
-    public func synchronousDataTask(with request: URLRequest) -> URLSessionDataTaskResult {
+    public func tap_synchronousDataTask(with request: URLRequest) -> URLSessionDataTaskResult {
         
         var data: Data?
         var response: URLResponse?
@@ -52,14 +52,5 @@ public extension URLSession {
         _ = semaphore.wait(timeout: .distantFuture)
         
         return URLSessionDataTaskResult(data: data, response: response, error: error)
-    }
-}
-
-/// Dummy struct to import Foundation/URLSession module.
-public struct URLSessionAdditions {
-    
-    @available (*, unavailable) private init() {
-        
-        fatalError("\(self) cannot be initialized.")
     }
 }

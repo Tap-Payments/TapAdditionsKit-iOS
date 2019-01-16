@@ -2,12 +2,12 @@
 //  JSONSerialization+Additions.swift
 //  TapAdditionsKit
 //
-//  Copyright © 2018 Tap Payments. All rights reserved.
+//  Copyright © 2019 Tap Payments. All rights reserved.
 //
 
-import struct   Foundation.NSData.Data
-import class    Foundation.NSJSONSerialization.JSONSerialization
-import func     TapSwiftFixes.ExceptionCatcher.catchException
+import struct	Foundation.NSData.Data
+import class	Foundation.NSJSONSerialization.JSONSerialization
+import func		TapSwiftFixes.ExceptionCatcher.catchException
 
 /// JSON Serialization protocol.
 public protocol JSONSerializable {
@@ -21,21 +21,21 @@ public protocol JSONSerializable {
     ///   - options: JSON writing options.
     ///   - encoding: String encoding.
     /// - Returns: JSON string or empty string if the receiver is not a valid json object.
-    func serializedToJSONString(with options: JSONSerialization.WritingOptions, encoding: String.Encoding) -> String
+    func tap_serializedToJSONString(with options: JSONSerialization.WritingOptions, encoding: String.Encoding) -> String
 }
 
 public extension JSONSerializable {
     
     /// Defines if the receiver is a valid JSON object.
-    public var isValidJSONObject: Bool {
+    public var tap_isValidJSONObject: Bool {
         
         return JSONSerialization.isValidJSONObject(self)
     }
     
     /// Returns JSON string of the receiver or empty JSON dictionary if the receiver is not a valid json object.
-    public var jsonString: String {
+    public var tap_jsonString: String {
      
-        return self.serializedToJSONString(with: .none, encoding: .utf8)
+        return self.tap_serializedToJSONString(with: .tap_none, encoding: .utf8)
     }
 }
 
@@ -43,39 +43,39 @@ public extension JSONSerializable {
 public protocol JSONSafeSerializable: JSONSerializable {
     
     /// Generates 'safe' JSON object by removing everything that cannot be serialized to JSON ( e.g. lossy JSON object ).
-    var safeJSONObject: Self { get }
+    var tap_safeJSONObject: Self { get }
 }
 
 extension JSONSafeSerializable {
     
     /// Generates 'safe' JSON string by removing everything that cannot be serialized to JSON ( e.g. lossy JSON string ).
-    public var safeJSONString: String {
+    public var tap_safeJSONString: String {
         
-        return self.safeJSONObject.jsonString
+        return self.tap_safeJSONObject.tap_jsonString
     }
 }
 
 extension Array: JSONSerializable {
     
-    public func serializedToJSONString(with options: JSONSerialization.WritingOptions, encoding: String.Encoding) -> String {
+    public func tap_serializedToJSONString(with options: JSONSerialization.WritingOptions, encoding: String.Encoding) -> String {
         
-        return JSONSerialization.string(fromJSONObject: self, options: options, encoding: encoding) ?? .emptyJSONArray
+        return JSONSerialization.tap_string(fromJSONObject: self, options: options, encoding: encoding) ?? .tap_emptyJSONArray
     }
 }
 
 extension Dictionary: JSONSerializable {
     
-    public func serializedToJSONString(with options: JSONSerialization.WritingOptions, encoding: String.Encoding) -> String {
+    public func tap_serializedToJSONString(with options: JSONSerialization.WritingOptions, encoding: String.Encoding) -> String {
     
-        return JSONSerialization.string(fromJSONObject: self, options: options, encoding: encoding) ?? .emptyJSONDictionary
+        return JSONSerialization.tap_string(fromJSONObject: self, options: options, encoding: encoding) ?? .tap_emptyJSONDictionary
     }
 }
 
 fileprivate extension JSONSerialization {
     
-    fileprivate static func string(fromJSONObject object: JSONSerializable, options: JSONSerialization.WritingOptions, encoding: String.Encoding) -> String? {
+    fileprivate static func tap_string(fromJSONObject object: JSONSerializable, options: JSONSerialization.WritingOptions, encoding: String.Encoding) -> String? {
         
-        guard object.isValidJSONObject else { return nil }
+        guard object.tap_isValidJSONObject else { return nil }
         
         var data: Data?
         
@@ -99,11 +99,11 @@ fileprivate extension JSONSerialization {
 
 extension Array: JSONSafeSerializable {
     
-    public var safeJSONObject: [Element] {
+    public var tap_safeJSONObject: [Element] {
     
-        let result = self.compactMap { safelySerializableObject($0) }
+        let result = self.compactMap { tap_safelySerializableObject($0) }
         
-        if result.isValidJSONObject {
+        if result.tap_isValidJSONObject {
             
             return result
         }
@@ -116,7 +116,7 @@ extension Array: JSONSafeSerializable {
 
 extension Dictionary: JSONSafeSerializable {
     
-    public var safeJSONObject: [Key: Value] {
+    public var tap_safeJSONObject: [Key: Value] {
         
         var result: [Key: Value] = [:]
         
@@ -124,13 +124,13 @@ extension Dictionary: JSONSafeSerializable {
             
             guard key is String else { continue }
             
-            if let safeValue = safelySerializableObject(value) {
+            if let safeValue = tap_safelySerializableObject(value) {
                 
                 result[key] = safeValue
             }
         }
         
-        if result.isValidJSONObject {
+        if result.tap_isValidJSONObject {
             
             return result
         }
@@ -141,31 +141,22 @@ extension Dictionary: JSONSafeSerializable {
     }
 }
 
-private func safelySerializableObject<T>(_ object: T) -> T? {
+private func tap_safelySerializableObject<T>(_ object: T) -> T? {
     
     if let arrayObject = object as? [Any] {
         
-        return arrayObject.safeJSONObject as? T
+        return arrayObject.tap_safeJSONObject as? T
     }
     else if let dictionaryObject = object as? [AnyHashable: Any] {
         
-        return dictionaryObject.safeJSONObject as? T
+        return dictionaryObject.tap_safeJSONObject as? T
     }
-    else if [object].isValidJSONObject {
+    else if [object].tap_isValidJSONObject {
         
         return object
     }
     else {
         
         return nil
-    }
-}
-
-/// Dummy struct to import Foundation/JSONSerialization module.
-public struct JSONSerializationAdditions {
-    
-    @available (*, unavailable) private init() {
-        
-        fatalError("\(self) cannot be initialized.")
     }
 }

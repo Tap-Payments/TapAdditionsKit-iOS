@@ -2,7 +2,7 @@
 //  BinaryInteger+Additions.swift
 //  TapAdditionsKit
 //
-//  Copyright © 2018 Tap Payments. All rights reserved.
+//  Copyright © 2019 Tap Payments. All rights reserved.
 //
 
 /// Useful Integer extension.
@@ -12,17 +12,8 @@ public extension BinaryInteger {
     // MARK: Properties
     
     /// Returns string value of the receiver.
-    public var stringValue: String {
+    public var tap_stringValue: String {
      
         return "\(self)"
-    }
-}
-
-/// Dummy struct to import SwiftStandartLibrary/BinaryInteger module.
-public struct BinaryIntegerAdditions {
-    
-    @available (*, unavailable) private init() {
-        
-        fatalError("\(self) cannot be initialized.")
     }
 }

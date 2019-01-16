@@ -2,15 +2,15 @@
 //  CGSize+Additions.swift
 //  TapAdditionsKit
 //
-//  Copyright © 2018 Tap Payments. All rights reserved.
+//  Copyright © 2019 Tap Payments. All rights reserved.
 //
 
-import struct   CoreGraphics.CGBase.CGFloat
-import struct   CoreGraphics.CGGeometry.CGPoint
-import struct   CoreGraphics.CGGeometry.CGSize
-import func     Darwin.ceil
-import func     Darwin.floor
-import struct   OpenGLES.gltypes.GLfloat
+import struct	CoreGraphics.CGBase.CGFloat
+import struct	CoreGraphics.CGGeometry.CGPoint
+import struct	CoreGraphics.CGGeometry.CGSize
+import func		Darwin.ceil
+import func		Darwin.floor
+import struct	OpenGLES.gltypes.GLfloat
 
 /// Useful addition to CGSize.
 public extension CGSize {
@@ -19,46 +19,46 @@ public extension CGSize {
     // MARK: Properties
     
     /// Minimal image size in pixels to upload to Instagram.
-    public static let minimalInstagramImageSizeInPixels: CGSize = CGSize(dimension: 612.0)
+    public static let tap_minimalInstagramImageSizeInPixels: CGSize = CGSize(dimension: 612.0)
     
     /// Returns area.
-    public var area: CGFloat {
+    public var tap_area: CGFloat {
         
         return self.width * self.height
     }
     
     /// Returns CGSize as CGPoint
-    public var asCGPoint: CGPoint {
+    public var tap_asCGPoint: CGPoint {
         
         return CGPoint(x: self.width, y: self.height)
     }
     
     /// Returns vec2 representation of CGSize.
-    public var asVec2: [GLfloat] {
+    public var tap_asVec2: [GLfloat] {
         
         return [GLfloat(self.width), GLfloat(self.height)]
     }
     
     /// Returns ceiled receiver.
-    public var ceiled: CGSize {
+    public var tap_ceiled: CGSize {
         
         return CGSize(width: ceil(self.width), height: ceil(self.height))
     }
     
     /// Returns floored receiver.
-    public var floored: CGSize {
+    public var tap_floored: CGSize {
         
         return CGSize(width: floor(self.width), height: floor(self.height))
     }
     
     /// Returns maximal allowed corner radius.
-    public var maximalCornerRadus: CGFloat {
+    public var tap_maximalCornerRadus: CGFloat {
         
         return 0.5 * min(self.width, self.height)
     }
     
     /// Defines if size has square form.
-    public var isSquare: Bool {
+    public var tap_isSquare: Bool {
         
         return self.width == self.height
     }
@@ -77,7 +77,7 @@ public extension CGSize {
     ///
     /// - Parameter size: Size to check.
     /// - Returns: `true` if fits, `false` otherwise.
-    public func fits(into size: CGSize) -> Bool {
+    public func tap_fits(into size: CGSize) -> Bool {
         
         return self.width <= size.width && self.height <= size.height
     }
@@ -132,7 +132,7 @@ public extension CGSize {
     ///   - size: Size to fit to.
     ///   - saveProportions: Boolean value that determines whether the receiver's proportions should be saved. Default is true.
     /// - Returns: Fitted size.
-    public func fit(to size: CGSize, saveProportions: Bool = true) -> CGSize {
+    public func tap_fit(to size: CGSize, saveProportions: Bool = true) -> CGSize {
         
         if saveProportions {
             
@@ -152,18 +152,9 @@ public extension CGSize {
     ///   - finish: Right bound.
     ///   - progress: Progress in range [0, 1]
     /// - Returns: Interpolated value.
-    public static func interpolate(start: CGSize, finish: CGSize, progress: CGFloat) -> CGSize {
+    public static func tap_interpolate(start: CGSize, finish: CGSize, progress: CGFloat) -> CGSize {
         
-        return CGSize(width: CGFloat.interpolate(start: start.width, finish: finish.width, progress: progress),
-                      height: CGFloat.interpolate(start: start.height, finish: finish.height, progress: progress))
-    }
-}
-
-/// Dummy struct to import CoreGraphics/CGSize module.
-public struct CGSizeAdditions {
-    
-    @available (*, unavailable) private init() {
-        
-        fatalError("\(self) cannot be initialized.")
+        return CGSize(width: CGFloat.tap_interpolate(start: start.width, finish: finish.width, progress: progress),
+                      height: CGFloat.tap_interpolate(start: start.height, finish: finish.height, progress: progress))
     }
 }

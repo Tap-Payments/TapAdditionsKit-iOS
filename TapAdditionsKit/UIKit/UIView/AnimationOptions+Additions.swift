@@ -2,19 +2,19 @@
 //  AnimationOptions+Additions.swift
 //  TapAdditionsKit
 //
-//  Copyright © 2018 Tap Payments. All rights reserved.
+//  Copyright © 2019 Tap Payments. All rights reserved.
 //
 
-import class UIKit.UIView.UIView
+import class	UIKit.UIView.UIView
 
 public extension UIView.AnimationOptions {
     
     // MARK: - Public -
     // MARK: Methods
     
-    public init(_ curve: UIView.AnimationCurve) {
+    public init(tap_curve: UIView.AnimationCurve) {
         
-        switch curve {
+        switch tap_curve {
             
         case .easeIn:       self = .curveEaseIn
         case .easeOut:      self = .curveEaseOut

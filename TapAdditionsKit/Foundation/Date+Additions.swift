@@ -2,7 +2,7 @@
 //  Date+Additions.swift
 //  TapAdditionsKit
 //
-//  Copyright © 2018 Tap Payments. All rights reserved.
+//  Copyright © 2019 Tap Payments. All rights reserved.
 //
 
 /// Useful extension to Date.
@@ -12,29 +12,29 @@ public extension Date {
     // MARK: Properties
     
     // Month (1..12) using current calendar.
-    public var month: Int {
+    public var tap_month: Int {
         
-        return self.get(.month)
+        return self.tap_get(.month)
     }
     
     /// Year using current calendar.
-    public var year: Int {
+    public var tap_year: Int {
         
-        return self.get(.year)
+        return self.tap_get(.year)
     }
     
     // MARK: - Private -
     // MARK: Properties
     
-    private var currentCalendar: Calendar {
+    private var tap_currentCalendar: Calendar {
         
         return Calendar.current
     }
     
     // MARK: Methods
     
-    private func get(_ component: Calendar.Component) -> Int {
+    private func tap_get(_ component: Calendar.Component) -> Int {
         
-        return self.currentCalendar.component(component, from: self)
+        return self.tap_currentCalendar.component(component, from: self)
     }
 }

@@ -2,11 +2,11 @@
 //  DateFormatter+Additions.swift
 //  TapAdditionsKit
 //
-//  Copyright © 2018 Tap Payments. All rights reserved.
+//  Copyright © 2019 Tap Payments. All rights reserved.
 //
 
-import class Foundation.NSDateFormatter.DateFormatter
-import struct Foundation.NSLocale.Locale
+import class	Foundation.NSDateFormatter.DateFormatter
+import struct	Foundation.NSLocale.Locale
 
 /// Useful extension to DateFormatter.
 public extension DateFormatter {
@@ -28,14 +28,5 @@ public extension DateFormatter {
         
         self.locale = locale
         self.dateFormat = dateFormat
-    }
-}
-
-/// Dummy struct to import Foundation/DateFormatter module.
-public struct DateFormatterAdditions {
-    
-    @available (*, unavailable) private init() {
-        
-        fatalError("\(self) cannot be initialized.")
     }
 }

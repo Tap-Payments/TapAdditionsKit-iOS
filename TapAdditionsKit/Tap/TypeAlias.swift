@@ -2,11 +2,11 @@
 //  TypeAlias.swift
 //  TapAdditionsKit
 //
-//  Copyright © 2018 Tap Payments. All rights reserved.
+//  Copyright © 2019 Tap Payments. All rights reserved.
 //
 
-import class UIKit.UIImage.UIImage
-import class UIKit.UIViewController.UIViewController
+import class	UIKit.UIImage.UIImage
+import class	UIKit.UIViewController.UIViewController
 
 /// Collection of different typealiases.
 public struct TypeAlias {

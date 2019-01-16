@@ -2,13 +2,13 @@
 //  UILabel+Additions.swift
 //  TapAdditionsKit
 //
-//  Copyright © 2018 Tap Payments. All rights reserved.
+//  Copyright © 2019 Tap Payments. All rights reserved.
 //
 
-import struct Foundation.NSDate.TimeInterval
-import class UIKit.UIColor.UIColor
-import class UIKit.UILabel.UILabel
-import class UIKit.UIView.UIView
+import struct	Foundation.NSDate.TimeInterval
+import class	UIKit.UIColor.UIColor
+import class	UIKit.UILabel.UILabel
+import class	UIKit.UIView.UIView
 
 /// Useful extensions to UILabel class.
 public extension UILabel {
@@ -21,7 +21,7 @@ public extension UILabel {
     /// - Parameters:
     ///   - textColor: Text color.
     ///   - animationDuration: Animation duration.
-    public func setTextColor(_ textColor: UIColor, animationDuration: TimeInterval) {
+    public func tap_setTextColor(_ textColor: UIColor, animationDuration: TimeInterval) {
         
         let animations: TypeAlias.ArgumentlessClosure = { [weak self] in
             
@@ -36,7 +36,7 @@ public extension UILabel {
     /// - Parameters:
     ///   - text: string for text
     ///   - animationDuration: Animation duration
-    public func setText(_ text: String, animationDuration: TimeInterval) {
+    public func tap_setText(_ text: String, animationDuration: TimeInterval) {
         
         let animations: TypeAlias.ArgumentlessClosure = { [weak self] in
             
@@ -44,14 +44,5 @@ public extension UILabel {
         }
         
         UIView.transition(with: self, duration: max(animationDuration, 0.0), options: [.transitionCrossDissolve, .layoutSubviews], animations: animations, completion: nil)
-    }
-}
-
-/// Dummy struct to import UIKit/UILabel module.
-public struct UILabelAdditions {
-    
-    @available (*, unavailable) private init() {
-        
-        fatalError("\(self) cannot be initialized.")
     }
 }

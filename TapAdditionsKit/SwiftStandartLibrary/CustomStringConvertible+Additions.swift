@@ -2,7 +2,7 @@
 //  CustomStringConvertible+Additions.swift
 //  TapAdditionsKit
 //
-//  Copyright © 2018 Tap Payments. All rights reserved.
+//  Copyright © 2019 Tap Payments. All rights reserved.
 //
 
 public extension CustomStringConvertible {
@@ -14,7 +14,7 @@ public extension CustomStringConvertible {
     ///
     /// - Parameter extraSpaces: Number of extra spaces to add.
     /// - Returns: Object's description.
-    public func description(with extraSpaces: Int) -> String {
+    public func tap_description(with extraSpaces: Int) -> String {
         
         let spaces = String(repeating: CustomStringConvertibleConstants.spaceString, count: extraSpaces)
         let separator = CustomStringConvertibleConstants.newlineString.appending(spaces)
@@ -24,7 +24,7 @@ public extension CustomStringConvertible {
         
         if originalDescription.hasPrefix(CustomStringConvertibleConstants.newlineString) {
             
-            let suffix = originalDescription.dropFirst(CustomStringConvertibleConstants.newlineString.length)
+            let suffix = originalDescription.dropFirst(CustomStringConvertibleConstants.newlineString.tap_length)
             let suffixString = String(suffix)
             
             let desc = newLineTabulation.appending(suffixString)

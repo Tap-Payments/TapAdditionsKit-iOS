@@ -2,11 +2,11 @@
 //  NSLayoutConstraint+Additions.swift
 //  TapAdditionsKit
 //
-//  Copyright © 2018 Tap Payments. All rights reserved.
+//  Copyright © 2019 Tap Payments. All rights reserved.
 //
 
-import class UIKit.NSLayoutConstraint.NSLayoutConstraint
-import class UIKit.UIView.UIView
+import class	UIKit.NSLayoutConstraint.NSLayoutConstraint
+import class	UIKit.UIView.UIView
 
 public extension NSLayoutConstraint {
     
@@ -23,14 +23,14 @@ public extension NSLayoutConstraint {
     ///   - animationDuration: Set `> 0` if reactivation should happen with animation.
     ///   - additionalAnimations: Additional animations.
     /// - Returns: Boolean value that determines whether layout should happen.
-    @discardableResult public static func reactivate(inCaseIf condition: Bool,
-                                                     constraintsToDisableOnSuccess: [NSLayoutConstraint],
-                                                     constraintsToEnableOnSuccess: [NSLayoutConstraint],
-                                                     viewToLayout: UIView?,
-                                                     animationDuration: TimeInterval,
-                                                     additionalAnimations: TypeAlias.ArgumentlessClosure? = nil) -> Bool {
-        
-        var constraintsToDeactivate = condition ? constraintsToDisableOnSuccess : constraintsToEnableOnSuccess
+	@discardableResult public static func tap_reactivate(inCaseIf condition:			Bool,
+														 constraintsToDisableOnSuccess:	[NSLayoutConstraint],
+														 constraintsToEnableOnSuccess:	[NSLayoutConstraint],
+														 viewToLayout:					UIView?,
+														 animationDuration:				TimeInterval,
+														 additionalAnimations:			TypeAlias.ArgumentlessClosure? = nil) -> Bool {
+		
+		var constraintsToDeactivate = condition ? constraintsToDisableOnSuccess : constraintsToEnableOnSuccess
         var constraintsToActivate = condition ? constraintsToEnableOnSuccess : constraintsToDisableOnSuccess
         
         constraintsToDeactivate = constraintsToDeactivate.filter { $0.isActive }
@@ -53,7 +53,7 @@ public extension NSLayoutConstraint {
                 self.activate(constraintsToActivate)
             }
             
-            viewToLayout?.layout()
+            viewToLayout?.tap_layout()
             additionalAnimations?()
         }
         

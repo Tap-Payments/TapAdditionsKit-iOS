@@ -2,12 +2,12 @@
 //  UserDefaults+Additions.swift
 //  TapAdditionsKit
 //
-//  Copyright © 2018 Tap Payments. All rights reserved.
+//  Copyright © 2019 Tap Payments. All rights reserved.
 //
 
-import class Foundation.NSNull.NSNull
-import class Foundation.NSThread.Thread
-import class Foundation.NSUserDefaults.UserDefaults
+import class	Foundation.NSNull.NSNull
+import class	Foundation.NSThread.Thread
+import class	Foundation.NSUserDefaults.UserDefaults
 
 /// Useful extension to UserDefaults.
 public extension UserDefaults {
@@ -20,13 +20,13 @@ public extension UserDefaults {
     /// - Parameters:
     ///   - value: Value to store.
     ///   - key: Key.
-    public func synchronouslySetOnMainThread(_ value: Any?, for key: String) {
+    public func tap_synchronouslySetOnMainThread(_ value: Any?, for key: String) {
         
         guard Thread.isMainThread else {
             
             let dict = [key: value ?? NSNull()]
             
-            self.performSelector(onMainThread: #selector(synchronouslySetOnMainThread(_:)), with: dict, waitUntilDone: true)
+            self.performSelector(onMainThread: #selector(tap_synchronouslySetOnMainThread(_:)), with: dict, waitUntilDone: true)
             return
         }
         
@@ -45,25 +45,16 @@ public extension UserDefaults {
     // MARK: - Private -
     // MARK: Methods
     
-    @objc private func synchronouslySetOnMainThread(_ args: [String: Any]) {
+    @objc private func tap_synchronouslySetOnMainThread(_ args: [String: Any]) {
         
         for (key, value) in args {
             
-            self.synchronouslySetOnMainThread(value is NSNull ? nil : value, for: key)
+            self.tap_synchronouslySetOnMainThread(value is NSNull ? nil : value, for: key)
         }
     }
 }
 
-public func saveSynchronouslyToStandartUserDefaults(_ value: Any?, for key: String) {
+public func tap_saveSynchronouslyToStandartUserDefaults(_ value: Any?, for key: String) {
     
-    UserDefaults.standard.synchronouslySetOnMainThread(value, for: key)
-}
-
-/// Dummy struct to import Foundation/UserDefaults module.
-public struct UserDefaultsAdditions {
-    
-    @available (*, unavailable) private init() {
-        
-        fatalError("\(self) cannot be initialized.")
-    }
+    UserDefaults.standard.tap_synchronouslySetOnMainThread(value, for: key)
 }

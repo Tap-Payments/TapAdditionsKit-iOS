@@ -2,10 +2,10 @@
 //  Comparable+Additions.swift
 //  TapAdditionsKit
 //
-//  Copyright © 2018 Tap Payments. All rights reserved.
+//  Copyright © 2019 Tap Payments. All rights reserved.
 //
 
-import enum Foundation.NSObjCRuntime.ComparisonResult
+import enum		Foundation.NSObjCRuntime.ComparisonResult
 
 /// Some additions to Comparable protocol.
 public extension Comparable {
@@ -20,7 +20,7 @@ public extension Comparable {
      
      - returns: NSComparisonResult
      */
-    public func compare(other: Self) -> ComparisonResult {
+    public func tap_compare(other: Self) -> ComparisonResult {
         
         if self < other {
             
@@ -44,16 +44,7 @@ public extension Comparable {
 ///   - low: Lower bound.
 ///   - high: Higher bound.
 /// - Returns: Clampled value.
-public func clamp<T>(value: T, low: T, high: T) -> T where T: Comparable {
+public func tap_clamp<T>(value: T, low: T, high: T) -> T where T: Comparable {
     
     return min(max(value, low), high)
-}
-
-/// Dummy struct to import SwiftStandartLibrary/Comparable module.
-public struct ComparableAdditions {
-    
-    @available (*, unavailable) private init() {
-        
-        fatalError("\(self) cannot be initialized.")
-    }
 }

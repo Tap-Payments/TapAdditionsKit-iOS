@@ -2,13 +2,13 @@
 //  Data+Additions.swift
 //  TapAdditionsKit
 //
-//  Copyright © 2018 Tap Payments. All rights reserved.
+//  Copyright © 2019 Tap Payments. All rights reserved.
 //
 
-import func     ObjectiveC.autoreleasepool
-import struct   Foundation.NSData.Data
-import class    UIKit.UIImage.UIImage
-import func     UIKit.UIImage.UIImagePNGRepresentation
+import func		ObjectiveC.autoreleasepool
+import struct	Foundation.NSData.Data
+import class	UIKit.UIImage.UIImage
+import func		UIKit.UIImage.UIImagePNGRepresentation
 
 /// Useful extension to Data struct.
 public extension Data {
@@ -17,9 +17,9 @@ public extension Data {
     // MARK: Properties
     
     /// Returns hexademical string.
-    public var hexString: String {
+    public var tap_hexString: String {
         
-        return self.reduce(String.empty, {$0 + String(format: "%02X", $1)})
+        return self.reduce(String.tap_empty, {$0 + String(format: "%02X", $1)})
     }
     
     // MARK: Methods
@@ -31,9 +31,9 @@ public extension Data {
      
      - returns: Data
      */
-    public static func dataWith(image: UIImage?) -> Data? {
+    public static func tap_dataWith(image: UIImage?) -> Data? {
         
-        guard let transparentImage = image?.transparentImage else { return nil }
+        guard let transparentImage = image?.tap_transparentImage else { return nil }
         
         var data: Data?
         
@@ -42,14 +42,5 @@ public extension Data {
             data = transparentImage.pngData()
             return data
         }
-    }
-}
-
-/// Dummy struct to import Foundation/Date module.
-public struct DateAdditions {
-    
-    @available (*, unavailable) private init() {
-        
-        fatalError("\(self) cannot be initialized.")
     }
 }

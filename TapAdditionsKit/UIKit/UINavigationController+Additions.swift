@@ -2,16 +2,14 @@
 //  UINavigationController+Additions.swift
 //  TapAdditionsKit
 //
-//  Copyright © 2018 Tap Payments. All rights reserved.
+//  Copyright © 2019 Tap Payments. All rights reserved.
 //
 
-import Dispatch
-
-import struct Foundation.NSDate.TimeInterval
-import class QuartzCore.CATransaction.CATransaction
-import func TapSwiftFixes.performOnMainThread
-import class UIKit.UINavigationController.UINavigationController
-import class UIKit.UIViewController.UIViewController
+import struct	Foundation.NSDate.TimeInterval
+import class	QuartzCore.CATransaction.CATransaction
+import func		TapSwiftFixes.performOnMainThread
+import class	UIKit.UINavigationController.UINavigationController
+import class	UIKit.UIViewController.UIViewController
 
 /// Useful extension to UINavigationController
 public extension UINavigationController {
@@ -20,7 +18,7 @@ public extension UINavigationController {
     // MARK: Properties
     
     /// Returns root view controller of the receiver.
-    public var rootViewController: UIViewController? {
+    public var tap_rootViewController: UIViewController? {
         
         return self.viewControllers.first
     }
@@ -28,7 +26,7 @@ public extension UINavigationController {
     // MARK: Methods
     
     /// Pushes view controller.
-    public func pushViewController(_ viewController: UIViewController, animated: Bool, completion: TypeAlias.ArgumentlessClosure?) {
+    public func tap_pushViewController(_ viewController: UIViewController, animated: Bool, completion: TypeAlias.ArgumentlessClosure?) {
         
         if animated {
             
@@ -53,22 +51,22 @@ public extension UINavigationController {
     ///   - animated: Defines if changes should be animated.
     ///   - completion: Completion closure to be called when animation finishes.
     /// - Returns: Popped view controller.
-    @discardableResult public func popToRootViewController(animated: Bool, completion: TypeAlias.ArgumentlessClosure?) -> [UIViewController]? {
+    @discardableResult public func tap_popToRootViewController(animated: Bool, completion: TypeAlias.ArgumentlessClosure?) -> [UIViewController]? {
         
-        guard let rootController = self.rootViewController else {
+        guard let rootController = self.tap_rootViewController else {
             
             performOnMainThread { completion?() }
             return nil
         }
         
-        return self.popToViewController(rootController, animated: animated, completion: completion)
+        return self.tap_popToViewController(rootController, animated: animated, completion: completion)
     }
     
     /// Pops to specific view controller.
-    @discardableResult public func popToViewController(_ viewController: UIViewController, animated: Bool, completion: TypeAlias.ArgumentlessClosure?) -> [UIViewController]? {
+    @discardableResult public func tap_popToViewController(_ viewController: UIViewController, animated: Bool, completion: TypeAlias.ArgumentlessClosure?) -> [UIViewController]? {
         
         let result = popToViewController(viewController, animated: animated)
-        type(of: self).callCompletion(completion, afterDelay: animated ? Constants.popAnimationDuration : 0.0)
+        type(of: self).tap_callCompletion(completion, afterDelay: animated ? Constants.popAnimationDuration : 0.0)
         
         return result
     }
@@ -84,21 +82,12 @@ public extension UINavigationController {
     
     // MARK: Methods
     
-    private static func callCompletion(_ completion: TypeAlias.ArgumentlessClosure?, afterDelay delay: TimeInterval) {
+    private static func tap_callCompletion(_ completion: TypeAlias.ArgumentlessClosure?, afterDelay delay: TimeInterval) {
         
         let deadline = DispatchTime.now() + delay
         DispatchQueue.main.asyncAfter(deadline: deadline) {
             
             completion?()
         }
-    }
-}
-
-/// Dummy struct to import UIKit/UINavigationController module.
-public struct UINavigationControllerAdditions {
-    
-    @available (*, unavailable) private init() {
-        
-        fatalError("\(self) cannot be initialized.")
     }
 }

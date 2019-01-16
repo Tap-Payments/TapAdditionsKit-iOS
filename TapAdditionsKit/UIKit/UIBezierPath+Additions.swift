@@ -2,13 +2,13 @@
 //  UIBezierPath+Additions.swift
 //  TapAdditionsKit
 //
-//  Copyright © 2018 Tap Payments. All rights reserved.
+//  Copyright © 2019 Tap Payments. All rights reserved.
 //
 
-import struct CoreGraphics.CGBase.CGFloat
-import struct CoreGraphics.CGGeometry.CGPoint
-import func CoreGraphics.CGBase.pow
-import class UIKit.UIBezierPath
+import struct	CoreGraphics.CGBase.CGFloat
+import struct	CoreGraphics.CGGeometry.CGPoint
+import func		CoreGraphics.CGBase.pow
+import class	UIKit.UIBezierPath
 
 /// Useful extension to UIBezierPath class.
 public extension UIBezierPath {
@@ -20,7 +20,7 @@ public extension UIBezierPath {
     ///
     /// - Parameter points: Points to pass through.
     /// - Returns: curved UIBezierPath that passes through all the points.
-    public static func quadCurvedPath(with points: [CGPoint]) -> UIBezierPath {
+    public static func tap_quadCurvedPath(with points: [CGPoint]) -> UIBezierPath {
         
         assert(points.count >= 2, "There should be at least 2 points.")
         
@@ -65,7 +65,7 @@ public extension UIBezierPath {
     ///   - alpha: 0.0 - uniform parametrization, 0.5 - centripetal parametrization, 1.0 - chordal parametrization.
     ///   - includeEdgePoints: Defines if edge points should be included into the curve.
     /// - Returns: curved UIBezierPath that uses Catmull-Rom algorithm to interpolate between given points.
-    public static func catmullRomInterpolatedPath(with pointsArray: [CGPoint], closed: Bool, alpha: CGFloat, includeEdgePoints: Bool) -> UIBezierPath {
+    public static func tap_catmullRomInterpolatedPath(with pointsArray: [CGPoint], closed: Bool, alpha: CGFloat, includeEdgePoints: Bool) -> UIBezierPath {
         
         assert(0.0 <= alpha && alpha <= 1.0, "Alpha should be in range [0.0, 1.0]")
         assert(pointsArray.count >= 2, "There should be at least 2 points.")
@@ -87,9 +87,9 @@ public extension UIBezierPath {
             let p2 = points[(index + 1) % points.count]
             let p3 = points[(index + 2) % points.count]
             
-            let d1 = (p1 - p0).distanceToOrigin
-            let d2 = (p2 - p1).distanceToOrigin
-            let d3 = (p3 - p2).distanceToOrigin
+            let d1 = (p1 - p0).tap_distanceToOrigin
+            let d2 = (p2 - p1).tap_distanceToOrigin
+            let d3 = (p3 - p2).tap_distanceToOrigin
             
             var b1: CGPoint
             var b2: CGPoint
@@ -157,14 +157,5 @@ public extension UIBezierPath {
         fileprivate static let epsilon: CGFloat = 1.0e-5
         
         @available(*, unavailable) private init() {}
-    }
-}
-
-/// Dummy struct to import UIKit/UIBezierPath module.
-public struct UIBezierPathAdditions {
-    
-    @available (*, unavailable) private init() {
-        
-        fatalError("\(self) cannot be initialized.")
     }
 }

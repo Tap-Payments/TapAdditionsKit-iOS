@@ -2,41 +2,40 @@
 //  CNContactFetchRequest+Additions.swift
 //  TapAdditionsKit
 //
-//  Copyright © 2018 Tap Payments. All rights reserved.
+//  Copyright © 2019 Tap Payments. All rights reserved.
 //
 
-import class Contacts.CNContactFetchRequest
-import var Contacts.CNContactNamePrefixKey
-import var Contacts.CNContactGivenNameKey
-import var Contacts.CNContactMiddleNameKey
-import var Contacts.CNContactFamilyNameKey
-import var Contacts.CNContactPreviousFamilyNameKey
-import var Contacts.CNContactNameSuffixKey
-import var Contacts.CNContactNicknameKey
-import var Contacts.CNContactOrganizationNameKey
-import var Contacts.CNContactDepartmentNameKey
-import var Contacts.CNContactJobTitleKey
-import var Contacts.CNContactPhoneticGivenNameKey
-import var Contacts.CNContactPhoneticMiddleNameKey
-import var Contacts.CNContactPhoneticFamilyNameKey
-import var Contacts.CNContactBirthdayKey
-import var Contacts.CNContactNonGregorianBirthdayKey
-import var Contacts.CNContactNoteKey
-import var Contacts.CNContactImageDataKey
-import var Contacts.CNContactThumbnailImageDataKey
-import var Contacts.CNContactImageDataAvailableKey
-import var Contacts.CNContactTypeKey
-import var Contacts.CNContactPhoneNumbersKey
-import var Contacts.CNContactEmailAddressesKey
-import var Contacts.CNContactPostalAddressesKey
-import var Contacts.CNContactDatesKey
-import var Contacts.CNContactUrlAddressesKey
-import var Contacts.CNContactRelationsKey
-import var Contacts.CNContactSocialProfilesKey
-import var Contacts.CNContactInstantMessageAddressesKey
-import var Contacts.CNContactPhoneticOrganizationNameKey
-
-import protocol Contacts.CNKeyDescriptor
+import class	Contacts.CNContactFetchRequest
+import var		Contacts.CNContactNamePrefixKey
+import var		Contacts.CNContactGivenNameKey
+import var		Contacts.CNContactMiddleNameKey
+import var		Contacts.CNContactFamilyNameKey
+import var		Contacts.CNContactPreviousFamilyNameKey
+import var		Contacts.CNContactNameSuffixKey
+import var		Contacts.CNContactNicknameKey
+import var		Contacts.CNContactOrganizationNameKey
+import var		Contacts.CNContactDepartmentNameKey
+import var		Contacts.CNContactJobTitleKey
+import var		Contacts.CNContactPhoneticGivenNameKey
+import var		Contacts.CNContactPhoneticMiddleNameKey
+import var		Contacts.CNContactPhoneticFamilyNameKey
+import var		Contacts.CNContactBirthdayKey
+import var		Contacts.CNContactNonGregorianBirthdayKey
+import var		Contacts.CNContactNoteKey
+import var		Contacts.CNContactImageDataKey
+import var		Contacts.CNContactThumbnailImageDataKey
+import var		Contacts.CNContactImageDataAvailableKey
+import var		Contacts.CNContactTypeKey
+import var		Contacts.CNContactPhoneNumbersKey
+import var		Contacts.CNContactEmailAddressesKey
+import var		Contacts.CNContactPostalAddressesKey
+import var		Contacts.CNContactDatesKey
+import var		Contacts.CNContactUrlAddressesKey
+import var		Contacts.CNContactRelationsKey
+import var		Contacts.CNContactSocialProfilesKey
+import var		Contacts.CNContactInstantMessageAddressesKey
+import var		Contacts.CNContactPhoneticOrganizationNameKey
+import protocol	Contacts.CNKeyDescriptor
 
 /// Useful additions to CNContactFetchRequest.
 @available(iOS 9.0, *)
@@ -46,7 +45,7 @@ public extension CNContactFetchRequest {
     // MARK: Properties
 
     /// Returns all possible fetch keys.
-    public static let allFetchKeys: [CNKeyDescriptor] = {
+    public static let tap_allFetchKeys: [CNKeyDescriptor] = {
 
         var keys: [String] = [
 
@@ -89,17 +88,8 @@ public extension CNContactFetchRequest {
     }()
 
     /// Returns fetch request to fetch all contacts with all keys.
-    public static let fetchingEverything: CNContactFetchRequest = {
+    public static let tap_fetchingEverything: CNContactFetchRequest = {
 
-        return CNContactFetchRequest(keysToFetch: CNContactFetchRequest.allFetchKeys)
+        return CNContactFetchRequest(keysToFetch: CNContactFetchRequest.tap_allFetchKeys)
     }()
-}
-
-/// Dummy struct to import Contacts/CNContactFetchRequest module.
-public struct CNContactFetchRequestAdditions {
-    
-    @available (*, unavailable) private init() {
-        
-        fatalError("\(self) cannot be initialized.")
-    }
 }

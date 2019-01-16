@@ -2,14 +2,14 @@
 //  UIButton+Additions.swift
 //  TapAdditionsKit
 //
-//  Copyright © 2018 Tap Payments. All rights reserved.
+//  Copyright © 2019 Tap Payments. All rights reserved.
 //
 
-import class    Foundation.NSAttributedString.NSAttributedString
-import class    UIKit.UIButton.UIButton
-import class    UIKit.UIColor.UIColor
-import class    UIKit.UIControl.UIControl
-import class    UIKit.UIImage.UIImage
+import class	Foundation.NSAttributedString.NSAttributedString
+import class	UIKit.UIButton.UIButton
+import class	UIKit.UIColor.UIColor
+import class	UIKit.UIControl.UIControl
+import class	UIKit.UIImage.UIImage
 
 /// Useful extension for UIButton.
 public extension UIButton {
@@ -18,7 +18,7 @@ public extension UIButton {
     // MARK: Properties
     
     /// Title.
-    public var title: String? {
+    public var tap_title: String? {
         
         get {
             
@@ -35,7 +35,7 @@ public extension UIButton {
     }
     
     /// Attributed title.
-    public var attributedTitle: NSAttributedString? {
+    public var tap_attributedTitle: NSAttributedString? {
         
         get {
             
@@ -52,7 +52,7 @@ public extension UIButton {
     }
     
     /// Title color.
-    public var titleColor: UIColor? {
+    public var tap_titleColor: UIColor? {
         
         get {
             
@@ -76,39 +76,30 @@ public extension UIButton {
     ///   - image: Background image.
     ///   - state: Button state.
     ///   - stretch: Stretch parameter.
-    public func setBackgroundImage(_ image: UIImage?, for state: UIControl.State, withStretch stretch: Bool) {
+    public func tap_setBackgroundImage(_ image: UIImage?, for state: UIControl.State, withStretch stretch: Bool) {
         
-        let backgroundImage = stretch ? image?.stretchableImage : image
+        let backgroundImage = stretch ? image?.tap_stretchableImage : image
         self.setBackgroundImage(backgroundImage, for: state)
     }
     
     /// Stretche background image for a given state.
     ///
     /// - Parameter state: Button state.
-    public func stretchBackgroundImage(for state: UIControl.State) {
+    public func tap_stretchBackgroundImage(for state: UIControl.State) {
         
         if let backgroundImage = self.backgroundImage(for: state) {
             
-            self.setBackgroundImage(backgroundImage, for: state, withStretch: true)
+            self.tap_setBackgroundImage(backgroundImage, for: state, withStretch: true)
         }
     }
     
     /// Stretches background image for all states.
-    public func stretchBackgroundImage() {
+    public func tap_stretchBackgroundImage() {
         
-        self.stretchBackgroundImage(for: .disabled)
-        self.stretchBackgroundImage(for: .normal)
-        self.stretchBackgroundImage(for: .highlighted)
-        self.stretchBackgroundImage(for: .selected)
-        self.stretchBackgroundImage(for: [.selected, .highlighted])
-    }
-}
-
-/// Dummy struct to import UIKit/UIButton module.
-public struct UIButtonAdditions {
-    
-    @available (*, unavailable) private init() {
-        
-        fatalError("\(self) cannot be initialized.")
+        self.tap_stretchBackgroundImage(for: .disabled)
+        self.tap_stretchBackgroundImage(for: .normal)
+        self.tap_stretchBackgroundImage(for: .highlighted)
+        self.tap_stretchBackgroundImage(for: .selected)
+        self.tap_stretchBackgroundImage(for: [.selected, .highlighted])
     }
 }

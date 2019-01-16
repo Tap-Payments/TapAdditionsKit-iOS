@@ -2,12 +2,12 @@
 //  UIScrollView+Additions.swift
 //  TapAdditionsKit
 //
-//  Copyright © 2018 Tap Payments. All rights reserved.
+//  Copyright © 2019 Tap Payments. All rights reserved.
 //
 
-import struct CoreGraphics.CGBase.CGFloat
-import struct CoreGraphics.CGGeometry.CGPoint
-import class UIKit.UIScrollView
+import struct	CoreGraphics.CGBase.CGFloat
+import struct	CoreGraphics.CGGeometry.CGPoint
+import class	UIKit.UIScrollView
 
 /// Useful extension for UIScrollView.
 public extension UIScrollView {
@@ -16,9 +16,9 @@ public extension UIScrollView {
     // MARK: Properties
     
     /// Returns number of pages.
-    public var numberOfPages: Int {
+    public var tap_numberOfPages: Int {
         
-        guard self.canPagingPropertiesBeCalculated else {
+        guard self.tap_canPagingPropertiesBeCalculated else {
             
             fatalError("In order to use the function paging should be enabled and width of the scroll view should be > 0.")
         }
@@ -27,30 +27,30 @@ public extension UIScrollView {
     }
 
     /// Returns current page index.
-    public var pageIndex: Int {
+    public var tap_pageIndex: Int {
         
-        return Int(self.floatingPageIndex)
+        return Int(self.tap_floatingPageIndex)
     }
     
     /// Returns most visible page index.
-    public var closestPageIndex: Int {
+    public var tap_closestPageIndex: Int {
         
-        return Int(self.floatingPageIndex.rounded())
+        return Int(self.tap_floatingPageIndex.rounded())
     }
     
     /// Returns floating point page index.
-    public var floatingPageIndex: CGFloat {
+    public var tap_floatingPageIndex: CGFloat {
         
-        guard self.canPagingPropertiesBeCalculated else {
+        guard self.tap_canPagingPropertiesBeCalculated else {
             
             fatalError("In order to use the function paging should be enabled and width of the scroll view should be > 0.")
         }
         
-        return clamp(value: self.contentOffset.x / self.bounds.width, low: 0.0, high: max(CGFloat(self.numberOfPages) - 1.0, 0.0))
+        return tap_clamp(value: self.contentOffset.x / self.bounds.width, low: 0.0, high: max(CGFloat(self.tap_numberOfPages) - 1.0, 0.0))
     }
     
     /// Returns maximal content offset.
-    public var maximalContentOffset: CGPoint {
+    public var tap_maximalContentOffset: CGPoint {
         
         return CGPoint(x: max(self.contentSize.width - self.bounds.width + self.contentInset.right, -self.contentInset.left),
                        y: max(self.contentSize.height - self.bounds.height + self.contentInset.bottom, -self.contentInset.top))
@@ -61,7 +61,7 @@ public extension UIScrollView {
     /// Scrolls to top.
     ///
     /// - Parameter animated: Defines if scrolling should happen with animation.
-    public func scrollToTop(animated: Bool) {
+    public func tap_scrollToTop(animated: Bool) {
         
         self.setContentOffset(CGPoint(x: contentOffset.x, y: -self.contentInset.top), animated: animated)
     }
@@ -69,15 +69,15 @@ public extension UIScrollView {
     /// Scrolls to bottom.
     ///
     /// - Parameter animated: Defines if scrolling should happen with animation.
-    public func scrollToBottom(animated: Bool) {
+    public func tap_scrollToBottom(animated: Bool) {
         
-        self.setContentOffset(CGPoint(x: contentOffset.x, y: self.maximalContentOffset.y), animated: animated)
+        self.setContentOffset(CGPoint(x: contentOffset.x, y: self.tap_maximalContentOffset.y), animated: animated)
     }
     
     /// Scrolls to left.
     ///
     /// - Parameter animated: Defines if scrolling should happen with animation.
-    public func scrollToLeft(animated: Bool) {
+    public func tap_scrollToLeft(animated: Bool) {
         
         self.setContentOffset(CGPoint(x: 0.0, y: contentOffset.y), animated: animated)
     }
@@ -85,9 +85,9 @@ public extension UIScrollView {
     /// Scrolls to right.
     ///
     /// - Parameter animated: Defines if scrolling should happen with animation.
-    public func scrollToRight(animated: Bool) {
+    public func tap_scrollToRight(animated: Bool) {
         
-        self.setContentOffset(CGPoint(x: self.maximalContentOffset.x, y: contentOffset.y), animated: animated)
+        self.setContentOffset(CGPoint(x: self.tap_maximalContentOffset.x, y: contentOffset.y), animated: animated)
     }
     
     /// Sets content offset with optional calling delegate.
@@ -95,7 +95,7 @@ public extension UIScrollView {
     /// - Parameters:
     ///   - offset: Desired content offset.
     ///   - callDelegate: Defines if delegate should be called.
-    public func setContentOffset(_ offset: CGPoint, callDelegate: Bool) {
+    public func tap_setContentOffset(_ offset: CGPoint, callDelegate: Bool) {
         
         if callDelegate {
             
@@ -112,17 +112,8 @@ public extension UIScrollView {
     // MARK: - Private -
     // MARK: Properties
     
-    private var canPagingPropertiesBeCalculated: Bool {
+    private var tap_canPagingPropertiesBeCalculated: Bool {
         
         return self.isPagingEnabled && self.bounds.width > 0.0
-    }
-}
-
-/// Dummy struct to import UIKit/UIScrollView module.
-public struct UIScrollViewAdditions {
-    
-    @available (*, unavailable) private init() {
-        
-        fatalError("\(self) cannot be initialized.")
     }
 }

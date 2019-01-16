@@ -2,7 +2,7 @@
 //  KeyedDecodingContainer+Additions.swift
 //  TapAdditionsKit
 //
-//  Copyright © 2018 Tap Payments. All rights reserved.
+//  Copyright © 2019 Tap Payments. All rights reserved.
 //
 
 /// Useful extensions to KeyedDecodingContainer.
@@ -18,13 +18,13 @@ public extension KeyedDecodingContainer {
     ///   - key: Key.
     /// - Returns: Model
     /// - Throws: Decoding error if any.
-    public func decodeIfPresentAndNotEmpty<Model>(_ type: Model.Type, forKey key: KeyedDecodingContainer.Key) throws -> Model? where Model: Decodable {
+    public func tap_decodeIfPresentAndNotEmpty<Model>(_ type: Model.Type, forKey key: KeyedDecodingContainer.Key) throws -> Model? where Model: Decodable {
         
         guard self.contains(key) else { return nil }
         guard try self.decodeNil(forKey: key) == false else { return nil }
         
         let anyDecodable = try self.decode(AnyDecodable.self, forKey: key)
-        guard let dictionary = anyDecodable.value as? [String: Any] else {
+        guard let dictionary = anyDecodable.tap_value as? [String: Any] else {
             
             throw DecodingError.dataCorrupted(DecodingError.Context(codingPath: self.codingPath, debugDescription: "Expected dictionary."))
         }
@@ -39,7 +39,7 @@ public extension KeyedDecodingContainer {
     /// - Parameter key: Key.
     /// - Returns: Decoded integer.
     /// - Throws: Decoding error if any.
-    public func decodeInt(forKey key: Key) throws -> Int {
+    public func tap_decodeInt(forKey key: Key) throws -> Int {
         
         if let intValue = try? self.decode(Int.self, forKey: key) {
             
@@ -62,7 +62,7 @@ public extension KeyedDecodingContainer {
 
 private struct AnyDecodable: Decodable {
     
-    fileprivate var value: Any
+    fileprivate var tap_value: Any
     
     private struct CodingKeys: CodingKey {
         
@@ -88,10 +88,10 @@ private struct AnyDecodable: Decodable {
             var result = [String: Any]()
             try container.allKeys.forEach { (key) throws in
                 
-                result[key.stringValue] = try container.decode(AnyDecodable.self, forKey: key).value
+                result[key.stringValue] = try container.decode(AnyDecodable.self, forKey: key).tap_value
             }
             
-            value = result
+            self.tap_value = result
             
         } else if var container = try? decoder.unkeyedContainer() {
             
@@ -99,28 +99,28 @@ private struct AnyDecodable: Decodable {
             
             while !container.isAtEnd {
                 
-                result.append(try container.decode(AnyDecodable.self).value)
+                result.append(try container.decode(AnyDecodable.self).tap_value)
             }
             
-            value = result
+            self.tap_value = result
             
         } else if let container = try? decoder.singleValueContainer() {
             
             if let intVal = try? container.decode(Int.self) {
                 
-                value = intVal
+                self.tap_value = intVal
                 
             } else if let doubleVal = try? container.decode(Double.self) {
                 
-                value = doubleVal
+                self.tap_value = doubleVal
                 
             } else if let boolVal = try? container.decode(Bool.self) {
                 
-                value = boolVal
+                self.tap_value = boolVal
                 
             } else if let stringVal = try? container.decode(String.self) {
                 
-                value = stringVal
+                self.tap_value = stringVal
                 
             } else {
                 

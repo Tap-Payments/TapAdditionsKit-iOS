@@ -2,10 +2,8 @@
 //  Sequence+Additions.swift
 //  TapAdditionsKit
 //
-//  Copyright © 2018 Tap Payments. All rights reserved.
+//  Copyright © 2019 Tap Payments. All rights reserved.
 //
-
-import Foundation
 
 /**
  *  Addable protocol.
@@ -36,7 +34,7 @@ public extension Sequence where Element: Numeric {
 public extension Sequence where Iterator.Element: Addable {
     
     /// Returns sum of elements.
-    public var sum: Iterator.Element {
+    public var tap_sum: Iterator.Element {
         
         return self.reduce(Iterator.Element()) { $0 + $1 }
     }
@@ -49,7 +47,7 @@ public extension Sequence where Iterator.Element: BinaryInteger {
     // MARK: Properties
     
     /// Returns GCD of the sequence.
-    public var gcd: Iterator.Element {
+    public var tap_gcd: Iterator.Element {
         
         let elementsCount = self.underestimatedCount
         
@@ -59,7 +57,7 @@ public extension Sequence where Iterator.Element: BinaryInteger {
         
         for index in 1..<elementsCount {
             
-            result = type(of: self).pairGCD(a: self[UInt(index)], b: result)
+            result = type(of: self).tap_pairGCD(a: self[UInt(index)], b: result)
         }
         
         return result
@@ -82,11 +80,11 @@ public extension Sequence where Iterator.Element: BinaryInteger {
     
     // MARK: Methods
     
-    private static func pairGCD(a: Iterator.Element, b: Iterator.Element) -> Iterator.Element {
+    private static func tap_pairGCD(a: Iterator.Element, b: Iterator.Element) -> Iterator.Element {
         
         if a < b {
             
-            return self.pairGCD(a: b, b: a)
+            return self.tap_pairGCD(a: b, b: a)
         }
         
         var tempA = a
@@ -104,14 +102,5 @@ public extension Sequence where Iterator.Element: BinaryInteger {
             tempA = tempB
             tempB = r
         }
-    }
-}
-
-/// Dummy struct to import SwiftStandartLibrary/Sequence module.
-public struct SequenceAdditions {
-    
-    @available (*, unavailable) private init() {
-        
-        fatalError("\(self) cannot be initialized.")
     }
 }

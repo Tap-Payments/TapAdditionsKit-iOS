@@ -2,12 +2,12 @@
 //  Locale+Additions.swift
 //  TapAdditionsKit
 //
-//  Copyright © 2018 Tap Payments. All rights reserved.
+//  Copyright © 2019 Tap Payments. All rights reserved.
 //
 
-import struct Foundation.CharacterSet
-import struct Foundation.NSLocale.Locale
-import class Foundation.NSLocale.NSLocale
+import struct	Foundation.CharacterSet
+import struct	Foundation.NSLocale.Locale
+import class	Foundation.NSLocale.NSLocale
 
 /// Useful extension to Locale class.
 public extension Locale {
@@ -16,10 +16,10 @@ public extension Locale {
     // MARK: Properties
     
     /// Returns en_US locale.
-    public static let enUS = Locale(identifier: LocaleIdentifier.enUS)
+    public static let tap_enUS = Locale(identifier: TapLocaleIdentifier.enUS)
     
     /// Locale identifiers.
-    public struct LocaleIdentifier {
+    public struct TapLocaleIdentifier {
         
         public static let ar = "ar"
         public static let en = "en"
@@ -32,7 +32,7 @@ public extension Locale {
     ///
     /// - Parameter localeIdentifier: Locale identifier, for example "en-US"
     /// - Returns: Primary locale identifier, for example "en".
-    public static func primaryLocaleIdentifier(from localeIdentifier: String) -> String {
+    public static func tap_primaryLocaleIdentifier(from localeIdentifier: String) -> String {
         
         let languageCodeKey = NSLocale.Key.languageCode.rawValue
         let components = self.components(fromIdentifier: localeIdentifier)
@@ -53,14 +53,5 @@ public extension Locale {
         
         fileprivate static let dash = "-"
         fileprivate static let underscore = "_"
-    }
-}
-
-/// Dummy struct to import Foundation/Locale module.
-public struct LocaleAdditions {
-    
-    @available (*, unavailable) private init() {
-        
-        fatalError("\(self) cannot be initialized.")
     }
 }

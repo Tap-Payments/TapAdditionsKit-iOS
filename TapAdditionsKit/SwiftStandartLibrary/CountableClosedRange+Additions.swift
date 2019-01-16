@@ -2,10 +2,10 @@
 //  CountableClosedRange+Additions.swift
 //  TapAdditionsKit
 //
-//  Copyright © 2018 Tap Payments. All rights reserved.
+//  Copyright © 2019 Tap Payments. All rights reserved.
 //
 
-import func Darwin.C.stdlib.arc4random_uniform
+import func		Darwin.C.stdlib.arc4random_uniform
 
 /// Useful addition for CountableClosedRange.
 public extension CountableClosedRange where Bound == Int {
@@ -14,17 +14,8 @@ public extension CountableClosedRange where Bound == Int {
     // MARK: Properties
     
     /// Returns random value of a range.
-    public var randomValue: Bound {
+    public var tap_randomValue: Bound {
         
         return Int(arc4random_uniform(UInt32(self.count) + 1)) + self.lowerBound
-    }
-}
-
-/// Dummy struct to import SwiftStandartLibrary/CountableClosedRange module.
-public struct CountableClosedRangeAdditions {
-    
-    @available (*, unavailable) private init() {
-        
-        fatalError("\(self) cannot be initialized.")
     }
 }

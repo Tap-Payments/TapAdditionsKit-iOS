@@ -2,12 +2,12 @@
 //  CNContactStore+Additions.swift
 //  TapAdditionsKit
 //
-//  Copyright © 2018 Tap Payments. All rights reserved.
+//  Copyright © 2019 Tap Payments. All rights reserved.
 //
 
-import class Contacts.CNContact
-import class Contacts.CNContactFetchRequest
-import class Contacts.CNContactStore
+import class	Contacts.CNContact
+import class	Contacts.CNContactFetchRequest
+import class	Contacts.CNContactStore
 
 /// Useful additions to CNContactStore.
 @available(iOS 9.0, *)
@@ -20,13 +20,13 @@ public extension CNContactStore {
     ///
     /// - Returns: Fetched contacts.
     /// - Throws: Error if occured.
-    public func fetchAllContacts() throws -> [CNContact] {
+    public func tap_fetchAllContacts() throws -> [CNContact] {
         
         do {
 
             var result: [CNContact] = []
 
-            try self.enumerateContacts(with: .fetchingEverything) { (contact, _) in
+            try self.enumerateContacts(with: .tap_fetchingEverything) { (contact, _) in
 
                 result += contact
             }
@@ -44,25 +44,16 @@ public extension CNContactStore {
     /// - Parameter identifier: Contact identifier.
     /// - Returns: Fetched contact or nil if there is no contact with the specified identifier.
     /// - Throws: Error if occured.
-    public func fetchContact(with identifier: String) throws -> CNContact? {
+    public func tap_fetchContact(with identifier: String) throws -> CNContact? {
 
         do {
             
-            let contacts = try self.unifiedContacts(matching: CNContact.predicateForContacts(withIdentifiers: [identifier]), keysToFetch: CNContactFetchRequest.allFetchKeys)
+            let contacts = try self.unifiedContacts(matching: CNContact.predicateForContacts(withIdentifiers: [identifier]), keysToFetch: CNContactFetchRequest.tap_allFetchKeys)
             return contacts.first
         }
         catch let error {
 
             throw error
         }
-    }
-}
-
-/// Dummy struct to import Contacts/CNContactStore module.
-public struct CNContactStoreAdditions {
-    
-    @available (*, unavailable) private init() {
-        
-        fatalError("\(self) cannot be initialized.")
     }
 }

@@ -2,10 +2,10 @@
 //  Line.swift
 //  TapAdditionsKit
 //
-//  Copyright © 2018 Tap Payments. All rights reserved.
+//  Copyright © 2019 Tap Payments. All rights reserved.
 //
 
-import struct CoreGraphics.CGGeometry.CGPoint
+import struct	CoreGraphics.CGGeometry.CGPoint
 
 /// Line structure.
 public struct Line {

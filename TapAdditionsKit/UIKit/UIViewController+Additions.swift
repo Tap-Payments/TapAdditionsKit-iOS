@@ -2,22 +2,22 @@
 //  UIViewController+Additions.swift
 //  TapAdditionsKit
 //
-//  Copyright © 2018 Tap Payments. All rights reserved.
+//  Copyright © 2019 Tap Payments. All rights reserved.
 //
 
-import func     ObjectiveC.runtime.objc_getAssociatedObject
-import func     ObjectiveC.runtime.objc_setAssociatedObject
-import class    UIKit.UIApplication.UIApplication
-import enum     UIKit.UIApplication.UIInterfaceOrientation
-import struct   UIKit.UIApplication.UIInterfaceOrientationMask
-import class    UIKit.UINavigationController.UINavigationController
-import class    UIKit.NSLayoutConstraint.NSLayoutConstraint
-import class    UIKit.UIResponder.UIResponder
-import class    UIKit.UIScreen.UIScreen
-import class    UIKit.UIViewController.UIViewController
-import class    UIKit.UIWindow.UIWindow
+import func		ObjectiveC.runtime.objc_getAssociatedObject
+import func		ObjectiveC.runtime.objc_setAssociatedObject
+import class	UIKit.UIApplication.UIApplication
+import enum		UIKit.UIApplication.UIInterfaceOrientation
+import struct	UIKit.UIApplication.UIInterfaceOrientationMask
+import class	UIKit.UINavigationController.UINavigationController
+import class	UIKit.NSLayoutConstraint.NSLayoutConstraint
+import class	UIKit.UIResponder.UIResponder
+import class	UIKit.UIScreen.UIScreen
+import class	UIKit.UIViewController.UIViewController
+import class	UIKit.UIWindow.UIWindow
 
-private var separateWindowKey: UInt8 = 0
+private var tap_separateWindowKey: UInt8 = 0
 
 /// Useful UIViewController extension.
 public extension UIViewController {
@@ -26,27 +26,27 @@ public extension UIViewController {
     // MARK: Properties
     
     /// Defines if receiver is performing any appearance/disappearance transition at the moment.
-    public var isPerformingTransition: Bool {
+    public var tap_isPerformingTransition: Bool {
         
         return self.isBeingDismissed || self.isBeingPresented || self.isMovingFromParent || self.isMovingToParent
     }
     
     /// Returns NSLayoutConstraint which determines height of top layout guide.
-    public var topLayoutGuideConstraint: NSLayoutConstraint? {
+    public var tap_topLayoutGuideConstraint: NSLayoutConstraint? {
         
         return self.view.constraints.filter { self.topLayoutGuide.isEqual($0.firstItem) && $0.firstAttribute == .height && $0.secondItem == nil }.first
     }
     
     /// Current presented view controller.
-    public var currentPresentedViewController: UIViewController? {
+    public var tap_currentPresentedViewController: UIViewController? {
         
-        if let nonnullPresentedViewController = self.presentedViewController, nonnullPresentedViewController.isFullscreen {
+        if let nonnullPresentedViewController = self.presentedViewController, nonnullPresentedViewController.tap_isFullscreen {
             
-            return nonnullPresentedViewController.currentPresentedViewController
+            return nonnullPresentedViewController.tap_currentPresentedViewController
         }
         else if let nonnullNavigationController = self as? UINavigationController {
             
-            return nonnullNavigationController.visibleViewController?.currentPresentedViewController
+            return nonnullNavigationController.visibleViewController?.tap_currentPresentedViewController
         }
         else {
             
@@ -55,22 +55,22 @@ public extension UIViewController {
     }
     
     /// Displayed view controller.
-    public var displayedViewController: UIViewController? {
+    public var tap_displayedViewController: UIViewController? {
         
-        if let presentedController = self.presentedViewController, presentedController.isFullscreen {
+        if let presentedController = self.presentedViewController, presentedController.tap_isFullscreen {
         
-            return presentedController.displayedViewController
+            return presentedController.tap_displayedViewController
         }
         else if let navController = self as? UINavigationController {
             
-            return navController.visibleViewController?.displayedViewController
+            return navController.visibleViewController?.tap_displayedViewController
         }
         else if self.children.count > 0 {
             
             let childControllers = self.children
             for controller in childControllers {
                 
-                let presentedController = controller.displayedViewController
+                let presentedController = controller.tap_displayedViewController
                 if presentedController != controller {
                     
                     return presentedController
@@ -86,9 +86,9 @@ public extension UIViewController {
     }
     
     /// Defines if view controller is fullscreen.
-    public var isFullscreen: Bool {
+    public var tap_isFullscreen: Bool {
         
-        if let rootControllerBounds = self.foundWindow?.rootViewController?.view.bounds {
+        if let rootControllerBounds = self.tap_foundWindow?.rootViewController?.view.bounds {
             
             return rootControllerBounds.equalTo(view.bounds)
         }
@@ -101,7 +101,7 @@ public extension UIViewController {
     // MARK: Methods
     
     /// Loads view if it was not loaded.
-    public func loadViewIfNotLoaded() {
+    public func tap_loadViewIfNotLoaded() {
         
         if !self.isViewLoaded {
             
@@ -112,20 +112,20 @@ public extension UIViewController {
     /// Finds view controller in hieararchy of all windows.
     ///
     /// - Returns: Found view controller or nil if not found.
-    public static func findInHierarchy() -> Self? {
+    public static func tap_findInHierarchy() -> Self? {
         
-        return self.findInHierarchy(with: nil)
+        return self.tap_findInHierarchy(with: nil)
     }
     
     /// Finds view controller in hieararchy with given root controller.
     ///
     /// - Parameter theRootController: Root view controller. If nil, looks up all hierarchy.
     /// - Returns: Found view controller or nil if not found.
-    public static func findInHierarchy<T>(with theRootController: UIViewController?) -> T? {
+    public static func tap_findInHierarchy<T>(with theRootController: UIViewController?) -> T? {
         
         if let nonnullRootController = theRootController {
             
-            return self.inHierarchy(with: nonnullRootController)
+            return self.tap_inHierarchy(with: nonnullRootController)
         }
         else {
             
@@ -133,7 +133,7 @@ public extension UIViewController {
                 
                 guard let rootViewController = aWindow.rootViewController else { continue }
                 
-                let found: T? = self.inHierarchy(with: rootViewController)
+                let found: T? = self.tap_inHierarchy(with: rootViewController)
                 if let nonnullFound = found { return nonnullFound }
             }
             
@@ -145,11 +145,11 @@ public extension UIViewController {
     ///
     /// - Parameter controller: View controller to find parent.
     /// - Returns: View controller.
-    public static func topControllerInNavigationController(for controller: UIViewController) -> UIViewController {
+    public static func tap_topControllerInNavigationController(for controller: UIViewController) -> UIViewController {
         
         if let parentController = controller.parent, parentController.navigationController == controller.navigationController {
             
-            return self.topControllerInNavigationController(for: parentController)
+            return self.tap_topControllerInNavigationController(for: parentController)
         }
         else {
             
@@ -161,7 +161,7 @@ public extension UIViewController {
     ///
     /// - Parameter anotherViewController: View controller to test.
     /// - Returns: Boolean
-    public func isChild(of anotherViewController: UIViewController) -> Bool {
+    public func tap_isChild(of anotherViewController: UIViewController) -> Bool {
         
         var parentController = self.parent
         while parentController != nil {
@@ -184,9 +184,9 @@ public extension UIViewController {
     ///   - windowClass: Window class. Default is UIWindow.
     ///   - windowLevel: Maximal (but now allowed) window level.
     ///   - completion: Completion.
-    public func showOnSeparateWindow(_ animated: Bool = true, windowClass: UIWindow.Type = UIWindow.self, below windowLevel: UIWindow.Level? = nil, completion: TypeAlias.ArgumentlessClosure?) {
+    public func tap_showOnSeparateWindow(_ animated: Bool = true, windowClass: UIWindow.Type = UIWindow.self, below windowLevel: UIWindow.Level? = nil, completion: TypeAlias.ArgumentlessClosure?) {
         
-        self.showOnSeparateWindow(windowClass: windowClass, below: windowLevel) { (controller) in
+        self.tap_showOnSeparateWindow(windowClass: windowClass, below: windowLevel) { (controller) in
             
             controller.present(self, animated: animated, completion: completion)
         }
@@ -200,10 +200,10 @@ public extension UIViewController {
     ///   - windowLevel: Maximal (but now allowed) window level.
     ///   - closure: Closure that has view controller as a parameter.
     ///              This view controller should be the controller that presents the receiver.
-    public func showOnSeparateWindow(withUserInteractionEnabled: Bool = true, windowClass: UIWindow.Type = UIWindow.self, below windowLevel: UIWindow.Level? = nil, using closure: TypeAlias.GenericViewControllerClosure<SeparateWindowRootViewController>) {
+    public func tap_showOnSeparateWindow(withUserInteractionEnabled: Bool = true, windowClass: UIWindow.Type = UIWindow.self, below windowLevel: UIWindow.Level? = nil, using closure: TypeAlias.GenericViewControllerClosure<SeparateWindowRootViewController>) {
         
-        self.prepareSeparateWindow(ofClass: windowClass, withUserInteractionEnabled: withUserInteractionEnabled, below: windowLevel)
-        guard let rootController = self.separateWindow?.rootViewController as? SeparateWindowRootViewController else {
+        self.tap_prepareSeparateWindow(ofClass: windowClass, withUserInteractionEnabled: withUserInteractionEnabled, below: windowLevel)
+        guard let rootController = self.tap_separateWindow?.rootViewController as? SeparateWindowRootViewController else {
             
             fatalError("A problem occured either instantiating separate window or it hasn't got root view controller.")
         }
@@ -216,15 +216,15 @@ public extension UIViewController {
     /// - Parameters:
     ///   - animated: Defines if controller should be dismissed with an animation.
     ///   - completion: Closure that will be called when the receiver finishes dismissal process.
-    public func dismissFromSeparateWindow(_ animated: Bool = true, completion: TypeAlias.ArgumentlessClosure?) {
+    public func tap_dismissFromSeparateWindow(_ animated: Bool = true, completion: TypeAlias.ArgumentlessClosure?) {
         
-        guard self.separateWindow?.rootViewController != nil else {
+        guard self.tap_separateWindow?.rootViewController != nil else {
             
             completion?()
             return
         }
         
-        self.dismissFromSeparateWindow { (controller) in
+        self.tap_dismissFromSeparateWindow { (controller) in
             
             controller.dismiss(animated: animated, completion: completion)
         }
@@ -233,9 +233,9 @@ public extension UIViewController {
     /// Dismisses view controller giving an option to dismiss controller manually but control the animation.
     ///
     /// - Parameter closure: Closure has 2 parameters: viewController - controller that presented the receiver. After the dismissal finished, you should call completion closure in order to clean up everything.
-    public func dismissFromSeparateWindow(using closure: TypeAlias.UIViewControllerClosure) {
+    public func tap_dismissFromSeparateWindow(using closure: TypeAlias.UIViewControllerClosure) {
         
-        guard let rootController = self.separateWindow?.rootViewController else {
+        guard let rootController = self.tap_separateWindow?.rootViewController else {
             
             return
         }
@@ -246,27 +246,27 @@ public extension UIViewController {
     /// Hides the keyboard if it is shown and calls completion when done.
     ///
     /// - Parameter completion: Completion closure that will be called when keyboard finish hiding.
-    public func hideKeyboard(_ completion: @escaping TypeAlias.ArgumentlessClosure) {
+    public func tap_hideKeyboard(_ completion: @escaping TypeAlias.ArgumentlessClosure) {
         
-        UIResponder.resign(in: self.view, completion)
+        UIResponder.tap_resign(in: self.view, completion)
     }
     
     // MARK: - Private -
     // MARK: Properties
     
-    private var separateWindow: UIWindow? {
+    private var tap_separateWindow: UIWindow? {
         
         get {
             
-            return objc_getAssociatedObject(self, &separateWindowKey) as? UIWindow
+            return objc_getAssociatedObject(self, &tap_separateWindowKey) as? UIWindow
         }
         set {
             
-            objc_setAssociatedObject(self, &separateWindowKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            objc_setAssociatedObject(self, &tap_separateWindowKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
     }
     
-    private var foundWindow: UIWindow? {
+    private var tap_foundWindow: UIWindow? {
         
         if let nonnullWindow = self.view.window {
             
@@ -284,7 +284,7 @@ public extension UIViewController {
     
     // MARK: Methods
     
-    private static func inHierarchy<T>(with theRootController: UIViewController) -> T? {
+    private static func tap_inHierarchy<T>(with theRootController: UIViewController) -> T? {
         
         if let rController = theRootController as? T {
             
@@ -293,13 +293,13 @@ public extension UIViewController {
         
         for childController in theRootController.children {
             
-            let found: T? = self.inHierarchy(with: childController)
+            let found: T? = self.tap_inHierarchy(with: childController)
             if let nonnullFound = found { return nonnullFound }
         }
         
         if let presentedController = theRootController.presentedViewController {
             
-            let found: T? = self.inHierarchy(with: presentedController)
+            let found: T? = self.tap_inHierarchy(with: presentedController)
             if let nonnullFound = found { return nonnullFound }
         }
         
@@ -307,7 +307,7 @@ public extension UIViewController {
             
             for controller in navController.viewControllers {
                 
-                let found: T? = self.inHierarchy(with: controller)
+                let found: T? = self.tap_inHierarchy(with: controller)
                 if let nonnullFound = found { return nonnullFound }
             }
         }
@@ -315,14 +315,14 @@ public extension UIViewController {
         return nil
     }
     
-    private func prepareSeparateWindow<CustomWindow>(ofClass windowClass: CustomWindow.Type, withUserInteractionEnabled: Bool, below windowLevel: UIWindow.Level?) where CustomWindow: UIWindow {
+    private func tap_prepareSeparateWindow<CustomWindow>(ofClass windowClass: CustomWindow.Type, withUserInteractionEnabled: Bool, below windowLevel: UIWindow.Level?) where CustomWindow: UIWindow {
         
         let window = windowClass.init(frame: UIScreen.main.bounds)
-        window.rootViewController = SeparateWindowRootViewController.instantiate { [weak self] in self?.removeSeparateWindow() }
+        window.rootViewController = SeparateWindowRootViewController.instantiate { [weak self] in self?.tap_removeSeparateWindow() }
         window.tintColor = self.view.tintColor
-        window.windowLevel = self.nextSeparateWindowControllerWindowLevel(with: windowLevel)
+        window.windowLevel = self.tap_nextSeparateWindowControllerWindowLevel(with: windowLevel)
         
-        self.separateWindow = window
+        self.tap_separateWindow = window
         
         if withUserInteractionEnabled {
             
@@ -334,11 +334,11 @@ public extension UIViewController {
         }
     }
     
-    private func nextSeparateWindowControllerWindowLevel(with restrictment: UIWindow.Level?) -> UIWindow.Level {
+    private func tap_nextSeparateWindowControllerWindowLevel(with restrictment: UIWindow.Level?) -> UIWindow.Level {
         
         if let maximalLevel = restrictment {
             
-            let possiblyExistingLevel = UIWindow.Level.maximalAmongPresented(lower: maximalLevel)
+            let possiblyExistingLevel = UIWindow.Level.tap_maximalAmongPresented(lower: maximalLevel)
             if UIApplication.shared.windows.first(where: { $0.windowLevel == possiblyExistingLevel }) == nil {
                 
                 return possiblyExistingLevel
@@ -355,17 +355,17 @@ public extension UIViewController {
         }
         else {
             
-            return UIWindow.Level.maximalAmongPresented
+            return UIWindow.Level.tap_maximalAmongPresented
         }
     }
     
-    private func removeSeparateWindow() {
+    private func tap_removeSeparateWindow() {
         
-        let closestLowerWindow = self.separateWindow?.closestLowerWindow
+        let closestLowerWindow = self.tap_separateWindow?.tap_closestLowerWindow
         
-        self.separateWindow?.isHidden = true
-        self.separateWindow?.rootViewController = nil
-        self.separateWindow = nil
+        self.tap_separateWindow?.isHidden = true
+        self.tap_separateWindow?.rootViewController = nil
+        self.tap_separateWindow = nil
         
         closestLowerWindow?.makeKeyAndVisible()
     }

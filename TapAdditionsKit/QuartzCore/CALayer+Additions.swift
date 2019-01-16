@@ -2,23 +2,23 @@
 //  CALayer+Additions.swift
 //  TapAdditionsKit
 //
-//  Copyright © 2018 Tap Payments. All rights reserved.
+//  Copyright © 2019 Tap Payments. All rights reserved.
 //
 
-import struct CoreGraphics.CGBase.CGFloat
-import class CoreGraphics.CGColor
-import struct CoreGraphics.CGGeometry.CGRect
-import struct Foundation.NSDate.TimeInterval
-import func ObjectiveC.runtime.objc_getAssociatedObject
-import func ObjectiveC.runtime.objc_setAssociatedObject
-import class QuartzCore.CALayer
-import class UIKit.UIColor
-import struct UIKit.UIRectEdge
+import struct	CoreGraphics.CGBase.CGFloat
+import class	CoreGraphics.CGColor
+import struct	CoreGraphics.CGGeometry.CGRect
+import struct	Foundation.NSDate.TimeInterval
+import func		ObjectiveC.runtime.objc_getAssociatedObject
+import func		ObjectiveC.runtime.objc_setAssociatedObject
+import class	QuartzCore.CALayer
+import class	UIKit.UIColor
+import struct	UIKit.UIRectEdge
 
-private var borderLayerLeftKey: UInt8 = 0
-private var borderLayerRightKey: UInt8 = 0
-private var borderLayerTopKey: UInt8 = 0
-private var borderLayerBottomKey: UInt8 = 0
+private var tap_borderLayerLeftKey: UInt8 = 0
+private var tap_borderLayerRightKey: UInt8 = 0
+private var tap_borderLayerTopKey: UInt8 = 0
+private var tap_borderLayerBottomKey: UInt8 = 0
 
 /// Useful extension of CALayer class.
 public extension CALayer {
@@ -27,7 +27,7 @@ public extension CALayer {
     // MARK: Properties
     
     /// Returns longest animation duration of the layer.
-    public var longestAnimationDuration: TimeInterval {
+    public var tap_longestAnimationDuration: TimeInterval {
         
         var longestDuration = 0.0
         
@@ -48,7 +48,7 @@ public extension CALayer {
             
             for sublayer in nonnullSublayers {
                 
-                let duration = sublayer.longestAnimationDuration
+                let duration = sublayer.tap_longestAnimationDuration
                 if duration > longestDuration {
                     
                     longestDuration = duration
@@ -62,7 +62,7 @@ public extension CALayer {
     // MARK: Methods
     
     /// Removes all animations.
-    public func removeAnimations(includeSublayers: Bool = true) {
+    public func tap_removeAnimations(includeSublayers: Bool = true) {
         
         self.removeAllAnimations()
         
@@ -72,7 +72,7 @@ public extension CALayer {
             
             for sublayer in nonnullSublayers {
                 
-                sublayer.removeAnimations()
+                sublayer.tap_removeAnimations()
             }
         }
     }
@@ -84,121 +84,121 @@ public extension CALayer {
      - parameter width: Border width.
      - parameter color: Border color.
      */
-    public func setBorder(onEdge edge: UIRectEdge, width: CGFloat, color: UIColor?) {
+    public func tap_setBorder(onEdge edge: UIRectEdge, width: CGFloat, color: UIColor?) {
         
         let cgColor = color?.cgColor
         
         if edge.contains(.left) {
             
-            self.leftBorderLayer.frame = CGRect(x: 0.0, y: 0.0, width: width, height: bounds.height)
-            self.leftBorderLayer.backgroundColor = cgColor
+            self.tap_leftBorderLayer.frame = CGRect(x: 0.0, y: 0.0, width: width, height: bounds.height)
+            self.tap_leftBorderLayer.backgroundColor = cgColor
         }
         
         if edge.contains(.right) {
             
-            self.rightBorderLayer.frame = CGRect(x: bounds.width - width, y: 0.0, width: width, height: bounds.height)
-            self.rightBorderLayer.backgroundColor = cgColor
+            self.tap_rightBorderLayer.frame = CGRect(x: bounds.width - width, y: 0.0, width: width, height: bounds.height)
+            self.tap_rightBorderLayer.backgroundColor = cgColor
         }
         
         if edge.contains(.top) {
             
-            self.topBorderLayer.frame = CGRect(x: 0.0, y: 0.0, width: bounds.width, height: width)
-            self.topBorderLayer.backgroundColor = cgColor
+            self.tap_topBorderLayer.frame = CGRect(x: 0.0, y: 0.0, width: bounds.width, height: width)
+            self.tap_topBorderLayer.backgroundColor = cgColor
         }
         
         if edge.contains(.bottom) {
             
-            self.bottomBorderLayer.frame = CGRect(x: 0.0, y: bounds.height - width, width: bounds.width, height: width)
-            self.bottomBorderLayer.backgroundColor = cgColor
+            self.tap_bottomBorderLayer.frame = CGRect(x: 0.0, y: bounds.height - width, width: bounds.width, height: width)
+            self.tap_bottomBorderLayer.backgroundColor = cgColor
         }
     }
     
     // MARK: - Private -
     // MARK: Properties
     
-    private var leftBorderLayer: CALayer {
+    private var tap_leftBorderLayer: CALayer {
         
         get {
             
-            if let bLayer = objc_getAssociatedObject(self, &borderLayerLeftKey) as? CALayer {
+            if let bLayer = objc_getAssociatedObject(self, &tap_borderLayerLeftKey) as? CALayer {
                 
                 return bLayer
             }
             
-            let borderLayer = self.createAndAddBorderLayer()
-            self.leftBorderLayer = borderLayer
+            let borderLayer = self.tap_createAndAddBorderLayer()
+            self.tap_leftBorderLayer = borderLayer
             
             return borderLayer
         }
         set {
             
-            objc_setAssociatedObject(self, &borderLayerLeftKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            objc_setAssociatedObject(self, &tap_borderLayerLeftKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
     }
     
-    private var rightBorderLayer: CALayer {
+    private var tap_rightBorderLayer: CALayer {
         
         get {
             
-            if let bLayer = objc_getAssociatedObject(self, &borderLayerRightKey) as? CALayer {
+            if let bLayer = objc_getAssociatedObject(self, &tap_borderLayerRightKey) as? CALayer {
                 
                 return bLayer
             }
             
-            let borderLayer = self.createAndAddBorderLayer()
-            self.rightBorderLayer = borderLayer
+            let borderLayer = self.tap_createAndAddBorderLayer()
+            self.tap_rightBorderLayer = borderLayer
             
             return borderLayer
         }
         set {
             
-            objc_setAssociatedObject(self, &borderLayerRightKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            objc_setAssociatedObject(self, &tap_borderLayerRightKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
     }
     
-    private var topBorderLayer: CALayer {
+    private var tap_topBorderLayer: CALayer {
         
         get {
             
-            if let bLayer = objc_getAssociatedObject(self, &borderLayerTopKey) as? CALayer {
+            if let bLayer = objc_getAssociatedObject(self, &tap_borderLayerTopKey) as? CALayer {
                 
                 return bLayer
             }
             
-            let borderLayer = self.createAndAddBorderLayer()
-            self.topBorderLayer = borderLayer
+            let borderLayer = self.tap_createAndAddBorderLayer()
+            self.tap_topBorderLayer = borderLayer
             
             return borderLayer
         }
         set {
             
-            objc_setAssociatedObject(self, &borderLayerTopKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            objc_setAssociatedObject(self, &tap_borderLayerTopKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
     }
     
-    private var bottomBorderLayer: CALayer {
+    private var tap_bottomBorderLayer: CALayer {
         
         get {
             
-            if let bLayer = objc_getAssociatedObject(self, &borderLayerBottomKey) as? CALayer {
+            if let bLayer = objc_getAssociatedObject(self, &tap_borderLayerBottomKey) as? CALayer {
                 
                 return bLayer
             }
             
-            let borderLayer = self.createAndAddBorderLayer()
-            self.bottomBorderLayer = borderLayer
+            let borderLayer = self.tap_createAndAddBorderLayer()
+            self.tap_bottomBorderLayer = borderLayer
             
             return borderLayer
         }
         set {
             
-            objc_setAssociatedObject(self, &borderLayerBottomKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            objc_setAssociatedObject(self, &tap_borderLayerBottomKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
     }
     
     // MARK: Methods
     
-    private func createAndAddBorderLayer() -> CALayer {
+    private func tap_createAndAddBorderLayer() -> CALayer {
         
         let borderLayer = CALayer()
         borderLayer.bounds = bounds
@@ -207,14 +207,5 @@ public extension CALayer {
         self.addSublayer(borderLayer)
         
         return borderLayer
-    }
-}
-
-/// Dummy struct to import QuartzCore/CALayer module.
-public struct CALayerAdditions {
-    
-    @available (*, unavailable) private init() {
-        
-        fatalError("\(self) cannot be initialized.")
     }
 }

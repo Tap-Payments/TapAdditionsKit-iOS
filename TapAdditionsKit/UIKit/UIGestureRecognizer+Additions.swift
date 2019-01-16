@@ -2,10 +2,10 @@
 //  UIGestureRecognizer+Additions.swift
 //  TapAdditionsKit
 //
-//  Copyright © 2018 Tap Payments. All rights reserved.
+//  Copyright © 2019 Tap Payments. All rights reserved.
 //
 
-import class UIKit.UIGestureRecognizer.UIGestureRecognizer
+import class	UIKit.UIGestureRecognizer.UIGestureRecognizer
 
 /// Useful extension to UIGestureRecognizer
 public extension UIGestureRecognizer {
@@ -16,21 +16,12 @@ public extension UIGestureRecognizer {
     /*!
      Cancels current gesture state.
      */
-    public func cancelCurrentGesture() {
+    public func tap_cancelCurrentGesture() {
         
         if self.isEnabled {
             
             self.isEnabled = false
             self.isEnabled = true
         }
-    }
-}
-
-/// Dummy struct to import UIKit/UIGestureRecognizer module.
-public struct UIGestureRecognizerAdditions {
-    
-    @available (*, unavailable) private init() {
-        
-        fatalError("\(self) cannot be initialized.")
     }
 }

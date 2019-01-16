@@ -1,4 +1,4 @@
-TapSwiftFixesDependencyVersion      = '1.0.5'   unless defined? TapSwiftFixesDependencyVersion
+TapSwiftFixesDependencyVersion      = '>= 1.0.5'   unless defined? TapSwiftFixesDependencyVersion
 
 Pod::Spec.new do |tapAdditionsKit|
     
@@ -8,7 +8,7 @@ Pod::Spec.new do |tapAdditionsKit|
     tapAdditionsKit.name                    = 'TapAdditionsKit'
     tapAdditionsKit.summary                 = 'Useful additions for native iOS frameworks'
     tapAdditionsKit.requires_arc            = true
-    tapAdditionsKit.version                 = '1.1.1'
+    tapAdditionsKit.version                 = '1.2'
     tapAdditionsKit.license                 = { :type => 'MIT', :file => 'LICENSE' }
     tapAdditionsKit.author                  = { 'Tap Payments' => 'hello@tap.company' }
     tapAdditionsKit.homepage                = 'https://github.com/Tap-Payments/TapAdditionsKit-iOS'
@@ -146,7 +146,7 @@ Pod::Spec.new do |tapAdditionsKit|
             jsonSerialization.dependency 'TapAdditionsKit/SwiftStandartLibrary/OptionSet'
             jsonSerialization.dependency 'TapAdditionsKit/SwiftStandartLibrary/String'
             jsonSerialization.dependency 'TapAdditionsKit/Tap/TypeAlias'
-            jsonSerialization.dependency 'TapSwiftFixes/Exceptions',    '1.0.5'
+            jsonSerialization.dependency 'TapSwiftFixes/Exceptions',    TapSwiftFixesDependencyVersion
             
             jsonSerialization.source_files = 'TapAdditionsKit/Foundation/JSONSerialization+Additions.swift'
         
@@ -471,7 +471,7 @@ Pod::Spec.new do |tapAdditionsKit|
         uiKit.subspec 'UINavigationController' do |uiNavigationController|
         
             uiNavigationController.dependency 'TapAdditionsKit/Tap/TypeAlias'
-            uiNavigationController.dependency 'TapSwiftFixes/Threading',    '1.0.5'
+            uiNavigationController.dependency 'TapSwiftFixes/Threading',    TapSwiftFixesDependencyVersion
         
             uiNavigationController.source_files = 'TapAdditionsKit/UIKit/UINavigationController+Additions.swift'
             
@@ -503,7 +503,7 @@ Pod::Spec.new do |tapAdditionsKit|
         uiKit.subspec 'UITableView' do |uiTableView|
         
             uiTableView.dependency 'TapAdditionsKit/UIKit/UIView'
-            uiTableView.dependency 'TapSwiftFixes/Exceptions',  '1.0.5'
+            uiTableView.dependency 'TapSwiftFixes/Exceptions',  TapSwiftFixesDependencyVersion
         
             uiTableView.source_files = 'TapAdditionsKit/UIKit/UITableView+Additions.swift'
         

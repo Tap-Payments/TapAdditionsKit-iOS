@@ -2,12 +2,12 @@
 //  UIDevice+Additions.swift
 //  TapAdditionsKit
 //
-//  Copyright © 2018 Tap Payments. All rights reserved.
+//  Copyright © 2019 Tap Payments. All rights reserved.
 //
 
-import struct Foundation.NSProcessInfo.OperatingSystemVersion
-import class Foundation.NSProcessInfo.ProcessInfo
-import class UIKit.UIDevice
+import struct	Foundation.NSProcessInfo.OperatingSystemVersion
+import class	Foundation.NSProcessInfo.ProcessInfo
+import class	UIKit.UIDevice
 
 /// Useful extension for UIDevice.
 public extension UIDevice {
@@ -16,25 +16,25 @@ public extension UIDevice {
     // MARK: Properties
     
     /// Returns OS version.
-    public var operatingSystemVersion: OperatingSystemVersion {
+    public var tap_operatingSystemVersion: OperatingSystemVersion {
         
         return ProcessInfo.processInfo.operatingSystemVersion
     }
     
-    /// Defines if device is running iOS 8 or lower
-    public var isRunningIOS9OrLower: Bool {
+    /// Defines if device is running iOS 9 or lower
+    public var tap_isRunningIOS9OrLower: Bool {
         
-        return self.operatingSystemVersion.majorVersion < 10
+        return self.tap_operatingSystemVersion.majorVersion < 10
     }
     
-    /// Defines if device is running iOS 9 or lower
-    public var isRunningIOS8OrLower: Bool {
+    /// Defines if device is running iOS 8 or lower
+    public var tap_isRunningIOS8OrLower: Bool {
         
-        return self.operatingSystemVersion.majorVersion < 9
+        return self.tap_operatingSystemVersion.majorVersion < 9
     }
     
     /// Defines if app is running on simulator.
-    public var isSimulator: Bool {
+    public var tap_isSimulator: Bool {
         
         #if targetEnvironment(simulator)
             
@@ -48,7 +48,7 @@ public extension UIDevice {
     }
     
     /// Defines if device is 64-bit.
-    public var is64Bit: Bool {
+    public var tap_is64Bit: Bool {
         
         #if __LP64__
             
@@ -62,17 +62,8 @@ public extension UIDevice {
     }
     
     /// Defines if device is iPad
-    public var isIPad: Bool {
+    public var tap_isIPad: Bool {
         
         return self.userInterfaceIdiom == .pad
-    }
-}
-
-/// Dummy struct to import UIKit/UIDevice module.
-public struct UIDeviceAdditions {
-    
-    @available (*, unavailable) private init() {
-        
-        fatalError("\(self) cannot be initialized.")
     }
 }

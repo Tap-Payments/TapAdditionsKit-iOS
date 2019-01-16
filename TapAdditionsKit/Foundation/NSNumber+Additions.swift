@@ -2,14 +2,14 @@
 //  NSNumber+Additions.swift
 //  TapAdditionsKit
 //
-//  Copyright © 2018 Tap Payments. All rights reserved.
+//  Copyright © 2019 Tap Payments. All rights reserved.
 //
 
-import struct CoreGraphics.CGBase.CGFloat
-import struct Foundation.NSLocale.Locale
-import class Foundation.NSValue.NSNumber
-import class Foundation.NSNumberFormatter.NumberFormatter
-import class UIKit.UIDevice.UIDevice
+import struct	CoreGraphics.CGBase.CGFloat
+import struct	Foundation.NSLocale.Locale
+import class	Foundation.NSValue.NSNumber
+import class	Foundation.NSNumberFormatter.NumberFormatter
+import class	UIKit.UIDevice.UIDevice
 
 /// Useful extension for NSNumber.
 public extension NSNumber {
@@ -18,12 +18,12 @@ public extension NSNumber {
     // MARK: Properties
     
     /// Zero number.
-    public static let zero = NSNumber(value: 0.0)
+    public static let tap_zero = NSNumber(value: 0.0)
     
     /// Returns CGFloat value.
-    public var cgFloatValue: CGFloat {
+    public var tap_cgFloatValue: CGFloat {
         
-        if UIDevice.current.is64Bit {
+        if UIDevice.current.tap_is64Bit {
             
             return CGFloat(self.floatValue)
         }
@@ -34,9 +34,9 @@ public extension NSNumber {
     }
     
     /// Returns string value of the receiver using en_US locale without grouping separator.
-    public var internationalStringValue: String {
+    public var tap_internationalStringValue: String {
         
-        if let result = type(of: self).decimalNumberFormatter.string(from: self) {
+        if let result = type(of: self).tap_decimalNumberFormatter.string(from: self) {
             
             return result
         }
@@ -57,7 +57,7 @@ public extension NSNumber {
      */
     public convenience init(cgFloat value: CGFloat) {
         
-        if UIDevice.current.is64Bit {
+        if UIDevice.current.tap_is64Bit {
             
             self.init(value: Double(value))
         }
@@ -74,37 +74,28 @@ public extension NSNumber {
      
      - returns: NSNumber
      */
-    public static func from(string: String?) -> NSNumber {
+    public static func tap_from(string: String?) -> NSNumber {
         
-        guard let nonnullString = string else { return .zero }
+        guard let nonnullString = string else { return .tap_zero }
         
-        if let numberFromString = self.decimalNumberFormatter.number(from: nonnullString) {
+        if let numberFromString = self.tap_decimalNumberFormatter.number(from: nonnullString) {
             
             return numberFromString
         }
         else {
             
-            return .zero
+            return .tap_zero
         }
     }
     
     // MARK: Private
     
-    private static var decimalNumberFormatter: NumberFormatter = {
+    private static var tap_decimalNumberFormatter: NumberFormatter = {
         
-        let formatter = NumberFormatter(locale: Locale.enUS)
-        formatter.groupingSeparator = String.empty
+        let formatter = NumberFormatter(locale: Locale.tap_enUS)
+        formatter.groupingSeparator = String.tap_empty
         formatter.numberStyle = NumberFormatter.Style.decimal
         
         return formatter
     }()
-}
-
-/// Dummy struct to import Foundation/NSNumber module.
-public struct NSNumberAdditions {
-    
-    @available (*, unavailable) private init() {
-        
-        fatalError("\(self) cannot be initialized.")
-    }
 }

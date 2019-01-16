@@ -2,11 +2,11 @@
 //  UIEdgeInsets+Additions.swift
 //  TapAdditionsKit
 //
-//  Copyright © 2018 Tap Payments. All rights reserved.
+//  Copyright © 2019 Tap Payments. All rights reserved.
 //
 
-import struct CoreGraphics.CGBase.CGFloat
-import struct UIKit.UIGeometry.UIEdgeInsets
+import struct	CoreGraphics.CGBase.CGFloat
+import struct	UIKit.UIGeometry.UIEdgeInsets
 
 /// Useful addition to UIEdgeInsets.
 public extension UIEdgeInsets {
@@ -15,7 +15,7 @@ public extension UIEdgeInsets {
     // MARK: Properties
     
     /// Returns mirrored result.
-    public var mirrored: UIEdgeInsets {
+    public var tap_mirrored: UIEdgeInsets {
         
         let original = self
         
@@ -31,17 +31,8 @@ public extension UIEdgeInsets {
     /// Initializes UIEdgeInsets with the same insets from all sides.
     ///
     /// - Parameter inset: Inset.
-    public init(_ inset: CGFloat) {
+    public init(tap_inset: CGFloat) {
         
-        self.init(top: inset, left: inset, bottom: inset, right: inset)
-    }
-}
-
-/// Dummy struct to import UIKit/UIEdgeInsets module.
-public struct UIEdgeInsetsAdditions {
-    
-    @available (*, unavailable) private init() {
-        
-        fatalError("\(self) cannot be initialized.")
+        self.init(top: tap_inset, left: tap_inset, bottom: tap_inset, right: tap_inset)
     }
 }

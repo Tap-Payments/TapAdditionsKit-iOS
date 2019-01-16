@@ -2,11 +2,11 @@
 //  Decodable+Additions.swift
 //  TapAdditionsKit
 //
-//  Copyright © 2018 Tap Payments. All rights reserved.
+//  Copyright © 2019 Tap Payments. All rights reserved.
 //
 
-import class Foundation.NSJSONSerialization.JSONDecoder
-import class Foundation.NSJSONSerialization.JSONSerialization
+import class	Foundation.NSJSONSerialization.JSONDecoder
+import class	Foundation.NSJSONSerialization.JSONSerialization
 
 /// Useful extension to Decodable protocol.
 public extension Decodable {

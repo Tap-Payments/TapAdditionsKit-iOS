@@ -2,13 +2,12 @@
 //  CNInstantMessageAddress+Additions.swift
 //  TapAdditionsKit
 //
-//  Copyright © 2018 Tap Payments. All rights reserved.
+//  Copyright © 2019 Tap Payments. All rights reserved.
 //
 
-import class Contacts.CNInstantMessageAddress
-
-import var Contacts.CNInstantMessageAddress.CNInstantMessageAddressServiceKey
-import var Contacts.CNInstantMessageAddress.CNInstantMessageAddressUsernameKey
+import class	Contacts.CNInstantMessageAddress
+import var		Contacts.CNInstantMessageAddress.CNInstantMessageAddressServiceKey
+import var		Contacts.CNInstantMessageAddress.CNInstantMessageAddressUsernameKey
 
 /// Useful addition to CNInstantMessageAddress.
 @available(iOS 9.0, *)
@@ -18,7 +17,7 @@ public extension CNInstantMessageAddress {
     // MARK: Properties
 
     /// Returns JSON dictionary representation of the receiver.
-    public var jsonDictionary: [String: String] {
+    public var tap_jsonDictionary: [String: String] {
 
         var result: [String: String] = [:]
 
@@ -33,14 +32,5 @@ public extension CNInstantMessageAddress {
         }
 
         return result
-    }
-}
-
-/// Dummy struct to import Contacts/CNInstantMessageAddress module.
-public struct CNInstantMessageAddressAdditions {
-    
-    @available (*, unavailable) private init() {
-        
-        fatalError("\(self) cannot be initialized.")
     }
 }

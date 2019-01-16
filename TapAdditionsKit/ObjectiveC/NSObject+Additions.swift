@@ -2,14 +2,12 @@
 //  NSObject+Additions.swift
 //  TapAdditionsKit
 //
-//  Copyright © 2018 Tap Payments. All rights reserved.
+//  Copyright © 2019 Tap Payments. All rights reserved.
 //
 
-import Dispatch
-
-import struct Foundation.NSDate.TimeInterval
-import class ObjectiveC.NSObject.NSObject
-import struct ObjectiveC.Selector
+import struct	Foundation.NSDate.TimeInterval
+import class	ObjectiveC.NSObject.NSObject
+import struct	ObjectiveC.Selector
 
 /// Some extensions to NSObject.
 public extension NSObject {
@@ -20,15 +18,15 @@ public extension NSObject {
     /*!
      Returns class name as string.
      */
-    public static var className: String {
+    public static var tap_className: String {
         
         return "\(self)"
     }
     
     /// Returns class name as string.
-    public var className: String {
+    public var tap_className: String {
         
-        return type(of: self).className
+        return type(of: self).tap_className
     }
     
     // MARK: Methods
@@ -38,7 +36,7 @@ public extension NSObject {
      
      - returns: Receiver as Self
      */
-    public func asSelf<T>() -> T {
+    public func tap_asSelf<T>() -> T {
         
         guard let result = self as? T else {
             
@@ -56,7 +54,7 @@ public extension NSObject {
      - parameter delay:         Delay in seconds.
      - parameter waitUntilDone: Defines if main thread will wait for execution finishes.
      */
-    public func performSelectorOnMainThread(_ aSelector: Selector, withObject object: AnyObject?, afterDelay delay: TimeInterval, waitUntilDone: Bool) {
+    public func tap_performSelectorOnMainThread(_ aSelector: Selector, withObject object: AnyObject?, afterDelay delay: TimeInterval, waitUntilDone: Bool) {
         
         let dispatchDelay = DispatchTime.now() + delay
         
@@ -64,14 +62,5 @@ public extension NSObject {
             
             self?.performSelector(onMainThread: aSelector, with: object, waitUntilDone: waitUntilDone)
         }
-    }
-}
-
-/// Dummy struct to import ObjectiveC/NSObject module.
-public struct NSObjectAdditions {
-    
-    @available (*, unavailable) private init() {
-        
-        fatalError("\(self) cannot be initialized.")
     }
 }

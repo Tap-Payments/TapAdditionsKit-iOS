@@ -2,7 +2,7 @@
 //  Int+Additions.swift
 //  TapAdditionsKit
 //
-//  Copyright © 2018 Tap Payments. All rights reserved.
+//  Copyright © 2019 Tap Payments. All rights reserved.
 //
 
 /// Useful extension to Int.
@@ -15,17 +15,8 @@ public extension Int {
     ///
     /// - Parameter string: String.
     /// - Returns: String.Index representation of Int.
-    public func index(in string: String) -> String.Index {
+    public func tap_index(in string: String) -> String.Index {
         
         return string.index(string.startIndex, offsetBy: self)
-    }
-}
-
-/// Dummy struct to import SwiftStandartLibrary/Int module.
-public struct IntAdditions {
-    
-    @available (*, unavailable) private init() {
-        
-        fatalError("\(self) cannot be initialized.")
     }
 }

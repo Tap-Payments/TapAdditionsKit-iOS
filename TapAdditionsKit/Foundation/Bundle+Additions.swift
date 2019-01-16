@@ -2,10 +2,10 @@
 //  Bundle+Additions.swift
 //  TapAdditionsKit
 //
-//  Copyright © 2018 Tap Payments. All rights reserved.
+//  Copyright © 2019 Tap Payments. All rights reserved.
 //
 
-import class Foundation.NSBundle.Bundle
+import class	Foundation.NSBundle.Bundle
 
 /// Useful extension for Bundle.
 public extension Bundle {
@@ -17,7 +17,7 @@ public extension Bundle {
     ///
     /// - Parameter name: Child bundle name.
     /// - Returns: Child bundle.
-    public func childBundle(named name: String) -> Bundle? {
+    public func tap_childBundle(named name: String) -> Bundle? {
         
         guard let bundleURL = self.url(forResource: name, withExtension: BundleConstants.bundleExtension) else {
             
@@ -34,14 +34,5 @@ public extension Bundle {
         fileprivate static let bundleExtension = "bundle"
         
         @available(*, unavailable) private init() {}
-    }
-}
-
-/// Dummy struct to import Foundation/Bundle module.
-public struct BundleAdditions {
-    
-    @available (*, unavailable) private init() {
-        
-        fatalError("\(self) cannot be initialized.")
     }
 }

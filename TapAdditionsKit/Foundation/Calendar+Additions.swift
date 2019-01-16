@@ -2,11 +2,11 @@
 //  Calendar+Additions.swift
 //  TapAdditionsKit
 //
-//  Copyright © 2018 Tap Payments. All rights reserved.
+//  Copyright © 2019 Tap Payments. All rights reserved.
 //
 
-import struct Foundation.NSCalendar.Calendar
-import struct Foundation.DateComponents
+import struct	Foundation.NSCalendar.Calendar
+import struct	Foundation.DateComponents
 
 /// Useful addition to calendar.
 public extension Calendar {
@@ -23,9 +23,9 @@ public extension Calendar {
     ///
     /// - Parameter month: Month ( 1..12 )
     /// - Returns: Maximal number of days.
-    public func maximalNumberOfDays(in month: Int) -> Int {
+    public func tap_maximalNumberOfDays(in month: Int) -> Int {
         
-        return self.numberOfDays(in: month, in: CalendarConstants.wellKnownLeapYear)
+        return self.tap_numberOfDays(in: month, in: CalendarConstants.wellKnownLeapYear)
     }
     
     /// Returns number of days for a specific month of a specific year.
@@ -34,7 +34,7 @@ public extension Calendar {
     ///   - month: Month ( 1..12 )
     ///   - year: Year
     /// - Returns: Number of days.
-    public func numberOfDays(in month: Int, in year: Int) -> Int {
+    public func tap_numberOfDays(in month: Int, in year: Int) -> Int {
         
         var components = DateComponents()
         components.year = year
@@ -51,14 +51,5 @@ public extension Calendar {
         }
         
         return range.count
-    }
-}
-
-/// Dummy struct to import Foundation/Calendar module.
-public struct CalendarAdditions {
-    
-    @available (*, unavailable) private init() {
-        
-        fatalError("\(self) cannot be initialized.")
     }
 }

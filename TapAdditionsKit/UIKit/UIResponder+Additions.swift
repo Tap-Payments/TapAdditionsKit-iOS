@@ -2,13 +2,13 @@
 //  UIResponder+Additions.swift
 //  TapAdditionsKit
 //
-//  Copyright © 2018 Tap Payments. All rights reserved.
+//  Copyright © 2019 Tap Payments. All rights reserved.
 //
 
-import class    QuartzCore.CATransaction.CATransaction
-import class    UIKit.UIApplication.UIApplication
-import class    UIKit.UIResponder.UIResponder
-import class    UIKit.UIView.UIView
+import class	QuartzCore.CATransaction.CATransaction
+import class	UIKit.UIApplication.UIApplication
+import class	UIKit.UIResponder.UIResponder
+import class	UIKit.UIView.UIView
 
 /// Useful additions to UIResponder.
 public extension UIResponder {
@@ -17,17 +17,17 @@ public extension UIResponder {
     // MARK: Properties
     
     /// Returns current first responder.
-    public static var current: UIResponder? {
+    public static var tap_current: UIResponder? {
         
-        self.currentFirstResponder = nil
-        UIApplication.shared.sendAction(#selector(findFirstResponder), to: nil, from: nil, for: nil)
+        self.tap_currentFirstResponder = nil
+        UIApplication.shared.sendAction(#selector(tap_findFirstResponder), to: nil, from: nil, for: nil)
         
-        return self.currentFirstResponder
+        return self.tap_currentFirstResponder
     }
     
     // MARK: Methods
     
-    public func resignFirstResponder(_ completion: @escaping TypeAlias.ArgumentlessClosure) {
+    public func tap_resignFirstResponder(_ completion: @escaping TypeAlias.ArgumentlessClosure) {
         
         CATransaction.begin()
         CATransaction.setCompletionBlock(completion)
@@ -37,7 +37,7 @@ public extension UIResponder {
         CATransaction.commit()
     }
     
-    public static func resign(in view: UIView? = nil, _ completion: TypeAlias.ArgumentlessClosure? = nil) {
+    public static func tap_resign(in view: UIView? = nil, _ completion: TypeAlias.ArgumentlessClosure? = nil) {
         
         let localCompletion: TypeAlias.ArgumentlessClosure = {
             
@@ -46,18 +46,18 @@ public extension UIResponder {
         
         if let nonnullView = view {
             
-            if let responder = nonnullView.firstResponder {
+            if let responder = nonnullView.tap_firstResponder {
                 
-                responder.resignFirstResponder(localCompletion)
+                responder.tap_resignFirstResponder(localCompletion)
             }
             else {
                 
                 localCompletion()
             }
         }
-        else if let responder = self.current {
+        else if let responder = self.tap_current {
             
-            responder.resignFirstResponder(localCompletion)
+            responder.tap_resignFirstResponder(localCompletion)
         }
         else {
             
@@ -68,28 +68,19 @@ public extension UIResponder {
     // MARK: - Private -
     // MARK: Properties
     
-    private static weak var currentFirstResponder: UIResponder?
+    private static weak var tap_currentFirstResponder: UIResponder?
     
     // MARK: Methods
     
-    @objc private func findFirstResponder() {
+    @objc private func tap_findFirstResponder() {
         
         if let view = self as? UIView {
             
-            UIResponder.currentFirstResponder = view.firstResponder
+            UIResponder.tap_currentFirstResponder = view.tap_firstResponder
         }
         else {
             
-            UIResponder.currentFirstResponder = self
+            UIResponder.tap_currentFirstResponder = self
         }
-    }
-}
-
-/// Dummy struct to import UIKit/UIResponder module.
-public struct UIResponderAdditions {
-    
-    @available (*, unavailable) private init() {
-        
-        fatalError("\(self) cannot be initialized.")
     }
 }

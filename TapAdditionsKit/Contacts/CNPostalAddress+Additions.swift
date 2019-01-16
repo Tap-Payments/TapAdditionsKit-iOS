@@ -2,19 +2,18 @@
 //  CNPostalAddress+Additions.swift
 //  TapAdditionsKit
 //
-//  Copyright © 2018 Tap Payments. All rights reserved.
+//  Copyright © 2019 Tap Payments. All rights reserved.
 //
 
-import class Contacts.CNPostalAddress
-
-import var Contacts.CNPostalAddress.CNPostalAddressStreetKey
-import var Contacts.CNPostalAddress.CNPostalAddressCityKey
-import var Contacts.CNPostalAddress.CNPostalAddressStateKey
-import var Contacts.CNPostalAddress.CNPostalAddressPostalCodeKey
-import var Contacts.CNPostalAddress.CNPostalAddressCountryKey
-import var Contacts.CNPostalAddress.CNPostalAddressISOCountryCodeKey
-import var Contacts.CNPostalAddress.CNPostalAddressSubLocalityKey
-import var Contacts.CNPostalAddress.CNPostalAddressSubAdministrativeAreaKey
+import class	Contacts.CNPostalAddress
+import var		Contacts.CNPostalAddress.CNPostalAddressStreetKey
+import var		Contacts.CNPostalAddress.CNPostalAddressCityKey
+import var		Contacts.CNPostalAddress.CNPostalAddressStateKey
+import var		Contacts.CNPostalAddress.CNPostalAddressPostalCodeKey
+import var		Contacts.CNPostalAddress.CNPostalAddressCountryKey
+import var		Contacts.CNPostalAddress.CNPostalAddressISOCountryCodeKey
+import var		Contacts.CNPostalAddress.CNPostalAddressSubLocalityKey
+import var		Contacts.CNPostalAddress.CNPostalAddressSubAdministrativeAreaKey
 
 /// Useful extension to CNPostalAddress
 @available(iOS 9.0, *)
@@ -24,7 +23,7 @@ public extension CNPostalAddress {
     // MARK: Properties
 
     /// Returns JSON dictionary representation of the receiver.
-    public var jsonDictionary: [String: String] {
+    public var tap_jsonDictionary: [String: String] {
         
         var result: [String: String] = [:]
         
@@ -72,14 +71,5 @@ public extension CNPostalAddress {
         }
 
         return result
-    }
-}
-
-/// Dummy struct to import Contacts/CNPostalAddress module.
-public struct CNPostalAddressAdditions {
-    
-    @available (*, unavailable) private init() {
-        
-        fatalError("\(self) cannot be initialized.")
     }
 }

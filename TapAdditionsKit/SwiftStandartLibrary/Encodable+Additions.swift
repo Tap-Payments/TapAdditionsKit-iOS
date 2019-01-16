@@ -2,11 +2,11 @@
 //  Encodable+Additions.swift
 //  TapAdditionsKit
 //
-//  Copyright © 2018 Tap Payments. All rights reserved.
+//  Copyright © 2019 Tap Payments. All rights reserved.
 //
 
-import class Foundation.NSJSONSerialization.JSONEncoder
-import class Foundation.NSJSONSerialization.JSONSerialization
+import class	Foundation.NSJSONSerialization.JSONEncoder
+import class	Foundation.NSJSONSerialization.JSONSerialization
 
 /// Useful extension to Encodable protocol.
 public extension Encodable {
@@ -19,7 +19,7 @@ public extension Encodable {
     /// - Parameter encoder: Encoder.
     /// - Returns: Dictionary representation of the receiver.
     /// - Throws: Encoding error.
-    public func asDictionary(using encoder: JSONEncoder = JSONEncoder()) throws -> [String: Any] {
+    public func tap_asDictionary(using encoder: JSONEncoder = JSONEncoder()) throws -> [String: Any] {
         
         let data = try encoder.encode(self)
         let object = try JSONSerialization.jsonObject(with: data, options: [])

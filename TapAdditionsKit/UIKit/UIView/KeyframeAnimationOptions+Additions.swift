@@ -2,10 +2,10 @@
 //  KeyframeAnimationOptions+Additions.swift
 //  TapAdditionsKit
 //
-//  Copyright © 2018 Tap Payments. All rights reserved.
+//  Copyright © 2019 Tap Payments. All rights reserved.
 //
 
-import class UIKit.UIView.UIView
+import class	UIKit.UIView.UIView
 
 public extension UIView.KeyframeAnimationOptions {
     
@@ -15,8 +15,8 @@ public extension UIView.KeyframeAnimationOptions {
     /// Initializes anima
     ///
     /// - Parameter animationOptions: Animation options.
-    public init(_ animationOptions: UIView.AnimationOptions) {
+    public init(tap_animationOptions: UIView.AnimationOptions) {
         
-        self.init(rawValue: animationOptions.rawValue)
+        self.init(rawValue: tap_animationOptions.rawValue)
     }
 }

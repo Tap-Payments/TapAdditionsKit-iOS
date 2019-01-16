@@ -2,22 +2,22 @@
 //  CGContext+Additions.swift
 //  TapAdditionsKit
 //
-//  Copyright © 2018 Tap Payments. All rights reserved.
+//  Copyright © 2019 Tap Payments. All rights reserved.
 //
 
-import enum CoreGraphics.CGContext.CGBlendMode
-import class CoreGraphics.CGContext.CGContext
-import struct CoreGraphics.CGGeometry.CGRect
-import struct CoreGraphics.CGGeometry.CGSize
-import class CoreGraphics.CGImage.CGImage
-import class UIKit.UIColor.UIColor
+import enum		CoreGraphics.CGContext.CGBlendMode
+import class	CoreGraphics.CGContext.CGContext
+import struct	CoreGraphics.CGGeometry.CGRect
+import struct	CoreGraphics.CGGeometry.CGSize
+import class	CoreGraphics.CGImage.CGImage
+import class	UIKit.UIColor.UIColor
 
 public extension CGContext {
     
     // MARK: - Public -
     // MARK: Methods
     
-    public func makeImage(with blendColor: UIColor?, blendMode: CGBlendMode, size: CGSize) -> CGImage? {
+    public func tap_makeImage(with blendColor: UIColor?, blendMode: CGBlendMode, size: CGSize) -> CGImage? {
         
         if let color = blendColor {
             
@@ -27,14 +27,5 @@ public extension CGContext {
         }
         
         return self.makeImage()
-    }
-}
-
-/// Dummy struct to import CoreGraphics/CGContext module.
-public struct CGContextAdditions {
-    
-    @available (*, unavailable) private init() {
-        
-        fatalError("\(self) cannot be initialized.")
     }
 }

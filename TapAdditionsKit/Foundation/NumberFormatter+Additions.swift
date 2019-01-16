@@ -2,11 +2,11 @@
 //  NumberFormatter+Additions.swift
 //  TapAdditionsKit
 //
-//  Copyright © 2018 Tap Payments. All rights reserved.
+//  Copyright © 2019 Tap Payments. All rights reserved.
 //
 
-import struct Foundation.NSLocale.Locale
-import class Foundation.NSNumberFormatter.NumberFormatter
+import struct	Foundation.NSLocale.Locale
+import class	Foundation.NSNumberFormatter.NumberFormatter
 
 /// Useful extension for NumberFormatter.
 public extension NumberFormatter {
@@ -30,14 +30,5 @@ public extension NumberFormatter {
         
         self.init()
         self.locale = locale
-    }
-}
-
-/// Dummy struct to import Foundation/NumberFormatter module.
-public struct NumberFormatterAdditions {
-    
-    @available (*, unavailable) private init() {
-        
-        fatalError("\(self) cannot be initialized.")
     }
 }

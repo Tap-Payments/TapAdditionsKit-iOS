@@ -2,7 +2,7 @@
 //  Array+Additions.swift
 //  TapAdditionsKit
 //
-//  Copyright © 2018 Tap Payments. All rights reserved.
+//  Copyright © 2019 Tap Payments. All rights reserved.
 //
 
 /// Useful extension to array.
@@ -85,7 +85,7 @@ public extension Array where Element: Equatable {
     // MARK: Properties
     
     /// Returns copy of the receiver by removing duplicates.
-    public var removingDuplicates: [Element] {
+    public var tap_removingDuplicates: [Element] {
         
         var result: [Element] = []
         
@@ -165,16 +165,16 @@ public extension Array where Element: Equatable {
     }
     
     /// Removes all the duplicates from the receiver.
-    public mutating func removeDuplicates() {
+    public mutating func tap_removeDuplicates() {
         
-        self = self.removingDuplicates
+        self = self.tap_removingDuplicates
     }
     
     /// Returns a new array that is a copy of the receiving array with a given array of objects left.
     ///
     /// - Parameter array: Array of objects that needs to be left
     /// - Returns: Array of left objects.
-    public func byLeavingObjects(from array: [Element]) -> [Element] {
+    public func tap_byLeavingObjects(from array: [Element]) -> [Element] {
         
         guard array.count > 0 && self.count > 0 else { return [] }
         
@@ -201,7 +201,7 @@ public extension Array where Element: Numeric {
     ///   - finish: Array of right bounds.
     ///   - progress: Progress in range [0, 1].
     /// - Returns: Interpolated array.
-    public static func interpolate(start: [Element], finish: [Element], progress: Element) -> [Element] {
+    public static func tap_interpolate(start: [Element], finish: [Element], progress: Element) -> [Element] {
         
         let arrayLength = start.count
         guard arrayLength > 0 else { return [] }
@@ -211,7 +211,7 @@ public extension Array where Element: Numeric {
             fatalError("Arrays should have equal nonnull lengths.")
         }
         
-        return zip(start, finish).map { Element.interpolate(start: $0.0, finish: $0.1, progress: progress) }
+        return zip(start, finish).map { Element.tap_interpolate(start: $0.0, finish: $0.1, progress: progress) }
     }
 }
 
@@ -222,16 +222,7 @@ public extension Array where Element: Numeric {
 ///   - finish: Array of right bounds.
 ///   - progress: Progress in range [0, 1].
 /// - Returns: Interpolated array.
-public func interpolate<Type>(start: [Type], finish: [Type], progress: Type) -> [Type] where Type: Numeric {
+public func tap_interpolate<Type>(start: [Type], finish: [Type], progress: Type) -> [Type] where Type: Numeric {
     
-    return type(of: start).interpolate(start: start, finish: finish, progress: progress)
-}
-
-/// Dummy struct to import SwiftStandartLibrary/Array module.
-public struct ArrayAdditions {
-    
-    @available (*, unavailable) private init() {
-        
-        fatalError("\(self) cannot be initialized.")
-    }
+    return type(of: start).tap_interpolate(start: start, finish: finish, progress: progress)
 }

@@ -2,14 +2,14 @@
 //  UIColor+Additions.swift
 //  TapAdditionsKit
 //
-//  Copyright © 2018 Tap Payments. All rights reserved.
+//  Copyright © 2019 Tap Payments. All rights reserved.
 //
 
-import struct CoreGraphics.CGBase.CGFloat
-import struct Foundation.NSRange.NSRange
-import class Foundation.NSScanner.Scanner
-import struct OpenGLES.gltypes.GLfloat
-import class UIKit.UIColor.UIColor
+import struct	CoreGraphics.CGBase.CGFloat
+import struct	Foundation.NSRange.NSRange
+import class	Foundation.NSScanner.Scanner
+import struct	OpenGLES.gltypes.GLfloat
+import class	UIKit.UIColor.UIColor
 
 /// UIColor extension.
 public extension UIColor {
@@ -22,38 +22,30 @@ public extension UIColor {
      
      - returns: Extra light native blur tint color.
      */
-    public static let extraLightBlurTintColor = UIColor(white: 0.97, alpha: 0.82)
+    public static let tap_extraLightBlurTintColor = UIColor(white: 0.97, alpha: 0.82)
     
     /*!
      Creates and returns light native blur tint color.
      
      - returns: Light native blur tint color.
      */
-    public static let lightBlurTintColor: UIColor = UIColor(white: 1.0, alpha: 0.3)
+    public static let tap_lightBlurTintColor: UIColor = UIColor(white: 1.0, alpha: 0.3)
     
     /*!
      Creates and returns dark native blur tint color.
      
      - returns: Dark native blur tint color.
      */
-    public static let darkBlurTintColor = UIColor(white: 0.11, alpha: 0.73)
+    public static let tap_darkBlurTintColor = UIColor(white: 0.11, alpha: 0.73)
     
     /// Returns gl components of the color.
-    public var glComponents: [GLfloat]? {
-        
-        guard let nonnullRGBAComponents = self.rgbaComponents else { return nil }
-        
-        var result: [GLfloat] = []
-        for component in nonnullRGBAComponents {
-            
-            result.append(GLfloat(component))
-        }
-        
-        return result
+    public var tap_glComponents: [GLfloat]? {
+		
+		return self.tap_rgbaComponents?.map { GLfloat($0) }
     }
     
     /// Returns RGBA color components.
-    public var rgbaComponents: [CGFloat]? {
+    public var tap_rgbaComponents: [CGFloat]? {
         
         var red: CGFloat = 0.0
         var green: CGFloat = 0.0
@@ -79,23 +71,23 @@ public extension UIColor {
     /// Initializes color with RGBA components.
     ///
     /// - Parameter rgba: RGBA components.
-    public convenience init?(rgba: [CGFloat]) {
+    public convenience init?(tap_rgba: [CGFloat]) {
         
-        let componentsCount = rgba.count
+        let componentsCount = tap_rgba.count
         
         switch componentsCount {
             
         case 2:
             
-            self.init(white: rgba[0], alpha: rgba[1])
+            self.init(white: tap_rgba[0], alpha: tap_rgba[1])
             
         case 3:
             
-            self.init(red: rgba[0], green: rgba[1], blue: rgba[2], alpha: 1.0)
+            self.init(red: tap_rgba[0], green: tap_rgba[1], blue: tap_rgba[2], alpha: 1.0)
             
         case 4:
             
-            self.init(red: rgba[0], green: rgba[1], blue: rgba[2], alpha: rgba[3])
+            self.init(red: tap_rgba[0], green: tap_rgba[1], blue: tap_rgba[2], alpha: tap_rgba[3])
             
         default:
             
@@ -111,9 +103,9 @@ public extension UIColor {
      
      - returns: UIColor or nil if HEX string is incorrect.
      */
-    public static func withHex(_ hexString: String) -> UIColor? {
+    public static func tap_withHex(_ hexString: String) -> UIColor? {
         
-        return UIColor(hex: hexString)
+        return UIColor(tap_hex: hexString)
     }
     
     /*!
@@ -123,9 +115,9 @@ public extension UIColor {
      
      - returns: UIColor or nil if HEX string is incorrect.
      */
-    public static func hex(_ value: String) -> UIColor {
+    public static func tap_hex(_ value: String) -> UIColor {
         
-        guard let color = UIColor(hex: value) else {
+        guard let color = UIColor(tap_hex: value) else {
             
             fatalError("\(value) is invalid color hex string.")
         }
@@ -140,17 +132,17 @@ public extension UIColor {
      
      - returns: UIColor or nil if HEX string is incorrect.
      */
-    public convenience init?(hex hexString: String) {
+    public convenience init?(tap_hex hexString: String) {
         
-        let stringToScan = (hexString.hasPrefix(Constants.hexPrefix) ? String(hexString.suffix(from: Constants.hexPrefix.length.index(in: hexString))) : hexString).uppercased()
-        let scanLength = stringToScan.length
+        let stringToScan = (hexString.hasPrefix(Constants.hexPrefix) ? String(hexString.suffix(from: Constants.hexPrefix.tap_length.tap_index(in: hexString))) : hexString).uppercased()
+        let scanLength = stringToScan.tap_length
         
         switch scanLength {
             
         case 3, 4, 6, 8:
             
-            let removedSymbolsString = stringToScan.byRemovingAllCharactersExcept(Constants.allowedHexSymbols)
-            guard removedSymbolsString.isEqual(to: stringToScan) else { return nil }
+            let removedSymbolsString = stringToScan.tap_byRemovingAllCharactersExcept(Constants.allowedHexSymbols)
+            guard removedSymbolsString.tap_isEqual(to: stringToScan) else { return nil }
             
         default:
             return nil
@@ -166,7 +158,7 @@ public extension UIColor {
         
         while scanLocation < scanLength {
             
-            guard var componentScanString = stringToScan.substring(with: NSRange(location: scanLocation, length: componentLength)) else { return nil }
+            guard var componentScanString = stringToScan.tap_substring(with: NSRange(location: scanLocation, length: componentLength)) else { return nil }
             
             if componentLength == 1 {
                 
@@ -189,21 +181,16 @@ public extension UIColor {
         let b = components[2]
         let a = hasAlpha ? components[3] : 1.0
         
-        self.init(rgba: [r, g, b, a])
+        self.init(tap_rgba: [r, g, b, a])
     }
     
     /// Initializes color with GLfloat RGBA components.
     ///
     /// - Parameter glComponents: GLfloat RGBA components.
-    public convenience init?(glComponents: [GLfloat]) {
-        
-        var rgbaComponents: [CGFloat] = []
-        for component in glComponents {
-            
-            rgbaComponents.append(CGFloat(component))
-        }
-        
-        self.init(rgba: rgbaComponents)
+    public convenience init?(tap_glComponents: [GLfloat]) {
+		
+		let cgFloatComponents = tap_glComponents.map { CGFloat($0) }
+        self.init(tap_rgba: cgFloatComponents)
     }
     
     /// Interpolates the color between start and finish.
@@ -213,16 +200,16 @@ public extension UIColor {
     ///   - finish: Finish color.
     ///   - progress: Progress in range [0, 1]
     /// - Returns: Interpolated color.
-    public static func interpolate(start: UIColor, finish: UIColor, progress: CGFloat) -> UIColor {
+    public static func tap_interpolate(start: UIColor, finish: UIColor, progress: CGFloat) -> UIColor {
         
-        guard let startRGBA = start.rgbaComponents, let finishRGBA = finish.rgbaComponents else {
+        guard let startRGBA = start.tap_rgbaComponents, let finishRGBA = finish.tap_rgbaComponents else {
             
             fatalError("Failed to get RGBA components.")
         }
         
-        let resultingRGBA = type(of: startRGBA).interpolate(start: startRGBA, finish: finishRGBA, progress: progress)
+        let resultingRGBA = type(of: startRGBA).tap_interpolate(start: startRGBA, finish: finishRGBA, progress: progress)
         
-        guard let result = UIColor(rgba: resultingRGBA) else {
+        guard let result = UIColor(tap_rgba: resultingRGBA) else {
             
             fatalError("Error in interpolating colors. Please report this problem.")
         }
@@ -236,14 +223,5 @@ public extension UIColor {
         
         fileprivate static let allowedHexSymbols = "0123456789ABCDEF"
         fileprivate static let hexPrefix = "#"
-    }
-}
-
-/// Dummy struct to import UIKit/UIColor module.
-public struct UIColorAdditions {
-    
-    @available (*, unavailable) private init() {
-        
-        fatalError("\(self) cannot be initialized.")
     }
 }
