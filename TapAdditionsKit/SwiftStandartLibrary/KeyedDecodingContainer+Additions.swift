@@ -58,6 +58,29 @@ public extension KeyedDecodingContainer {
             }
         }
     }
+	
+	/// Decodes URL for the given key.
+	///
+	/// Use this method if you don't want to have any errors. just either URL or nil.
+	///
+	/// - Parameter key: Key
+	/// - Returns: Decoded URL.
+	public func decodeURLIfPresent(for key: KeyedDecodingContainer.Key) -> URL? {
+		
+		guard self.contains(key) else { return nil }
+		
+		if let url = try? self.decode(URL.self, forKey: key) {
+			
+			return url
+		}
+		
+		if let string = try? self.decode(String.self, forKey: key) {
+			
+			return URL(string: string)
+		}
+		
+		return nil
+	}
 }
 
 private struct AnyDecodable: Decodable {

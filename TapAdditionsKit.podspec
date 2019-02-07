@@ -8,7 +8,7 @@ Pod::Spec.new do |tapAdditionsKit|
     tapAdditionsKit.name                    = 'TapAdditionsKit'
     tapAdditionsKit.summary                 = 'Useful additions for native iOS frameworks'
     tapAdditionsKit.requires_arc            = true
-    tapAdditionsKit.version                 = '1.2'
+    tapAdditionsKit.version                 = '1.2.1'
     tapAdditionsKit.license                 = { :type => 'MIT', :file => 'LICENSE' }
     tapAdditionsKit.author                  = { 'Tap Payments' => 'hello@tap.company' }
     tapAdditionsKit.homepage                = 'https://github.com/Tap-Payments/TapAdditionsKit-iOS'
@@ -173,6 +173,12 @@ Pod::Spec.new do |tapAdditionsKit|
             numberFormatter.source_files = 'TapAdditionsKit/Foundation/NumberFormatter+Additions.swift'
         
         end
+		
+		foundation.subspec 'URL' do |url|
+		
+			url.source_files = 'TapAdditionsKit/Foundation/URL+Additions.swift'
+		
+		end
         
         foundation.subspec 'URLSession' do |urlSession|
             

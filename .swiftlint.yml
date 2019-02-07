@@ -1,12 +1,15 @@
 excluded:
  Pods
 disabled_rules:
+ - colon
  - cyclomatic_complexity
  - file_length
  - function_body_length
  - line_length
+ - opening_brace
  - statement_position
  - trailing_whitespace
+ - vertical_parameter_alignment
 identifier_name:
  allowed_symbols: "_"
  min_length:

@@ -198,7 +198,18 @@ public extension String {
             }
         }
     }
-    
+	
+	/// Trims whitespaces and newlines.
+	///
+	/// - Parameter nullifyIfResultIsEmpty: If resulting string is empty, nil will be returned.
+	/// - Returns: Trimmed string or nil.
+	public func tap_trimWhitespacesAndNewlines(nullifyIfResultIsEmpty: Bool = false) -> String? {
+		
+		let result = self.trimmingCharacters(in: .whitespacesAndNewlines)
+		
+		return (nullifyIfResultIsEmpty && result.tap_length == 0) ? nil : result
+	}
+	
     /// Returns a string by appending path component to the receiver.
     ///
     /// - Parameter path: Path component to append.

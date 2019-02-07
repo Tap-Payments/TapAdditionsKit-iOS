@@ -57,6 +57,7 @@ import var		ImageIO.CGImageSource.kCGImagePropertyGIFDictionary
 import class	UIKit.UIBezierPath.UIBezierPath
 import class	UIKit.UIColor.UIColor
 import struct	UIKit.UIEdgeInsets
+import func		UIKit.UIGraphics.UIRectFill
 import func		UIKit.UIGraphicsBeginImageContext
 import func		UIKit.UIGraphicsBeginImageContextWithOptions
 import func		UIKit.UIGraphicsEndImageContext
@@ -232,10 +233,33 @@ public extension UIImage {
                 maximalWidth = imageWidth
             }
         }
-        
+		
         self.init(tap_byCombiningImages: pointImages, withResultingSize: CGSize(width: maximalWidth, height: offset.y), backgroundColor: UIColor.clear, clearImageLocations: false)
     }
-    
+	
+	/// Initializes an image by combining all the the images as layers, one above another.
+	///
+	/// - Parameter images: Source images.
+	public convenience init?(tap_byCombining images: [UIImage]) {
+		
+		let sizes = images.map { $0.size }
+		
+		let maxWidth	= sizes.max { $0.width < $1.width }!.width
+		let maxHeight	= sizes.max { $0.height < $1.height }!.height
+		
+		var imagesDictionary: [NSValue: UIImage] = [:]
+		for image in images {
+			
+			let size = image.size
+			let location = CGPoint(x: 0.5 * (maxWidth - size.width), y: 0.5 * (maxHeight - size.height))
+			imagesDictionary[NSValue(cgPoint: location)] = image
+		}
+		
+		let resultingSize = CGSize(width: maxWidth, height: maxHeight)
+		
+		self.init(tap_byCombiningImages: imagesDictionary, withResultingSize: resultingSize, backgroundColor: .clear, clearImageLocations: false)
+	}
+	
     /**
      Initializes an image by combining all the images from array into one with given image locations, resulting size and background color.
      
@@ -376,7 +400,32 @@ public extension UIImage {
             
         }
     }
-    
+	
+	/// Returns the copy of the receiver by applying tint color to any non-clear pixel.
+	///
+	/// - Parameter color: Tint color to apply.
+	/// - Returns: Tinted image.
+	public func tap_byApplyingTint(color: UIColor) -> UIImage? {
+		
+		UIGraphicsBeginImageContextWithOptions(self.size, false, self.scale)
+		let context = UIGraphicsGetCurrentContext()
+		context?.saveGState()
+		
+		let bounds = CGRect(origin: .zero, size: self.size)
+		
+		color.setFill()
+		UIRectFill(bounds)
+		
+		self.draw(in: bounds, blendMode: .destinationIn, alpha: 1.0)
+		
+		let image = UIGraphicsGetImageFromCurrentImageContext()
+		
+		context?.restoreGState()
+		UIGraphicsEndImageContext()
+		
+		return image
+	}
+	
     /**
      Returns copy of the receiver by applying light blur effect.
      

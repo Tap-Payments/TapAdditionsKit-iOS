@@ -397,6 +397,35 @@ import class	UIKit.UIView
         
         UIView.animate(withDuration: duration, animations: animations, completion: completion)
     }
+	
+	/// Performs fade in and fade out animation.
+	///
+	/// - Parameters:
+	///   - view: View to animate.
+	///   - duration: Animation duration.
+	///   - delay: Animation delay.
+	///   - update: Closure that will be called when view is not visible (faded in).
+	///   - completion: Closure that will be called when animation finishes.
+	public static func tap_fadeOutUpdateAndFadeIn<T>(view: T, with duration: TimeInterval, delay: TimeInterval = 0.0, update: @escaping (T) -> Void, completion: ((Bool) -> Void)? = nil) where T: UIView {
+		
+		let fadeDuration = 0.5 * duration
+		
+		let fadeInCompletion: TypeAlias.BooleanClosure = { _ in
+			
+			update(view)
+			UIView.animate(withDuration:	fadeDuration,
+						   delay:			0.0,
+						   options:			[.beginFromCurrentState, .curveEaseOut],
+						   animations:		{ view.alpha = 1.0 },
+						   completion:		completion)
+		}
+		
+		UIView.animate(withDuration:	fadeDuration,
+					   delay:			delay,
+					   options:			[.beginFromCurrentState, .curveEaseIn],
+					   animations:		{ view.alpha = 0.0 },
+					   completion:		fadeInCompletion)
+	}
     
     /// Returns a screenshot with a specific resulting image scale.
     ///
@@ -438,7 +467,11 @@ import class	UIKit.UIView
     public func tap_layout() {
         
         self.setNeedsLayout()
-        self.layoutIfNeeded()
+		
+		if self.superview != nil && self.window != nil {
+			
+			self.layoutIfNeeded()
+		}
     }
     
     /// Changes receiver's frame to fit its superview.

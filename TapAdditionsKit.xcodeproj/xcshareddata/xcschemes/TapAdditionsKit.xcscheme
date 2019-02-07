@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A4F77E1820B43A1200C11626"
-               BuildableName = "TapAdditionsKit_Carthage.framework"
-               BlueprintName = "TapAdditionsKit_Carthage"
+               BlueprintIdentifier = "A43DD7161F13A7F500B4D430"
+               BuildableName = "TapAdditionsKit.framework"
+               BlueprintName = "TapAdditionsKit"
                ReferencedContainer = "container:TapAdditionsKit.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -45,9 +45,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "A4F77E1820B43A1200C11626"
-            BuildableName = "TapAdditionsKit_Carthage.framework"
-            BlueprintName = "TapAdditionsKit_Carthage"
+            BlueprintIdentifier = "A43DD7161F13A7F500B4D430"
+            BuildableName = "TapAdditionsKit.framework"
+            BlueprintName = "TapAdditionsKit"
             ReferencedContainer = "container:TapAdditionsKit.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -63,9 +63,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "A4F77E1820B43A1200C11626"
-            BuildableName = "TapAdditionsKit_Carthage.framework"
-            BlueprintName = "TapAdditionsKit_Carthage"
+            BlueprintIdentifier = "A43DD7161F13A7F500B4D430"
+            BuildableName = "TapAdditionsKit.framework"
+            BlueprintName = "TapAdditionsKit"
             ReferencedContainer = "container:TapAdditionsKit.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
