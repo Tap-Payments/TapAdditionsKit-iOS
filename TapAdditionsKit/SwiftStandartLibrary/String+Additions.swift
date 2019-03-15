@@ -513,7 +513,7 @@ public extension String {
         fileprivate static let digitsOnlyRegex = "^[\\p{N}]*$"
         fileprivate static let internationalDigitsOnlyRegex = "^[0-9]*$"
         fileprivate static let validEmailRegex = "^.+@([A-Za-z0-9-]+\\.)+[A-Za-z]{2}[A-Za-z]*$"
-        fileprivate static let validCardholderNameRegex = "^[\\x20-\\x5F]{1,26}$"
+        fileprivate static let validCardholderNameRegex = "^[\\x20-\\x5F]{3,26}$"
         
         fileprivate static let validEmailLengthRange = 3...254
         

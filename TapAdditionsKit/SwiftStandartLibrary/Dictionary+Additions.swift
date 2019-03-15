@@ -60,7 +60,34 @@ public extension Dictionary {
             self.removeValue(forKey: key)
         }
     }
-    
+	
+	/// Updates the receiver by merging with the contents of a given `dictionary`.
+	///
+	/// - Parameter dictionary: Dictionary to merge with.
+	/// - Returns: Modified receiver.
+	@discardableResult public mutating func merge(with dictionary: [Key: Value]) -> [Key: Value] {
+		
+		self = self.byMerging(with: dictionary)
+		
+		return self
+	}
+	
+	/// Returns a new dictionary by merging the receiver with the contents of a given `dictionary`
+	///
+	/// - Parameter dictionary: Dictionary to merge with.
+	/// - Returns: Merged dictionary.
+	public func byMerging(with dictionary: [Key: Value]) -> [Key: Value] {
+		
+		var result = self
+		
+		for (key, value) in dictionary {
+			
+			result[key] = value
+		}
+		
+		return result
+	}
+	
     /// + operator for same typed dictionaries.
     ///
     /// - Parameters:
