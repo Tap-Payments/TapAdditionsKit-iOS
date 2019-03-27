@@ -17,7 +17,7 @@ public extension UIResponder {
     // MARK: Properties
     
     /// Returns current first responder.
-    public static var tap_current: UIResponder? {
+    static var tap_current: UIResponder? {
         
         self.tap_currentFirstResponder = nil
         UIApplication.shared.sendAction(#selector(tap_findFirstResponder), to: nil, from: nil, for: nil)
@@ -27,7 +27,7 @@ public extension UIResponder {
     
     // MARK: Methods
     
-    public func tap_resignFirstResponder(_ completion: @escaping TypeAlias.ArgumentlessClosure) {
+    func tap_resignFirstResponder(_ completion: @escaping TypeAlias.ArgumentlessClosure) {
         
         CATransaction.begin()
         CATransaction.setCompletionBlock(completion)
@@ -37,7 +37,7 @@ public extension UIResponder {
         CATransaction.commit()
     }
     
-    public static func tap_resign(in view: UIView? = nil, _ completion: TypeAlias.ArgumentlessClosure? = nil) {
+    static func tap_resign(in view: UIView? = nil, _ completion: TypeAlias.ArgumentlessClosure? = nil) {
         
         let localCompletion: TypeAlias.ArgumentlessClosure = {
             

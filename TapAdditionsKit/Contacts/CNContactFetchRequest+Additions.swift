@@ -45,7 +45,7 @@ public extension CNContactFetchRequest {
     // MARK: Properties
 
     /// Returns all possible fetch keys.
-    public static let tap_allFetchKeys: [CNKeyDescriptor] = {
+    static let tap_allFetchKeys: [CNKeyDescriptor] = {
 
         var keys: [String] = [
 
@@ -88,7 +88,7 @@ public extension CNContactFetchRequest {
     }()
 
     /// Returns fetch request to fetch all contacts with all keys.
-    public static let tap_fetchingEverything: CNContactFetchRequest = {
+    static let tap_fetchingEverything: CNContactFetchRequest = {
 
         return CNContactFetchRequest(keysToFetch: CNContactFetchRequest.tap_allFetchKeys)
     }()

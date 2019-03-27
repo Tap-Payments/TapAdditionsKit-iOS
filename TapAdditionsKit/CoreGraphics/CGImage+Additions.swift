@@ -28,20 +28,20 @@ public extension CGImage {
     // MARK: Properties
     
     /// Bytes count.
-    public var tap_bytesCount: Int {
+    var tap_bytesCount: Int {
         
         return self.bytesPerRow * self.height
     }
     
     /// Image size.
-    public var tap_size: CGSize {
+    var tap_size: CGSize {
         
         return CGSize(width: self.width, height: self.height)
     }
     
     // MARK: Methods
     
-    public func tap_blurred(with boxSize: UInt32, iterations: Int, blendColor: UIColor?, blendMode: CGBlendMode) -> CGImage? {
+    func tap_blurred(with boxSize: UInt32, iterations: Int, blendColor: UIColor?, blendMode: CGBlendMode) -> CGImage? {
         
         guard let providerData = self.dataProvider?.data else { return nil }
         guard let inData = malloc(self.tap_bytesCount) else { return nil }

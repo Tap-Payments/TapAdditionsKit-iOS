@@ -22,7 +22,7 @@ public extension DateFormatter {
      
      - returns: New instance of NSDateFormatter.
      */
-    public convenience init(locale: Locale, dateFormat: String) {
+    convenience init(locale: Locale, dateFormat: String) {
         
         self.init()
         

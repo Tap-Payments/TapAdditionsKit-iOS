@@ -9,5 +9,5 @@
 public extension OptionSet {
     
     /// No options ( e.g. [] ).
-    public static var tap_none: Self { return [] }
+    static var tap_none: Self { return [] }
 }

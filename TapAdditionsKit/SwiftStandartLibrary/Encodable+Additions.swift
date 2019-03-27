@@ -19,7 +19,7 @@ public extension Encodable {
     /// - Parameter encoder: Encoder.
     /// - Returns: Dictionary representation of the receiver.
     /// - Throws: Encoding error.
-    public func tap_asDictionary(using encoder: JSONEncoder = JSONEncoder()) throws -> [String: Any] {
+    func tap_asDictionary(using encoder: JSONEncoder = JSONEncoder()) throws -> [String: Any] {
         
         let data = try encoder.encode(self)
         let object = try JSONSerialization.jsonObject(with: data, options: [])

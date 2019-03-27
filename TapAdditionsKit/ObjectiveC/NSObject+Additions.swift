@@ -18,13 +18,13 @@ public extension NSObject {
     /*!
      Returns class name as string.
      */
-    public static var tap_className: String {
+    static var tap_className: String {
         
         return "\(self)"
     }
     
     /// Returns class name as string.
-    public var tap_className: String {
+    var tap_className: String {
         
         return type(of: self).tap_className
     }
@@ -36,7 +36,7 @@ public extension NSObject {
      
      - returns: Receiver as Self
      */
-    public func tap_asSelf<T>() -> T {
+    func tap_asSelf<T>() -> T {
         
         guard let result = self as? T else {
             
@@ -54,7 +54,7 @@ public extension NSObject {
      - parameter delay:         Delay in seconds.
      - parameter waitUntilDone: Defines if main thread will wait for execution finishes.
      */
-    public func tap_performSelectorOnMainThread(_ aSelector: Selector, withObject object: AnyObject?, afterDelay delay: TimeInterval, waitUntilDone: Bool) {
+    func tap_performSelectorOnMainThread(_ aSelector: Selector, withObject object: AnyObject?, afterDelay delay: TimeInterval, waitUntilDone: Bool) {
         
         let dispatchDelay = DispatchTime.now() + delay
         

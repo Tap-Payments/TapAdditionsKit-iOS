@@ -12,7 +12,7 @@ import struct	Foundation.DateComponents
 public extension Calendar {
     
     // MARK: - Public -
-    public struct CalendarConstants {
+    struct CalendarConstants {
         
         public static let wellKnownLeapYear = 2000
     }
@@ -23,7 +23,7 @@ public extension Calendar {
     ///
     /// - Parameter month: Month ( 1..12 )
     /// - Returns: Maximal number of days.
-    public func tap_maximalNumberOfDays(in month: Int) -> Int {
+    func tap_maximalNumberOfDays(in month: Int) -> Int {
         
         return self.tap_numberOfDays(in: month, in: CalendarConstants.wellKnownLeapYear)
     }
@@ -34,7 +34,7 @@ public extension Calendar {
     ///   - month: Month ( 1..12 )
     ///   - year: Year
     /// - Returns: Number of days.
-    public func tap_numberOfDays(in month: Int, in year: Int) -> Int {
+    func tap_numberOfDays(in month: Int, in year: Int) -> Int {
         
         var components = DateComponents()
         components.year = year

@@ -15,7 +15,7 @@ public extension UIWindow.Level {
     // MARK: Properties
     
     /// Returns maximal window level among all presented windows in the app.
-    public static var tap_maximalAmongPresented: UIWindow.Level {
+    static var tap_maximalAmongPresented: UIWindow.Level {
         
         return self.tap_maximalAmongPresented(lower: UIWindow.Level(.greatestFiniteMagnitude))
     }
@@ -26,7 +26,7 @@ public extension UIWindow.Level {
     ///
     /// - Parameter then: Specified window level.
     /// - Returns: Maximal found window level lower then the specified one or 'then' if the window not found.
-    public static func tap_maximalAmongPresented(lower then: UIWindow.Level) -> UIWindow.Level {
+    static func tap_maximalAmongPresented(lower then: UIWindow.Level) -> UIWindow.Level {
         
         let windows = UIApplication.shared.windows.filter { $0.windowLevel < then }
         guard windows.count > 0 else { return UIWindow.Level(then.rawValue - 1.0) }
@@ -43,7 +43,7 @@ public extension UIWindow.Level {
     ///
     /// - Parameter then: Specified window level.
     /// - Returns: Minimal found window level higher then the specified one or 'then' if the window not found.
-    public static func tap_minimalAmongPresented(higher then: UIWindow.Level) -> UIWindow.Level {
+    static func tap_minimalAmongPresented(higher then: UIWindow.Level) -> UIWindow.Level {
         
         let windows = UIApplication.shared.windows.filter { $0.windowLevel > then }.sorted { $0.windowLevel < $1.windowLevel }
         guard windows.count > 0 else { return then }

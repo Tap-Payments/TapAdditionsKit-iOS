@@ -19,65 +19,65 @@ public extension CGSize {
     // MARK: Properties
     
     /// Minimal image size in pixels to upload to Instagram.
-    public static let tap_minimalInstagramImageSizeInPixels: CGSize = CGSize(dimension: 612.0)
+	static let tap_minimalInstagramImageSizeInPixels: CGSize = CGSize(tap_dimension: 612.0)
     
     /// Returns area.
-    public var tap_area: CGFloat {
+    var tap_area: CGFloat {
         
         return self.width * self.height
     }
     
     /// Returns CGSize as CGPoint
-    public var tap_asCGPoint: CGPoint {
+    var tap_asCGPoint: CGPoint {
         
         return CGPoint(x: self.width, y: self.height)
     }
     
     /// Returns vec2 representation of CGSize.
-    public var tap_asVec2: [GLfloat] {
+    var tap_asVec2: [GLfloat] {
         
         return [GLfloat(self.width), GLfloat(self.height)]
     }
     
     /// Returns ceiled receiver.
-    public var tap_ceiled: CGSize {
+    var tap_ceiled: CGSize {
         
         return CGSize(width: ceil(self.width), height: ceil(self.height))
     }
     
     /// Returns floored receiver.
-    public var tap_floored: CGSize {
+    var tap_floored: CGSize {
         
         return CGSize(width: floor(self.width), height: floor(self.height))
     }
     
     /// Returns maximal allowed corner radius.
-    public var tap_maximalCornerRadus: CGFloat {
+    var tap_maximalCornerRadus: CGFloat {
         
         return 0.5 * min(self.width, self.height)
     }
     
     /// Defines if size has square form.
-    public var tap_isSquare: Bool {
+    var tap_isSquare: Bool {
         
         return self.width == self.height
     }
     
     // MARK: Methods
     
-    /// Initializes square size with the given `dimension`.
+    /// Initializes square size with the given `tap_dimension`.
     ///
-    /// - Parameter dimension: Dimension.
-    public init(dimension: CGFloat) {
+    /// - Parameter tap_dimension: Dimension.
+    init(tap_dimension: CGFloat) {
         
-        self.init(width: dimension, height: dimension)
+        self.init(width: tap_dimension, height: tap_dimension)
     }
     
     /// Defines if the receiver fully fits into `size`.
     ///
     /// - Parameter size: Size to check.
     /// - Returns: `true` if fits, `false` otherwise.
-    public func tap_fits(into size: CGSize) -> Bool {
+    func tap_fits(into size: CGSize) -> Bool {
         
         return self.width <= size.width && self.height <= size.height
     }
@@ -88,7 +88,7 @@ public extension CGSize {
     ///   - left: Left operand.
     ///   - right: Right operand.
     /// - Returns: left + right.
-    public static func + (left: CGSize, right: CGSize) -> CGSize {
+    static func + (left: CGSize, right: CGSize) -> CGSize {
         
         return CGSize(width: left.width + right.width, height: left.height + right.height)
     }
@@ -99,7 +99,7 @@ public extension CGSize {
     ///   - left: Left operand.
     ///   - right: Right operand.
     /// - Returns: left - right.
-    public static func - (left: CGSize, right: CGSize) -> CGSize {
+    static func - (left: CGSize, right: CGSize) -> CGSize {
         
         return CGSize(width: left.width - right.width, height: left.height - right.height)
     }
@@ -110,7 +110,7 @@ public extension CGSize {
     ///   - left: CGSize
     ///   - right: CGFloat
     /// - Returns: left * right
-    public static func * (left: CGSize, right: CGFloat) -> CGSize {
+    static func * (left: CGSize, right: CGFloat) -> CGSize {
         
         return CGSize(width: left.width * right, height: left.height * right)
     }
@@ -121,7 +121,7 @@ public extension CGSize {
     ///   - left: CGFloat
     ///   - right: CGSize
     /// - Returns: left * right
-    public static func * (left: CGFloat, right: CGSize) -> CGSize {
+    static func * (left: CGFloat, right: CGSize) -> CGSize {
         
         return CGSize(width: right.width * left, height: right.height * left)
     }
@@ -132,7 +132,7 @@ public extension CGSize {
     ///   - size: Size to fit to.
     ///   - saveProportions: Boolean value that determines whether the receiver's proportions should be saved. Default is true.
     /// - Returns: Fitted size.
-    public func tap_fit(to size: CGSize, saveProportions: Bool = true) -> CGSize {
+    func tap_fit(to size: CGSize, saveProportions: Bool = true) -> CGSize {
         
         if saveProportions {
             
@@ -152,7 +152,7 @@ public extension CGSize {
     ///   - finish: Right bound.
     ///   - progress: Progress in range [0, 1]
     /// - Returns: Interpolated value.
-    public static func tap_interpolate(start: CGSize, finish: CGSize, progress: CGFloat) -> CGSize {
+    static func tap_interpolate(start: CGSize, finish: CGSize, progress: CGFloat) -> CGSize {
         
         return CGSize(width: CGFloat.tap_interpolate(start: start.width, finish: finish.width, progress: progress),
                       height: CGFloat.tap_interpolate(start: start.height, finish: finish.height, progress: progress))

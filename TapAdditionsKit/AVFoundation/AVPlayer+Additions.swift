@@ -14,7 +14,7 @@ public extension AVPlayer {
     // MARK: Properties
 
     /// Defines if the player is playing.
-    public var tap_isPlaying: Bool {
+    var tap_isPlaying: Bool {
 
         return self.rate != 0.0
     }

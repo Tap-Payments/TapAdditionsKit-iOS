@@ -17,7 +17,7 @@ public extension UITableView {
     /// Reloads visible cells.
     ///
     /// - Parameter animation: Row animation.
-    public func tap_reloadVisibleCells(with animation: UITableView.RowAnimation = .none) {
+    func tap_reloadVisibleCells(with animation: UITableView.RowAnimation = .none) {
         
         guard let indexPaths = self.indexPathsForVisibleRows, indexPaths.count > 0 else { return }
         
@@ -44,7 +44,7 @@ public extension UITableView {
     ///   - animated: Defines if selection should happen with animation.
     ///   - scrollPosition: Scroll position.
     ///   - callDelegate: Defines if delegate should be notified about row selection.
-    public func tap_selectRow(at indexPath: IndexPath, animated: Bool, scrollPosition: UITableView.ScrollPosition, callDelegate: Bool) {
+    func tap_selectRow(at indexPath: IndexPath, animated: Bool, scrollPosition: UITableView.ScrollPosition, callDelegate: Bool) {
         
         guard (self.isEditing && self.allowsSelectionDuringEditing) || (!self.isEditing && self.allowsSelection) else { return }
         let allowsMultipleSelectionNow = (self.isEditing && self.allowsMultipleSelectionDuringEditing) || (!self.isEditing && self.allowsMultipleSelection)

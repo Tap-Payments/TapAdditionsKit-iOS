@@ -12,7 +12,7 @@ public extension UInt8 {
     // MARK: Properties
     
     /// Returns char string of the receiver.
-    public var tap_charString: String {
+    var tap_charString: String {
         
         return String(format: "%c", self)
     }

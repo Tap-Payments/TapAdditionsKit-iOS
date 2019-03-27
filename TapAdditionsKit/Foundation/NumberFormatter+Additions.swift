@@ -17,7 +17,7 @@ public extension NumberFormatter {
     /// Initializes NumberFormatter with a given locale identifer.
     ///
     /// - Parameter localeIdentifier: Locale identifier.
-    public convenience init(localeIdentifier: String) {
+    convenience init(localeIdentifier: String) {
         
         let loc = Locale(identifier: localeIdentifier)
         self.init(locale: loc)
@@ -26,7 +26,7 @@ public extension NumberFormatter {
     /// Initializes number formatter with a given locale.
     ///
     /// - Parameter locale: Locale.
-    public convenience init(locale: Locale) {
+    convenience init(locale: Locale) {
         
         self.init()
         self.locale = locale

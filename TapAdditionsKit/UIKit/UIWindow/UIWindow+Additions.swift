@@ -15,7 +15,7 @@ public extension UIWindow {
     // MARK: Properties
     
     /// Returns closest higher window in hierarch (if found).
-    public var tap_closestHigherWindow: UIWindow? {
+    var tap_closestHigherWindow: UIWindow? {
         
         let level = UIWindow.Level.tap_minimalAmongPresented(higher: self.windowLevel)
         guard level != self.windowLevel else { return nil }
@@ -24,7 +24,7 @@ public extension UIWindow {
     }
     
     /// Returns closest lower window in hierarchy (if found).
-    public var tap_closestLowerWindow: UIWindow? {
+    var tap_closestLowerWindow: UIWindow? {
         
         let level = UIWindow.Level.tap_maximalAmongPresented(lower: self.windowLevel)
         guard level != self.windowLevel else { return nil }

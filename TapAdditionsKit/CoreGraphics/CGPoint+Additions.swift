@@ -23,43 +23,43 @@ public extension CGPoint {
     // MARK: Properties
 
     /// Returns vec2 representation of CGPoint.
-    public var tap_asVec2: [GLfloat] {
+    var tap_asVec2: [GLfloat] {
 
         return [GLfloat(self.x), GLfloat(self.y)]
     }
 
     /// Returns point as CGSize.
-    public var tap_asCGSize: CGSize {
+    var tap_asCGSize: CGSize {
         
         return CGSize(width: self.x, height: self.y)
     }
     
     /// Returns the receiver as a tuple.
-    public var tap_asTuple: (CGFloat, CGFloat) {
+    var tap_asTuple: (CGFloat, CGFloat) {
         
         return (self.x, self.y)
     }
     
     /// Returns distance to point (0, 0).
-    public var tap_distanceToOrigin: CGFloat {
+    var tap_distanceToOrigin: CGFloat {
         
         return sqrt(self * self)
     }
     
     /// Returns ceiled receiver.
-    public var tap_ceiled: CGPoint {
+    var tap_ceiled: CGPoint {
         
         return CGPoint(x: ceil(self.x), y: ceil(self.y))
     }
     
     /// Returns floored receiver.
-    public var tap_floored: CGPoint {
+    var tap_floored: CGPoint {
         
         return CGPoint(x: floor(self.x), y: floor(self.y))
     }
     
     /// Returns the angle between vector (.zero, self) and OX.
-    public var tap_angle: CGFloat {
+    var tap_angle: CGFloat {
         
         switch self.tap_asTuple {
             
@@ -99,7 +99,7 @@ public extension CGPoint {
     ///
     /// - Parameter angle: Angle in radians.
     /// - Returns: Point rotated on a given angle around the start of coordinate system.
-    public func tap_rotated(on angle: CGFloat) -> CGPoint {
+    func tap_rotated(on angle: CGFloat) -> CGPoint {
         
         let dAngle = Double(angle)
         let s = CGFloat(sin(dAngle))
@@ -112,7 +112,7 @@ public extension CGPoint {
     ///
     /// - Parameter angle: Angle in radians
     /// - Returns: Rotated receiver.
-    @discardableResult public mutating func tap_rotate(on angle: CGFloat) -> CGPoint {
+    @discardableResult mutating func tap_rotate(on angle: CGFloat) -> CGPoint {
         
         self = self.tap_rotated(on: angle)
         return self
@@ -122,7 +122,7 @@ public extension CGPoint {
     ///
     /// - Parameter point: Point to add coordinates.
     /// - Returns: New point with added coordinates.
-    public func tap_add(_ point: CGPoint) -> CGPoint {
+    func tap_add(_ point: CGPoint) -> CGPoint {
         
         return CGPoint(x: self.x + point.x, y: self.y + point.y)
     }
@@ -131,7 +131,7 @@ public extension CGPoint {
     ///
     /// - Parameter scaleFactor: Scale factor.
     /// - Returns: New point with scaled coordinates.
-    public func tap_scale(_ scaleFactor: CGFloat) -> CGPoint {
+    func tap_scale(_ scaleFactor: CGFloat) -> CGPoint {
         
         return CGPoint(x: self.x * scaleFactor, y: self.y * scaleFactor)
     }
@@ -140,7 +140,7 @@ public extension CGPoint {
     ///
     /// - Parameter point: Point to subtract coordinates.
     /// - Returns: New point with subtracted coordinates.
-    public func tap_subtract(_ point: CGPoint) -> CGPoint {
+    func tap_subtract(_ point: CGPoint) -> CGPoint {
         
         return self.tap_add(point.tap_scale(-1.0))
     }
@@ -151,7 +151,7 @@ public extension CGPoint {
     ///   - left:  Left point.
     ///   - right: Right point.
     /// - Returns: left + right.
-    public static func + (left: CGPoint, right: CGPoint) -> CGPoint {
+    static func + (left: CGPoint, right: CGPoint) -> CGPoint {
         
         return left.tap_add(right)
     }
@@ -162,7 +162,7 @@ public extension CGPoint {
     ///   - left: Left point.
     ///   - right: Right point.
     /// - Returns: left - right.
-    public static func - (left: CGPoint, right: CGPoint) -> CGPoint {
+    static func - (left: CGPoint, right: CGPoint) -> CGPoint {
         
         return left.tap_subtract(right)
     }
@@ -173,7 +173,7 @@ public extension CGPoint {
     ///   - left: Point.
     ///   - right: Scalar.
     /// - Returns: left * right.
-    public static func * (left: CGPoint, right: CGFloat) -> CGPoint {
+    static func * (left: CGPoint, right: CGFloat) -> CGPoint {
         
         return left.tap_scale(right)
     }
@@ -184,7 +184,7 @@ public extension CGPoint {
     ///   - left: Scalar.
     ///   - right: Point.
     /// - Returns: left * right.
-    public static func * (left: CGFloat, right: CGPoint) -> CGPoint {
+    static func * (left: CGFloat, right: CGPoint) -> CGPoint {
         
         return right.tap_scale(left)
     }
@@ -195,7 +195,7 @@ public extension CGPoint {
     ///   - left: Left point.
     ///   - right: Right point.
     /// - Returns: left * right.
-    public static func * (left: CGPoint, right: CGPoint) -> CGFloat {
+    static func * (left: CGPoint, right: CGPoint) -> CGFloat {
         
         return left.x * right.x + left.y * right.y
     }

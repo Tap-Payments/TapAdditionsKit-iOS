@@ -17,7 +17,7 @@ public extension Data {
     // MARK: Properties
     
     /// Returns hexademical string.
-    public var tap_hexString: String {
+    var tap_hexString: String {
         
         return self.reduce(String.tap_empty, {$0 + String(format: "%02X", $1)})
     }
@@ -31,7 +31,7 @@ public extension Data {
      
      - returns: Data
      */
-    public static func tap_dataWith(image: UIImage?) -> Data? {
+    static func tap_dataWith(image: UIImage?) -> Data? {
         
         guard let transparentImage = image?.tap_transparentImage else { return nil }
         

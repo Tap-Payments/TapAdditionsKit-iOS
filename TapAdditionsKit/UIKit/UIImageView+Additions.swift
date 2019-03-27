@@ -17,7 +17,7 @@ public extension UIImageView {
     // MARK: Methods
     
     /// Stretches the image.
-    public func tap_stretchImage() {
+    func tap_stretchImage() {
         
         self.image = self.image?.tap_stretchableImage
         self.highlightedImage = self.highlightedImage?.tap_stretchableImage
@@ -28,7 +28,7 @@ public extension UIImageView {
     /// - Parameters:
     ///   - image: Image to set.
     ///   - duration: Animation duration.
-    public func tap_setImageAnimated(_ image: UIImage?, duration: TimeInterval) {
+    func tap_setImageAnimated(_ image: UIImage?, duration: TimeInterval) {
         
         let fadingImageView = UIImageView(frame: bounds)
         fadingImageView.contentMode = contentMode

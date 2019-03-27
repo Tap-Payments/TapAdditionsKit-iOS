@@ -18,7 +18,7 @@ public extension UIButton {
     // MARK: Properties
     
     /// Title.
-    public var tap_title: String? {
+    var tap_title: String? {
         
         get {
             
@@ -35,7 +35,7 @@ public extension UIButton {
     }
     
     /// Attributed title.
-    public var tap_attributedTitle: NSAttributedString? {
+    var tap_attributedTitle: NSAttributedString? {
         
         get {
             
@@ -52,7 +52,7 @@ public extension UIButton {
     }
     
     /// Title color.
-    public var tap_titleColor: UIColor? {
+    var tap_titleColor: UIColor? {
         
         get {
             
@@ -76,7 +76,7 @@ public extension UIButton {
     ///   - image: Background image.
     ///   - state: Button state.
     ///   - stretch: Stretch parameter.
-    public func tap_setBackgroundImage(_ image: UIImage?, for state: UIControl.State, withStretch stretch: Bool) {
+    func tap_setBackgroundImage(_ image: UIImage?, for state: UIControl.State, withStretch stretch: Bool) {
         
         let backgroundImage = stretch ? image?.tap_stretchableImage : image
         self.setBackgroundImage(backgroundImage, for: state)
@@ -85,7 +85,7 @@ public extension UIButton {
     /// Stretche background image for a given state.
     ///
     /// - Parameter state: Button state.
-    public func tap_stretchBackgroundImage(for state: UIControl.State) {
+    func tap_stretchBackgroundImage(for state: UIControl.State) {
         
         if let backgroundImage = self.backgroundImage(for: state) {
             
@@ -94,7 +94,7 @@ public extension UIButton {
     }
     
     /// Stretches background image for all states.
-    public func tap_stretchBackgroundImage() {
+    func tap_stretchBackgroundImage() {
         
         self.tap_stretchBackgroundImage(for: .disabled)
         self.tap_stretchBackgroundImage(for: .normal)

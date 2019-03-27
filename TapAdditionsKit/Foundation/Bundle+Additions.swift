@@ -17,7 +17,7 @@ public extension Bundle {
     ///
     /// - Parameter name: Child bundle name.
     /// - Returns: Child bundle.
-    public func tap_childBundle(named name: String) -> Bundle? {
+    func tap_childBundle(named name: String) -> Bundle? {
         
         guard let bundleURL = self.url(forResource: name, withExtension: BundleConstants.bundleExtension) else {
             

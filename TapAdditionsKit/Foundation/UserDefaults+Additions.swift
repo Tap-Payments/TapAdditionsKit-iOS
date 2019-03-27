@@ -20,7 +20,7 @@ public extension UserDefaults {
     /// - Parameters:
     ///   - value: Value to store.
     ///   - key: Key.
-    public func tap_synchronouslySetOnMainThread(_ value: Any?, for key: String) {
+    func tap_synchronouslySetOnMainThread(_ value: Any?, for key: String) {
         
         guard Thread.isMainThread else {
             

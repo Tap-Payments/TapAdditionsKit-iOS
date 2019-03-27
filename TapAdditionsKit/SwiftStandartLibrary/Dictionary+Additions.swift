@@ -30,13 +30,13 @@ public extension Dictionary {
     // MARK: Properties
     
     /// Returns array of all keys of the receiver.
-    public var tap_allKeys: [Key] {
+    var tap_allKeys: [Key] {
         
         return self.map { $0.key }
     }
     
     /// Returns array of all values of the receiver.
-    public var tap_allValues: [Value] {
+    var tap_allValues: [Value] {
         
         return self.map { $0.value }
     }
@@ -49,7 +49,7 @@ public extension Dictionary {
      - parameter value: Value.
      - parameter key:   Key.
      */
-    public mutating func tap_setValue(_ value: Value?, forKey key: Key) {
+    mutating func tap_setValue(_ value: Value?, forKey key: Key) {
         
         if let nonnullValue = value {
             
@@ -65,7 +65,7 @@ public extension Dictionary {
 	///
 	/// - Parameter dictionary: Dictionary to merge with.
 	/// - Returns: Modified receiver.
-	@discardableResult public mutating func merge(with dictionary: [Key: Value]) -> [Key: Value] {
+	@discardableResult mutating func merge(with dictionary: [Key: Value]) -> [Key: Value] {
 		
 		self = self.byMerging(with: dictionary)
 		
@@ -76,7 +76,7 @@ public extension Dictionary {
 	///
 	/// - Parameter dictionary: Dictionary to merge with.
 	/// - Returns: Merged dictionary.
-	public func byMerging(with dictionary: [Key: Value]) -> [Key: Value] {
+	func byMerging(with dictionary: [Key: Value]) -> [Key: Value] {
 		
 		var result = self
 		
@@ -94,7 +94,7 @@ public extension Dictionary {
     ///   - lhs: Left operand.
     ///   - rhs: Right operand.
     /// - Returns: lhs + rhs
-    public static func +<Key, Value>(lhs: [Key: Value], rhs: [Key: Value]) -> [Key: Value] {
+    static func +<Key, Value>(lhs: [Key: Value], rhs: [Key: Value]) -> [Key: Value] {
         
         var result: [Key: Value] = [:]
         for (key, value) in lhs {
@@ -116,7 +116,7 @@ public extension Dictionary {
     ///   - lhs: Receiver.
     ///   - rhs: Right operand.
     /// - Returns: lhs = lhs + rhs
-    @discardableResult public static func +=<Key, Value>(lhs: inout [Key: Value], rhs: [Key: Value]) -> [Key: Value] {
+    @discardableResult static func +=<Key, Value>(lhs: inout [Key: Value], rhs: [Key: Value]) -> [Key: Value] {
         
         for (key, value) in rhs {
             
@@ -131,7 +131,7 @@ public extension Dictionary {
     /// - Parameter transform: Key transform.
     /// - Returns: Mapped dictionary.
     /// - Throws: Mapped dictionary.
-    public func tap_mapKeys<T>(_ transform: (Dictionary.Key) throws -> T) rethrows -> [T: Dictionary.Value] {
+    func tap_mapKeys<T>(_ transform: (Dictionary.Key) throws -> T) rethrows -> [T: Dictionary.Value] {
         
         var result: [T: Dictionary.Value] = [:]
         
@@ -166,48 +166,5 @@ extension Dictionary where Value: OptionalType {
         }
         
         return result
-    }
-}
-
-// MARK: - Compare nested dictionaries.
-public extension Dictionary where Value == [AnyHashable: Equatable] {
-    
-    /// Compares two nested dictionaries.
-    ///
-    /// - Parameters:
-    ///   - lhs: Left operand.
-    ///   - rhs: Right operand.
-    /// - Returns: Boolean value which determines whether two dictionaries are equal.
-    public static func == <V: Equatable, K>(lhs: [Key: [K: V]], rhs: [Key: [K: V]]) -> Bool {
-
-        guard lhs.count == rhs.count else { return false }
-        
-        for (key, lhsub) in lhs {
-            
-            if let rhsub = rhs[key] {
-                
-                if lhsub != rhsub {
-                    
-                    return false
-                }
-            }
-            else {
-                
-                return false
-            }
-        }
-        
-        return true
-    }
-    
-    /// Compares two nested dictionaries.
-    ///
-    /// - Parameters:
-    ///   - lhs: Left operand.
-    ///   - rhs: Right operand.
-    /// - Returns: Boolean value which determines whether two dictionaries are not equal.
-    public static func !=<V: Equatable, K>(lhs: [Key: [K: V]], rhs: [Key: [K: V]]) -> Bool {
-        
-        return !(lhs == rhs)
     }
 }

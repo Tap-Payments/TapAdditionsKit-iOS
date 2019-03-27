@@ -15,7 +15,7 @@ public extension UIScreen {
     // MARK: Properties
 
     /// Returns number of points in one pixel.
-    public var tap_numberOfPointsInOnePixel: CGFloat {
+    var tap_numberOfPointsInOnePixel: CGFloat {
         
         return 1.0 / self.scale
     }

@@ -18,10 +18,10 @@ public extension NSNumber {
     // MARK: Properties
     
     /// Zero number.
-    public static let tap_zero = NSNumber(value: 0.0)
+    static let tap_zero = NSNumber(value: 0.0)
     
     /// Returns CGFloat value.
-    public var tap_cgFloatValue: CGFloat {
+    var tap_cgFloatValue: CGFloat {
         
         if UIDevice.current.tap_is64Bit {
             
@@ -34,7 +34,7 @@ public extension NSNumber {
     }
     
     /// Returns string value of the receiver using en_US locale without grouping separator.
-    public var tap_internationalStringValue: String {
+    var tap_internationalStringValue: String {
         
         if let result = type(of: self).tap_decimalNumberFormatter.string(from: self) {
             
@@ -55,7 +55,7 @@ public extension NSNumber {
      
      - returns: NSNumber
      */
-    public convenience init(cgFloat value: CGFloat) {
+    convenience init(cgFloat value: CGFloat) {
         
         if UIDevice.current.tap_is64Bit {
             
@@ -74,7 +74,7 @@ public extension NSNumber {
      
      - returns: NSNumber
      */
-    public static func tap_from(string: String?) -> NSNumber {
+    static func tap_from(string: String?) -> NSNumber {
         
         guard let nonnullString = string else { return .tap_zero }
         

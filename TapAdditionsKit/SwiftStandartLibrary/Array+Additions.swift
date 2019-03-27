@@ -17,7 +17,7 @@ public extension Array {
     ///   - lhs: Left operand.
     ///   - rhs: Right operand.
     /// - Returns: lhs + rhs
-    public static func + (lhs: [Element], rhs: [Element]) -> [Element] {
+    static func + (lhs: [Element], rhs: [Element]) -> [Element] {
         
         var result: [Element] = []
         result.append(contentsOf: lhs)
@@ -32,7 +32,7 @@ public extension Array {
     ///   - lhs: Left operand.
     ///   - rhs: Right operand.
     /// - Returns: lhs = lhs + rhs
-    @discardableResult public static func += (lhs: inout [Element], rhs: [Element]) -> [Element] {
+    @discardableResult static func += (lhs: inout [Element], rhs: [Element]) -> [Element] {
         
         lhs.append(contentsOf: rhs)
         
@@ -45,7 +45,7 @@ public extension Array {
     ///   - lhs: Left operand.
     ///   - rhs: Right operand.
     /// - Returns: lhs + [rhs]
-    public static func + (lhs: [Element], rhs: Element) -> [Element] {
+    static func + (lhs: [Element], rhs: Element) -> [Element] {
         
         return lhs + [rhs]
     }
@@ -56,7 +56,7 @@ public extension Array {
     ///   - lhs: Left operand.
     ///   - rhs: Right operand.
     /// - Returns: lhs = lhs + [rhs]
-    @discardableResult public static func += (lhs: inout [Element], rhs: Element) -> [Element] {
+    @discardableResult static func += (lhs: inout [Element], rhs: Element) -> [Element] {
         
         lhs.append(rhs)
         return lhs
@@ -68,7 +68,7 @@ public extension Array {
     ///   - lhs: Left operand.
     ///   - rhs: Right operand.
     /// - Returns: [lhs] + rhs
-    public static func + (lhs: Element, rhs: [Element]) -> [Element] {
+    static func + (lhs: Element, rhs: [Element]) -> [Element] {
         
         var result: [Element] = []
         result.append(lhs)
@@ -85,7 +85,7 @@ public extension Array where Element: Equatable {
     // MARK: Properties
     
     /// Returns copy of the receiver by removing duplicates.
-    public var tap_removingDuplicates: [Element] {
+    var tap_removingDuplicates: [Element] {
         
         var result: [Element] = []
         
@@ -96,7 +96,7 @@ public extension Array where Element: Equatable {
                 result.append(object)
             }
         }
-        
+		
         return result
     }
     
@@ -108,7 +108,7 @@ public extension Array where Element: Equatable {
     ///   - lhs: Left operand.
     ///   - rhs: Right operand.
     /// - Returns: lhs - rhs
-    public static func - (lhs: [Element], rhs: [Element]) -> [Element] {
+    static func - (lhs: [Element], rhs: [Element]) -> [Element] {
         
         var result: [Element] = []
         result.append(contentsOf: lhs)
@@ -127,7 +127,7 @@ public extension Array where Element: Equatable {
     ///   - lhs: Left operand.
     ///   - rhs: Right operand.
     /// - Returns: lhs = lhs - rhs
-    @discardableResult public static func -= (lhs: inout [Element], rhs: [Element]) -> [Element] {
+    @discardableResult static func -= (lhs: inout [Element], rhs: [Element]) -> [Element] {
         
         for object in rhs {
             
@@ -143,7 +143,7 @@ public extension Array where Element: Equatable {
     ///   - lhs: Left operand.
     ///   - rhs: Right operand.
     /// - Returns: lhs - [rhs]
-    public static func - (lhs: [Element], rhs: Element) -> [Element] {
+    static func - (lhs: [Element], rhs: Element) -> [Element] {
         
         return lhs - [rhs]
     }
@@ -154,9 +154,9 @@ public extension Array where Element: Equatable {
     ///   - lhs: Left operand.
     ///   - rhs: Right operand.
     /// - Returns: lhs = lhs - [rhs]
-    @discardableResult public static func -= (lhs: inout [Element], rhs: Element) -> [Element] {
+    @discardableResult static func -= (lhs: inout [Element], rhs: Element) -> [Element] {
         
-        if let index = lhs.index(of: rhs) {
+        if let index = lhs.firstIndex(of: rhs) {
             
             lhs.remove(at: index)
         }
@@ -165,7 +165,7 @@ public extension Array where Element: Equatable {
     }
     
     /// Removes all the duplicates from the receiver.
-    public mutating func tap_removeDuplicates() {
+    mutating func tap_removeDuplicates() {
         
         self = self.tap_removingDuplicates
     }
@@ -174,7 +174,7 @@ public extension Array where Element: Equatable {
     ///
     /// - Parameter array: Array of objects that needs to be left
     /// - Returns: Array of left objects.
-    public func tap_byLeavingObjects(from array: [Element]) -> [Element] {
+    func tap_byLeavingObjects(from array: [Element]) -> [Element] {
         
         guard array.count > 0 && self.count > 0 else { return [] }
         
@@ -201,7 +201,7 @@ public extension Array where Element: Numeric {
     ///   - finish: Array of right bounds.
     ///   - progress: Progress in range [0, 1].
     /// - Returns: Interpolated array.
-    public static func tap_interpolate(start: [Element], finish: [Element], progress: Element) -> [Element] {
+    static func tap_interpolate(start: [Element], finish: [Element], progress: Element) -> [Element] {
         
         let arrayLength = start.count
         guard arrayLength > 0 else { return [] }

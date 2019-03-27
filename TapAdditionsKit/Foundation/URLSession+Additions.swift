@@ -21,7 +21,7 @@ public extension URLSession {
     ///
     /// - Parameter request: Request.
     /// - Returns: Tuple: (data, response, error)
-    public static func tap_synchronousDataTask(with request: URLRequest) -> URLSessionDataTaskResult {
+    static func tap_synchronousDataTask(with request: URLRequest) -> URLSessionDataTaskResult {
         
         return URLSession.shared.tap_synchronousDataTask(with: request)
     }
@@ -30,7 +30,7 @@ public extension URLSession {
     ///
     /// - Parameter request: Request.
     /// - Returns: Tuple: (data, response, error)
-    public func tap_synchronousDataTask(with request: URLRequest) -> URLSessionDataTaskResult {
+    func tap_synchronousDataTask(with request: URLRequest) -> URLSessionDataTaskResult {
         
         var data: Data?
         var response: URLResponse?

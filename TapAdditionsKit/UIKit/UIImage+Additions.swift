@@ -75,13 +75,13 @@ public extension UIImage {
     // MARK: Properties
     
     /// Returns mirrored image.
-    public var tap_mirrored: UIImage {
+    var tap_mirrored: UIImage {
         
         return UIImage(cgImage: self.tap_nonnullCGImage, scale: self.scale, orientation: .upMirrored)
     }
     
     /// Returns stretchable copy of the receiver.
-    public var tap_stretchableImage: UIImage {
+    var tap_stretchableImage: UIImage {
         
         let topInset = 0.5 * size.height
         let leftInset = 0.5 * size.width
@@ -91,38 +91,38 @@ public extension UIImage {
     }
     
     /// Returns tileable copy of the receiver.
-    public var tap_tileableImage: UIImage {
+    var tap_tileableImage: UIImage {
         
         return resizableImage(withCapInsets: UIEdgeInsets.zero, resizingMode: .tile)
     }
     
     /// Returns size in pixels.
-    public var tap_sizeInPixels: CGSize {
+    var tap_sizeInPixels: CGSize {
         
         return self.scale * self.size
     }
     
     /// Predefines if image is large enough for Instagram.
-    public var tap_isLargeEnoughForInstagram: Bool {
+    var tap_isLargeEnoughForInstagram: Bool {
         
         return self.tap_sizeInPixels.tap_fits(into: .tap_minimalInstagramImageSizeInPixels)
     }
     
     /// Defines if image has square form.
-    public var tap_isSquare: Bool {
+    var tap_isSquare: Bool {
         
         return self.size.tap_isSquare
     }
     
     /// Returns transparent copy of the receiver.
-    public var tap_transparentImage: UIImage? {
+    var tap_transparentImage: UIImage? {
         
         guard let imageData = self.pngData() else { return nil }
         return UIImage(data: imageData)
     }
     
     /// Returns negative copy of the receiver.
-    public var tap_negativeImage: UIImage? {
+    var tap_negativeImage: UIImage? {
         
         let ciImage = self.tap_nonnullCIImage
         guard let negativeFilter = CIFilter(name: "CIColorInvert") else { return nil }
@@ -140,7 +140,7 @@ public extension UIImage {
     }
     
     /// Returns black-and-white image with inverted mask.
-    public var tap_invertedMaskImage: UIImage? {
+    var tap_invertedMaskImage: UIImage? {
         
         let cgImage                     = self.tap_nonnullCGImage
         
@@ -169,7 +169,7 @@ public extension UIImage {
     }
     
     /// Returns nonnull backing CGImage.
-    public var tap_nonnullCGImage: CGImage {
+    var tap_nonnullCGImage: CGImage {
         
         if let coreImage = self.ciImage {
             
@@ -182,7 +182,7 @@ public extension UIImage {
     }
     
     /// Returns nonnull backing CIImage.
-    public var tap_nonnullCIImage: CIImage {
+    var tap_nonnullCIImage: CIImage {
         
         if let coreGraphicsImage = self.cgImage {
             
@@ -203,7 +203,7 @@ public extension UIImage {
      
      - returns: New instance of UIImage or nil if data is wrong.
      */
-    public static func tap_imageWithAnimatedGIFData(_ data: Data) -> UIImage? {
+    static func tap_imageWithAnimatedGIFData(_ data: Data) -> UIImage? {
         
         let imageSource = CGImageSourceCreateWithData(data as CFData, nil)
         return self.tap_animatedImageWithAnimatedGIF(imageSource: imageSource)
@@ -216,7 +216,7 @@ public extension UIImage {
      
      - returns: A new instance of UIImage.
      */
-    public convenience init?(tap_byCombiningImages imagesArray: [UIImage]) {
+    convenience init?(tap_byCombiningImages imagesArray: [UIImage]) {
         
         var offset = CGPoint.zero
         var maximalWidth: CGFloat = 0.0
@@ -240,7 +240,7 @@ public extension UIImage {
 	/// Initializes an image by combining all the the images as layers, one above another.
 	///
 	/// - Parameter images: Source images.
-	public convenience init?(tap_byCombining images: [UIImage]) {
+	convenience init?(tap_byCombining images: [UIImage]) {
 		
 		let sizes = images.map { $0.size }
 		
@@ -270,7 +270,7 @@ public extension UIImage {
      
      - returns: A new instance of UIImage or nil if error occured.
      */
-    public convenience init?(tap_byCombiningImages imagesDictionary: [NSValue: UIImage], withResultingSize size: CGSize, backgroundColor: UIColor, clearImageLocations: Bool) {
+    convenience init?(tap_byCombiningImages imagesDictionary: [NSValue: UIImage], withResultingSize size: CGSize, backgroundColor: UIColor, clearImageLocations: Bool) {
         
         var maximalScale: CGFloat = 1.0
         
@@ -334,7 +334,7 @@ public extension UIImage {
      
      - returns: New instance of UIImage or nil if it could not be created.
      */
-    public convenience init?(size: CGSize, fillColor color: UIColor) {
+    convenience init?(size: CGSize, fillColor color: UIColor) {
         
         UIGraphicsBeginImageContextWithOptions(size, false, 0.0)
         
@@ -368,7 +368,7 @@ public extension UIImage {
     ///   - name: Image name.
     ///   - bundle: Bundle.
     /// - Returns: Image if found, nil otherwise
-    public static func tap_named(_ name: String, in bundle: Bundle) -> UIImage? {
+    static func tap_named(_ name: String, in bundle: Bundle) -> UIImage? {
         
         return UIImage(named: name, in: bundle, compatibleWith: nil)
     }
@@ -377,7 +377,7 @@ public extension UIImage {
     ///
     /// - Parameter size: Size.
     /// - Returns: Content mode.
-    public func tap_bestContentMode(toFit size: CGSize) -> UIView.ContentMode {
+    func tap_bestContentMode(toFit size: CGSize) -> UIView.ContentMode {
         
         let widthFits       = self.size.width <= size.width
         let heightFits      = self.size.height <= size.height
@@ -405,7 +405,7 @@ public extension UIImage {
 	///
 	/// - Parameter color: Tint color to apply.
 	/// - Returns: Tinted image.
-	public func tap_byApplyingTint(color: UIColor) -> UIImage? {
+	func tap_byApplyingTint(color: UIColor) -> UIImage? {
 		
 		UIGraphicsBeginImageContextWithOptions(self.size, false, self.scale)
 		let context = UIGraphicsGetCurrentContext()
@@ -431,7 +431,7 @@ public extension UIImage {
      
      - returns: New instance of UIImage or nil if error occured.
      */
-    public func tap_applyLightEffect() -> UIImage? {
+    func tap_applyLightEffect() -> UIImage? {
         
         return self.tap_applyBlur(with: 20.0, tintColor: .tap_lightBlurTintColor, saturationDeltaFactor: 1.8, maskImage: nil)
     }
@@ -441,7 +441,7 @@ public extension UIImage {
      
      - returns: New instance of UIImage or nil if error occured.
      */
-    public func tap_applyExtraLightEffect() -> UIImage? {
+    func tap_applyExtraLightEffect() -> UIImage? {
         
         return self.tap_applyBlur(with: 20.0, tintColor: .tap_extraLightBlurTintColor, saturationDeltaFactor: 1.8, maskImage: nil)
     }
@@ -451,7 +451,7 @@ public extension UIImage {
      
      - returns: New instance of UIImage or nil if error occured.
      */
-    public func tap_applyDarkEffect() -> UIImage? {
+    func tap_applyDarkEffect() -> UIImage? {
         
         return self.tap_applyBlur(with: 20.0, tintColor: .tap_darkBlurTintColor, saturationDeltaFactor: 1.8, maskImage: nil)
     }
@@ -463,7 +463,7 @@ public extension UIImage {
      
      - returns: A tinted copy of the receiver or nil if an error occured.
      */
-    public func tap_applyTintEffect(with tintColor: UIColor) -> UIImage? {
+    func tap_applyTintEffect(with tintColor: UIColor) -> UIImage? {
         
         let effectColorAlpha: CGFloat = 0.6
         
@@ -502,7 +502,7 @@ public extension UIImage {
      
      - returns: A new instance of UIImage or nil if error occured.
      */
-    public func tap_applyBlur(with blurRadius: CGFloat, tintColor: UIColor?, saturationDeltaFactor: CGFloat, maskImage: UIImage?) -> UIImage? {
+    func tap_applyBlur(with blurRadius: CGFloat, tintColor: UIColor?, saturationDeltaFactor: CGFloat, maskImage: UIImage?) -> UIImage? {
         
         guard size.width >= 1.0 && size.height >= 1.0 else {
             
@@ -647,7 +647,7 @@ public extension UIImage {
      
      - returns: Rotated copy of the receiver.
      */
-    public func tap_rotate(degrees: CGFloat) -> UIImage? {
+    func tap_rotate(degrees: CGFloat) -> UIImage? {
         
         let angle = degrees * CGFloat.pi / 180.0
         
@@ -683,7 +683,7 @@ public extension UIImage {
      
      - returns: New instance of UIImage.
      */
-    public func tap_byRoundingCorners(cornerRadius: CGFloat) -> UIImage? {
+    func tap_byRoundingCorners(cornerRadius: CGFloat) -> UIImage? {
         
         UIGraphicsBeginImageContextWithOptions(size, false, scale)
         
@@ -705,7 +705,7 @@ public extension UIImage {
      
      - returns: UIColor or nil if point is outside the image.
      */
-    public func tap_color(at point: CGPoint) -> UIColor? {
+    func tap_color(at point: CGPoint) -> UIColor? {
         
         guard CGRect(origin: CGPoint.zero, size: size).contains(point) else { return nil }
         
@@ -725,7 +725,7 @@ public extension UIImage {
     ///
     /// - Parameter aSize: size of new image
     /// - Returns: resized image
-    public func tap_scaleToSize(_ aSize: CGSize) -> UIImage? {
+    func tap_scaleToSize(_ aSize: CGSize) -> UIImage? {
         
         guard !self.size.equalTo(aSize) else { return self }
         
@@ -736,7 +736,7 @@ public extension UIImage {
         return image
     }
     
-    public func tap_blurred(withRadius radius: CGFloat, iterations: Int, ratio: CGFloat, blendColor color: UIColor?, blendMode mode: CGBlendMode) -> UIImage? {
+    func tap_blurred(withRadius radius: CGFloat, iterations: Int, ratio: CGFloat, blendColor color: UIColor?, blendMode mode: CGBlendMode) -> UIImage? {
         
         let cgImage = self.tap_nonnullCGImage
         
@@ -875,7 +875,7 @@ public extension UIImage {
 
 fileprivate extension vImage_Buffer {
     
-    fileprivate init(tap_context: CGContext) {
+    init(tap_context: CGContext) {
         
         self.init(data:		tap_context.data,
                   height:	vImagePixelCount(tap_context.height),

@@ -20,7 +20,7 @@ public extension Comparable {
      
      - returns: NSComparisonResult
      */
-    public func tap_compare(other: Self) -> ComparisonResult {
+    func tap_compare(other: Self) -> ComparisonResult {
         
         if self < other {
             

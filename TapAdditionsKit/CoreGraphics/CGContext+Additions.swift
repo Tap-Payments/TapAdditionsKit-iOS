@@ -17,7 +17,7 @@ public extension CGContext {
     // MARK: - Public -
     // MARK: Methods
     
-    public func tap_makeImage(with blendColor: UIColor?, blendMode: CGBlendMode, size: CGSize) -> CGImage? {
+    func tap_makeImage(with blendColor: UIColor?, blendMode: CGBlendMode, size: CGSize) -> CGImage? {
         
         if let color = blendColor {
             

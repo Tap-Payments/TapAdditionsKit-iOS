@@ -17,7 +17,7 @@ public extension CAKeyframeAnimation {
     // MARK: Properties
     
     /// Popup appearance animation (like UIAlertView).
-    public static let tap_popupAppearance: CAKeyframeAnimation = {
+    static let tap_popupAppearance: CAKeyframeAnimation = {
        
         let animation = CAKeyframeAnimation.tap_transformKeyFrameAnimation
         
@@ -32,7 +32,7 @@ public extension CAKeyframeAnimation {
     }()
     
     /// Popup disappearance animation (like UIAlertView).
-    public static let tap_popupDisappearance: CAKeyframeAnimation = {
+    static let tap_popupDisappearance: CAKeyframeAnimation = {
        
         let animation = CAKeyframeAnimation.tap_transformKeyFrameAnimation
         

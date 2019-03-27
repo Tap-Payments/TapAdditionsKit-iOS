@@ -23,12 +23,12 @@ public extension NSLayoutConstraint {
     ///   - animationDuration: Set `> 0` if reactivation should happen with animation.
     ///   - additionalAnimations: Additional animations.
     /// - Returns: Boolean value that determines whether layout should happen.
-	@discardableResult public static func tap_reactivate(inCaseIf condition:			Bool,
-														 constraintsToDisableOnSuccess:	[NSLayoutConstraint],
-														 constraintsToEnableOnSuccess:	[NSLayoutConstraint],
-														 viewToLayout:					UIView?,
-														 animationDuration:				TimeInterval,
-														 additionalAnimations:			TypeAlias.ArgumentlessClosure? = nil) -> Bool {
+	@discardableResult static func tap_reactivate(inCaseIf condition:				Bool,
+												  constraintsToDisableOnSuccess:	[NSLayoutConstraint],
+												  constraintsToEnableOnSuccess:		[NSLayoutConstraint],
+												  viewToLayout:						UIView?,
+												  animationDuration:				TimeInterval,
+												  additionalAnimations:				TypeAlias.ArgumentlessClosure? = nil) -> Bool {
 		
 		var constraintsToDeactivate = condition ? constraintsToDisableOnSuccess : constraintsToEnableOnSuccess
         var constraintsToActivate = condition ? constraintsToEnableOnSuccess : constraintsToDisableOnSuccess

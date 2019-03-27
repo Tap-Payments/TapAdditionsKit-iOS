@@ -10,7 +10,7 @@ public extension URL {
 	/// Quick way to obtain query parameter from URL.
 	///
 	/// - Parameter tap_queryParameter: Query parameter.
-	public subscript(tap_queryParameter: String) -> String? {
+	subscript(tap_queryParameter: String) -> String? {
 		
 		guard let queryParameters = URLComponents(string: self.absoluteString), let queryItems = queryParameters.queryItems else { return nil }
 		guard let queryItem = queryItems.first(where: { $0.name == tap_queryParameter }) else { return nil }

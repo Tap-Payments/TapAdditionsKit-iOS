@@ -27,13 +27,13 @@ public protocol JSONSerializable {
 public extension JSONSerializable {
     
     /// Defines if the receiver is a valid JSON object.
-    public var tap_isValidJSONObject: Bool {
+    var tap_isValidJSONObject: Bool {
         
         return JSONSerialization.isValidJSONObject(self)
     }
     
     /// Returns JSON string of the receiver or empty JSON dictionary if the receiver is not a valid json object.
-    public var tap_jsonString: String {
+    var tap_jsonString: String {
      
         return self.tap_serializedToJSONString(with: .tap_none, encoding: .utf8)
     }
@@ -73,7 +73,7 @@ extension Dictionary: JSONSerializable {
 
 fileprivate extension JSONSerialization {
     
-    fileprivate static func tap_string(fromJSONObject object: JSONSerializable, options: JSONSerialization.WritingOptions, encoding: String.Encoding) -> String? {
+    static func tap_string(fromJSONObject object: JSONSerializable, options: JSONSerialization.WritingOptions, encoding: String.Encoding) -> String? {
         
         guard object.tap_isValidJSONObject else { return nil }
         

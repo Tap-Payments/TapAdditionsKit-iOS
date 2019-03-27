@@ -27,7 +27,7 @@ public extension CALayer {
     // MARK: Properties
     
     /// Returns longest animation duration of the layer.
-    public var tap_longestAnimationDuration: TimeInterval {
+    var tap_longestAnimationDuration: TimeInterval {
         
         var longestDuration = 0.0
         
@@ -62,7 +62,7 @@ public extension CALayer {
     // MARK: Methods
     
     /// Removes all animations.
-    public func tap_removeAnimations(includeSublayers: Bool = true) {
+    func tap_removeAnimations(includeSublayers: Bool = true) {
         
         self.removeAllAnimations()
         
@@ -84,7 +84,7 @@ public extension CALayer {
      - parameter width: Border width.
      - parameter color: Border color.
      */
-    public func tap_setBorder(onEdge edge: UIRectEdge, width: CGFloat, color: UIColor?) {
+    func tap_setBorder(onEdge edge: UIRectEdge, width: CGFloat, color: UIColor?) {
         
         let cgColor = color?.cgColor
         

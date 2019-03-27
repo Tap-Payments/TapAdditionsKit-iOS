@@ -12,7 +12,7 @@ public extension BinaryInteger {
     // MARK: Properties
     
     /// Returns string value of the receiver.
-    public var tap_stringValue: String {
+    var tap_stringValue: String {
      
         return "\(self)"
     }

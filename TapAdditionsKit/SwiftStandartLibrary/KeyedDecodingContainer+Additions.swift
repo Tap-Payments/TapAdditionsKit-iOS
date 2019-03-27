@@ -18,7 +18,7 @@ public extension KeyedDecodingContainer {
     ///   - key: Key.
     /// - Returns: Model
     /// - Throws: Decoding error if any.
-    public func tap_decodeIfPresentAndNotEmpty<Model>(_ type: Model.Type, forKey key: KeyedDecodingContainer.Key) throws -> Model? where Model: Decodable {
+    func tap_decodeIfPresentAndNotEmpty<Model>(_ type: Model.Type, forKey key: KeyedDecodingContainer.Key) throws -> Model? where Model: Decodable {
         
         guard self.contains(key) else { return nil }
         guard try self.decodeNil(forKey: key) == false else { return nil }
@@ -39,7 +39,7 @@ public extension KeyedDecodingContainer {
     /// - Parameter key: Key.
     /// - Returns: Decoded integer.
     /// - Throws: Decoding error if any.
-    public func tap_decodeInt(forKey key: Key) throws -> Int {
+    func tap_decodeInt(forKey key: Key) throws -> Int {
         
         if let intValue = try? self.decode(Int.self, forKey: key) {
             
@@ -65,7 +65,7 @@ public extension KeyedDecodingContainer {
 	///
 	/// - Parameter key: Key
 	/// - Returns: Decoded URL.
-	public func decodeURLIfPresent(for key: KeyedDecodingContainer.Key) -> URL? {
+	func decodeURLIfPresent(for key: KeyedDecodingContainer.Key) -> URL? {
 		
 		guard self.contains(key) else { return nil }
 		

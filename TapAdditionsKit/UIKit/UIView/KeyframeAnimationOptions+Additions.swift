@@ -15,7 +15,7 @@ public extension UIView.KeyframeAnimationOptions {
     /// Initializes anima
     ///
     /// - Parameter animationOptions: Animation options.
-    public init(tap_animationOptions: UIView.AnimationOptions) {
+    init(tap_animationOptions: UIView.AnimationOptions) {
         
         self.init(rawValue: tap_animationOptions.rawValue)
     }

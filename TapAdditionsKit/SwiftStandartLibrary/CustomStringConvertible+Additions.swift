@@ -14,7 +14,7 @@ public extension CustomStringConvertible {
     ///
     /// - Parameter extraSpaces: Number of extra spaces to add.
     /// - Returns: Object's description.
-    public func tap_description(with extraSpaces: Int) -> String {
+    func tap_description(with extraSpaces: Int) -> String {
         
         let spaces = String(repeating: CustomStringConvertibleConstants.spaceString, count: extraSpaces)
         let separator = CustomStringConvertibleConstants.newlineString.appending(spaces)

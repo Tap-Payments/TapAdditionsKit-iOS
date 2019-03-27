@@ -15,7 +15,7 @@ public extension UICollectionView {
     // MARK: Properties
     
     /// Returns selected index path if collection view is in a single selection mode.
-    public var tap_indexPathForSelectedItem: IndexPath? {
+    var tap_indexPathForSelectedItem: IndexPath? {
         
         guard !self.allowsMultipleSelection else { return nil }
         

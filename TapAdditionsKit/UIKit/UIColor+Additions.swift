@@ -22,30 +22,30 @@ public extension UIColor {
      
      - returns: Extra light native blur tint color.
      */
-    public static let tap_extraLightBlurTintColor = UIColor(white: 0.97, alpha: 0.82)
+    static let tap_extraLightBlurTintColor = UIColor(white: 0.97, alpha: 0.82)
     
     /*!
      Creates and returns light native blur tint color.
      
      - returns: Light native blur tint color.
      */
-    public static let tap_lightBlurTintColor: UIColor = UIColor(white: 1.0, alpha: 0.3)
+    static let tap_lightBlurTintColor: UIColor = UIColor(white: 1.0, alpha: 0.3)
     
     /*!
      Creates and returns dark native blur tint color.
      
      - returns: Dark native blur tint color.
      */
-    public static let tap_darkBlurTintColor = UIColor(white: 0.11, alpha: 0.73)
+    static let tap_darkBlurTintColor = UIColor(white: 0.11, alpha: 0.73)
     
     /// Returns gl components of the color.
-    public var tap_glComponents: [GLfloat]? {
+    var tap_glComponents: [GLfloat]? {
 		
 		return self.tap_rgbaComponents?.map { GLfloat($0) }
     }
     
     /// Returns RGBA color components.
-    public var tap_rgbaComponents: [CGFloat]? {
+    var tap_rgbaComponents: [CGFloat]? {
         
         var red: CGFloat = 0.0
         var green: CGFloat = 0.0
@@ -71,7 +71,7 @@ public extension UIColor {
     /// Initializes color with RGBA components.
     ///
     /// - Parameter rgba: RGBA components.
-    public convenience init?(tap_rgba: [CGFloat]) {
+    convenience init?(tap_rgba: [CGFloat]) {
         
         let componentsCount = tap_rgba.count
         
@@ -103,7 +103,7 @@ public extension UIColor {
      
      - returns: UIColor or nil if HEX string is incorrect.
      */
-    public static func tap_withHex(_ hexString: String) -> UIColor? {
+    static func tap_withHex(_ hexString: String) -> UIColor? {
         
         return UIColor(tap_hex: hexString)
     }
@@ -115,7 +115,7 @@ public extension UIColor {
      
      - returns: UIColor or nil if HEX string is incorrect.
      */
-    public static func tap_hex(_ value: String) -> UIColor {
+    static func tap_hex(_ value: String) -> UIColor {
         
         guard let color = UIColor(tap_hex: value) else {
             
@@ -132,7 +132,7 @@ public extension UIColor {
      
      - returns: UIColor or nil if HEX string is incorrect.
      */
-    public convenience init?(tap_hex hexString: String) {
+    convenience init?(tap_hex hexString: String) {
         
         let stringToScan = (hexString.hasPrefix(Constants.hexPrefix) ? String(hexString.suffix(from: Constants.hexPrefix.tap_length.tap_index(in: hexString))) : hexString).uppercased()
         let scanLength = stringToScan.tap_length
@@ -187,7 +187,7 @@ public extension UIColor {
     /// Initializes color with GLfloat RGBA components.
     ///
     /// - Parameter glComponents: GLfloat RGBA components.
-    public convenience init?(tap_glComponents: [GLfloat]) {
+    convenience init?(tap_glComponents: [GLfloat]) {
 		
 		let cgFloatComponents = tap_glComponents.map { CGFloat($0) }
         self.init(tap_rgba: cgFloatComponents)
@@ -200,7 +200,7 @@ public extension UIColor {
     ///   - finish: Finish color.
     ///   - progress: Progress in range [0, 1]
     /// - Returns: Interpolated color.
-    public static func tap_interpolate(start: UIColor, finish: UIColor, progress: CGFloat) -> UIColor {
+    static func tap_interpolate(start: UIColor, finish: UIColor, progress: CGFloat) -> UIColor {
         
         guard let startRGBA = start.tap_rgbaComponents, let finishRGBA = finish.tap_rgbaComponents else {
             

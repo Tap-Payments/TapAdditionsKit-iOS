@@ -15,7 +15,7 @@ public extension UIWebView {
     // MARK: Properties
     
     /// Defines if web view is empty.
-    public var tap_isEmpty: Bool {
+    var tap_isEmpty: Bool {
         
         guard let jsResult = self.stringByEvaluatingJavaScript(from: "document.getElementsByTagName('body')[0].innerHTML") else { return true }
         
@@ -23,7 +23,7 @@ public extension UIWebView {
     }
     
     /// Returns web page size.
-    public var tap_contentSize: CGSize {
+    var tap_contentSize: CGSize {
         
         return self.sizeThatFits(.zero)
     }

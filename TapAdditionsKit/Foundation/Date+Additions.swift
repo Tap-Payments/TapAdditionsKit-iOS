@@ -12,13 +12,13 @@ public extension Date {
     // MARK: Properties
     
     // Month (1..12) using current calendar.
-    public var tap_month: Int {
+    var tap_month: Int {
         
         return self.tap_get(.month)
     }
     
     /// Year using current calendar.
-    public var tap_year: Int {
+    var tap_year: Int {
         
         return self.tap_get(.year)
     }

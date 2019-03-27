@@ -19,12 +19,12 @@ extension Decimal: Addable {}
 
 public extension Sequence where Element: Numeric {
     
-    public static func * (lhs: Element, rhs: Self) -> [Element] {
+    static func * (lhs: Element, rhs: Self) -> [Element] {
 
         return rhs.map { $0 * lhs }
     }
     
-    public static func * (lhs: Self, rhs: Element) -> [Element] {
+    static func * (lhs: Self, rhs: Element) -> [Element] {
         
         return lhs.map { $0 * rhs }
     }
@@ -34,7 +34,7 @@ public extension Sequence where Element: Numeric {
 public extension Sequence where Iterator.Element: Addable {
     
     /// Returns sum of elements.
-    public var tap_sum: Iterator.Element {
+    var tap_sum: Iterator.Element {
         
         return self.reduce(Iterator.Element()) { $0 + $1 }
     }
@@ -47,7 +47,7 @@ public extension Sequence where Iterator.Element: BinaryInteger {
     // MARK: Properties
     
     /// Returns GCD of the sequence.
-    public var tap_gcd: Iterator.Element {
+    var tap_gcd: Iterator.Element {
         
         let elementsCount = self.underestimatedCount
         

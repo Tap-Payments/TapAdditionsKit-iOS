@@ -16,25 +16,25 @@ public extension UIDevice {
     // MARK: Properties
     
     /// Returns OS version.
-    public var tap_operatingSystemVersion: OperatingSystemVersion {
+    var tap_operatingSystemVersion: OperatingSystemVersion {
         
         return ProcessInfo.processInfo.operatingSystemVersion
     }
     
     /// Defines if device is running iOS 9 or lower
-    public var tap_isRunningIOS9OrLower: Bool {
+    var tap_isRunningIOS9OrLower: Bool {
         
         return self.tap_operatingSystemVersion.majorVersion < 10
     }
     
     /// Defines if device is running iOS 8 or lower
-    public var tap_isRunningIOS8OrLower: Bool {
+    var tap_isRunningIOS8OrLower: Bool {
         
         return self.tap_operatingSystemVersion.majorVersion < 9
     }
     
     /// Defines if app is running on simulator.
-    public var tap_isSimulator: Bool {
+    var tap_isSimulator: Bool {
         
         #if targetEnvironment(simulator)
             
@@ -48,7 +48,7 @@ public extension UIDevice {
     }
     
     /// Defines if device is 64-bit.
-    public var tap_is64Bit: Bool {
+    var tap_is64Bit: Bool {
         
         #if __LP64__
             
@@ -62,7 +62,7 @@ public extension UIDevice {
     }
     
     /// Defines if device is iPad
-    public var tap_isIPad: Bool {
+    var tap_isIPad: Bool {
         
         return self.userInterfaceIdiom == .pad
     }

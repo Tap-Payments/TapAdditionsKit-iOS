@@ -23,7 +23,7 @@ public extension CNPostalAddress {
     // MARK: Properties
 
     /// Returns JSON dictionary representation of the receiver.
-    public var tap_jsonDictionary: [String: String] {
+    var tap_jsonDictionary: [String: String] {
         
         var result: [String: String] = [:]
         

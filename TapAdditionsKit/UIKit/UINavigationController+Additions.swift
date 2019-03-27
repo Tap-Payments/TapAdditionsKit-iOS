@@ -18,7 +18,7 @@ public extension UINavigationController {
     // MARK: Properties
     
     /// Returns root view controller of the receiver.
-    public var tap_rootViewController: UIViewController? {
+    var tap_rootViewController: UIViewController? {
         
         return self.viewControllers.first
     }
@@ -26,7 +26,7 @@ public extension UINavigationController {
     // MARK: Methods
     
     /// Pushes view controller.
-    public func tap_pushViewController(_ viewController: UIViewController, animated: Bool, completion: TypeAlias.ArgumentlessClosure?) {
+    func tap_pushViewController(_ viewController: UIViewController, animated: Bool, completion: TypeAlias.ArgumentlessClosure?) {
         
         if animated {
             
@@ -51,7 +51,7 @@ public extension UINavigationController {
     ///   - animated: Defines if changes should be animated.
     ///   - completion: Completion closure to be called when animation finishes.
     /// - Returns: Popped view controller.
-    @discardableResult public func tap_popToRootViewController(animated: Bool, completion: TypeAlias.ArgumentlessClosure?) -> [UIViewController]? {
+    @discardableResult func tap_popToRootViewController(animated: Bool, completion: TypeAlias.ArgumentlessClosure?) -> [UIViewController]? {
         
         guard let rootController = self.tap_rootViewController else {
             
@@ -63,7 +63,7 @@ public extension UINavigationController {
     }
     
     /// Pops to specific view controller.
-    @discardableResult public func tap_popToViewController(_ viewController: UIViewController, animated: Bool, completion: TypeAlias.ArgumentlessClosure?) -> [UIViewController]? {
+    @discardableResult func tap_popToViewController(_ viewController: UIViewController, animated: Bool, completion: TypeAlias.ArgumentlessClosure?) -> [UIViewController]? {
         
         let result = popToViewController(viewController, animated: animated)
         type(of: self).tap_callCompletion(completion, afterDelay: animated ? Constants.popAnimationDuration : 0.0)

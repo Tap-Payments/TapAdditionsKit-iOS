@@ -20,7 +20,7 @@ public extension CNContactStore {
     ///
     /// - Returns: Fetched contacts.
     /// - Throws: Error if occured.
-    public func tap_fetchAllContacts() throws -> [CNContact] {
+    func tap_fetchAllContacts() throws -> [CNContact] {
         
         do {
 
@@ -44,7 +44,7 @@ public extension CNContactStore {
     /// - Parameter identifier: Contact identifier.
     /// - Returns: Fetched contact or nil if there is no contact with the specified identifier.
     /// - Throws: Error if occured.
-    public func tap_fetchContact(with identifier: String) throws -> CNContact? {
+    func tap_fetchContact(with identifier: String) throws -> CNContact? {
 
         do {
             

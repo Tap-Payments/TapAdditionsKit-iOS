@@ -20,7 +20,7 @@ public extension Decodable {
     ///   - dictionary: Dictionary to decode.
     ///   - decoder: Decoder.
     /// - Throws: Decoding error.
-    public init(dictionary: [String: Any], using decoder: JSONDecoder = JSONDecoder()) throws {
+    init(dictionary: [String: Any], using decoder: JSONDecoder = JSONDecoder()) throws {
         
         let jsonData = try JSONSerialization.data(withJSONObject: dictionary, options: [])
         

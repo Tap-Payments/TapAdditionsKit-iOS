@@ -15,7 +15,7 @@ public extension UIEdgeInsets {
     // MARK: Properties
     
     /// Returns mirrored result.
-    public var tap_mirrored: UIEdgeInsets {
+    var tap_mirrored: UIEdgeInsets {
         
         let original = self
         
@@ -31,7 +31,7 @@ public extension UIEdgeInsets {
     /// Initializes UIEdgeInsets with the same insets from all sides.
     ///
     /// - Parameter inset: Inset.
-    public init(tap_inset: CGFloat) {
+    init(tap_inset: CGFloat) {
         
         self.init(top: tap_inset, left: tap_inset, bottom: tap_inset, right: tap_inset)
     }

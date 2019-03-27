@@ -12,7 +12,7 @@ public extension UIView.AnimationOptions {
     // MARK: - Public -
     // MARK: Methods
     
-    public init(tap_curve: UIView.AnimationCurve) {
+    init(tap_curve: UIView.AnimationCurve) {
         
         switch tap_curve {
             
@@ -21,6 +21,10 @@ public extension UIView.AnimationOptions {
         case .easeInOut:    self = .curveEaseInOut
         case .linear:       self = .curveLinear
             
-        }
+		@unknown default:
+			
+			print("Attempted to instantiate UIView.AnimationOptions with UIView.AnimationCurve value \(tap_curve) which is not yet supported. Using linear curve instead.")
+			self = .curveLinear
+		}
     }
 }

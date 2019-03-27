@@ -14,7 +14,7 @@ public extension Numeric {
     ///   - finish: Right bound.
     ///   - progress: Progress in range [0, 1]
     /// - Returns: Interpolated value.
-    public static func tap_interpolate<Type>(start: Type, finish: Type, progress: Type) -> Type where Type: Numeric {
+    static func tap_interpolate<Type>(start: Type, finish: Type, progress: Type) -> Type where Type: Numeric {
         
         return start + (finish - start) * progress
     }

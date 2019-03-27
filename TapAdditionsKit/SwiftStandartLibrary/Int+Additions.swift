@@ -15,7 +15,7 @@ public extension Int {
     ///
     /// - Parameter string: String.
     /// - Returns: String.Index representation of Int.
-    public func tap_index(in string: String) -> String.Index {
+    func tap_index(in string: String) -> String.Index {
         
         return string.index(string.startIndex, offsetBy: self)
     }

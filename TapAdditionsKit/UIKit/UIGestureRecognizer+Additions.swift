@@ -16,7 +16,7 @@ public extension UIGestureRecognizer {
     /*!
      Cancels current gesture state.
      */
-    public func tap_cancelCurrentGesture() {
+    func tap_cancelCurrentGesture() {
         
         if self.isEnabled {
             

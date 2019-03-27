@@ -20,7 +20,7 @@ public extension UIBezierPath {
     ///
     /// - Parameter points: Points to pass through.
     /// - Returns: curved UIBezierPath that passes through all the points.
-    public static func tap_quadCurvedPath(with points: [CGPoint]) -> UIBezierPath {
+    static func tap_quadCurvedPath(with points: [CGPoint]) -> UIBezierPath {
         
         assert(points.count >= 2, "There should be at least 2 points.")
         
@@ -65,7 +65,7 @@ public extension UIBezierPath {
     ///   - alpha: 0.0 - uniform parametrization, 0.5 - centripetal parametrization, 1.0 - chordal parametrization.
     ///   - includeEdgePoints: Defines if edge points should be included into the curve.
     /// - Returns: curved UIBezierPath that uses Catmull-Rom algorithm to interpolate between given points.
-    public static func tap_catmullRomInterpolatedPath(with pointsArray: [CGPoint], closed: Bool, alpha: CGFloat, includeEdgePoints: Bool) -> UIBezierPath {
+    static func tap_catmullRomInterpolatedPath(with pointsArray: [CGPoint], closed: Bool, alpha: CGFloat, includeEdgePoints: Bool) -> UIBezierPath {
         
         assert(0.0 <= alpha && alpha <= 1.0, "Alpha should be in range [0.0, 1.0]")
         assert(pointsArray.count >= 2, "There should be at least 2 points.")

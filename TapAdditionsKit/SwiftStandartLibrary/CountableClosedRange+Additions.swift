@@ -14,7 +14,7 @@ public extension CountableClosedRange where Bound == Int {
     // MARK: Properties
     
     /// Returns random value of a range.
-    public var tap_randomValue: Bound {
+    var tap_randomValue: Bound {
         
         return Int(arc4random_uniform(UInt32(self.count) + 1)) + self.lowerBound
     }

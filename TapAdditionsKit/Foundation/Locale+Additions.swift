@@ -16,10 +16,10 @@ public extension Locale {
     // MARK: Properties
     
     /// Returns en_US locale.
-    public static let tap_enUS = Locale(identifier: TapLocaleIdentifier.enUS)
+    static let tap_enUS = Locale(identifier: TapLocaleIdentifier.enUS)
     
     /// Locale identifiers.
-    public struct TapLocaleIdentifier {
+    struct TapLocaleIdentifier {
         
         public static let ar = "ar"
         public static let en = "en"
@@ -32,7 +32,7 @@ public extension Locale {
     ///
     /// - Parameter localeIdentifier: Locale identifier, for example "en-US"
     /// - Returns: Primary locale identifier, for example "en".
-    public static func tap_primaryLocaleIdentifier(from localeIdentifier: String) -> String {
+    static func tap_primaryLocaleIdentifier(from localeIdentifier: String) -> String {
         
         let languageCodeKey = NSLocale.Key.languageCode.rawValue
         let components = self.components(fromIdentifier: localeIdentifier)

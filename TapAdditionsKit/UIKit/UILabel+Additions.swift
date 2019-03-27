@@ -21,7 +21,7 @@ public extension UILabel {
     /// - Parameters:
     ///   - textColor: Text color.
     ///   - animationDuration: Animation duration.
-    public func tap_setTextColor(_ textColor: UIColor, animationDuration: TimeInterval) {
+    func tap_setTextColor(_ textColor: UIColor, animationDuration: TimeInterval) {
         
         let animations: TypeAlias.ArgumentlessClosure = { [weak self] in
             
@@ -36,7 +36,7 @@ public extension UILabel {
     /// - Parameters:
     ///   - text: string for text
     ///   - animationDuration: Animation duration
-    public func tap_setText(_ text: String, animationDuration: TimeInterval) {
+    func tap_setText(_ text: String, animationDuration: TimeInterval) {
         
         let animations: TypeAlias.ArgumentlessClosure = { [weak self] in
             
