@@ -360,14 +360,10 @@ public extension UIViewController {
     }
     
     private func tap_removeSeparateWindow() {
-        
-        let closestLowerWindow = self.tap_separateWindow?.tap_closestLowerWindow
-        
+		
         self.tap_separateWindow?.isHidden = true
         self.tap_separateWindow?.rootViewController = nil
         self.tap_separateWindow = nil
-        
-        closestLowerWindow?.makeKeyAndVisible()
     }
 }
 
