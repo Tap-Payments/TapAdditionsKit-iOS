@@ -1,4 +1,4 @@
-TapSwiftFixesDependencyVersion      = '>= 1.0.8'   unless defined? TapSwiftFixesDependencyVersion
+TapSwiftFixesDependencyVersion      = '>= 1.0.9'   unless defined? TapSwiftFixesDependencyVersion
 
 Pod::Spec.new do |tapAdditionsKit|
     
