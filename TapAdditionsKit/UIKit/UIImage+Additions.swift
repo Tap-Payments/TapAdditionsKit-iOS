@@ -64,9 +64,12 @@ import func		UIKit.UIGraphicsEndImageContext
 import func		UIKit.UIGraphicsGetCurrentContext
 import func		UIKit.UIGraphicsGetImageFromCurrentImageContext
 import class	UIKit.UIImage.UIImage
-import func		UIKit.UIImage.UIImagePNGRepresentation
 import class	UIKit.UIScreen.UIScreen
 import class	UIKit.UIView.UIView
+
+#if !swift(>=4.2)
+import func		UIKit.UIImage.UIImagePNGRepresentation
+#endif
 
 /// Useful extension of UIImage class.
 public extension UIImage {
@@ -113,11 +116,25 @@ public extension UIImage {
         
         return self.size.tap_isSquare
     }
-    
+	
+	/// Returns png data representation of the receiver.
+	var tap_pngData: Data? {
+		
+		#if swift(>=4.2)
+		
+		return self.pngData()
+		
+		#else
+		
+		return UIImagePNGRepresentation(self)
+		
+		#endif
+	}
+	
     /// Returns transparent copy of the receiver.
     var tap_transparentImage: UIImage? {
         
-        guard let imageData = self.pngData() else { return nil }
+        guard let imageData = self.tap_pngData else { return nil }
         return UIImage(data: imageData)
     }
     

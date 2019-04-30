@@ -28,9 +28,51 @@ public extension UIViewController {
     /// Defines if receiver is performing any appearance/disappearance transition at the moment.
     var tap_isPerformingTransition: Bool {
         
-        return self.isBeingDismissed || self.isBeingPresented || self.isMovingFromParent || self.isMovingToParent
+        return self.isBeingDismissed || self.isBeingPresented || self.tap_isMovingFromParent || self.tap_isMovingToParent
     }
-    
+	
+	/// Defines if the receiver is moving from parent view controller.
+	var tap_isMovingFromParent: Bool {
+		
+		#if swift(>=4.2)
+		
+		return self.isMovingFromParent
+		
+		#else
+		
+		return self.isMovingFromParentViewController
+		
+		#endif
+	}
+	
+	/// Defines if the receiver is moving to parent view controller.
+	var tap_isMovingToParent: Bool {
+		
+		#if swift(>=4.2)
+		
+		return self.isMovingToParent
+		
+		#else
+		
+		return self.isMovingToParentViewController
+		
+		#endif
+	}
+	
+	/// An array of view controllers that are the children of the receiver.
+	var tap_children: [UIViewController] {
+		
+		#if swift(>=4.2)
+		
+		return self.children
+		
+		#else
+		
+		return self.childViewControllers
+		
+		#endif
+	}
+	
     /// Returns NSLayoutConstraint which determines height of top layout guide.
     var tap_topLayoutGuideConstraint: NSLayoutConstraint? {
         
@@ -65,9 +107,9 @@ public extension UIViewController {
             
             return navController.visibleViewController?.tap_displayedViewController
         }
-        else if self.children.count > 0 {
+        else if self.tap_children.count > 0 {
             
-            let childControllers = self.children
+            let childControllers = self.tap_children
             for controller in childControllers {
                 
                 let presentedController = controller.tap_displayedViewController
@@ -291,7 +333,7 @@ public extension UIViewController {
             return rController
         }
         
-        for childController in theRootController.children {
+        for childController in theRootController.tap_children {
             
             let found: T? = self.tap_inHierarchy(with: childController)
             if let nonnullFound = found { return nonnullFound }
@@ -339,17 +381,18 @@ public extension UIViewController {
         if let maximalLevel = restrictment {
             
             let possiblyExistingLevel = UIWindow.Level.tap_maximalAmongPresented(lower: maximalLevel)
+			
             if UIApplication.shared.windows.first(where: { $0.windowLevel == possiblyExistingLevel }) == nil {
                 
                 return possiblyExistingLevel
             }
-            else if possiblyExistingLevel.rawValue + 1.0 < maximalLevel.rawValue {
+            else if possiblyExistingLevel.tap_rawValue + 1.0 < maximalLevel.tap_rawValue {
                 
-                return UIWindow.Level(possiblyExistingLevel.rawValue + 1.0)
+                return UIWindow.Level(possiblyExistingLevel.tap_rawValue + 1.0)
             }
             else {
                 
-                let value = possiblyExistingLevel.rawValue + 0.5 * (maximalLevel.rawValue - possiblyExistingLevel.rawValue)
+                let value = possiblyExistingLevel.tap_rawValue + 0.5 * (maximalLevel.tap_rawValue - possiblyExistingLevel.tap_rawValue)
                 return UIWindow.Level(value)
             }
         }

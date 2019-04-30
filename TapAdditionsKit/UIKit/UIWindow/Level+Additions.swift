@@ -5,6 +5,7 @@
 //  Copyright © 2019 Tap Payments. All rights reserved.
 //
 
+import struct	CoreGraphics.CGBase.CGFloat
 import class	UIKit.UIApplication.UIApplication
 import class	UIKit.UIWindow.UIWindow
 
@@ -13,11 +14,25 @@ public extension UIWindow.Level {
     
     // MARK: - Public
     // MARK: Properties
+	
+	/// Raw value
+	var tap_rawValue: CGFloat {
+		
+		#if swift(>=4.2)
+		
+		return self.rawValue
+		
+		#else
+		
+		return self
+		
+		#endif
+	}
     
     /// Returns maximal window level among all presented windows in the app.
     static var tap_maximalAmongPresented: UIWindow.Level {
         
-        return self.tap_maximalAmongPresented(lower: UIWindow.Level(.greatestFiniteMagnitude))
+        return self.tap_maximalAmongPresented(lower: UIWindow.Level(CGFloat.greatestFiniteMagnitude))
     }
     
     // MARK: Methods
@@ -29,7 +44,7 @@ public extension UIWindow.Level {
     static func tap_maximalAmongPresented(lower then: UIWindow.Level) -> UIWindow.Level {
         
         let windows = UIApplication.shared.windows.filter { $0.windowLevel < then }
-        guard windows.count > 0 else { return UIWindow.Level(then.rawValue - 1.0) }
+        guard windows.count > 0 else { return UIWindow.Level(then.tap_rawValue - 1.0) }
         
         guard let firstWindow = (windows.sorted { $0.windowLevel > $1.windowLevel }).first else {
             

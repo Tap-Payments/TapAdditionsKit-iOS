@@ -10,6 +10,10 @@ import class		Foundation.NSValue.NSValue
 import class		QuartzCore.CAAnimation.CAKeyframeAnimation
 import func			QuartzCore.CATransform3D.CATransform3DMakeScale
 
+#if !swift(>=4.2)
+import var			QuartzCore.CAMediaTiming.kCAFillModeForwards
+#endif
+
 /// Useful extension to CAKeyframeAnimation
 public extension CAKeyframeAnimation {
     
@@ -23,8 +27,13 @@ public extension CAKeyframeAnimation {
         
         animation.values = CAKeyframeAnimation.tap_popupAppearanceTransforms
         animation.keyTimes = CAKeyframeAnimation.tap_popupAppearanceFrameTimes
-        
+		
+		#if swift(>=4.2)
         animation.fillMode = .forwards
+		#else
+		animation.fillMode = kCAFillModeForwards
+		#endif
+		
         animation.isRemovedOnCompletion = false
         animation.duration = CAKeyframeAnimationConstants.popupAppearanceTimeInterval
         
@@ -38,8 +47,13 @@ public extension CAKeyframeAnimation {
         
         animation.values = CAKeyframeAnimation.tap_popupDisappearanceTransforms
         animation.keyTimes = CAKeyframeAnimation.tap_popupDisappearanceFrameTimes
-        
-        animation.fillMode = .forwards
+		
+		#if swift(>=4.2)
+		animation.fillMode = .forwards
+		#else
+		animation.fillMode = kCAFillModeForwards
+		#endif
+		
         animation.isRemovedOnCompletion = false
         animation.duration = CAKeyframeAnimationConstants.popupDisappearanceTimeInterval
         

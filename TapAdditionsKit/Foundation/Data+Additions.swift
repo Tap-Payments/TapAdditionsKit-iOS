@@ -38,8 +38,8 @@ public extension Data {
         var data: Data?
         
         return autoreleasepool {
-            
-            data = transparentImage.pngData()
+
+            data = transparentImage.tap_pngData
             return data
         }
     }
