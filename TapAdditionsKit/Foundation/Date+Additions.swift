@@ -28,7 +28,7 @@ public extension Date {
     
     private var tap_currentCalendar: Calendar {
         
-        return Calendar.current
+        return Calendar(identifier: .gregorian)
     }
     
     // MARK: Methods
