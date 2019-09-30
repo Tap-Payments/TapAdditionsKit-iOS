@@ -30,49 +30,49 @@ public extension UIViewController {
         
         return self.isBeingDismissed || self.isBeingPresented || self.tap_isMovingFromParent || self.tap_isMovingToParent
     }
-	
-	/// Defines if the receiver is moving from parent view controller.
-	var tap_isMovingFromParent: Bool {
-		
-		#if swift(>=4.2)
-		
-		return self.isMovingFromParent
-		
-		#else
-		
-		return self.isMovingFromParentViewController
-		
-		#endif
-	}
-	
-	/// Defines if the receiver is moving to parent view controller.
-	var tap_isMovingToParent: Bool {
-		
-		#if swift(>=4.2)
-		
-		return self.isMovingToParent
-		
-		#else
-		
-		return self.isMovingToParentViewController
-		
-		#endif
-	}
-	
-	/// An array of view controllers that are the children of the receiver.
-	var tap_children: [UIViewController] {
-		
-		#if swift(>=4.2)
-		
-		return self.children
-		
-		#else
-		
-		return self.childViewControllers
-		
-		#endif
-	}
-	
+    
+    /// Defines if the receiver is moving from parent view controller.
+    var tap_isMovingFromParent: Bool {
+        
+        #if swift(>=4.2)
+        
+        return self.isMovingFromParent
+        
+        #else
+        
+        return self.isMovingFromParentViewController
+        
+        #endif
+    }
+    
+    /// Defines if the receiver is moving to parent view controller.
+    var tap_isMovingToParent: Bool {
+        
+        #if swift(>=4.2)
+        
+        return self.isMovingToParent
+        
+        #else
+        
+        return self.isMovingToParentViewController
+        
+        #endif
+    }
+    
+    /// An array of view controllers that are the children of the receiver.
+    var tap_children: [UIViewController] {
+        
+        #if swift(>=4.2)
+        
+        return self.children
+        
+        #else
+        
+        return self.childViewControllers
+        
+        #endif
+    }
+    
     /// Returns NSLayoutConstraint which determines height of top layout guide.
     var tap_topLayoutGuideConstraint: NSLayoutConstraint? {
         
@@ -100,7 +100,7 @@ public extension UIViewController {
     var tap_displayedViewController: UIViewController? {
         
         if let presentedController = self.presentedViewController, presentedController.tap_isFullscreen {
-        
+            
             return presentedController.tap_displayedViewController
         }
         else if let navController = self as? UINavigationController {
@@ -381,7 +381,7 @@ public extension UIViewController {
         if let maximalLevel = restrictment {
             
             let possiblyExistingLevel = UIWindow.Level.tap_maximalAmongPresented(lower: maximalLevel)
-			
+            
             if UIApplication.shared.windows.first(where: { $0.windowLevel == possiblyExistingLevel }) == nil {
                 
                 return possiblyExistingLevel
@@ -403,10 +403,13 @@ public extension UIViewController {
     }
     
     private func tap_removeSeparateWindow() {
-		
-        self.tap_separateWindow?.isHidden = true
-        self.tap_separateWindow?.rootViewController = nil
-        self.tap_separateWindow = nil
+        guard self.tap_separateWindow != nil else {
+            
+            self.tap_separateWindow?.isHidden = true
+            self.tap_separateWindow?.rootViewController = nil
+            self.tap_separateWindow = nil
+            return
+        }
     }
 }
 
