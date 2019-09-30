@@ -8,7 +8,7 @@ Pod::Spec.new do |tapAdditionsKit|
     tapAdditionsKit.name                    = 'TapAdditionsKit'
     tapAdditionsKit.summary                 = 'Useful additions for native iOS frameworks'
     tapAdditionsKit.requires_arc            = true
-    tapAdditionsKit.version                 = '1.3.5-beta'
+    tapAdditionsKit.version                 = '1.3.5'
     tapAdditionsKit.license                 = { :type => 'MIT', :file => 'LICENSE' }
     tapAdditionsKit.author                  = { 'Tap Payments' => 'hello@tap.company' }
     tapAdditionsKit.homepage                = 'https://github.com/Tap-Payments/TapAdditionsKit-iOS'
