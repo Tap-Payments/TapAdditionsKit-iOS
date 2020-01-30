@@ -367,7 +367,11 @@ public extension UIViewController {
         self.tap_separateWindow = window
         
         if withUserInteractionEnabled {
-            
+            if #available(iOS 13.0, *) {
+                if let currentWindowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
+                    window.windowScene = currentWindowScene
+                }
+            }
             window.makeKeyAndVisible()
         }
         else {
